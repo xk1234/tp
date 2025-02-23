@@ -9,7 +9,10 @@ title: Developer Guide
 
 ## **Acknowledgements**
 
-* {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
+AI Usage
+- Existing problems, target direction, and name ideas: Used by Xinkang to brainstorm all of these(Google AI studio)
+- User stories: Used by Xinkang to brainstorm target user and come up with user stories. User stories were later edited to fit the required format(Google AI studio)
+- Feature Specifications: Used by Xinkang to write initial feature specifications in the required format. Final product was edited to accomodate changes from other group members(O3 mini)
 
 --------------------------------------------------------------------------------------------------------------------
 
