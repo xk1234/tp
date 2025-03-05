@@ -261,26 +261,26 @@ _{Explain here how the data archiving feature will be implemented}_
 
 ## **Appendix: Requirements**
 
-### Product scope 
+### Product scope
 
-**Target user profile**: 
+**Target user profile**:
 
-* Network marketeer 
-* Has a need to manage a significant number of contacts 
-* Each contact has a commission to track 
-* Prefer desktop apps over other types 
-* Can type fast 
-* Prefers typing to mouse interactions 
-* Is reasonably comfortable using CLI apps 
+* Network marketeer
+* Has a need to manage a significant number of contacts
+* Each contact has a commission to track
+* Prefer desktop apps over other types
+* Can type fast
+* Prefers typing to mouse interactions
+* Is reasonably comfortable using CLI apps
 
-**Value proposition**: Manage contacts faster than a typical mouse/GUI driven app and easily track commission of contacts. 
+**Value proposition**: Manage contacts faster than a typical mouse/GUI driven app and easily track commission of contacts.
 
-### User stories 
+### User stories
 
-Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*` 
+Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …                                     | I want to …                                       | So that I can…                                                         | 
-|:--------:|--------------------------------------------|---------------------------------------------------|------------------------------------------------------------------------| 
+| Priority | As a …                                     | I want to …                                       | So that I can…                                                         |
+|:--------:|--------------------------------------------|---------------------------------------------------|------------------------------------------------------------------------|
 | `* * *`  | New user                                   | See usage instructions                            | Refer to instructions when I forget how to use the App                 |
 | `* * *`  | User                                       | Add a new person                                  |                                                                        |
 | `* * *`  | User                                       | Edit a person                                     | Change the information reflected when their information changes        |
@@ -288,74 +288,85 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | User                                       | Find a person by name                             | Locate details of persons without having to go through the entire list |
 | `* * *`  | User                                       | Show all contacts                                 | Manage them together                                                   |
 | `* * *`  | User                                       | Close the app                                     |                                                                        |
-| `* *`    | User                                       | Clear my contacts                                 | Easily reset contacts                                                  |
-| `* * *`  | Marketeer with a segmented lists           | Filter my contacts by tags                        | Quickly access specific groups of contacts for targeted actions        |
-| `* * *`  | Data enthusiast                            | Export reports                                    | Further analyze and integrate data into external systems               |
+| `* *`    | User                                       | Clear my contacts                                 | Start from a fresh state                                               |
+| `* * *`  | Marketeer with a segmented lists           | Find a person by tags                             | Quickly access specific groups of contacts                             |
+| `* * *`  | Data enthusiast                            | Export reports                                    | Further analyze with external systems                                  |
 | `* * *`  | Team leader                                | Record the commission earned from team members    | Monitor the financial impact of my team expansion                      |
 | `* *`    | Time-conscious communicator                | Send bulk messages to specific groups of contacts | Share updates quickly without crafting individual messages             |
 | `* *`    | Well connected person                      | Sort persons by attributes                        | Locate a person easily                                                 |
 | `* *`    | Efficient user                             | Tag multiple contacts at once                     | Quickly organize large groups of contacts                              |
 | `*`      | Team leader                                | Visualize my network of downlines                 | Monitor the progress of my team expansion                              |
 
-### Use cases 
+### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise) 
+(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Add a person** 
+**Use case: UC1 - Show all contacts**
 
-**Use case: Edit a person** 
+**MSS**
 
-**Use case: Filter Contacts by name and tag** 
+1. User requests to list persons
+2. AddressBook shows the list of all persons.
 
-**Use case: Delete a person** 
+   Use case ends.
 
-**MSS** 
+**Extensions**
 
-1.  User requests to list persons 
-2.  AddressBook shows a list of persons 
-3.  User requests to delete a specific person in the list 
-4.  AddressBook deletes the person 
+* 2a. The list is empty.
 
-    Use case ends. 
+  Use case ends.
 
-**Extensions** 
+**Use case: UC2 - Add a person**
 
-* 2a. The list is empty. 
+**Use case: UC3 - Edit a person**
 
-  Use case ends. 
+**Use case: UC4 - Delete a person**
 
-* 3a. The given index is invalid. 
+**MSS**
 
-    * 3a1. AddressBook shows an error message. 
+1.  User <ins>shows all contacts (UC1)</ins>.
+2.  User requests to delete a specific person in the list
+3.  AddressBook deletes the person
 
-      Use case resumes at step 2. 
+    Use case ends.
 
-**Use case: Edit commission received from person** 
+**Extensions**
 
-### Non-Functional Requirements   
+* 2a. The given index is invalid.
 
-1. Should work on any _mainstream OS_ as long as it has Java `17` or above installed.   
-2. Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.   
-3. A user with above-average typing speed for regular English text (i.e., not code, not system admin commands) should be able to accomplish most tasks faster using commands than using the mouse.   
-4. The application should be fully portable and should not require installation. Users should be able to run the application by executing a single JAR file.   
-5. The software should be developed incrementally, ensuring a stable, working product at every stage of development.   
-6. The application should be optimized for a screen resolution of at least `1920x1080`, ensuring usability at resolutions as low as `1280x720`. It should also support scaling factors of `100%`, `125%` and remain functional at `150%`.   
-7. Data should be stored in a human-editable text file, allowing advanced users to modify it manually if needed.   
-8. The product should not require an internet connection for core functionality, ensuring usability in offline environments.   
-9. The software should follow an object-oriented design, using OOP principles to manage data and features effectively.   
-10. No third-party database management system (DBMS) should be used to store data.   
-11. The application should not depend on a remote server for its functionality, ensuring that it remains accessible even after project completion.   
-12. The software package, including all dependencies, should not exceed `100MB`, and documentation files should not exceed `15MB` per file.   
-13. The software should ensure a smooth user experience across Windows, macOS, and Linux by avoiding OS-dependent libraries and system-specific functionalities.   
-14. The primary mode of interaction should be through a command-line interface (CLI), with the GUI primarily used for visual feedback. A CLI input should be faster than its GUI alternative whenever applicable.   
-15. The software should be testable, avoiding features that introduce unnecessary complexity in manual or automated testing, such as account-based authentication, audio-based interactions, or extensive reliance on external APIs.   
-16. The final product should be delivered in a single JAR file. If this is not possible, all required files should be packaged into a single ZIP archive.   
+    * 2a1. AddressBook shows an error message.
 
-### Glossary 
+      Use case resumes at step 1.
 
-* **Mainstream OS**: Windows, Linux, Unix, MacOS 
-* **Downline**: A contact that is lower in the network than the user 
-* **Commission**: The amount of money received from the contact
+**Use case: UC5 - Find persons by name and tag**
+
+**Use case: UC6 - Add commission received from person**
+
+### Non-Functional Requirements
+
+1. Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
+2. Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+3. A user with above-average typing speed for regular English text (i.e., not code, not system admin commands) should be able to accomplish most tasks faster using commands than using the mouse.
+4. The application should be fully portable and should not require installation. Users should be able to run the application by executing a single JAR file.
+5. The software should be developed incrementally, ensuring a stable, working product at every stage of development.
+6. The application should be optimized for a screen resolution of at least `1920x1080`, ensuring usability at resolutions as low as `1280x720`. It should also support scaling factors of `100%`, `125%` and remain functional at `150%`.
+7. Data should be stored in a human-editable text file, allowing advanced users to modify it manually if needed.
+8. The product should not require an internet connection for core functionality, ensuring usability in offline environments.
+9. The software should follow an object-oriented design, using OOP principles to manage data and features effectively.
+10. No third-party database management system (DBMS) should be used to store data.
+11. The application should not depend on a remote server for its functionality, ensuring that it remains accessible even after project completion.
+12. The software package, including all dependencies, should not exceed `100MB`, and documentation files should not exceed `15MB` per file.
+13. The software should ensure a smooth user experience across Windows, macOS, and Linux by avoiding OS-dependent libraries and system-specific functionalities.
+14. The primary mode of interaction should be through a command-line interface (CLI), with the GUI primarily used for visual feedback. A CLI input should be faster than its GUI alternative whenever applicable.
+15. The software should be testable, avoiding features that introduce unnecessary complexity in manual or automated testing, such as account-based authentication, audio-based interactions, or extensive reliance on external APIs.
+16. The final product should be delivered in a single JAR file. If this is not possible, all required files should be packaged into a single ZIP archive.
+
+### Glossary
+
+* **Mainstream OS**: Windows, Linux, Unix, MacOS
+* **Person/Contact**: An entry in the addresssbook
+* **Downline**: A contact that is lower in the marketing network than the user
+* **Commission**: The amount of money received from the contact through sales
 
 --------------------------------------------------------------------------------------------------------------------
 
