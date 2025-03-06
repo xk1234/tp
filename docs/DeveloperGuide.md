@@ -362,6 +362,30 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Use case: UC6 - Add commission received from person**
 
+**Use case: UC7 - Tag multiple contacts at once**
+
+**MSS**
+
+1. User <ins>find persons by name and tag (UC5)</ins>.
+2. User requests to tag all persons currently on the list.
+3. AddressBook adds the tags to all persons currently on the list.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The users does not provide any tags to add.
+
+    * 2a1. AddressBook shows an error message.
+
+      Use case resumes at step 1.
+
+* 2b. The user provides tags with invalid format.
+
+    * 2b1. AddressBook shows an error message.
+
+      Use case resumes at step 1.
+
 ### Non-Functional Requirements
 
 1. Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
