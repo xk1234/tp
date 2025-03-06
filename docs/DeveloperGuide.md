@@ -9,7 +9,10 @@ title: Developer Guide
 
 ## **Acknowledgements**
 
-* {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
+AI Usage
+- Existing problems, target direction, and name ideas: Used by Xinkang to brainstorm all of these(Google AI studio)
+- User stories: Used by Xinkang to brainstorm target user and come up with user stories. User stories were later edited to fit the required format(Google AI studio)
+- Feature Specifications: Used by Xinkang to write initial feature specifications in the required format. Final product was edited to accomodate changes from other group members(O3 mini)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -258,75 +261,101 @@ _{Explain here how the data archiving feature will be implemented}_
 
 ## **Appendix: Requirements**
 
-### Product scope
+### Product scope 
 
-**Target user profile**:
+**Target user profile**: 
 
-* has a need to manage a significant number of contacts
-* prefer desktop apps over other types
-* can type fast
-* prefers typing to mouse interactions
-* is reasonably comfortable using CLI apps
+* Network marketeer 
+* Has a need to manage a significant number of contacts 
+* Each contact has a commission to track 
+* Prefer desktop apps over other types 
+* Can type fast 
+* Prefers typing to mouse interactions 
+* Is reasonably comfortable using CLI apps 
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: Manage contacts faster than a typical mouse/GUI driven app and easily track commission of contacts. 
 
+### User stories 
 
-### User stories
+Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*` 
 
-Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
+| Priority | As a …                                     | I want to …                                       | So that I can…                                                         | 
+|:--------:|--------------------------------------------|---------------------------------------------------|------------------------------------------------------------------------| 
+| `* * *`  | New user                                   | See usage instructions                            | Refer to instructions when I forget how to use the App                 |
+| `* * *`  | User                                       | Add a new person                                  |                                                                        |
+| `* * *`  | User                                       | Edit a person                                     | Change the information reflected when their information changes        |
+| `* * *`  | User                                       | Delete a person                                   | Remove entries that I no longer need                                   |
+| `* * *`  | User                                       | Find a person by name                             | Locate details of persons without having to go through the entire list |
+| `* * *`  | User                                       | Show all contacts                                 | Manage them together                                                   |
+| `* * *`  | User                                       | Close the app                                     |                                                                        |
+| `* *`    | User                                       | Clear my contacts                                 | Easily reset contacts                                                  |
+| `* * *`  | Marketeer with a segmented lists           | Filter my contacts by tags                        | Quickly access specific groups of contacts for targeted actions        |
+| `* * *`  | Data enthusiast                            | Export reports                                    | Further analyze and integrate data into external systems               |
+| `* * *`  | Team leader                                | Record the commission earned from team members    | Monitor the financial impact of my team expansion                      |
+| `* *`    | Time-conscious communicator                | Send bulk messages to specific groups of contacts | Share updates quickly without crafting individual messages             |
+| `* *`    | Well connected person                      | Sort persons by attributes                        | Locate a person easily                                                 |
+| `* *`    | Efficient user                             | Tag multiple contacts at once                     | Quickly organize large groups of contacts                              |
+| `*`      | Team leader                                | Visualize my network of downlines                 | Monitor the progress of my team expansion                              |
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+### Use cases 
 
-*{More to be added}*
+(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise) 
 
-### Use cases
+**Use case: Add a person** 
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+**Use case: Edit a person** 
 
-**Use case: Delete a person**
+**Use case: Filter Contacts by name and tag** 
 
-**MSS**
+**Use case: Delete a person** 
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+**MSS** 
 
-    Use case ends.
+1.  User requests to list persons 
+2.  AddressBook shows a list of persons 
+3.  User requests to delete a specific person in the list 
+4.  AddressBook deletes the person 
 
-**Extensions**
+    Use case ends. 
 
-* 2a. The list is empty.
+**Extensions** 
 
-  Use case ends.
+* 2a. The list is empty. 
 
-* 3a. The given index is invalid.
+  Use case ends. 
 
-    * 3a1. AddressBook shows an error message.
+* 3a. The given index is invalid. 
 
-      Use case resumes at step 2.
+    * 3a1. AddressBook shows an error message. 
 
-*{More to be added}*
+      Use case resumes at step 2. 
 
-### Non-Functional Requirements
+**Use case: Edit commission received from person** 
 
-1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+### Non-Functional Requirements   
 
-*{More to be added}*
+1. Should work on any _mainstream OS_ as long as it has Java `17` or above installed.   
+2. Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.   
+3. A user with above-average typing speed for regular English text (i.e., not code, not system admin commands) should be able to accomplish most tasks faster using commands than using the mouse.   
+4. The application should be fully portable and should not require installation. Users should be able to run the application by executing a single JAR file.   
+5. The software should be developed incrementally, ensuring a stable, working product at every stage of development.   
+6. The application should be optimized for a screen resolution of at least `1920x1080`, ensuring usability at resolutions as low as `1280x720`. It should also support scaling factors of `100%`, `125%` and remain functional at `150%`.   
+7. Data should be stored in a human-editable text file, allowing advanced users to modify it manually if needed.   
+8. The product should not require an internet connection for core functionality, ensuring usability in offline environments.   
+9. The software should follow an object-oriented design, using OOP principles to manage data and features effectively.   
+10. No third-party database management system (DBMS) should be used to store data.   
+11. The application should not depend on a remote server for its functionality, ensuring that it remains accessible even after project completion.   
+12. The software package, including all dependencies, should not exceed `100MB`, and documentation files should not exceed `15MB` per file.   
+13. The software should ensure a smooth user experience across Windows, macOS, and Linux by avoiding OS-dependent libraries and system-specific functionalities.   
+14. The primary mode of interaction should be through a command-line interface (CLI), with the GUI primarily used for visual feedback. A CLI input should be faster than its GUI alternative whenever applicable.   
+15. The software should be testable, avoiding features that introduce unnecessary complexity in manual or automated testing, such as account-based authentication, audio-based interactions, or extensive reliance on external APIs.   
+16. The final product should be delivered in a single JAR file. If this is not possible, all required files should be packaged into a single ZIP archive.   
 
-### Glossary
+### Glossary 
 
-* **Mainstream OS**: Windows, Linux, Unix, MacOS
-* **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Mainstream OS**: Windows, Linux, Unix, MacOS 
+* **Downline**: A contact that is lower in the network than the user 
+* **Commission**: The amount of money received from the contact
 
 --------------------------------------------------------------------------------------------------------------------
 
