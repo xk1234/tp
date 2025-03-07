@@ -316,7 +316,43 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-*{More to be added}*
+**Use case: UC2 - Add a person**
+
+**MSS**
+
+1. User requests to add a person
+2. AddressBook adds the person
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The user uses invalid format.
+
+    * 2a1. AddressBook shows an error message.
+
+      Use case resumes at step 1.
+* 2b. The user tries to add a person that is already in the contact.
+    * 2b1. AddressBook shows an error message.
+
+      Use case resumes at step 1.
+
+**Use case: Send Bulk Messages**
+
+**MSS**
+
+1. User requests to list persons
+2. AddressBook shows the list of persons
+3. User sends messages to the persons in the list
+4. AddressBook sends message to all the people in the list
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+    Use case ends.
 
 ### Non-Functional Requirements
 
