@@ -17,43 +17,5 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](https://github.com/bill-1)]
 [[portfolio](team/bill-1)]
 
-* Role: Developer
-* Responsibilities: Coding 
-### Jane Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/bill-1)]
-
-* Role: Team Lead
-* Responsibilities: UI
-
-### Johnny Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)] [[portfolio](team/bill-1)]
-
-* Role: Developer
-* Responsibilities: Data
-
-### Jean Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/bill-1)]
-
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
-
-### James Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/bill-1)]
-
-* Role: Developer
-* Responsibilities: UI
+* Role: Testing
+* Responsibilities: In charge of model
