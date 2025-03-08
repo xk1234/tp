@@ -16,3 +16,13 @@ We are a team based in the [School of Computing, National University of Singapor
 
 * Role: Deliverables and deadlines
 * Responsibilities: Model
+
+### Marcus Xu
+
+<img src="images/xumarcus.png" width="200px">
+
+[[github](http://github.com/xumarcus)]
+[[portfolio](team/xumarcus.md)]
+
+* Role: Developer
+* Responsibilities: Documentation, In charge of Storage
