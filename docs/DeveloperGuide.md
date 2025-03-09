@@ -382,13 +382,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 2a. The user uses invalid format.
+* 1a. The user uses invalid format.
 
-    * 2a1. AddressBook shows an error message.
+    * 1a1. AddressBook shows an error message.
 
       Use case resumes at step 1.
-* 2b. The user tries to add a person that is already in the contact.
-    * 2b1. AddressBook shows an error message.
+* 1b. The user tries to add a person that is already in the contact.
+    * 1b1. AddressBook shows an error message.
 
       Use case resumes at step 1.
 
@@ -450,10 +450,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to list persons
-2. AddressBook shows the list of persons
-3. User sends messages to the persons in the list
-4. AddressBook sends message to all the people in the list
+1. User <ins>find persons by name and tag (UC5)</ins>
+2. User sends mails to the persons in the list
 
    Use case ends.
 
