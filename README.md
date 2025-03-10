@@ -16,8 +16,8 @@ Network marketers face significant challenges in managing scattered contact info
 - Track individual commissions on a per-contact basis
 - Monitor earnings from network activities in real-time
 
-### 🌱 Recruitment Reporting
-- Generate reports on team growth metrics
+### 🌱 Data Analysis
+- Generate insightful reports
 - Analyze referral hierarchies
 
 ### 📨 Assist Bulk Messaging
@@ -30,3 +30,6 @@ Network marketers face significant challenges in managing scattered contact info
 
 ## Acknowledgements
 This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org). For the detailed documentation of this project, see **[our product website](https://ay2425s2-cs2103t-t14-4.github.io/tp/)**.
+=======
+AddressBook is a desktop application for managing your contact details. While it has a GUI, most of the user interactions happen using a CLI (Command Line Interface).
+
