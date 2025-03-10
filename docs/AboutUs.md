@@ -27,17 +27,6 @@ We are a team based in the [School of Computing, National University of Singapor
 * Role: UI designer
 * Responsibilities: Data
 
-### Jean Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
-
-
 ### Dallas Lim
 
 <img src="images/bladerx11.png" width="200px">
