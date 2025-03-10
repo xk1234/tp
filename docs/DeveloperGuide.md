@@ -376,8 +376,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User <ins>shows all contacts (UC1)</ins>.
-2.  User requests to add commission received from a specific downline in the list.
-3.  User specifies the amount of commission received.
+2.  User requests to add commission received from a specific downline in the list and specifies the amount of commission received.
 4.  AddressBook records the commission received from that person.
     Use case ends.
 
@@ -386,10 +385,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 2a. The given index is invalid.
     * 2a1. AddressBook shows an error message.
       Use case resumes at step 1.
-* 3a. User requests to cancel adding commission before specifying the amount.
-    * 3a1. AddressBook cancels the add commission operation.
-      Use case resumes at step 1.
-* 3b. User provides invalid input for the commission amount (e.g., non-numeric).
+* 3a. User provides invalid input for the commission amount (e.g., non-numeric).
     * 3b1. AddressBook shows an error message indicating invalid commission amount.
       Use case resumes at step 3.
 
