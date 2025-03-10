@@ -307,36 +307,30 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to list persons
-2. AddressBook shows the list of all persons.
-
+1.  User requests to list persons
+2.  AddressBook shows the list of all persons.
     Use case ends.
 
 **Extensions**
 
 * 2a. The list is empty.
-  
-   Use case ends.
+    Use case ends.
 
 **Use case: UC2 - Add a person**
 
 **MSS**
 
-1. User requests to add a person
-2. AddressBook adds the person
-
-   Use case ends.
+1.  User requests to add a person
+2.  AddressBook adds the person
+    Use case ends.
 
 **Extensions**
 
 * 1a. The user uses invalid format.
-
     * 1a1. AddressBook shows an error message.
-
       Use case resumes at step 1.
 * 1b. The user tries to add a person that is already in the contact.
     * 1b1. AddressBook shows an error message.
-
       Use case resumes at step 1.
 
 **Use case: UC3 - Edit a person**
@@ -345,7 +339,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2.  User requests to edit a specific person in the list.
 3.  User states which fields to update and provide updated details.
 4.  AddressBook edits the person with updated details.
-
     Use case ends.
 
 **Extensions**
@@ -364,7 +357,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1.  User <ins>shows all contacts (UC1)</ins>.
 2.  User requests to delete a specific person in the list
 3.  AddressBook deletes the person
-
     Use case ends.
 
 **Extensions**
@@ -380,7 +372,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1.  User <ins>shows all contacts (UC1)</ins>.
 2.  User requests to find persons with names and tags.
 3.  AddressBook shows a list of contacts that passes the filter.
-
     Use case ends.
 
 **Extensions**
@@ -389,8 +380,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 2a1. AddressBook shows an error message.
       Use case resumes at step 1.
 * 3a. No contacts passes the filter.
-
-    Use case ends.
+      Use case ends.
 
 **Use case: UC6 - Add commission received from person**
 
@@ -477,8 +467,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 2b. User provides an unsupported sort criteria.
     * 2b1. AddressBook shows an error message indicating that the specified criteria is not supported for sorting.
       Use case resumes at step 1.
-
-  Use case ends.
 
 ### Non-Functional Requirements
 
