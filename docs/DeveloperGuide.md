@@ -320,6 +320,25 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Use case: UC2 - Add a person**
 
+**MSS**
+
+1. User requests to add a person
+2. AddressBook adds the person
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. The user uses invalid format.
+
+    * 1a1. AddressBook shows an error message.
+
+      Use case resumes at step 1.
+* 1b. The user tries to add a person that is already in the contact.
+    * 1b1. AddressBook shows an error message.
+
+      Use case resumes at step 1.
+
 **Use case: UC3 - Edit a person**
 
 1.  User <ins>shows all contacts (UC1)</ins>.
@@ -375,15 +394,30 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Use case: UC6 - Add commission received from person**
 
+**MSS**
+
+1.  User <ins>shows all contacts (UC1)</ins>.
+2.  User requests to add commission received from a specific downline in the list and specifies the amount of commission received.
+3.  AddressBook records the commission received from that person.
+    Use case ends.
+
+**Extensions**
+
+* 2a. The given index is invalid.
+    * 2a1. AddressBook shows an error message.
+      Use case resumes at step 1.
+* 3a. User provides invalid input for the commission amount (e.g., non-numeric).
+    * 3b1. AddressBook shows an error message indicating invalid commission amount.
+      Use case resumes at step 3.
+
 **Use case: UC7 - Tag multiple contacts at once**
 
 **MSS**
 
-1. User <ins>find persons by name and tag (UC5)</ins>.
-2. User requests to tag all persons currently on the list.
-3. AddressBook adds the tags to all persons currently on the list.
-
-   Use case ends.
+1.  User <ins>find persons by name and tag (UC5)</ins>.
+2.  User requests to tag all persons currently on the list.
+3.  AddressBook adds the tags to all persons currently on the list.
+    Use case ends.
 
 **Extensions**
 
@@ -398,11 +432,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User <ins>find persons by name and tag (UC5)</ins>.
-2. User requests to export contacts of all persons currently on the list.
-3. User selects which fields to export from the contacts.
-4. AddressBook exports contacts to default file path.
-
+1.  User <ins>find persons by name and tag (UC5)</ins>.
+2.  User requests to export contacts of all persons currently on the list.
+3.  User selects which fields to export from the contacts.
+4.  AddressBook exports contacts to default file path.
     Use case ends.
 
 **Extensions**
@@ -413,7 +446,39 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 3a. The user selects invalid fields.
   * 3a1. AddressBook shows an error message.
     Use case resumes at step 1.
-    
+
+**Use case: UC9 - Send Bulk Messages**
+
+**MSS**
+
+1. User <ins>find persons by name and tag (UC5)</ins>
+2. User sends mails to the persons in the list
+   Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+**Use case: UC10 - Sorting displayed List**
+
+**MSS**
+
+1.  User <ins>searches for contacts (UC1)</ins>.
+2.  User issues a command to sort the displayed list.
+3.  AddressBook sorts the displayed list based on the specified criteria.
+4.  AddressBook displays the sorted list of contacts.
+    Use case ends.
+
+**Extensions**
+
+* 2a. User provides an invalid sort command format or missing sort criteria.
+    * 2a1. AddressBook shows an error message indicating the invalid command format or missing criteria.
+      Use case resumes at step 1.
+* 2b. User provides an unsupported sort criteria.
+    * 2b1. AddressBook shows an error message indicating that the specified criteria is not supported for sorting.
+      Use case resumes at step 1.
+
+  Use case ends.
 
 ### Non-Functional Requirements
 

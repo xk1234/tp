@@ -7,25 +7,16 @@ We are a team based in the [School of Computing, National University of Singapor
 
 ## Project team
 
-### John Doe
+### Bilguudei Shinezul
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/bill-1.png" width="200px">
 
 [[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](https://github.com/bill-1)]
+[[portfolio](team/bill-1)]
 
-* Role: Project Advisor
-
-### Jane Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Team Lead
-* Responsibilities: UI
+* Role: Testing
+* Responsibilities: In charge of model
 
 ### Xinkang
 
@@ -35,17 +26,6 @@ We are a team based in the [School of Computing, National University of Singapor
 
 * Role: UI designer
 * Responsibilities: Data
-
-### Jean Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
-
 
 ### Dallas Lim
 
