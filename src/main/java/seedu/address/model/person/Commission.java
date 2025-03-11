@@ -1,5 +1,6 @@
 package seedu.address.model.person;
 
+import static java.util.Objects.requireNonNull;
 /**
  * Represents a Person's commission in the address book.
  */
