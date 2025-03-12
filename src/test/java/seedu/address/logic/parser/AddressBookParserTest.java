@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
@@ -23,8 +25,8 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.predicates.NameAndTagPredicate;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonUtil;
@@ -70,10 +72,18 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_find() throws Exception {
-        List<String> keywords = Arrays.asList("foo", "bar", "baz");
-        FindCommand command = (FindCommand) parser.parseCommand(
-                FindCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
-        assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);
+        List<String> nameKeywords = Arrays.asList("foo", "bar", "baz");
+        List<String> tagKeywords = Arrays.asList("friend", "colleague");
+
+        // Construct the command string
+        String commandString = FindCommand.COMMAND_WORD + " "
+                + nameKeywords.stream().map(k -> PREFIX_NAME + k).collect(Collectors.joining(" "))
+                + " "
+                + tagKeywords.stream().map(k -> PREFIX_TAG + k).collect(Collectors.joining(" "));
+
+        FindCommand command = (FindCommand) parser.parseCommand(commandString);
+
+        assertEquals(new FindCommand(new NameAndTagPredicate(nameKeywords, tagKeywords)), command);
     }
 
     @Test
