@@ -11,7 +11,6 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
@@ -76,10 +75,8 @@ public class AddressBookParserTest {
         List<String> tagKeywords = Arrays.asList("friend", "colleague");
 
         // Construct the command string
-        String commandString = FindCommand.COMMAND_WORD + " "
-                + nameKeywords.stream().map(k -> PREFIX_NAME + k).collect(Collectors.joining(" "))
-                + " "
-                + tagKeywords.stream().map(k -> PREFIX_TAG + k).collect(Collectors.joining(" "));
+        String commandString = FindCommand.COMMAND_WORD + " " + PREFIX_NAME + String.join(" ", nameKeywords) + " "
+                + PREFIX_TAG + String.join(" ", tagKeywords);
 
         FindCommand command = (FindCommand) parser.parseCommand(commandString);
 

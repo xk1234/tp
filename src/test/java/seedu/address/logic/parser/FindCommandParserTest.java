@@ -11,6 +11,7 @@ import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.Messages;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.model.person.predicates.NameAndTagPredicate;
 
@@ -27,6 +28,18 @@ public class FindCommandParserTest {
         // no prefix
         assertParseFailure(parser, "Alice Bob",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+
+        // multiple name prefixes
+        assertParseFailure(parser, " " + PREFIX_NAME + "Alice " + PREFIX_NAME + "Bob",
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME));
+
+        // multiple tag prefixes
+        assertParseFailure(parser, " " + PREFIX_TAG + "friends " + PREFIX_TAG + "colleagues",
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_TAG));
+
+        // multiple name and tag prefixes
+        assertParseFailure(parser, " " + PREFIX_NAME + "Alice " + PREFIX_NAME + "Bob " + PREFIX_TAG + "friends "
+                + PREFIX_TAG + "colleagues", Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME, PREFIX_TAG));
 
         // empty prefix values
         assertParseFailure(parser, " " + PREFIX_NAME + " " + PREFIX_TAG + " ",
@@ -47,7 +60,7 @@ public class FindCommandParserTest {
         // multiple name keywords
         expectedFindCommand = new FindCommand(
                 new NameAndTagPredicate(Arrays.asList("Alice", "Bob"), Collections.emptyList()));
-        assertParseSuccess(parser, " " + PREFIX_NAME + "Alice " + PREFIX_NAME + "Bob", expectedFindCommand);
+        assertParseSuccess(parser, " " + PREFIX_NAME + "Alice Bob", expectedFindCommand);
 
         // keywords with leading, trailing and multiple whitespace between
         assertParseSuccess(parser, "   " + PREFIX_NAME + "Alice        Bob  ",
@@ -65,7 +78,7 @@ public class FindCommandParserTest {
         expectedFindCommand = new FindCommand(
                 new NameAndTagPredicate(Collections.emptyList(),
                         Arrays.asList("friends", "colleagues")));
-        assertParseSuccess(parser, " " + PREFIX_TAG + "friends " + PREFIX_TAG + "colleagues",
+        assertParseSuccess(parser, " " + PREFIX_TAG + "friends colleagues",
                 expectedFindCommand);
 
         // keywords with leading, trailing and multiple whitespace
@@ -84,10 +97,6 @@ public class FindCommandParserTest {
         expectedFindCommand = new FindCommand(new NameAndTagPredicate(Arrays.asList("Alice", "Bob"),
                 Arrays.asList("friends", "colleagues")));
         assertParseSuccess(parser, " " + PREFIX_NAME + "Alice Bob " + PREFIX_TAG + "friends colleagues",
-                        expectedFindCommand);
-
-        // mixed order of prefixes with extra whitespace
-        assertParseSuccess(parser, "   " + PREFIX_TAG + "   friends   " + PREFIX_NAME + "   Alice   "
-                + PREFIX_TAG + "   colleagues   " + PREFIX_NAME + "   Bob   ", expectedFindCommand);
+                expectedFindCommand);
     }
 }
