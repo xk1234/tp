@@ -22,4 +22,26 @@ public class Commission {
         return value;
     }
 
+    @Override
+    public String toString() {
+        return value;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof Commission)) {
+            return false;
+        }
+
+        Commission otherCommission = (Commission) other;
+        return otherCommission.getValue().equals(getValue());
+    }
+
+    @Override
+    public int hashCode() { return value.hashCode(); }
+
 }
