@@ -55,6 +55,9 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 * Items with `…`​ after them can be used multiple times including zero times.<br>
   e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
+* Items in curly brackets `{}` separated by `|` are mutually exclusive.<br>
+  e.g. `{n/NAME | t/TAG}` can be used as `n/John Doe` or as `t/customer`
+
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
@@ -110,23 +113,26 @@ Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
-### Locating persons by name: `find`
+### Locating your contacts in the network: `find`
 
-Finds persons whose names contain any of the given keywords.
+Finds contacts by matching name and tag keywords you provide.
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
+Format: `find {n/NAMES | t/TAGS} [n/NAMES]... [t/TAGS]...`
 
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+* `NAMES` is a whitespace separated list of keywords to search only name. e.g. In `n/Hans Bo` both `Hans` and `Bo` are keywords
+* `TAGS` is a whitespace separated list of keywords to search only tags. e.g. In `n/downline customer` both `downline` and `customer` are keywords
+* Supply at least one of `n/NAMES` or `t/TAGS`.
+* Searching ignores case for both names and tags. e.g `n/hans` matches `Hans` name, `t/customer` matches `Customer` tag
+* The order of the keywords does not matter. e.g. `n/Hans Bo` matches `Bo Hans` name, `t/downline customer` matches `customer` and `downline` tags
+* Matches only full words e.g. `n/Han` does not match `Hans` name, `t/downlines` does not match `downline` tag
+* When providing only `NAMES`, the command finds persons whose name contain at least one keyword (i.e. `OR` search). e.g. Providing `n/Hans Bo` finds `Hans Gruber`, `Bo Yang`
+* When providing only `TAGS`, the command finds persons whose tags contain at least one keyword (i.e. `OR` search). e.g. Providing `t/downline customer` finds person with tags `downline` and `family`, as well as person with tags `customer` and `friend`
+* When providing both `NAMES` and `TAGS`, the command finds persons with name matching at least one name keyword and tags matching at least one tag keyword will be returned (i.e. `AND` search between name and tags). e.g. Providing `n/Hans Bo t/downline customer` finds `Hans Gruber` and with tags `downline` and `family`, but not `Bo Yang` with tags `family` and `friend`
 
 Examples:
-* `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+* `find n/John` finds `john` and `John Doe`
+* `find n/alex david t/downline customer` finds `Alex Yeoh` with tag `downline`, `David Li` with tag `customer`<br>
+  ![result for 'find n/alex david t/downline customer'](images/findAlexDavidResult.png)
 
 ### Deleting a person : `delete`
 
@@ -195,6 +201,6 @@ Action | Format, Examples
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**Find** | `find [n/NAME...]... [t/TAG...]...`<br> e.g., `find n/James Jake t/downline customer`
 **List** | `list`
 **Help** | `help`
