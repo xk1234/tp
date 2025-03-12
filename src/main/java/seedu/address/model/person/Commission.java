@@ -6,7 +6,8 @@ import static java.util.Objects.requireNonNull;
  */
 public class Commission {
 
-    public String value;
+    private String value;
+
     /**
      * Constructs a {@code Commission}.
      *
@@ -15,6 +16,10 @@ public class Commission {
     public Commission(String commission) {
         requireNonNull(commission);
         value = commission;
+    }
+
+    public String getValue() {
+        return value;
     }
 
 }
