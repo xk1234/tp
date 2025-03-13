@@ -339,6 +339,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Use case: UC3 - Edit a person**
 
+1.  User <ins>shows all contacts (UC1)</ins>.
+2.  User requests to edit a specific person in the list.
+3.  User states which fields to update and provide updated details.
+4.  AddressBook edits the person with updated details.
+    Use case ends.
+
+**Extensions**
+
+* 2a. The given index is invalid.
+    * 2a1. AddressBook shows an error message.
+      Use case resumes at step 1.
+* 3a. The details provided are invalid.
+    * 3a1. AddressBook shows an error message.
+      Use case resumes at step 1.
+
 **Use case: UC4 - Delete a person**
 
 **MSS**
@@ -439,7 +454,25 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 2b1. AddressBook shows an error message indicating that the specified criteria is not supported for sorting.
       Use case resumes at step 1.
 
-  Use case ends.
+**Use case: UC10 - Export multiple matching contacts**
+
+**MSS**
+
+1.  User <ins>find persons by name and tag (UC5)</ins>.
+2.  User requests to export contacts of all persons currently on the list.
+3.  User selects which fields to export from the contacts.
+4.  AddressBook exports contacts to default file path.
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+    * 2a1. AddressBook shows an error message.
+      Use case resumes at step 1.
+* 3a. The user selects invalid fields.
+    * 3a1. AddressBook shows an error message.
+      Use case resumes at step 1.
+
 ### Non-Functional Requirements
 
 1. Should work on any _mainstream OS_ as long as it has Java `17` or above installed.

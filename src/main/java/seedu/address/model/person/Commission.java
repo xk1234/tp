@@ -1,6 +1,8 @@
 package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
+
 /**
  * Represents a Person's commission in the address book.
  */
@@ -11,6 +13,7 @@ public class Commission {
             + "at most 9 digits long, "
             + "and it should not be blank";
     public static final String VALIDATION_REGEX = "^[1-9]\\d{0,8}$";
+
     public final String value;
 
     /**
@@ -20,6 +23,7 @@ public class Commission {
      */
     public Commission(String commission) {
         requireNonNull(commission);
+        checkArgument(isValidCommission(commission), MESSAGE_CONSTRAINTS);
         value = commission;
     }
 
@@ -74,6 +78,8 @@ public class Commission {
     }
 
     @Override
-    public int hashCode() { return value.hashCode(); }
+    public int hashCode() {
+        return value.hashCode();
+    }
 
 }

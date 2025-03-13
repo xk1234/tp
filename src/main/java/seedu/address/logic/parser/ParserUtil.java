@@ -82,6 +82,20 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String commission} into an {@code Commission}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code commission} is invalid.
+     */
+    public static Commission parseCommission(String commission) throws ParseException {
+        requireNonNull(commission);
+        if (!Commission.isValidCommission(commission)) {
+            throw new ParseException(Commission.MESSAGE_CONSTRAINTS);
+        }
+        return new Commission(commission);
+    }
+
+    /**
      * Parses a {@code String email} into an {@code Email}.
      * Leading and trailing whitespaces will be trimmed.
      *
