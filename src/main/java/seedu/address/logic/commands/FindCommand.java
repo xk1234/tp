@@ -5,10 +5,11 @@ import static java.util.Objects.requireNonNull;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.model.Model;
-import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.model.person.predicates.NameAndTagPredicate;
 
 /**
- * Finds and lists all persons in address book whose name contains any of the argument keywords.
+ * Finds and lists all persons in address book whose name contains any of the
+ * name keywords and/or whose tags contain any of the tag keywords.
  * Keyword matching is case insensitive.
  */
 public class FindCommand extends Command {
@@ -16,13 +17,16 @@ public class FindCommand extends Command {
     public static final String COMMAND_WORD = "find";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose names contain any of "
-            + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
-            + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-            + "Example: " + COMMAND_WORD + " alice bob charlie";
+            + "the specified name keywords (case-insensitive) and/or whose tags contain any of the specified "
+            + "tag keywords (case-insensitive) and displays them as a list with index numbers.\n"
+            + "At least one name keyword or tag keyword must be provided.\n"
+            + "If both name and tag keywords are provided, contacts must match both criteria.\n"
+            + "Parameters: {n/NAMES | t/TAGS} [n/NAMES]... [t/TAGS]...\n"
+            + "Example: " + COMMAND_WORD + " n/alice bob t/downline";
 
-    private final NameContainsKeywordsPredicate predicate;
+    private final NameAndTagPredicate predicate;
 
-    public FindCommand(NameContainsKeywordsPredicate predicate) {
+    public FindCommand(NameAndTagPredicate predicate) {
         this.predicate = predicate;
     }
 
