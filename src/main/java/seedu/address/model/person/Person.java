@@ -24,7 +24,6 @@ public class Person {
     // Data fields
     private final Commission commission;
     private final Address address;
-    private final Commission commission;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
@@ -37,7 +36,7 @@ public class Person {
         this.email = email;
         this.address = address;
         this.commission = commission;
-        this.tags.addAll(tags)
+        this.tags.addAll(tags);
     }
 
     public Name getName() {

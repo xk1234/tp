@@ -44,7 +44,7 @@ public class TotalCommandTest {
                 .map(Person::getCommission)
                 .reduce(new Commission("0"), Commission::addValue);
 
-        assertEquals(new Commission("0"), totalCommission);
+        assertEquals(new Commission("200"), totalCommission);
     }
 
     @Test

@@ -31,7 +31,7 @@ public class Commission {
      * Returns true if a given string is a valid commission.
      */
     public static boolean isValidCommission(String test) {
-        return test.matches(VALIDATION_REGEX);
+        return (test.equals("0") || test.matches(VALIDATION_REGEX));
     }
 
     /**
