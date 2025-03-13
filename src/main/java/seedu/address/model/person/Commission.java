@@ -11,7 +11,7 @@ public class Commission {
             + "at most 9 digits long, "
             + "and it should not be blank";
     public static final String VALIDATION_REGEX = "^[1-9]\\d{0,8}$";
-    public final String VALUE;
+    public final String value;
 
     /**
      * Constructs a {@code Commission}.
@@ -20,7 +20,7 @@ public class Commission {
      */
     public Commission(String commission) {
         requireNonNull(commission);
-        VALUE = commission;
+        value = commission;
     }
 
     /**
@@ -41,7 +41,7 @@ public class Commission {
      * Returns an integer type of the string.
      */
     public int getIntegerValue() {
-        return Integer.parseInt(VALUE);
+        return Integer.parseInt(value);
     }
 
     /**
@@ -56,7 +56,7 @@ public class Commission {
 
     @Override
     public String toString() {
-        return VALUE;
+        return value;
     }
 
     @Override
@@ -70,10 +70,10 @@ public class Commission {
         }
 
         Commission otherCommission = (Commission) other;
-        return otherCommission.VALUE.equals(VALUE);
+        return otherCommission.value.equals(value);
     }
 
     @Override
-    public int hashCode() { return VALUE.hashCode(); }
+    public int hashCode() { return value.hashCode(); }
 
 }

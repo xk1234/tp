@@ -17,6 +17,7 @@ public class TotalCommand extends Command {
 
     public static final String MESSAGE_TOTAL_SUCCESS = "Totalled the all commissions";
 
+    @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
