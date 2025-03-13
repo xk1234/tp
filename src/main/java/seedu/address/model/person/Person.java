@@ -22,8 +22,8 @@ public class Person {
     private final Email email;
 
     // Data fields
-    private final Address address;
     private final Commission commission;
+    private final Address address;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
