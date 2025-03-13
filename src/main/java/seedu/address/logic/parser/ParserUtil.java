@@ -10,6 +10,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Commission;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
@@ -122,5 +123,18 @@ public class ParserUtil {
         return tagSet;
     }
 
-    public static
+    /**
+     * Parses a {@code String commission} into a {@code Commission}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code commission} is invalid.
+     */
+    public static Commission parseCommission(String commission) throws ParseException {
+        requireNonNull(commission);
+        String trimmedCommission = commission.trim();
+        if (!Commission.isValidCommission(trimmedCommission)) {
+            throw new ParseException(Commission.MESSAGE_CONSTRAINTS);
+        }
+        return new Commission(trimmedCommission);
+    }
 }
