@@ -24,6 +24,10 @@ public class AddCommissionCommandParser implements Parser<AddCommissionCommand> 
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_COMMISSION);
 
+        if (!argMultimap.getValue(PREFIX_COMMISSION).isPresent()
+                || !argMultimap.getPreamble().isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommissionCommand.MESSAGE_USAGE));
+        }
         Index index;
 
         Commission commission;
@@ -34,11 +38,7 @@ public class AddCommissionCommandParser implements Parser<AddCommissionCommand> 
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT), pe);
         }
 
-        if (argMultimap.getValue(PREFIX_COMMISSION).isPresent()) {
-            commission = ParserUtil.parseCommission(argMultimap.getValue(PREFIX_COMMISSION).get());
-        } else {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommissionCommand.MESSAGE_USAGE));
-        }
+        commission = ParserUtil.parseCommission(argMultimap.getValue(PREFIX_COMMISSION).get());
 
         return new AddCommissionCommand(index, commission);
     }

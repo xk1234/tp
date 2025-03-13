@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_COMMISSION;
 import java.util.List;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -51,12 +52,35 @@ public class AddCommissionCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-        Person personToAddCommission = lastShownList.get(index.getZeroBased());
-        Commission commissionToBeAdded = personToAddCommission.getCommission();
-        Commission addCommission = commissionToBeAdded.addValue(commission);
-        // to be completed
+//      to be completed
+//      Person personToAddCommission = lastShownList.get(index.getZeroBased());
+//      Commission commissionToBeAdded = personToAddCommission.getCommission();
+//      Commission addCommission = commissionToBeAdded.addValue(commission);
 
         return new CommandResult(String.format(MESSAGE_ADD_COMMISSION_SUCCESS));
     }
 
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof AddCommissionCommand)) {
+            return false;
+        }
+
+        AddCommissionCommand otherAddCommissionCommand = (AddCommissionCommand) other;
+        return index.equals(otherAddCommissionCommand.index)
+                && commission.equals(otherAddCommissionCommand.commission);
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .add("index", index)
+                .add("commission", commission)
+                .toString();
+    }
 }
