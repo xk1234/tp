@@ -1,16 +1,12 @@
 package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.AppUtil.checkArgument;
-
 /**
  * Represents a Person's commission in the address book.
  */
 public class Commission {
 
-    public static final String MESSAGE_CONSTRAINTS = "Commissions can take any nonnegative integer value";
-
-    public final String value;
+    private String value;
 
     /**
      * Constructs a {@code Commission}.
@@ -19,24 +15,11 @@ public class Commission {
      */
     public Commission(String commission) {
         requireNonNull(commission);
-        checkArgument(isValidCommission(commission), MESSAGE_CONSTRAINTS);
         value = commission;
     }
 
-    /**
-     * Returns true if a given string is a valid commission.
-     */
-    public static boolean isValidCommission(String test) {
-        int i;
-        try {
-            i = Integer.parseInt(test);
-        } catch (Exception e) {
-            return false;
-        }
-        if (i < 0) {
-            return false;
-        }
-        return true;
+    public String getValue() {
+        return value;
     }
 
     @Override
@@ -55,12 +38,10 @@ public class Commission {
         }
 
         Commission otherCommission = (Commission) other;
-        return otherCommission.value.equals(value);
+        return otherCommission.getValue().equals(getValue());
     }
 
     @Override
-    public int hashCode() {
-        return value.hashCode();
-    }
+    public int hashCode() { return value.hashCode(); }
 
 }
