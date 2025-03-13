@@ -25,7 +25,7 @@ public class AddCommissionCommand extends Command {
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_COMMISSION + "COMMISSION]\n"
             + "Example: " + COMMAND_WORD + " 2 "
-            + PREFIX_COMMISSION + "12.34";
+            + PREFIX_COMMISSION + "12";
     public static final String MESSAGE_ADD_COMMISSION_SUCCESS = "New commission added";
 
     private final Index index;
