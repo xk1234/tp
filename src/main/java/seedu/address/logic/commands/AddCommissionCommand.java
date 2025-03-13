@@ -52,10 +52,10 @@ public class AddCommissionCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-//      to be completed
-//      Person personToAddCommission = lastShownList.get(index.getZeroBased());
-//      Commission commissionToBeAdded = personToAddCommission.getCommission();
-//      Commission addCommission = commissionToBeAdded.addValue(commission);
+        //to be completed
+        //Person personToAddCommission = lastShownList.get(index.getZeroBased());
+        //Commission commissionToBeAdded = personToAddCommission.getCommission();
+        //Commission addCommission = commissionToBeAdded.addValue(commission);
 
         return new CommandResult(String.format(MESSAGE_ADD_COMMISSION_SUCCESS));
     }
