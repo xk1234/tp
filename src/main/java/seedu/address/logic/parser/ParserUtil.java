@@ -89,6 +89,9 @@ public class ParserUtil {
      */
     public static Commission parseCommission(String commission) throws ParseException {
         requireNonNull(commission);
+        if (!Commission.isValidCommission(commission)) {
+            throw new ParseException(Commission.MESSAGE_CONSTRAINTS);
+        }
         return new Commission(commission);
     }
 

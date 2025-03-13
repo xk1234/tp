@@ -8,7 +8,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Commission {
 
-    public static final String MESSAGE_CONSTRAINTS = "Commissions can take any values under Integer.MAX_VALUE";
+    public static final String MESSAGE_CONSTRAINTS = "Commissions can take any nonnegative integer value";
 
     public final String value;
 
@@ -19,10 +19,24 @@ public class Commission {
      */
     public Commission(String commission) {
         requireNonNull(commission);
-        // if not integer, should throw exception
-        int i = Integer.parseInt(commission);
-        checkArgument(i < Integer.MAX_VALUE, MESSAGE_CONSTRAINTS);
+        checkArgument(isValidCommission(commission), MESSAGE_CONSTRAINTS);
         value = commission;
+    }
+
+    /**
+     * Returns true if a given string is a valid commission.
+     */
+    public static boolean isValidCommission(String test) {
+        int i;
+        try {
+            i = Integer.parseInt(test);
+        } catch (Exception e) {
+            return false;
+        }
+        if (i < 0) {
+            return false;
+        }
+        return true;
     }
 
     @Override

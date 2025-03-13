@@ -107,8 +107,9 @@ class JsonAdaptedPerson {
         }
         final Address modelAddress = new Address(address);
 
-        if (commission == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
+        if (commission == null || !Commission.isValidCommission(commission)) {
+            throw new IllegalValueException(
+                    String.format(Commission.MESSAGE_CONSTRAINTS, Commission.class.getSimpleName()));
         }
         final Commission modelCommission = new Commission(commission);
 
