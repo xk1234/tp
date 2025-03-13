@@ -1,12 +1,14 @@
 package seedu.address.model.person;
 
+import static seedu.address.commons.util.AppUtil.checkArgument;
 import static java.util.Objects.requireNonNull;
+
 /**
  * Represents a Person's commission in the address book.
  */
 public class Commission {
 
-    private String value;
+    public final String value;
 
     /**
      * Constructs a {@code Commission}.
@@ -15,11 +17,10 @@ public class Commission {
      */
     public Commission(String commission) {
         requireNonNull(commission);
+        // if not integer, should throw exception
+        int i = Integer.parseInt(commission);
+        checkArgument(i < Integer.MAX_VALUE, "Commission cannot be handled");
         value = commission;
-    }
-
-    public String getValue() {
-        return value;
     }
 
     @Override
@@ -38,7 +39,7 @@ public class Commission {
         }
 
         Commission otherCommission = (Commission) other;
-        return otherCommission.getValue().equals(getValue());
+        return otherCommission.value.equals(value);
     }
 
     @Override
