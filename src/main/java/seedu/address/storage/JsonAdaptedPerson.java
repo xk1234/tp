@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Commission;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
@@ -28,6 +29,7 @@ class JsonAdaptedPerson {
     private final String phone;
     private final String email;
     private final String address;
+    private final String commission;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
 
     /**
@@ -36,11 +38,13 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
+                             @JsonProperty("commission") String commission,
             @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.commission = commission;
         if (tags != null) {
             this.tags.addAll(tags);
         }
@@ -54,6 +58,7 @@ class JsonAdaptedPerson {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
+        commission = source.getCommission().value;
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -102,8 +107,14 @@ class JsonAdaptedPerson {
         }
         final Address modelAddress = new Address(address);
 
+        if (commission == null || !Commission.isValidCommission(commission)) {
+            throw new IllegalValueException(
+                    String.format(Commission.MESSAGE_CONSTRAINTS, Commission.class.getSimpleName()));
+        }
+        final Commission modelCommission = new Commission(commission);
+
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags);
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelCommission, modelTags);
     }
 
 }
