@@ -15,10 +15,10 @@ public class CommissionTest {
 
     @Test
     public void equals() {
-        Commission comm = new Commission("12332");
+        Commission comm = new Commission("123.32");
 
         // same values -> returns true
-        assertTrue(comm.equals(new Commission("12332")));
+        assertTrue(comm.equals(new Commission("123.32")));
 
         // same object -> returns true
         assertTrue(comm.equals(comm));
@@ -27,9 +27,9 @@ public class CommissionTest {
         assertFalse(comm.equals(null));
 
         // different types -> returns false
-        assertFalse(comm.equals(12332));
+        assertFalse(comm.equals(123.32));
 
         // different values -> returns false
-        assertFalse(comm.equals(new Commission("12331")));
+        assertFalse(comm.equals(new Commission("123.31")));
     }
 }
