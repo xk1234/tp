@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTRIBUTE;
 
+import java.util.EnumSet;
 import java.util.List;
 
 import seedu.address.logic.commands.ExportCommand;
@@ -28,6 +29,12 @@ public class ExportCommandParser implements Parser<ExportCommand> {
                     .map(String::toUpperCase)
                     .map(Attribute::valueOf)
                     .toList();
+
+            // Check if there are duplicates
+            EnumSet<Attribute> uniqueValues = EnumSet.copyOf(attributes);
+            if (uniqueValues.size() != attributes.size()) {
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ExportCommand.MESSAGE_USAGE));
+            }
             return new ExportCommand(attributes);
         } catch (IllegalArgumentException e) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ExportCommand.MESSAGE_USAGE));

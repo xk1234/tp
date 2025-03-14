@@ -24,7 +24,7 @@ public class ExportCommand extends Command {
             + "from the displayed person list.\n"
             + "Parameters: "
             + "[" + PREFIX_ATTRIBUTE + "ATTRIBUTE]...\n"
-            + "ATTRIBUTE may be any of: name, phone, email, address, commission"
+            + "ATTRIBUTE may be any of: name, phone, email, address, commission and should not have duplicates\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_ATTRIBUTE + "phone";
 
