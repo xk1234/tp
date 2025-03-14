@@ -1,8 +1,9 @@
 package seedu.address.model.util;
 
 import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Objects;
@@ -17,9 +18,6 @@ import seedu.address.model.person.Person;
  * Contains utility methods for exporting data from {@code AddressBook}.
  */
 public class ExportDataUtil {
-    // Should we change this into a parameter of the export command?
-    public static final String DEFAULT_FILE_NAME = "export.csv";
-
     // We have to use Object here since none of name, email, etc. have a common interface
     private static final EnumMap<Attribute, Function<Person, Object>> PERSON_METHOD_MAP =
             new EnumMap<>(Attribute.class);
@@ -31,12 +29,8 @@ public class ExportDataUtil {
         PERSON_METHOD_MAP.put(Attribute.COMMISSION, Person::getCommission);
     }
 
-    public static void exportAsCsv(Model model, List<Attribute> attributes) throws IOException {
-        exportAsCsv(model, attributes, DEFAULT_FILE_NAME);
-    }
-
-    static void exportAsCsv(Model model, List<Attribute> attributes, String fileName) throws IOException {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+    public static void exportAsCsv(Model model, List<Attribute> attributes, Path path) throws IOException {
+        try (BufferedWriter writer = Files.newBufferedWriter(path)) {
             // CSV header
             writer.write(attributes.stream()
                     .map(Objects::toString)
