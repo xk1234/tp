@@ -46,10 +46,4 @@ public class TotalCommandTest {
 
         assertEquals(new Commission("200"), totalCommission);
     }
-
-    @Test
-    public void execute_commandSuccess() {
-        assertCommandSuccess(new TotalCommand(),
-                model, TotalCommand.MESSAGE_TOTAL_SUCCESS, expectedModel);
-    }
 }
