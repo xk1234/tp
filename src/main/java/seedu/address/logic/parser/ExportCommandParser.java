@@ -31,9 +31,12 @@ public class ExportCommandParser implements Parser<ExportCommand> {
                     .toList();
 
             // Check if there are duplicates
-            EnumSet<Attribute> uniqueValues = EnumSet.copyOf(attributes);
-            if (uniqueValues.size() != attributes.size()) {
-                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ExportCommand.MESSAGE_USAGE));
+            if (!attributes.isEmpty()) {
+                // copyOf could throw if we don't make sure attributes is non-empty
+                EnumSet<Attribute> uniqueValues = EnumSet.copyOf(attributes);
+                if (uniqueValues.size() != attributes.size()) {
+                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ExportCommand.MESSAGE_USAGE));
+                }
             }
             return new ExportCommand(attributes);
         } catch (IllegalArgumentException e) {
