@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Commission;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
@@ -26,6 +27,7 @@ public class ParserUtilTest {
     private static final String INVALID_ADDRESS = " ";
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_TAG = "#friend";
+    private static final String INVALID_COMMISSION = "01";
 
     private static final String VALID_NAME = "Rachel Walker";
     private static final String VALID_PHONE = "123456";
@@ -33,6 +35,7 @@ public class ParserUtilTest {
     private static final String VALID_EMAIL = "rachel@example.com";
     private static final String VALID_TAG_1 = "friend";
     private static final String VALID_TAG_2 = "neighbour";
+    private static final String VALID_COMMISSION = "1234";
 
     private static final String WHITESPACE = " \t\r\n";
 
@@ -193,4 +196,28 @@ public class ParserUtilTest {
 
         assertEquals(expectedTagSet, actualTagSet);
     }
+
+    @Test
+    public void parseCommission_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseCommission((String) null));
+    }
+
+    @Test
+    public void parseCommission_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseCommission(INVALID_COMMISSION));
+    }
+
+    @Test
+    public void parseCommission_validValueWithoutWhitespace_returnsCommission() throws Exception {
+        Commission expectedCommission = new Commission(VALID_COMMISSION);
+        assertEquals(expectedCommission, ParserUtil.parseCommission(VALID_COMMISSION));
+    }
+
+    @Test
+    public void parseCommission_validValueWithWhitespace_returnsTrimmedCommission() throws Exception {
+        String commissionWithWhitespace = WHITESPACE + VALID_COMMISSION + WHITESPACE;
+        Commission expectedCommission = new Commission(VALID_COMMISSION);
+        assertEquals(expectedCommission, ParserUtil.parseCommission(commissionWithWhitespace));
+    }
+
 }
