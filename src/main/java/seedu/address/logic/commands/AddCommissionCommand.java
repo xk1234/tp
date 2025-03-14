@@ -20,7 +20,7 @@ public class AddCommissionCommand extends Command {
 
     public static final String COMMAND_WORD = "addc";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + "Adds a commission to the person identified "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a commission to the person identified "
             + "by the index number used in the displayed person list.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_COMMISSION + "COMMISSION]\n"
@@ -52,12 +52,13 @@ public class AddCommissionCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-        //to be completed
-        //Person personToAddCommission = lastShownList.get(index.getZeroBased());
-        //Commission commissionToBeAdded = personToAddCommission.getCommission();
-        //Commission addCommission = commissionToBeAdded.addValue(commission);
+        Person personToAddCommission = lastShownList.get(index.getZeroBased());
+        Commission commissionToBeAdded = personToAddCommission.getCommission();
+        Commission addedCommission = commissionToBeAdded.addValue(commission);
+        Person commissionedPerson = personToAddCommission.setCommission(addedCommission);
+        model.setPerson(personToAddCommission, commissionedPerson);
 
-        return new CommandResult(String.format(MESSAGE_ADD_COMMISSION_SUCCESS));
+        return new CommandResult(String.format(MESSAGE_ADD_COMMISSION_SUCCESS, Messages.format(commissionedPerson)));
     }
 
     @Override

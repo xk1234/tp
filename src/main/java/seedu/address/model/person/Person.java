@@ -81,6 +81,13 @@ public class Person {
     }
 
     /**
+     * Returns a person with a new commission.
+     */
+    public Person setCommission(Commission newCommission) {
+        return new Person(name, phone, email, address, newCommission, tags);
+    }
+
+    /**
      * Returns true if both persons have the same identity and data fields.
      * This defines a stronger notion of equality between two persons.
      */

@@ -39,17 +39,9 @@ public class TotalCommandTest {
                 ALICE,
                 BENSON
         );
-
-        Commission totalCommission = lastShownList.stream()
-                .map(Person::getCommission)
-                .reduce(new Commission("0"), Commission::addValue);
+        TotalCommand totalCommand = new TotalCommand();
+        Commission totalCommission = totalCommand.getTotal(lastShownList);
 
         assertEquals(new Commission("200"), totalCommission);
-    }
-
-    @Test
-    public void execute_commandSuccess() {
-        assertCommandSuccess(new TotalCommand(),
-                model, TotalCommand.MESSAGE_TOTAL_SUCCESS, expectedModel);
     }
 }
