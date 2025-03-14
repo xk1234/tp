@@ -25,7 +25,7 @@ public class AddCommissionCommandParser implements Parser<AddCommissionCommand> 
                 ArgumentTokenizer.tokenize(args, PREFIX_COMMISSION);
 
         if (!argMultimap.getValue(PREFIX_COMMISSION).isPresent()
-                || !argMultimap.getPreamble().isEmpty()) {
+                || argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommissionCommand.MESSAGE_USAGE));
         }
         Index index;

@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 
+import seedu.address.logic.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.person.Commission;
 import seedu.address.model.person.Person;
@@ -15,7 +16,7 @@ public class TotalCommand extends Command {
 
     public static final String COMMAND_WORD = "total";
 
-    public static final String MESSAGE_TOTAL_SUCCESS = "Totalled the all commissions";
+    public static final String MESSAGE_TOTAL_SUCCESS = "Total commission is: ";
 
     @Override
     public CommandResult execute(Model model) {
@@ -26,7 +27,7 @@ public class TotalCommand extends Command {
                 .map(Person::getCommission)
                 .reduce(new Commission("0"), Commission::addValue);
 
-        return new CommandResult(String.format(MESSAGE_TOTAL_SUCCESS, totalCommission));
+        return new CommandResult(String.format(MESSAGE_TOTAL_SUCCESS + totalCommission.toString()));
 
     }
 }
