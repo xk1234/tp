@@ -19,10 +19,10 @@ import seedu.address.model.UserPrefs;
 
 public class ExportDataUtilTest {
 
-    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
-
     @TempDir
     public Path testFolder;
+
+    private final Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
     @Test
     public void exportAsCsv_multipleAttributes_success() {

@@ -29,6 +29,19 @@ public class ExportDataUtil {
         PERSON_METHOD_MAP.put(Attribute.COMMISSION, Person::getCommission);
     }
 
+    /**
+     * Exports the selected attributes of all persons in the given model to a CSV file at the specified path.
+     * The CSV file will have a header row containing the names of the attributes, followed by rows
+     * representing each person's data for the specified attributes.
+     *
+     * @param model      The model containing the list of persons to be exported.
+     * @param attributes The list of attributes to be included in the CSV file. Each attribute corresponds
+     *                  to a column in the CSV file.
+     * @param path       The file path where the CSV file will be created. If the file already exists,
+     *                  it will be overwritten.
+     * @throws IOException If an I/O error occurs while writing to the file, such as if the path is invalid
+     *                     or the file cannot be created or written to.
+     */
     public static void exportAsCsv(Model model, List<Attribute> attributes, Path path) throws IOException {
         try (BufferedWriter writer = Files.newBufferedWriter(path)) {
             // CSV header

@@ -9,21 +9,20 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Attribute;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 
-class MockIOFailExportCommand extends ExportCommand {
+class MockIoFailExportCommand extends ExportCommand {
     /**
      * Constructs an {@code ExportCommand} to export the specified attributes from the displayed person list.
      * If no attributes are provided, all available attributes will be exported by default.
      *
      * @param attributes The list of attributes to export. If null or empty, all attributes will be exported.
      */
-    public MockIOFailExportCommand(List<Attribute> attributes) {
+    public MockIoFailExportCommand(List<Attribute> attributes) {
         super(attributes);
     }
 
@@ -39,7 +38,7 @@ class MockIOFailExportCommand extends ExportCommand {
  */
 public class ExportCommandTest {
     @Test
-    public void execute_nonEmptyUnfilteredList_success() throws CommandException {
+    public void execute_nonEmptyUnfilteredList_success() {
         Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
         String expectedMessage = "Export success";
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
@@ -49,22 +48,20 @@ public class ExportCommandTest {
     }
 
     @Test
-    public void execute_emptyUnfilteredList_failure() throws CommandException {
+    public void execute_emptyUnfilteredList_failure() {
         Model model = new ModelManager(new AddressBook(), new UserPrefs());
         String expectedMessage = "List is empty, nothing to export";
-        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         List<Attribute> attributes = List.of(Attribute.NAME);
         ExportCommand exportCommand = new ExportCommand(attributes);
         assertCommandFailure(exportCommand, model, expectedMessage);
     }
 
     @Test
-    public void execute_caughtIOException_failure() throws CommandException {
+    public void execute_caughtIoException_failure() {
         Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
         String expectedMessage = "Export failed";
-        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         List<Attribute> attributes = List.of(Attribute.NAME);
-        ExportCommand exportCommand = new MockIOFailExportCommand(attributes);
+        ExportCommand exportCommand = new MockIoFailExportCommand(attributes);
         assertCommandFailure(exportCommand, model, expectedMessage);
     }
 }

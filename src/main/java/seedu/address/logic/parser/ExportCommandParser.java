@@ -24,6 +24,7 @@ public class ExportCommandParser implements Parser<ExportCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_ATTRIBUTE);
+        String errorMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, ExportCommand.MESSAGE_USAGE);
         try {
             List<Attribute> attributes = argMultimap.getAllValues(PREFIX_ATTRIBUTE).stream()
                     .map(String::toUpperCase)
@@ -35,12 +36,12 @@ public class ExportCommandParser implements Parser<ExportCommand> {
                 // copyOf could throw if we don't make sure attributes is non-empty
                 EnumSet<Attribute> uniqueValues = EnumSet.copyOf(attributes);
                 if (uniqueValues.size() != attributes.size()) {
-                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ExportCommand.MESSAGE_USAGE));
+                    throw new ParseException(errorMessage);
                 }
             }
             return new ExportCommand(attributes);
         } catch (IllegalArgumentException e) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ExportCommand.MESSAGE_USAGE));
+            throw new ParseException(errorMessage);
         }
     }
 }
