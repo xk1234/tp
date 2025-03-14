@@ -25,7 +25,9 @@ public class ExportCommandParser implements Parser<ExportCommand> {
                 ArgumentTokenizer.tokenize(args, PREFIX_ATTRIBUTE);
         try {
             List<Attribute> attributes = argMultimap.getAllValues(PREFIX_ATTRIBUTE).stream()
-                    .map(Attribute::valueOf).toList();
+                    .map(String::toUpperCase)
+                    .map(Attribute::valueOf)
+                    .toList();
             return new ExportCommand(attributes);
         } catch (IllegalArgumentException e) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ExportCommand.MESSAGE_USAGE));
