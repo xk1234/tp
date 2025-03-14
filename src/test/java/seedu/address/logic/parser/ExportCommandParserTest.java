@@ -5,7 +5,6 @@ import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
