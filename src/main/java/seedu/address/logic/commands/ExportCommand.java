@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTRIBUTE;
 
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,6 +33,9 @@ public class ExportCommand extends Command {
     public static final String MESSAGE_EXPORT_FAILURE = "Export failed";
     public static final String MESSAGE_EMPTY_LIST = "List is empty, nothing to export";
 
+    // Should we change this into a parameter of the export command?
+    public static final Path DEFAULT_PATH = Path.of("export.csv");
+
     // This cannot be Attribute[] due to the given parser
     private final List<Attribute> attributes;
 
@@ -56,7 +60,7 @@ public class ExportCommand extends Command {
             throw new CommandException(MESSAGE_EMPTY_LIST);
         }
         try {
-            ExportDataUtil.exportAsCsv(model, this.attributes);
+            exportAsCsv(model, attributes);
         } catch (IOException e) {
             throw new CommandException(MESSAGE_EXPORT_FAILURE, e);
         }
@@ -68,5 +72,24 @@ public class ExportCommand extends Command {
         return new ToStringBuilder(this)
                 .add("attributes", attributes)
                 .toString();
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof ExportCommand)) {
+            return false;
+        }
+
+        ExportCommand otherExportCommand = (ExportCommand) other;
+        return attributes.equals(otherExportCommand.attributes);
+    }
+
+    protected void exportAsCsv(Model model, List<Attribute> attributes) throws IOException {
+        ExportDataUtil.exportAsCsv(model, attributes, DEFAULT_PATH);
     }
 }
