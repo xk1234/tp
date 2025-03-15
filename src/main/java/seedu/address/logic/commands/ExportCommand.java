@@ -81,11 +81,10 @@ public class ExportCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof ExportCommand)) {
+        if (!(other instanceof ExportCommand otherExportCommand)) {
             return false;
         }
 
-        ExportCommand otherExportCommand = (ExportCommand) other;
         return attributes.equals(otherExportCommand.attributes);
     }
 
