@@ -11,6 +11,9 @@ title: AscendNetwork
 
 **AscendNetwork** is a specialized address book application designed for sales professionals and network marketers to streamline relationship management, commission tracking, and network growth analytics.
 
+* If you are interested in using AscendNetwork, head over to the [_Quick Start_ section of the **User Guide**](UserGuide.html#quick-start).
+* If you are interested about developing AscendNetwork, the [**Developer Guide**](DeveloperGuide.html) is a good place to start.
+
 ## Overview
 
 Network marketers face significant challenges in managing scattered contact information, analyzing expanding networks, tracking commissions accurately, and executing bulk communications efficiently. AscendNetwork addresses these pain points by providing an integrated solution that saves time, reduces missed opportunities, and enhances clarity in tracking professional relationships and earnings.
