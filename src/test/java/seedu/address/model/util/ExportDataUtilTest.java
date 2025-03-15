@@ -3,11 +3,14 @@ package seedu.address.model.util;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalPersons.getTypicalPersons;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
@@ -33,15 +36,12 @@ public class ExportDataUtilTest {
             ExportDataUtil.exportAsCsv(model, attributes, exportPath);
             actualCsv.set(Files.readString(exportPath));
         });
-        String expectedCsv = String.join(System.lineSeparator(),
-            "NAME,EMAIL",
-            "Alice Pauline,alice@example.com",
-            "Benson Meier,johnd@example.com",
-            "Carl Kurz,heinz@example.com",
-            "Daniel Meier,cornelia@example.com",
-            "Elle Meyer,werner@example.com",
-            "Fiona Kunz,lydia@example.com",
-            "George Best,anna@example.com") + System.lineSeparator();
+        String expectedCsv = Stream.concat(
+                Stream.of("NAME,EMAIL"),
+                getTypicalPersons().stream()
+                        .map(person -> person.getName() + "," + person.getEmail())
+        ).collect(Collectors.joining(System.lineSeparator()))
+                + System.lineSeparator();
         assertEquals(expectedCsv, actualCsv.get());
     }
 }
