@@ -24,7 +24,7 @@ public class ExportCommandTest {
     @Test
     public void execute_nonEmptyUnfilteredList_success() {
         Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
-        String expectedMessage = "Export success";
+        String expectedMessage = ExportCommand.MESSAGE_EXPORT_SUCCESS;
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         List<Attribute> attributes = List.of(Attribute.NAME);
         ExportCommand exportCommand = new ExportCommand(attributes);
@@ -34,7 +34,7 @@ public class ExportCommandTest {
     @Test
     public void execute_emptyUnfilteredList_failure() {
         Model model = new ModelManager(new AddressBook(), new UserPrefs());
-        String expectedMessage = "List is empty, nothing to export";
+        String expectedMessage = ExportCommand.MESSAGE_EMPTY_LIST;
         List<Attribute> attributes = List.of(Attribute.NAME);
         ExportCommand exportCommand = new ExportCommand(attributes);
         assertCommandFailure(exportCommand, model, expectedMessage);
@@ -43,7 +43,7 @@ public class ExportCommandTest {
     @Test
     public void execute_caughtIoException_failure() {
         Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
-        String expectedMessage = "Export failed";
+        String expectedMessage = ExportCommand.MESSAGE_EXPORT_FAILURE;
         List<Attribute> attributes = List.of(Attribute.NAME);
         ExportCommand exportCommand = new ExportCommand(attributes) {
             @Override
