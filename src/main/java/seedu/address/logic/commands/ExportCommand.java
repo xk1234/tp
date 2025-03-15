@@ -10,8 +10,8 @@ import java.util.List;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.Attribute;
 import seedu.address.model.Model;
+import seedu.address.model.person.Attribute;
 import seedu.address.model.util.ExportDataUtil;
 
 /**

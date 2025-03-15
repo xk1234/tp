@@ -10,10 +10,10 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.model.AddressBook;
-import seedu.address.model.Attribute;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.person.Attribute;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for

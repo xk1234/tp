@@ -10,8 +10,8 @@ import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import seedu.address.model.Attribute;
 import seedu.address.model.Model;
+import seedu.address.model.person.Attribute;
 import seedu.address.model.person.Person;
 
 /**

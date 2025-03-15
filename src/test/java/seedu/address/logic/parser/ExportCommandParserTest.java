@@ -10,7 +10,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.ExportCommand;
-import seedu.address.model.Attribute;
+import seedu.address.model.person.Attribute;
 
 public class ExportCommandParserTest {
     private final ExportCommandParser parser = new ExportCommandParser();
