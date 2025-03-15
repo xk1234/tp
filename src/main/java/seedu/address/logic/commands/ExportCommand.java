@@ -5,7 +5,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTRIBUTE;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.Arrays;
 import java.util.List;
 
 import seedu.address.commons.util.ToStringBuilder;
@@ -46,11 +45,12 @@ public class ExportCommand extends Command {
      * @param attributes The list of attributes to export. If null or empty, all attributes will be exported.
      */
     public ExportCommand(List<Attribute> attributes) {
-        if (attributes == null || attributes.isEmpty()) {
-            this.attributes = Arrays.asList(Attribute.values());
-        } else {
-            this.attributes = attributes;
-        }
+        requireNonNull(attributes);
+
+        // The case where the input is empty is handled at parsing
+        assert(!attributes.isEmpty());
+
+        this.attributes = attributes;
     }
 
     @Override
