@@ -15,28 +15,12 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 
-class MockIoFailExportCommand extends ExportCommand {
-    /**
-     * Constructs an {@code ExportCommand} to export the specified attributes from the displayed person list.
-     * If no attributes are provided, all available attributes will be exported by default.
-     *
-     * @param attributes The list of attributes to export. If null or empty, all attributes will be exported.
-     */
-    public MockIoFailExportCommand(List<Attribute> attributes) {
-        super(attributes);
-    }
-
-    @Override
-    protected void exportAsCsv(Model model, List<Attribute> attributes) throws IOException {
-        throw new IOException();
-    }
-}
-
 /**
  * Contains integration tests (interaction with the Model) and unit tests for
  * {@code DeleteCommand}.
  */
 public class ExportCommandTest {
+
     @Test
     public void execute_nonEmptyUnfilteredList_success() {
         Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
@@ -61,7 +45,12 @@ public class ExportCommandTest {
         Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
         String expectedMessage = "Export failed";
         List<Attribute> attributes = List.of(Attribute.NAME);
-        ExportCommand exportCommand = new MockIoFailExportCommand(attributes);
+        ExportCommand exportCommand = new ExportCommand(attributes) {
+            @Override
+            protected void exportAsCsv(Model model, List<Attribute> attributes) throws IOException {
+                throw new IOException();
+            }
+        };
         assertCommandFailure(exportCommand, model, expectedMessage);
     }
 }
