@@ -1,4 +1,4 @@
-package seedu.address.model.util;
+package seedu.address.logic.util;
 
 import java.io.BufferedWriter;
 import java.io.IOException;

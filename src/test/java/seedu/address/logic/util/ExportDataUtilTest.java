@@ -1,4 +1,4 @@
-package seedu.address.model.util;
+package seedu.address.logic.util;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;

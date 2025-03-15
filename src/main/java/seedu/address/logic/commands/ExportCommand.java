@@ -9,9 +9,9 @@ import java.util.List;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.util.ExportDataUtil;
 import seedu.address.model.Model;
 import seedu.address.model.person.Attribute;
-import seedu.address.model.util.ExportDataUtil;
 
 /**
  * Edits the details of an existing person in the address book.
@@ -48,7 +48,7 @@ public class ExportCommand extends Command {
         requireNonNull(attributes);
 
         // The case where the input is empty is handled at parsing
-        assert(!attributes.isEmpty());
+        assert (!attributes.isEmpty());
 
         this.attributes = attributes;
     }
