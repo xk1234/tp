@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SORT;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.ArrayList;
@@ -21,13 +22,13 @@ public class SortCommissionCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Displays the list of people along with their "
             + "lifetime commissions. Optionally sorts by commission.\n"
-            + "Parameters: [s/asc|s/desc]\n"
-            + "Example: " + COMMAND_WORD + " s/asc\n"
+            + "Parameters: [" + PREFIX_SORT + "asc|" + PREFIX_SORT + "desc]\n"
+            + "Example: " + COMMAND_WORD + " " + PREFIX_SORT + "asc\n"
             + "Example: " + COMMAND_WORD;
 
     public static final String MESSAGE_INVALID_SORT_DIRECTION =
-            "Invalid command format! comm s/<direction> where <direction> is either asc or desc.\n"
-                    + "Example: comm s/asc";
+            "Invalid command format! comm " + PREFIX_SORT + "<direction> where <direction> is either asc or desc.\n"
+                    + "Example: comm " + PREFIX_SORT + "asc";
 
     public final String messageSuccess;
 
@@ -48,16 +49,12 @@ public class SortCommissionCommand extends Command {
                 + " order.";
     }
 
-    @Override
-    public CommandResult execute(Model model) throws CommandException {
-        requireNonNull(model);
-        if (!isSortProvided) {
-            model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-            return new CommandResult(messageSuccess);
-        }
 
-        List<Person> currentList = model.getFilteredPersonList();
-        List<Person> sortedList = new ArrayList<>(currentList);
+    public List<Person> getSortedList(List<Person> list) {
+        if (!isSortProvided) {
+            return list;
+        }
+        List<Person> sortedList = new ArrayList<>(list);
         Comparator<Person> compareByCommission = Comparator.comparing(p ->
                 Integer.parseInt(p.getCommission().value));
 
@@ -66,7 +63,18 @@ public class SortCommissionCommand extends Command {
         }
 
         sortedList.sort(compareByCommission);
-        model.setPersons(sortedList);
+        return sortedList;
+    }
+
+    @Override
+    public CommandResult execute(Model model) throws CommandException {
+        requireNonNull(model);
+        if (!isSortProvided) {
+            model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+            return new CommandResult(messageSuccess);
+        }
+
+        model.setPersons(getSortedList(model.getFilteredPersonList()));
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 
         return new CommandResult(messageSuccess);
