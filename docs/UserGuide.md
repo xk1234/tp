@@ -134,6 +134,16 @@ Examples:
 * `find n/alex david t/downline customer` finds `Alex Yeoh` with tag `downline`, `David Li` with tag `customer`<br>
   ![result for 'find n/alex david t/downline customer'](images/findAlexDavidResult.png)
 
+### Including your contacts by name to specific group: `incl`
+
+Adding people with matching name from your contacts to the list.
+
+Format: `incl {n/NAME_KEYWORD}`
+
+* `NAME_KEYWORD` is same as defined above.
+
+Examples: 
+* `find n/John` finds `john` and `John Doe`
 ### Deleting a person : `delete`
 
 Deletes the specified person from the address book.

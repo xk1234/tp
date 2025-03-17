@@ -281,23 +281,24 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …                           | I want to …                                       | So that I can…                                                         | 
-|:--------:|----------------------------------|---------------------------------------------------|------------------------------------------------------------------------| 
-| `* * *`  | New user                         | See usage instructions                            | Refer to instructions when I forget how to use the App                 |
-| `* * *`  | User                             | Add a new person                                  |                                                                        |
-| `* * *`  | User                             | Edit a person                                     | Change the information reflected when their information changes        |
-| `* * *`  | User                             | Delete a person                                   | Remove entries that I no longer need                                   |
-| `* * *`  | User                             | Find a person by name                             | Locate details of persons without having to go through the entire list |
-| `* * *`  | User                             | Show all contacts                                 | Manage them together                                                   |
-| `* * *`  | User                             | Close the app                                     |                                                                        |
-|  `* *`   | User                             | Clear my contacts                                 | Start from a fresh state                                               |
-| `* * *`  | Marketeer with a segmented lists | Find a person by tags                             | Quickly access specific groups of contacts                             |
-| `* * *`  | Data enthusiast                  | Export reports                                    | Further analyze with external systems                                  |
-| `* * *`  | Team leader                      | Record the commission earned from team members    | Monitor the financial impact of my team expansion                      |
-|  `* *`   | Time-conscious communicator      | Send bulk messages to specific groups of contacts | Share updates quickly without crafting individual messages             |
-|  `* *`   | Well connected person            | Sort persons by attributes                        | Locate a person easily                                                 |
-|  `* *`   | Efficient user                   | Tag multiple contacts at once                     | Quickly organize large groups of contacts                              |
-|   `*`    | Team leader                      | Visualize my network of downlines                 | Monitor the progress of my team expansion                              |
+| Priority | As a …                           | I want to …                                          | So that I can…                                                         | 
+|:--------:|----------------------------------|------------------------------------------------------|------------------------------------------------------------------------| 
+| `* * *`  | New user                         | See usage instructions                               | Refer to instructions when I forget how to use the App                 |
+| `* * *`  | User                             | Add a new person                                     |                                                                        |
+| `* * *`  | User                             | Edit a person                                        | Change the information reflected when their information changes        |
+| `* * *`  | User                             | Delete a person                                      | Remove entries that I no longer need                                   |
+| `* * *`  | User                             | Find a person by name                                | Locate details of persons without having to go through the entire list |
+| `* * *`  | User                             | Show all contacts                                    | Manage them together                                                   |
+| `* * *`  | User                             | Close the app                                        |                                                                        |
+|  `* *`   | User                             | Clear my contacts                                    | Start from a fresh state                                               |
+|  `* *`   | User                             | Add existing people to my specific group of contacts | Quickly create a desired groups of contacts                            |                
+| `* * *`  | Marketeer with a segmented lists | Find a person by tags                                | Quickly access specific groups of contacts                             |
+| `* * *`  | Data enthusiast                  | Export reports                                       | Further analyze with external systems                                  |
+| `* * *`  | Team leader                      | Record the commission earned from team members       | Monitor the financial impact of my team expansion                      |
+|  `* *`   | Time-conscious communicator      | Send bulk messages to specific groups of contacts    | Share updates quickly without crafting individual messages             |
+|  `* *`   | Well connected person            | Sort persons by attributes                           | Locate a person easily                                                 |
+|  `* *`   | Efficient user                   | Tag multiple contacts at once                        | Quickly organize large groups of contacts                              |
+|   `*`    | Team leader                      | Visualize my network of downlines                    | Monitor the progress of my team expansion                              |
 
 ### Use cases
 
@@ -473,6 +474,25 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. AddressBook shows an error message.
       Use case resumes at step 1.
 
+**Use case: UC11 - Add existing contacts to the list**
+
+**MSS** 
+
+1. User requests to add people by their names to the list. 
+2. Address book adds those people to the list. 
+
+Use case ends.
+
+**Extensions**
+* 1a. The user does not provide any name keyword.
+    * 1a1. AddressBook shows an error message.
+      Use case resumes at step 1.
+* 1b. The user provides a name keyword that doesn't exist in address book.
+    * 1b1. AddressBook shows an error message.
+      Use case resumes at step 1.
+* 1c. The user provides a name keyword that is already in the list. 
+    * 1c1. AddressBook only adds the contacts that are not in the list.
+        Use case ends.
 ### Non-Functional Requirements
 
 1. Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
