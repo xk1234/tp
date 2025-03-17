@@ -85,7 +85,7 @@ public class SortCommissionCommandTest {
     }
 
     @Test
-    public void equals() {
+    public void test_equals() {
         SortCommissionCommand commissionFirstCommand = new SortCommissionCommand(true, true);
         SortCommissionCommand commissionSecondCommand = new SortCommissionCommand(false, true);
         SortCommissionCommand commissionThirdCommand = new SortCommissionCommand(true, false);
@@ -97,5 +97,12 @@ public class SortCommissionCommandTest {
         assertFalse(commissionFirstCommand.equals(commissionThirdCommand));
 
         assertFalse(commissionFirstCommand.equals(null));
+    }
+
+    @Test
+    public void test_toString() {
+        SortCommissionCommand scc = new SortCommissionCommand(true, false);
+        String expected = "seedu.address.logic.commands.SortCommissionCommand{isAscending=desc}";
+        assertEquals(expected, scc.toString());
     }
 }
