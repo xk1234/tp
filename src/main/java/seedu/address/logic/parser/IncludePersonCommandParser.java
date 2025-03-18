@@ -14,7 +14,7 @@ import seedu.address.model.person.predicates.NameContainsKeywordsPredicate;
 /**
  * Parses input arguments and creates a new IncludePersonCommand object
  */
-public class IncludePersonCommandParser {
+public class IncludePersonCommandParser implements Parser<IncludePersonCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the IncludePersonCommand
@@ -25,17 +25,19 @@ public class IncludePersonCommandParser {
         ArgumentMultimap argumentMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME);
         argumentMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME);
 
+        ParseException pe = new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                IncludePersonCommand.MESSAGE_USAGE));
         if (argumentMultimap.getValue(PREFIX_NAME).isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, IncludePersonCommand.MESSAGE_USAGE));
+            throw pe;
         }
 
-        String nameKeyWord = argumentMultimap.getValue(PREFIX_NAME).get();
-        nameKeyWord = nameKeyWord.trim();
-        if (nameKeyWord.isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, IncludePersonCommand.MESSAGE_USAGE));
+        String nameKeyword = argumentMultimap.getValue(PREFIX_NAME).get();
+        nameKeyword = nameKeyword.trim();
+        if (nameKeyword.isEmpty()) {
+            throw pe;
         }
-        List<String> keyWord = List.of(nameKeyWord);
-        Predicate<Person> namePredicate = new NameContainsKeywordsPredicate(keyWord);
+        List<String> keyword = List.of(nameKeyword);
+        Predicate<Person> namePredicate = new NameContainsKeywordsPredicate(keyword);
 
         return new IncludePersonCommand(namePredicate);
     }

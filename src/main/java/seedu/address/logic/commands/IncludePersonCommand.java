@@ -51,9 +51,24 @@ public class IncludePersonCommand extends Command {
 
         Predicate<? super Person> currentPredicate = ((FilteredList<Person>) model
                     .getFilteredPersonList()).getPredicate();
-        Predicate<Person> newPredicate = person -> currentPredicate.test(person) || namePredicate.test(person);
+        Predicate<? super Person> effectivePredicate = (currentPredicate != null)
+                ? currentPredicate
+                : person -> true;
+        Predicate<Person> newPredicate = person -> effectivePredicate.test(person) || namePredicate.test(person);
         model.updateFilteredPersonList(newPredicate);
 
         return new CommandResult(MESSAGE_SUCCESS);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof IncludePersonCommand otherCommand)) {
+            return false;
+        }
+        return otherCommand.namePredicate.equals(namePredicate);
     }
 }

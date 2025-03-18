@@ -138,11 +138,12 @@ Examples:
 
 Adding people with matching name from your contacts to the list.
 
-Format: `incl {n/NAME_KEYWORD}`
+Format: `incl n/NAME_KEYWORD`
 
 * `NAME_KEYWORD` is same as defined above.
-
-Examples: 
+* Searching ignores case for the name. e.g `n/hans` matches `Hans` name
+* Matches only full words e.g. `n/Han` does not match `Hans` name
+Examples:
 * `find n/John` finds `john` and `John Doe`
 ### Deleting a person : `delete`
 

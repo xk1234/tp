@@ -291,7 +291,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | User                             | Show all contacts                                    | Manage them together                                                   |
 | `* * *`  | User                             | Close the app                                        |                                                                        |
 |  `* *`   | User                             | Clear my contacts                                    | Start from a fresh state                                               |
-|  `* *`   | User                             | Add existing people to my specific group of contacts | Quickly create a desired groups of contacts                            |                
+|  `* *`   | User                             | Add existing people to currently displayed contacts  | Quickly create a custom view of contacts                               |                
 | `* * *`  | Marketeer with a segmented lists | Find a person by tags                                | Quickly access specific groups of contacts                             |
 | `* * *`  | Data enthusiast                  | Export reports                                       | Further analyze with external systems                                  |
 | `* * *`  | Team leader                      | Record the commission earned from team members       | Monitor the financial impact of my team expansion                      |
