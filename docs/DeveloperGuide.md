@@ -409,8 +409,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. User <ins>find persons by name and tag (UC5)</ins>.
-2. User requests to tag all persons currently on the list.
-3. AddressBook adds the tags to all persons currently on the list.
+2. User requests to tag all persons currently shown.
+3. AddressBook adds the tags to all persons currently shown.
    Use case ends.
 
 **Extensions**
@@ -420,6 +420,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes at step 1.
 * 2b. The user provides tags with invalid format.
     * 2b1. AddressBook shows an error message.
+      Use case resumes at step 1.
+* 2c. No contacts are currently shown.
+    * 2c1. AddressBook shows an error message.
       Use case resumes at step 1.
 
 **Use case: UC8 - Send Bulk Messages**
