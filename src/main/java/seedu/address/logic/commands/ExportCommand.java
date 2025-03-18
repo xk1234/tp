@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.Messages.MESSAGE_EMPTY_LIST;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTRIBUTE;
 
 import java.io.IOException;
@@ -30,7 +31,6 @@ public class ExportCommand extends Command {
 
     public static final String MESSAGE_EXPORT_SUCCESS = "Export success";
     public static final String MESSAGE_EXPORT_FAILURE = "Export failed";
-    public static final String MESSAGE_EMPTY_LIST = "List is empty, nothing to export";
 
     // Should we change this into a parameter of the export command?
     public static final Path DEFAULT_PATH = Path.of("export.csv");
@@ -39,10 +39,13 @@ public class ExportCommand extends Command {
     private final List<Attribute> attributes;
 
     /**
-     * Constructs an {@code ExportCommand} to export the specified attributes from the displayed person list.
-     * If no attributes are provided, all available attributes will be exported by default.
+     * Constructs an {@code ExportCommand} to export the specified attributes from
+     * the displayed person list.
+     * If no attributes are provided, all available attributes will be exported by
+     * default.
      *
-     * @param attributes The list of attributes to export. If null or empty, all attributes will be exported.
+     * @param attributes The list of attributes to export. If null or empty, all
+     *                   attributes will be exported.
      */
     public ExportCommand(List<Attribute> attributes) {
         requireNonNull(attributes);
