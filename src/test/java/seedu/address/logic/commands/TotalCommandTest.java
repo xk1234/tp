@@ -42,6 +42,7 @@ public class TotalCommandTest {
         TotalCommand totalCommand = new TotalCommand();
         Commission totalCommission = totalCommand.getTotal(lastShownList);
 
-        assertEquals(new Commission("200"), totalCommission);
+        Integer total = Integer.parseInt(ALICE.getCommission().value) + Integer.parseInt(BENSON.getCommission().value);
+        assertEquals(new Commission(total.toString()), totalCommission);
     }
 }
