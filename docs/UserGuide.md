@@ -134,6 +134,25 @@ Examples:
 * `find n/alex david t/downline customer` finds `Alex Yeoh` with tag `downline`, `David Li` with tag `customer`<br>
   ![result for 'find n/alex david t/downline customer'](images/findAlexDavidResult.png)
 
+### Removing tags from multiple contacts at once: `rmtag`
+
+Removes your specified tag(s) from multiple contacts.
+
+Format: `rmtag TAG [TAG]…`
+
+<div class="alert alert-warning">:exclamation: **Caution:** Ensure you filter to the correct group of contacts before using the command, or it may remove tags to contacts unintentionally.</div>
+
+<div class="alert alert-primary">:bulb: **Tip:** You can use this command to manage transient tags that no longer applies to all contacts at the same time. e.g. An event that ended.</div>
+
+* Display **at least one contact on the list** before running the command.
+* `TAG` is a word of **digits or letters (both uppercase and lowercase)**. e.g. `customer1`
+* Removes all `Tag` from your contacts currently displayed in the list. e.g. Running `rmtag customer` when only `Hans` and `Bo` that both have `dinner` tag removes the tag only from both of them.
+* Does not affect contacts displayed who do not have any `TAG`.
+
+Examples:
+* `rmtag dinner` removes the `dinner` tag from all your contacts in the displayed list.
+* `rmtag customer vip` removes both `customer` and `vip` tags from all your contacts in the displayed list.
+
 ### Deleting a person : `delete`
 
 Deletes the specified person from the address book.
@@ -202,5 +221,6 @@ Action | Format, Examples
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find** | `find {n/NAME_KEYWORD [NAME_KEYWORD]... [t/TAG_KEYWORD [TAG_KEYWORD]...] \| t/TAG_KEYWORD [TAG_KEYWORD]... [n/NAME_KEYWORD [NAME_KEYWORD]...]}` <br> e.g., `find n/James Jake t/downline customer`
+**Remove Tag** | `rmtag TAG [TAG]…`<br> e.g. `rmtag customer vip`
 **List** | `list`
 **Help** | `help`
