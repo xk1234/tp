@@ -134,6 +134,23 @@ Examples:
 * `find n/alex david t/downline customer` finds `Alex Yeoh` with tag `downline`, `David Li` with tag `customer`<br>
   ![result for 'find n/alex david t/downline customer'](images/findAlexDavidResult.png)
 
+### Tagging multiple contacts at once: `tag`
+
+Adds your specified tag(s) to multiple contacts.
+
+Format: `tag TAG [TAG]…`
+
+<div class="alert alert-warning">:exclamation: **Caution:** Ensure you filter to the correct group of contacts before using the command, or it may add tags to contacts unintentionally.</div>
+
+* Display **at least one contact on the list** before running the command.
+* `TAG` is a word of **digits or letters (both uppercase and lowercase)**. e.g. `customer1`
+* Adds all `Tag` as tag(s) of your contacts currently displayed in the list. e.g. Running `tag customer` when only `Hans` and `Bo` is displayed adds `customer` tag only to both of them.
+* Adds on top of your contact's existing tags. They do not replace them. e.g. Running `tag vip` when contact with `customer` tag is displayed changes their tag to `customer vip`
+
+Examples:
+* `tag downline` adds the `downline` tag to all your contacts in the current list.
+* `tag customer vip` adds both `customer` and `vip` tags to all your contacts in the current list.
+
 ### Deleting a person : `delete`
 
 Deletes the specified person from the address book.
@@ -202,5 +219,6 @@ Action | Format, Examples
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find** | `find {n/NAME_KEYWORD [NAME_KEYWORD]... [t/TAG_KEYWORD [TAG_KEYWORD]...] \| t/TAG_KEYWORD [TAG_KEYWORD]... [n/NAME_KEYWORD [NAME_KEYWORD]...]}` <br> e.g., `find n/James Jake t/downline customer`
+**Tag** | `tag TAG [TAG]…` e.g. `tag downline vip`
 **List** | `list`
 **Help** | `help`
