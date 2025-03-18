@@ -24,7 +24,7 @@ public class TagCommand extends Command {
             + "Parameters: TAG [TAG]...\n"
             + "Example: " + COMMAND_WORD + " downline friends";
 
-    public static final String MESSAGE_TAG_PERSONS_SUCCESS = "Added tag(s) to %1$d persons";
+    public static final String MESSAGE_TAG_PERSONS_SUCCESS = "Added tag(s) to %1$d person(s)";
     public static final String MESSAGE_EMPTY_LIST = "No persons in the filtered list";
 
     private final Set<Tag> tagsToAdd;
@@ -48,13 +48,14 @@ public class TagCommand extends Command {
             throw new CommandException(MESSAGE_EMPTY_LIST);
         }
 
-        lastShownList.stream()
-                .forEach(personToEdit -> {
+        long numPersonUpdated = lastShownList.stream()
+                .filter(person -> !person.getTags().containsAll(tagsToAdd))
+                .peek(personToEdit -> {
                     Person taggedPerson = createTaggedPerson(personToEdit, tagsToAdd);
                     model.setPerson(personToEdit, taggedPerson);
-                });
+                }).count();
 
-        return new CommandResult(String.format(MESSAGE_TAG_PERSONS_SUCCESS, lastShownList.size()));
+        return new CommandResult(String.format(MESSAGE_TAG_PERSONS_SUCCESS, numPersonUpdated));
     }
 
     /**
