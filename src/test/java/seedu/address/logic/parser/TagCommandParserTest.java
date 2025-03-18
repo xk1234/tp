@@ -43,5 +43,8 @@ public class TagCommandParserTest {
     @Test
     public void parse_invalidTagFormat_throwsParseException() {
         assertParseFailure(parser, INVALID_TAG, Tag.MESSAGE_CONSTRAINTS);
+
+        // Mixed valid and invalid tags
+        assertParseFailure(parser, VALID_TAG_FRIEND + " " + INVALID_TAG, Tag.MESSAGE_CONSTRAINTS);
     }
 }

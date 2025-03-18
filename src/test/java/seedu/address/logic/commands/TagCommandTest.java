@@ -2,21 +2,25 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.TagCommand.MESSAGE_TAG_PERSONS_SUCCESS;
+import static seedu.address.testutil.TypicalPersons.AMY;
+import static seedu.address.testutil.TypicalPersons.BOB;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -29,30 +33,13 @@ import seedu.address.testutil.PersonBuilder;
  * {@code TagCommand}.
  */
 public class TagCommandTest {
-    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+    private Model model;
     private Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
-    @Test
-    public void execute_validTags_success() throws Exception {
-        Set<Tag> tagsToAdd = new HashSet<>();
-        tagsToAdd.add(new Tag(VALID_TAG_HUSBAND));
-        TagCommand tagCommand = new TagCommand(tagsToAdd);
-
-        List<Person> lastShownList = model.getFilteredPersonList();
-        lastShownList.stream()
-                .forEach(personToEdit -> {
-                    Set<Tag> updatedTags = new HashSet<>(personToEdit.getTags());
-                    updatedTags.add(new Tag(VALID_TAG_HUSBAND));
-                    Person editedPerson = new PersonBuilder(personToEdit).withTags(
-                            updatedTags.stream()
-                                    .map(tag -> tag.tagName)
-                                    .toArray(String[]::new))
-                            .build();
-                    expectedModel.setPerson(personToEdit, editedPerson);
-                });
-
-        String expectedMessage = String.format(MESSAGE_TAG_PERSONS_SUCCESS, lastShownList.size());
-        assertCommandSuccess(tagCommand, model, expectedMessage, expectedModel);
+    @BeforeEach
+    public void setUp() {
+        model = new ModelManager(new AddressBook(), new UserPrefs());
+        expectedModel = new ModelManager(new AddressBook(), new UserPrefs());
     }
 
     @Test
@@ -65,26 +52,62 @@ public class TagCommandTest {
     }
 
     @Test
-    public void execute_duplicateTags_stillSuccess() throws Exception {
-        // Create a tag that some people already have
+    public void constructor_nullTags_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> new TagCommand(null));
+    }
+
+    @Test
+    public void execute_validTagsSubsetOfPersons_success() throws Exception {
+        Set<Tag> tagsToAdd = new HashSet<>();
+        tagsToAdd.add(new Tag(VALID_TAG_HUSBAND));
+        TagCommand tagCommand = new TagCommand(tagsToAdd);
+
+        Person firstPerson = new PersonBuilder(AMY).withTags(VALID_TAG_FRIEND).build();
+        Person secondPerson = new PersonBuilder(BOB).withTags(VALID_TAG_HUSBAND).build();
+
+        model.addPerson(firstPerson);
+        model.addPerson(secondPerson);
+
+        expectedModel.addPerson(new PersonBuilder(firstPerson).withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND).build());
+        expectedModel.addPerson(secondPerson);
+
+        String expectedMessage = String.format(MESSAGE_TAG_PERSONS_SUCCESS, 1);
+        assertCommandSuccess(tagCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_validTagsMultiplePersons_success() throws Exception {
         Set<Tag> tagsToAdd = new HashSet<>();
         tagsToAdd.add(new Tag(VALID_TAG_FRIEND));
         TagCommand tagCommand = new TagCommand(tagsToAdd);
 
-        List<Person> lastShownList = expectedModel.getFilteredPersonList();
-        lastShownList.stream()
-                .forEach(personToEdit -> {
-                    Set<Tag> updatedTags = new HashSet<>(personToEdit.getTags());
-                    updatedTags.add(new Tag(VALID_TAG_FRIEND));
-                    Person editedPerson = new PersonBuilder(personToEdit).withTags(
-                            updatedTags.stream()
-                                    .map(tag -> tag.tagName)
-                                    .toArray(String[]::new))
-                            .build();
-                    expectedModel.setPerson(personToEdit, editedPerson);
-                });
+        Person firstPerson = new PersonBuilder(AMY).withTags().build();
+        Person secondPerson = new PersonBuilder(BOB).withTags(VALID_TAG_HUSBAND).build();
 
-        String expectedMessage = String.format(MESSAGE_TAG_PERSONS_SUCCESS, lastShownList.size());
+        model.addPerson(firstPerson);
+        model.addPerson(secondPerson);
+
+        expectedModel.addPerson(new PersonBuilder(firstPerson).withTags(VALID_TAG_FRIEND).build());
+        expectedModel.addPerson(new PersonBuilder(secondPerson).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build());
+
+        String expectedMessage = String.format(MESSAGE_TAG_PERSONS_SUCCESS, 2);
+        assertCommandSuccess(tagCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    void execute_multipleTagsAdded_success() throws Exception {
+        Set<Tag> tagsToAdd = new HashSet<>();
+        tagsToAdd.add(new Tag(VALID_TAG_FRIEND));
+        tagsToAdd.add(new Tag(VALID_TAG_HUSBAND));
+        TagCommand tagCommand = new TagCommand(tagsToAdd);
+
+        Person firstPerson = new PersonBuilder(AMY).withTags().build();
+
+        model.addPerson(firstPerson);
+
+        expectedModel.addPerson(new PersonBuilder(firstPerson).withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND).build());
+
+        String expectedMessage = String.format(MESSAGE_TAG_PERSONS_SUCCESS, 1);
         assertCommandSuccess(tagCommand, model, expectedMessage, expectedModel);
     }
 
