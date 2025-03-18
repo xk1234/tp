@@ -34,10 +34,12 @@ import seedu.address.testutil.PersonBuilder;
 public class RemoveTagCommandTest {
 
     private Model model;
+    private Model expectedModel;
 
     @BeforeEach
     public void setUp() {
         model = new ModelManager(new AddressBook(), new UserPrefs());
+        expectedModel = new ModelManager(new AddressBook(), new UserPrefs());
     }
 
     @Test
@@ -66,14 +68,13 @@ public class RemoveTagCommandTest {
         model.addPerson(firstPerson);
         model.addPerson(secondPerson);
 
-        Model expectedTestModel = new ModelManager(new AddressBook(), new UserPrefs());
-        expectedTestModel.addPerson(new PersonBuilder(firstPerson).withTags().build());
-        expectedTestModel.addPerson(new PersonBuilder(secondPerson).withTags(VALID_TAG_HUSBAND).build());
+        expectedModel.addPerson(new PersonBuilder(firstPerson).withTags().build());
+        expectedModel.addPerson(new PersonBuilder(secondPerson).withTags(VALID_TAG_HUSBAND).build());
 
         RemoveTagCommand removeTagCommand = new RemoveTagCommand(tagsToRemove);
 
         assertCommandSuccess(removeTagCommand, model, String.format(RemoveTagCommand.MESSAGE_REMOVE_TAG_SUCCESS, 1),
-                expectedTestModel);
+                expectedModel);
     }
 
     @Test
@@ -88,14 +89,13 @@ public class RemoveTagCommandTest {
         model.addPerson(firstPerson);
         model.addPerson(secondPerson);
 
-        Model expectedTestModel = new ModelManager(new AddressBook(), new UserPrefs());
-        expectedTestModel.addPerson(new PersonBuilder(firstPerson).withTags().build());
-        expectedTestModel.addPerson(new PersonBuilder(secondPerson).withTags(VALID_TAG_HUSBAND).build());
+        expectedModel.addPerson(new PersonBuilder(firstPerson).withTags().build());
+        expectedModel.addPerson(new PersonBuilder(secondPerson).withTags(VALID_TAG_HUSBAND).build());
 
         RemoveTagCommand removeTagCommand = new RemoveTagCommand(tagsToRemove);
 
         assertCommandSuccess(removeTagCommand, model, String.format(RemoveTagCommand.MESSAGE_REMOVE_TAG_SUCCESS, 2),
-                expectedTestModel);
+                expectedModel);
     }
 
     @Test
@@ -110,13 +110,12 @@ public class RemoveTagCommandTest {
 
         model.addPerson(person);
 
-        Model expectedTestModel = new ModelManager(new AddressBook(), new UserPrefs());
-        expectedTestModel.addPerson(new PersonBuilder(person).withTags().build());
+        expectedModel.addPerson(new PersonBuilder(person).withTags().build());
 
         RemoveTagCommand removeTagCommand = new RemoveTagCommand(tagsToRemove);
 
         assertCommandSuccess(removeTagCommand, model, String.format(RemoveTagCommand.MESSAGE_REMOVE_TAG_SUCCESS, 1),
-                expectedTestModel);
+                expectedModel);
     }
 
     @Test
