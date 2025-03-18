@@ -42,7 +42,6 @@ public class TagCommandParserTest {
 
     @Test
     public void parse_invalidTagFormat_throwsParseException() {
-        // Tag with invalid characters
         assertParseFailure(parser, INVALID_TAG, Tag.MESSAGE_CONSTRAINTS);
     }
 }

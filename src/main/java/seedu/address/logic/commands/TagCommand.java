@@ -31,6 +31,8 @@ public class TagCommand extends Command {
 
     /**
      * Creates a TagCommand to add the specified {@code tags}
+     *
+     * @param tags The list of unique tags to add.
      */
     public TagCommand(Set<Tag> tags) {
         requireNonNull(tags);
