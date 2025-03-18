@@ -60,7 +60,6 @@ public class TagCommand extends Command {
      * combined with the specified {@code tagsToAdd}.
      */
     private static Person createTaggedPerson(Person personToEdit, Set<Tag> tagsToAdd) {
-        assert personToEdit != null;
         Set<Tag> updatedTags = new HashSet<>(personToEdit.getTags());
         updatedTags.addAll(tagsToAdd);
 
