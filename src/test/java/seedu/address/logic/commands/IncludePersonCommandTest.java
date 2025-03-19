@@ -10,7 +10,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.Messages;
-import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -41,7 +40,7 @@ public class IncludePersonCommandTest {
 
     @Test
     public void execute_personNotInAddressBook_showsOverview() {
-        String expectedMessage =  String.format(
+        String expectedMessage = String.format(
                 Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size());
         Predicate<Person> predicate = person -> person.getName().fullName
                 .equals("NonExistentNameInTypicalAddressBook");
