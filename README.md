@@ -34,3 +34,4 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
 
 This is a desktop application for managing your contact details. While it has a GUI, most of the user interactions happen using a CLI (Command Line Interface).
 
+Attribution: icon is sourced from <a href="https://www.flaticon.com/free-icons/open-source" title="open source icons">Open source icons created by Ehtisham Abid - Flaticon</a>.
