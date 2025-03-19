@@ -23,6 +23,6 @@ public class MailtoCommand extends Command {
         String url = model.getFilteredPersonList().stream()
                 .map(person -> person.getEmail().toString())
                 .collect(Collectors.joining(",", "mailto:", ""));
-        return new CommandResult(String.format(MESSAGE_MAILTO_SUCCESS_FORMAT, url), false, false);
+        return new CommandResult(String.format(MESSAGE_MAILTO_SUCCESS_FORMAT, url));
     }
 }

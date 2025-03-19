@@ -23,6 +23,7 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.MailtoCommand;
 import seedu.address.logic.commands.TotalCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Person;
@@ -99,6 +100,11 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_total() throws Exception {
         assertTrue(parser.parseCommand(TotalCommand.COMMAND_WORD) instanceof TotalCommand);
+    }
+
+    @Test
+    public void parseCommand_mailto() throws Exception {
+        assertTrue(parser.parseCommand(MailtoCommand.COMMAND_WORD) instanceof MailtoCommand);
     }
 
     @Test
