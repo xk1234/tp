@@ -1,5 +1,7 @@
 package seedu.address.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
@@ -53,5 +55,14 @@ public class IncludePersonCommandTest {
         Predicate<Person> dummyPredicate = person -> true;
         IncludePersonCommand includePersonCommand = new IncludePersonCommand(dummyPredicate);
         assertThrows(NullPointerException.class, () -> includePersonCommand.execute(null));
+    }
+
+    @Test
+    public void equals() {
+        Predicate<Person> firstPredicate = person -> true;
+        IncludePersonCommand firstCommand = new IncludePersonCommand(firstPredicate);
+        IncludePersonCommand secondCommand = new IncludePersonCommand(firstPredicate);
+        assertTrue(firstCommand.equals(firstCommand));
+        assertEquals(firstCommand, secondCommand);
     }
 }
