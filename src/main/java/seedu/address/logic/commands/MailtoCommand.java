@@ -1,7 +1,10 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+
 import java.util.stream.Collectors;
 
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 
 /**
@@ -18,8 +21,14 @@ public class MailtoCommand extends Command {
 
     public static final String MESSAGE_MAILTO_SUCCESS_FORMAT = "Success! Copy this link to your browser's address bar: %1$s";
 
+    public static final String MESSAGE_EMPTY_LIST = "List is empty, nothing to do";
+
     @Override
-    public CommandResult execute(Model model) {
+    public CommandResult execute(Model model) throws CommandException {
+        requireNonNull(model);
+        if (model.getFilteredPersonList().isEmpty()) {
+            throw new CommandException(MESSAGE_EMPTY_LIST);
+        }
         String url = model.getFilteredPersonList().stream()
                 .map(person -> person.getEmail().toString())
                 .collect(Collectors.joining(",", "mailto:", ""));
