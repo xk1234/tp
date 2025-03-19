@@ -9,6 +9,7 @@ import java.util.function.Predicate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -39,11 +40,13 @@ public class IncludePersonCommandTest {
     }
 
     @Test
-    public void execute_personNotInAddressBook_throwsCommandException() {
+    public void execute_personNotInAddressBook_showsOverview() {
+        String expectedMessage =  String.format(
+                Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size());
         Predicate<Person> predicate = person -> person.getName().fullName
                 .equals("NonExistentNameInTypicalAddressBook");
         IncludePersonCommand includePersonCommand = new IncludePersonCommand(predicate);
-        assertThrows(CommandException.class, () -> includePersonCommand.execute(model));
+        assertCommandSuccess(includePersonCommand, model, expectedMessage, expectedModel);
     }
 
     @Test

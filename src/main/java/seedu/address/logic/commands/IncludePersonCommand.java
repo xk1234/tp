@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import javafx.collections.transformation.FilteredList;
+import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
@@ -46,15 +47,17 @@ public class IncludePersonCommand extends Command {
         boolean isContactExisting = allPeopleList.stream()
                 .anyMatch(namePredicate);
         if (!isContactExisting) {
-            throw new CommandException(MESSAGE_PERSON_NOT_FOUND);
+            return new CommandResult(
+                    String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size()));
         }
 
         Predicate<? super Person> currentPredicate = ((FilteredList<Person>) model
                     .getFilteredPersonList()).getPredicate();
-        Predicate<? super Person> effectivePredicate = (currentPredicate != null)
-                ? currentPredicate
-                : person -> true;
-        Predicate<Person> newPredicate = person -> effectivePredicate.test(person) || namePredicate.test(person);
+        if (currentPredicate == null) {
+            return new CommandResult(MESSAGE_SUCCESS);
+        }
+
+        Predicate<Person> newPredicate = person -> currentPredicate.test(person) || namePredicate.test(person);
         model.updateFilteredPersonList(newPredicate);
 
         return new CommandResult(MESSAGE_SUCCESS);
