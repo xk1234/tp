@@ -48,14 +48,16 @@ public class TagCommand extends Command {
             throw new CommandException(MESSAGE_EMPTY_LIST);
         }
 
-        long numPersonUpdated = lastShownList.stream()
+        List<Person> personsToEdit = lastShownList.stream()
                 .filter(person -> !person.getTags().containsAll(tagsToAdd))
-                .peek(personToEdit -> {
-                    Person taggedPerson = createTaggedPerson(personToEdit, tagsToAdd);
-                    model.setPerson(personToEdit, taggedPerson);
-                }).count();
+                .toList();
 
-        return new CommandResult(String.format(MESSAGE_TAG_PERSONS_SUCCESS, numPersonUpdated));
+        personsToEdit.forEach(personToEdit -> {
+            Person taggedPerson = createTaggedPerson(personToEdit, tagsToAdd);
+            model.setPerson(personToEdit, taggedPerson);
+        });
+
+        return new CommandResult(String.format(MESSAGE_TAG_PERSONS_SUCCESS, personsToEdit.size()));
     }
 
     /**
