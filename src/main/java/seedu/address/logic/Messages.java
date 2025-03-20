@@ -19,7 +19,6 @@ public class Messages {
     public static final String MESSAGE_DUPLICATE_FIELDS =
                 "Multiple values specified for the following single-valued field(s): ";
     public static final String MESSAGE_PERSONS_ADDED_OVERVIEW = "%1$d person(s) added to the list!";
-            "Multiple values specified for the following single-valued field(s): ";
     public static final String MESSAGE_EMPTY_LIST = "List is empty, nothing to do";
     /**
      * Returns an error message indicating the duplicate prefixes.
