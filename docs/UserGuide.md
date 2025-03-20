@@ -140,13 +140,13 @@ Adds your specified tag(s) to multiple contacts.
 
 Format: `tag TAG [TAG]…`
 
-<div class="alert alert-warning">:exclamation: **Caution:** Ensure you filter to the correct group of contacts before using the command, or it may add tags to contacts unintentionally.</div>
+<div markdown="span" class="alert alert-warning">:exclamation: **Caution:** Ensure you filter to the correct group of contacts before using the command, or it may add tags to contacts unintentionally.</div>
 
-* Display **at least one contact on the list** before running the command.
+* Display **at least one contact** before running the command.
 * `TAG` is a word of **digits or letters (both uppercase and lowercase)**. e.g. `customer1`
-* Adds all `Tag` as tag(s) of your contacts currently displayed in the list. e.g. Running `tag customer` when only `Hans` and `Bo` is displayed adds `customer` tag only to both of them.
-* Adds on top of your contact's existing tags. They do not replace them. e.g. Running `tag vip` when contact with `customer` tag is displayed changes their tag to `customer vip`
-* Does not affect contacts displayed who already have all `TAG`.
+* Adds all `Tag` to your currently displayed contacts. e.g. Running `tag customer` when only `Hans` and `Bo` are displayed adds `customer` tag only to them.
+* Appends to your contact's existing tags instead of replacing. e.g. Running `tag vip` when a displayed contact with `customer` tag changes their tag to `customer vip`
+* Skips contacts who already have all `TAG`.
 
 Examples:
 * `tag downline` adds the `downline` tag to all your contacts in the current list.
