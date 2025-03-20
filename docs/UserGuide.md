@@ -3,6 +3,11 @@ layout: page
 title: User Guide
 ---
 
+* Table of Contents
+{:toc}
+
+--------------------------------------------------------------------------------------------------------------------
+
 ## Introduction
 
 ### Who is AscendNetwork for?
@@ -17,9 +22,6 @@ AscendNetwork is built with **network marketeers** in mind—people who often de
 
 1. A **fast** way to input and manage contacts. If you can type quickly, you’ll love the efficiency.
 1. A **user-friendly interface** that still leverages simple text commands (just like chatting in a messaging app).
-
-* Table of Contents
-{:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
