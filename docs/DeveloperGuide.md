@@ -297,6 +297,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 |  `* *`   | Time-conscious communicator      | Send bulk messages to specific groups of contacts | Share updates quickly without crafting individual messages             |
 |  `* *`   | Well connected person            | Sort persons by attributes                        | Locate a person easily                                                 |
 |  `* *`   | Efficient user                   | Tag multiple contacts at once                     | Quickly organize large groups of contacts                              |
+|  `* *`   | Efficient user                   | Remove tags from multiple contacts at once        | Clear out unused tags from all my contacts                             |
 |   `*`    | Team leader                      | Visualize my network of downlines                 | Monitor the progress of my team expansion                              |
 
 ### Use cases
@@ -475,6 +476,28 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 3a. The user selects invalid fields.
     * 3a1. AddressBook shows an error message.
       Use case resumes at step 1.
+
+**Use case: UC11 - Remove Tag from multiple contacts at once**
+
+**MSS**
+
+1. User <ins>find persons by name and tag (UC5)</ins>.
+2. User requests to remove some tags from all persons shown.
+3. AddressBook removes the tags from all persons shown.
+   Use case ends.
+
+**Extensions**
+
+* 2a. The users does not provide any tags to add.
+    * 2a1. AddressBook shows an error message.
+      Use case resumes at step 1.
+* 2b. The user provides tags with invalid format.
+    * 2b1. AddressBook shows an error message.
+      Use case resumes at step 1.
+* 2c. No contacts are currently shown.
+    * 2c1. AddressBook shows an error message.
+      Use case resumes at step 1.
+
 
 ### Non-Functional Requirements
 
