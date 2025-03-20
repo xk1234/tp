@@ -169,19 +169,19 @@ Examples:
 * `find n/alex david t/downline customer` finds `Alex Yeoh` with tag `downline`, `David Li` with tag `customer`<br>
   ![result for 'find n/alex david t/downline customer'](images/findAlexDavidResult.png)
 
-### Removing tags from multiple contacts at once: `rmtag`
+### Removing tags from multiple contacts: `rmtag`
 
 Removes your specified tag(s) from multiple contacts.
 
 Format: `rmtag TAG [TAG]…`
 
-<div markdown="span" class="alert alert-warning">:exclamation: **Caution:** Ensure you filter to the correct group of contacts before using the command, or it may remove tags to contacts unintentionally.</div>
+<div markdown="span" class="alert alert-warning">:exclamation: **Caution:** Ensure you filter to the correct group of contacts before using the command, or it may remove tags from contacts unintentionally.</div>
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:** You can use this command to manage transient tags that no longer applies to multiple contacts at the same time. e.g. An event that ended.</div>
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:** You can use this command to manage temporary tags that no longer applies to multiple contacts at the same time. e.g. An event that ended.</div>
 
-* Display **at least one contact on the list** before running the command.
+* Display **at least one contact** before running the command.
 * `TAG` is a word of **digits or letters (both uppercase and lowercase)**. e.g. `customer1`
-* Removes all `Tag` from your contacts currently displayed in the list. e.g. Running `rmtag customer` when only `Hans` and `Bo` that both have `dinner` tag removes the tag only from both of them.
+* Removes all `Tag` from your currently displayed contacts. e.g. Running `rmtag customer` when only `Hans` and `Bo`, that both have `customer`, are displayed tag removes it only from them.
 * Does not affect contacts displayed who do not have any `TAG`.
 
 Examples:
