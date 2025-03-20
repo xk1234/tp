@@ -488,7 +488,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 2a. The users does not provide any tags to add.
+* 2a. The users does not provide any tags to remove.
     * 2a1. AddressBook shows an error message.
       Use case resumes at step 1.
 * 2b. The user provides tags with invalid format.
