@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.Messages.MESSAGE_EMPTY_LIST;
 
 import java.util.HashSet;
 import java.util.List;
@@ -25,7 +26,6 @@ public class TagCommand extends Command {
             + "Example: " + COMMAND_WORD + " downline friends";
 
     public static final String MESSAGE_TAG_PERSONS_SUCCESS = "Added tag(s) to %1$d person(s)";
-    public static final String MESSAGE_EMPTY_LIST = "No persons in the filtered list";
 
     private final Set<Tag> tagsToAdd;
 

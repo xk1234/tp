@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.Messages.MESSAGE_EMPTY_LIST;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
@@ -48,7 +49,7 @@ public class TagCommandTest {
         Set<Tag> tagsToAdd = Collections.singleton(new Tag(VALID_TAG_FRIEND));
         TagCommand tagCommand = new TagCommand(tagsToAdd);
 
-        assertCommandFailure(tagCommand, model, TagCommand.MESSAGE_EMPTY_LIST);
+        assertCommandFailure(tagCommand, model, MESSAGE_EMPTY_LIST);
     }
 
     @Test
