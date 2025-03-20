@@ -12,7 +12,7 @@ title: User Guide
 
 ### Who is AscendNetwork for?
 
-AscendNetwork is built with **network marketeers** in mind—people who often deal with numerous leads, customers, and partners. It is specially designed for those who prefer or are comfortable with typing commands. By centralizing all contact information, you can organise and keep track of important contact details and stats.
+AscendNetwork is built with **network marketeers** in mind—people who often deal with numerous leads, customers, and partners. It is specially designed for those who prefer or are comfortable with typing commands. By centralizing all contact information, you can organise and keep track of important contact details and stats. 
 
 <div markdown="span" class="alert alert-info">
 **:information_source: Note:** We assume you have basic familiarity with your computer, such as downloading files and opening folders. Where advanced technical actions are required, we will guide you step-by-step.
@@ -28,46 +28,46 @@ AscendNetwork is built with **network marketeers** in mind—people who often de
 ## Quick Start
 
 1. **Open up your “command terminal”**.
-    * A command terminal is a program where you can type text-based commands to your computer.
-    * On **Windows**, look for “Command Prompt” or “PowerShell” in your Start Menu.
-    * On **Mac**, open “Terminal” from your Applications > Utilities folder.
-    * On **Linux**, open the terminal you have installed.
+   * A command terminal is a program where you can type text-based commands to your computer.  
+   * On **Windows**, look for “Command Prompt” or “PowerShell” in your Start Menu.  
+   * On **Mac**, open “Terminal” from your Applications > Utilities folder.
+   * On **Linux**, open the terminal you have installed.
 
 1. **Check if Java 17 (or above) is installed**.
-    * Type into the terminal:
-      ```sh
-      java -version
-      ```
-      You should see a string that includes the text 17. For example:
-      ```sh
-      java version "17"
-      Java(TM) SE Runtime Environment (build 17)
-      Java HotSpot(TM) 64-Bit Server VM (build 23.2-b04, mixed mode)
-      ```
-    * If Java is not found, or if the version is not 17, please follow the instruction on Oracle's website for your platform:
-        * [Windows](https://docs.oracle.com/en/java/javase/17/install/installation-jdk-microsoft-windows-platforms.html#GUID-DAF345BA-B3E7-4CF2-B87A-B6662D691840)
-        * [Mac](https://docs.oracle.com/en/java/javase/17/install/installation-jdk-macos.html#GUID-F575EB4A-70D3-4AB4-A20E-DBE95171AB5F)
-        * [Linux](https://docs.oracle.com/en/java/javase/17/install/installation-jdk-linux-platforms.html#GUID-4A6BD592-1840-4BB4-A758-4CD49E9EE88B)
+   * Type into the terminal:
+     ```sh
+     java -version
+     ```
+     You should see a string that includes the text 17. For example:
+     ```sh
+     java version "17"
+     Java(TM) SE Runtime Environment (build 17)
+     Java HotSpot(TM) 64-Bit Server VM (build 23.2-b04, mixed mode)
+     ```
+   * If Java is not found, or if the version is not 17, please follow the instruction on Oracle's website for your platform:
+     * [Windows](https://docs.oracle.com/en/java/javase/17/install/installation-jdk-microsoft-windows-platforms.html#GUID-DAF345BA-B3E7-4CF2-B87A-B6662D691840)
+     * [Mac](https://docs.oracle.com/en/java/javase/17/install/installation-jdk-macos.html#GUID-F575EB4A-70D3-4AB4-A20E-DBE95171AB5F)
+     * [Linux](https://docs.oracle.com/en/java/javase/17/install/installation-jdk-linux-platforms.html#GUID-4A6BD592-1840-4BB4-A758-4CD49E9EE88B)
 
-      Afterwards, repeat the step above to verify if it is installed.
+     Afterwards, repeat the step above to verify if it is installed.
 
 1. **Download the latest `ascendnetwork.jar` file** from our [GitHub releases page](https://github.com/AY2425S2-CS2103T-T14-4/tp/releases).
 
    ![Download Jar](images/DownloadJar.png)
 
 1. **Place the `.jar` file** into the folder you want to use as the “home folder” for AscendNetwork, which stores your data.
-    * For example, you could create a folder called `AscendNetworkHome` on your Desktop.
+   * For example, you could create a folder called `AscendNetworkHome` on your Desktop.
 
 1. **Run AscendNetwork**.
-    * Still in your command terminal, use the `cd` command to move into that folder. For example:
-      ```sh
-      cd Desktop/AscendNetworkHome
-      ```
-    * Then type:
-      ```sh
-      java -jar addressbook.jar
-      ```
-    * After a few seconds, the AscendNetwork interface should appear. You will see some sample contacts included by default.
+   * Still in your command terminal, use the `cd` command to move into that folder. For example:
+     ```sh
+     cd Desktop/AscendNetworkHome
+     ```
+   * Then type:
+     ```sh
+     java -jar addressbook.jar
+     ```
+   * After a few seconds, the AscendNetwork interface should appear. You will see some sample contacts included by default.
 
    ![AscendNetwork User Interface](images/Ui.png)
 
@@ -75,22 +75,22 @@ AscendNetwork is built with **network marketeers** in mind—people who often de
 
    ![Insert screenshot of a user typing commands, if available](images/CommandInput.png)
 
-    * **`help`** : Opens the help window.
-    * **`list`** : Lists all existing contacts.
-    * **`add n/John Doe p/98765432 e/johnd@example.com a/John Street, block 123, #01-01`** : Adds a contact named `John Doe`, whos contact number is `98765432`, has an `email of johnd@example.com` and lives at `John Street, block 123, #01-01`.
-    * **`delete 3`** : Deletes the 3rd contact in the current list.
-    * **`clear`** : Deletes **all** contacts.
-    * **`exit`** : Closes the app.
+   * **`help`** : Opens the help window.  
+   * **`list`** : Lists all existing contacts.  
+   * **`add n/John Doe p/98765432 e/johnd@example.com a/John Street, block 123, #01-01`** : Adds a contact named `John Doe`, whos contact number is `98765432`, has an `email of johnd@example.com` and lives at `John Street, block 123, #01-01`.  
+   * **`delete 3`** : Deletes the 3rd contact in the current list.  
+   * **`clear`** : Deletes **all** contacts.  
+   * **`exit`** : Closes the app.
 
 <div markdown="block" class="alert alert-info">
 
 **:information_source: AscendNetwork commands follow a straightforward format:**
 
-* **UPPER_CASE** words are placeholders (e.g., `NAME` in `add n/NAME`).
-* **Square brackets `[ ]`** indicate optional items (e.g., `[t/TAG]`).
-* **Items with `...`** can appear multiple times or not at all (e.g., `[t/TAG]...`).
-* **Curly braces `{ }` separated by `|`** mean “choose one” (e.g., `{n/NAME | t/TAG}`).
-* **Parameters can be in any order.**
+* **UPPER_CASE** words are placeholders (e.g., `NAME` in `add n/NAME`).  
+* **Square brackets `[ ]`** indicate optional items (e.g., `[t/TAG]`).  
+* **Items with `...`** can appear multiple times or not at all (e.g., `[t/TAG]...`).  
+* **Curly braces `{ }` separated by `|`** mean “choose one” (e.g., `{n/NAME | t/TAG}`).  
+* **Parameters can be in any order.**  
 * **Extraneous parameters** are ignored for commands that do not accept any (e.g., `help 123` is treated as `help`).
 
 _If you are reading this from a PDF, watch out for spacing issues when copying multi-line commands._
