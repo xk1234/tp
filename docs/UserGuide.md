@@ -3,14 +3,18 @@ layout: page
 title: User Guide
 ---
 
+* Table of Contents
+{:toc}
+
+--------------------------------------------------------------------------------------------------------------------
+
 ## Introduction
 
 ### Who is AscendNetwork for?
 
 AscendNetwork is built with **network marketeers** in mind—people who often deal with numerous leads, customers, and partners. It is specially designed for those who prefer or are comfortable with typing commands. By centralizing all contact information, you can organise and keep track of important contact details and stats. 
 
-<div class="alert alert-info">
-
+<div markdown="span" class="alert alert-info">
 **:information_source: Note:** We assume you have basic familiarity with your computer, such as downloading files and opening folders. Where advanced technical actions are required, we will guide you step-by-step.
 </div>
 
@@ -18,9 +22,6 @@ AscendNetwork is built with **network marketeers** in mind—people who often de
 
 1. A **fast** way to input and manage contacts. If you can type quickly, you’ll love the efficiency.
 1. A **user-friendly interface** that still leverages simple text commands (just like chatting in a messaging app).
-
-* Table of Contents
-{:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -145,41 +146,43 @@ Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
-### Locating your contacts in the network: `find`
+### Locating your contacts: `find`
 
 Finds contacts by matching name and tag keywords you provide.
 
 Format: `find {n/NAME_KEYWORD [NAME_KEYWORD]... [t/TAG_KEYWORD [TAG_KEYWORD]...] | t/TAG_KEYWORD [TAG_KEYWORD]... [n/NAME_KEYWORD [NAME_KEYWORD]...]}`
 
-* `NAME_KEYWORD` is a word without spaces to search only name. e.g. In `n/Hans Bo` both `Hans` and `Bo` are keywords
-* `TAG_KEYWORD` is a word without spaces to search only tags. e.g. In `n/downline customer` both `downline` and `customer` are keywords
-* Supply at least one of `n/NAME_KEYWORD` or `t/TAG_KEYWORD`.
-* Searching ignores case for both names and tags. e.g `n/hans` matches `Hans` name, `t/customer` matches `Customer` tag
+<div markdown="span" class="alert alert-primary">:bulb: **Tip**: Run this command to limit the contacts that commands acting on displayed ones affect</div>
+
+* `NAME_KEYWORD` is a **single word** searching only name. e.g. In `n/Hans Bo` both `Hans` and `Bo` are keywords
+* `TAG_KEYWORD` is a **single word** searching only tags. e.g. In `t/downline customer` both `downline` and `customer` are keywords
+* Supply **at least one** of `n/NAME_KEYWORD` or `t/TAG_KEYWORD`.
+* When providing only `NAME_KEYWORD`, finds persons whose name contain at least one keyword (i.e. `OR` search). e.g. Providing `n/Hans Bo` finds `Hans Gruber`, `Bo Yang`
+* When providing only `TAG_KEYWORD`, finds persons whose tags contain at least one keyword (i.e. `OR` search). e.g. Providing `t/downline customer` finds person with tags `downline` and `family`, as well as person with tags `customer` and `friend`
+* When providing both `NAME_KEYWORD` and `TAG_KEYWORD`, finds persons matching both name and tag search (i.e. `AND` search between name and tags). e.g. Providing `n/Hans Bo t/downline customer` finds `Hans Gruber` and with tags `downline` and `family`, but not `Bo Yang` with tags `family` and `friend`
+* Searching ignores case. e.g `n/hans` matches `Hans` name, `t/customer` matches `Customer` tag
 * The order of the keywords does not matter. e.g. `n/Hans Bo` matches `Bo Hans` name, `t/downline customer` matches `customer` and `downline` tags
-* Matches only full words e.g. `n/Han` does not match `Hans` name, `t/downlines` does not match `downline` tag
-* When providing only `NAME_KEYWORD`, the command finds persons whose name contain at least one keyword (i.e. `OR` search). e.g. Providing `n/Hans Bo` finds `Hans Gruber`, `Bo Yang`
-* When providing only `TAG_KEYWORD`, the command finds persons whose tags contain at least one keyword (i.e. `OR` search). e.g. Providing `t/downline customer` finds person with tags `downline` and `family`, as well as person with tags `customer` and `friend`
-* When providing both `NAME_KEYWORD` and `TAG_KEYWORD`, the command finds persons with name matching at least one name keyword and tags matching at least one tag keyword will be returned (i.e. `AND` search between name and tags). e.g. Providing `n/Hans Bo t/downline customer` finds `Hans Gruber` and with tags `downline` and `family`, but not `Bo Yang` with tags `family` and `friend`
+* Matches only full words. e.g. `n/Han` does not match `Hans` name, `t/downlines` does not match `downline` tag
 
 Examples:
 * `find n/John` finds `john` and `John Doe`
 * `find n/alex david t/downline customer` finds `Alex Yeoh` with tag `downline`, `David Li` with tag `customer`<br>
   ![result for 'find n/alex david t/downline customer'](images/findAlexDavidResult.png)
 
-### Removing tags from multiple contacts at once: `rmtag`
+### Removing tags from multiple contacts: `rmtag`
 
 Removes your specified tag(s) from multiple contacts.
 
 Format: `rmtag TAG [TAG]…`
 
-<div class="alert alert-warning">:exclamation: **Caution:** Ensure you filter to the correct group of contacts before using the command, or it may remove tags to contacts unintentionally.</div>
+<div markdown="span" class="alert alert-warning">:exclamation: **Caution:** Ensure you filter to the correct group of contacts before using the command, or it may remove tags from contacts unintentionally.</div>
 
-<div class="alert alert-primary">:bulb: **Tip:** You can use this command to manage transient tags that no longer applies to all contacts at the same time. e.g. An event that ended.</div>
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:** You can use this command to manage temporary tags that no longer applies to multiple contacts at the same time. e.g. An event that ended.</div>
 
-* Display **at least one contact on the list** before running the command.
+* Display **at least one contact** before running the command.
 * `TAG` is a word of **digits or letters (both uppercase and lowercase)**. e.g. `customer1`
-* Removes all `Tag` from your contacts currently displayed in the list. e.g. Running `rmtag customer` when only `Hans` and `Bo` that both have `dinner` tag removes the tag only from both of them.
-* Does not affect contacts displayed who do not have any `TAG`.
+* Removes all `Tag` from your currently displayed contacts. e.g. Running `rmtag customer` when only `Hans` and `Bo`, that both have `customer`, are displayed tag removes it only from them.
+* Skips contacts who do not have any `TAG`.
 
 Examples:
 * `rmtag dinner` removes the `dinner` tag from all your contacts in the displayed list.

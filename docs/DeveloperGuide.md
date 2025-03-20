@@ -376,7 +376,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1.  User <ins>shows all contacts (UC1)</ins>.
 2.  User requests to find persons with names and tags.
-3.  AddressBook shows a list of contacts that passes the filter.
+3.  AddressBook shows all contacts that passes the filter.
     use case ends.
 
 **Extensions**
@@ -384,7 +384,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 2a. The user does not provide any filter criteria.
     * 2a1. AddressBook shows an error message.
       Use case resumes at step 1.
-* 3a. No contacts passes the filter.
+* 2b. The user provides filter in incorrect format.
+    * 2b1. AddressBook shows an error message.
+      Use case resumes at step 1.
+* 3a. No contacts passes the filter. No contacts are shown.
   Use case ends.
 
 **Use case: UC6 - Add commission received from person**
@@ -485,7 +488,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 2a. The users does not provide any tags to add.
+* 2a. The users does not provide any tags to remove.
     * 2a1. AddressBook shows an error message.
       Use case resumes at step 1.
 * 2b. The user provides tags with invalid format.
