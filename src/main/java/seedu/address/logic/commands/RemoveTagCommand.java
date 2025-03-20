@@ -50,20 +50,16 @@ public class RemoveTagCommand extends Command {
             throw new CommandException(MESSAGE_EMPTY_LIST);
         }
 
-        // lastShownList.forEach(person -> {
-        // Person updatedPerson = createUntaggedPerson(person, tagsToRemove);
-        // model.setPerson(person, updatedPerson);
-        // });
-        //
-        long numPersonsUpdated = lastShownList.stream()
+        List<Person> personsToEdit = lastShownList.stream()
                 .filter(person -> person.getTags().stream().anyMatch(tagsToRemove::contains))
-                .peek(person -> {
-                    Person updatedPerson = createUntaggedPerson(person, tagsToRemove);
-                    model.setPerson(person, updatedPerson);
-                })
-                .count();
+                .toList();
 
-        return new CommandResult(String.format(MESSAGE_REMOVE_TAG_SUCCESS, numPersonsUpdated));
+        personsToEdit.forEach(person -> {
+            Person updatedPerson = createUntaggedPerson(person, tagsToRemove);
+            model.setPerson(person, updatedPerson);
+        });
+
+        return new CommandResult(String.format(MESSAGE_REMOVE_TAG_SUCCESS, personsToEdit.size()));
     }
 
     /**
