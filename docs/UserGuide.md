@@ -9,8 +9,7 @@ title: User Guide
 
 AscendNetwork is built with **network marketeers** in mind—people who often deal with numerous leads, customers, and partners. It is specially designed for those who prefer or are comfortable with typing commands. By centralizing all contact information, you can organise and keep track of important contact details and stats. 
 
-<div class="alert alert-info">
-
+<div markdown="span" class="alert alert-info">
 **:information_source: Note:** We assume you have basic familiarity with your computer, such as downloading files and opening folders. Where advanced technical actions are required, we will guide you step-by-step.
 </div>
 
@@ -172,9 +171,9 @@ Removes your specified tag(s) from multiple contacts.
 
 Format: `rmtag TAG [TAG]…`
 
-<div class="alert alert-warning">:exclamation: **Caution:** Ensure you filter to the correct group of contacts before using the command, or it may remove tags to contacts unintentionally.</div>
+<div markdown="span" class="alert alert-warning">:exclamation: **Caution:** Ensure you filter to the correct group of contacts before using the command, or it may remove tags to contacts unintentionally.</div>
 
-<div class="alert alert-primary">:bulb: **Tip:** You can use this command to manage transient tags that no longer applies to all contacts at the same time. e.g. An event that ended.</div>
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:** You can use this command to manage transient tags that no longer applies to multiple contacts at the same time. e.g. An event that ended.</div>
 
 * Display **at least one contact on the list** before running the command.
 * `TAG` is a word of **digits or letters (both uppercase and lowercase)**. e.g. `customer1`
