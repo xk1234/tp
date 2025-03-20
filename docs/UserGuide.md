@@ -182,7 +182,7 @@ Format: `rmtag TAG [TAG]…`
 * Display **at least one contact** before running the command.
 * `TAG` is a word of **digits or letters (both uppercase and lowercase)**. e.g. `customer1`
 * Removes all `Tag` from your currently displayed contacts. e.g. Running `rmtag customer` when only `Hans` and `Bo`, that both have `customer`, are displayed tag removes it only from them.
-* Does not affect contacts displayed who do not have any `TAG`.
+* Skips contacts who do not have any `TAG`.
 
 Examples:
 * `rmtag dinner` removes the `dinner` tag from all your contacts in the displayed list.
