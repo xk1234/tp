@@ -3,7 +3,6 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 
-import java.util.List;
 import java.util.function.Predicate;
 
 import javafx.collections.transformation.FilteredList;
@@ -26,8 +25,7 @@ public class IncludePersonCommand extends Command {
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John";
 
-    public static final String MESSAGE_SUCCESS = "People with a keyword are now in the address book";
-    public static final String MESSAGE_PERSON_NOT_FOUND = "No person with a keyword exists in the address book";
+    public static final String MESSAGE_SUCCESS = Messages.MESSAGE_PERSONS_ADDED_OVERVIEW;
 
     private final Predicate<Person> namePredicate;
 
@@ -43,24 +41,18 @@ public class IncludePersonCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        List<Person> allPeopleList = model.getAddressBook().getPersonList();
-        boolean isContactExisting = allPeopleList.stream()
-                .anyMatch(namePredicate);
-        if (!isContactExisting) {
-            return new CommandResult(
-                    String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size()));
-        }
-
+        int previousSize = model.getFilteredPersonList().size();
         Predicate<? super Person> currentPredicate = ((FilteredList<Person>) model
                     .getFilteredPersonList()).getPredicate();
         if (currentPredicate == null) {
-            return new CommandResult(MESSAGE_SUCCESS);
+            return new CommandResult(String.format(MESSAGE_SUCCESS, 0));
         }
 
         Predicate<Person> newPredicate = person -> currentPredicate.test(person) || namePredicate.test(person);
         model.updateFilteredPersonList(newPredicate);
+        int newSize = model.getFilteredPersonList().size();
 
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, newSize - previousSize));
     }
 
     @Override

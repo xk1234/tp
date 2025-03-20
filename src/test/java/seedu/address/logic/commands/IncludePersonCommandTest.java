@@ -11,7 +11,6 @@ import java.util.function.Predicate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -31,8 +30,11 @@ public class IncludePersonCommandTest {
     @Test
     public void execute_commandSuccess() {
         Predicate<Person> validPredicate = person -> true;
-        assertCommandSuccess(new IncludePersonCommand(validPredicate),
-                model, IncludePersonCommand.MESSAGE_SUCCESS, expectedModel);
+        model.updateFilteredPersonList(person -> person.getName().fullName.toLowerCase().contains("alice"));
+        int initialSize = model.getFilteredPersonList().size();
+        int expectedSize = model.getAddressBook().getPersonList().size();
+        assertCommandSuccess(new IncludePersonCommand(validPredicate), model,
+                String.format(IncludePersonCommand.MESSAGE_SUCCESS, expectedSize - initialSize), expectedModel);
     }
 
     @Test
@@ -43,7 +45,7 @@ public class IncludePersonCommandTest {
     @Test
     public void execute_personNotInAddressBook_showsOverview() {
         String expectedMessage = String.format(
-                Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size());
+                IncludePersonCommand.MESSAGE_SUCCESS, 0);
         Predicate<Person> predicate = person -> person.getName().fullName
                 .equals("NonExistentNameInTypicalAddressBook");
         IncludePersonCommand includePersonCommand = new IncludePersonCommand(predicate);
