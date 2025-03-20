@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_HUBBY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
@@ -15,7 +16,6 @@ import seedu.address.logic.commands.TagCommand;
 import seedu.address.model.tag.Tag;
 
 public class TagCommandParserTest {
-    private static final String INVALID_TAG = "hubby*"; // '*' not allowed in tags
     private TagCommandParser parser = new TagCommandParser();
 
     @Test
@@ -42,9 +42,9 @@ public class TagCommandParserTest {
 
     @Test
     public void parse_invalidTagFormat_throwsParseException() {
-        assertParseFailure(parser, INVALID_TAG, Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, INVALID_TAG_HUBBY, Tag.MESSAGE_CONSTRAINTS);
 
         // Mixed valid and invalid tags
-        assertParseFailure(parser, VALID_TAG_FRIEND + " " + INVALID_TAG, Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, VALID_TAG_FRIEND + " " + INVALID_TAG_HUBBY, Tag.MESSAGE_CONSTRAINTS);
     }
 }
