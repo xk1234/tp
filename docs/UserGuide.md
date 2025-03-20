@@ -146,21 +146,23 @@ Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
-### Locating your contacts in the network: `find`
+### Locating your contacts: `find`
 
 Finds contacts by matching name and tag keywords you provide.
 
 Format: `find {n/NAME_KEYWORD [NAME_KEYWORD]... [t/TAG_KEYWORD [TAG_KEYWORD]...] | t/TAG_KEYWORD [TAG_KEYWORD]... [n/NAME_KEYWORD [NAME_KEYWORD]...]}`
 
-* `NAME_KEYWORD` is a word without spaces to search only name. e.g. In `n/Hans Bo` both `Hans` and `Bo` are keywords
-* `TAG_KEYWORD` is a word without spaces to search only tags. e.g. In `n/downline customer` both `downline` and `customer` are keywords
-* Supply at least one of `n/NAME_KEYWORD` or `t/TAG_KEYWORD`.
-* Searching ignores case for both names and tags. e.g `n/hans` matches `Hans` name, `t/customer` matches `Customer` tag
+<div markdown="span" class="alert alert-primary">:bulb: **Tip**: Run this command to limit the contacts that commands acting on displayed ones affect</div>
+
+* `NAME_KEYWORD` is a **single word** searching only name. e.g. In `n/Hans Bo` both `Hans` and `Bo` are keywords
+* `TAG_KEYWORD` is a **single word** searching only tags. e.g. In `t/downline customer` both `downline` and `customer` are keywords
+* Supply **at least one** of `n/NAME_KEYWORD` or `t/TAG_KEYWORD`.
+* When providing only `NAME_KEYWORD`, finds persons whose name contain at least one keyword (i.e. `OR` search). e.g. Providing `n/Hans Bo` finds `Hans Gruber`, `Bo Yang`
+* When providing only `TAG_KEYWORD`, finds persons whose tags contain at least one keyword (i.e. `OR` search). e.g. Providing `t/downline customer` finds person with tags `downline` and `family`, as well as person with tags `customer` and `friend`
+* When providing both `NAME_KEYWORD` and `TAG_KEYWORD`, finds persons matching both name and tag search (i.e. `AND` search between name and tags). e.g. Providing `n/Hans Bo t/downline customer` finds `Hans Gruber` and with tags `downline` and `family`, but not `Bo Yang` with tags `family` and `friend`
+* Searching ignores case. e.g `n/hans` matches `Hans` name, `t/customer` matches `Customer` tag
 * The order of the keywords does not matter. e.g. `n/Hans Bo` matches `Bo Hans` name, `t/downline customer` matches `customer` and `downline` tags
-* Matches only full words e.g. `n/Han` does not match `Hans` name, `t/downlines` does not match `downline` tag
-* When providing only `NAME_KEYWORD`, the command finds persons whose name contain at least one keyword (i.e. `OR` search). e.g. Providing `n/Hans Bo` finds `Hans Gruber`, `Bo Yang`
-* When providing only `TAG_KEYWORD`, the command finds persons whose tags contain at least one keyword (i.e. `OR` search). e.g. Providing `t/downline customer` finds person with tags `downline` and `family`, as well as person with tags `customer` and `friend`
-* When providing both `NAME_KEYWORD` and `TAG_KEYWORD`, the command finds persons with name matching at least one name keyword and tags matching at least one tag keyword will be returned (i.e. `AND` search between name and tags). e.g. Providing `n/Hans Bo t/downline customer` finds `Hans Gruber` and with tags `downline` and `family`, but not `Bo Yang` with tags `family` and `friend`
+* Matches only full words. e.g. `n/Han` does not match `Hans` name, `t/downlines` does not match `downline` tag
 
 Examples:
 * `find n/John` finds `john` and `John Doe`
