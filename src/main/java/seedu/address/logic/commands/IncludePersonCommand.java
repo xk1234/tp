@@ -25,8 +25,6 @@ public class IncludePersonCommand extends Command {
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John";
 
-    public static final String MESSAGE_SUCCESS = Messages.MESSAGE_PERSONS_ADDED_OVERVIEW;
-
     private final Predicate<Person> namePredicate;
 
     /**
@@ -45,14 +43,14 @@ public class IncludePersonCommand extends Command {
         Predicate<? super Person> currentPredicate = ((FilteredList<Person>) model
                     .getFilteredPersonList()).getPredicate();
         if (currentPredicate == null) {
-            return new CommandResult(String.format(MESSAGE_SUCCESS, 0));
+            return new CommandResult(String.format(Messages.MESSAGE_PERSONS_ADDED_OVERVIEW, 0));
         }
 
         Predicate<Person> newPredicate = person -> currentPredicate.test(person) || namePredicate.test(person);
         model.updateFilteredPersonList(newPredicate);
         int newSize = model.getFilteredPersonList().size();
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, newSize - previousSize));
+        return new CommandResult(String.format(Messages.MESSAGE_PERSONS_ADDED_OVERVIEW, newSize - previousSize));
     }
 
     @Override

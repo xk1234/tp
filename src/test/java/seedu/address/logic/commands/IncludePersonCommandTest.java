@@ -6,15 +6,18 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
+import java.util.List;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.predicates.NameContainsKeywordsPredicate;
 
 public class IncludePersonCommandTest {
 
@@ -30,11 +33,11 @@ public class IncludePersonCommandTest {
     @Test
     public void execute_commandSuccess() {
         Predicate<Person> validPredicate = person -> true;
-        model.updateFilteredPersonList(person -> person.getName().fullName.toLowerCase().contains("alice"));
+        model.updateFilteredPersonList(new NameContainsKeywordsPredicate(List.of("alice")));
         int initialSize = model.getFilteredPersonList().size();
         int expectedSize = model.getAddressBook().getPersonList().size();
         assertCommandSuccess(new IncludePersonCommand(validPredicate), model,
-                String.format(IncludePersonCommand.MESSAGE_SUCCESS, expectedSize - initialSize), expectedModel);
+                String.format(Messages.MESSAGE_PERSONS_ADDED_OVERVIEW, expectedSize - initialSize), expectedModel);
     }
 
     @Test
@@ -45,7 +48,7 @@ public class IncludePersonCommandTest {
     @Test
     public void execute_personNotInAddressBook_showsOverview() {
         String expectedMessage = String.format(
-                IncludePersonCommand.MESSAGE_SUCCESS, 0);
+                Messages.MESSAGE_PERSONS_ADDED_OVERVIEW, 0);
         Predicate<Person> predicate = person -> person.getName().fullName
                 .equals("NonExistentNameInTypicalAddressBook");
         IncludePersonCommand includePersonCommand = new IncludePersonCommand(predicate);
