@@ -188,6 +188,19 @@ Examples:
 * `rmtag dinner` removes the `dinner` tag from all your contacts in the displayed list.
 * `rmtag customer vip` removes both `customer` and `vip` tags from all your contacts in the displayed list.
 
+### Including your contacts by name to specific group: `incl`
+
+Adding people with matching name from your contacts to the list.
+
+Format: `incl n/NAME_KEYWORD`
+
+* `NAME_KEYWORD` is same as defined above.
+* Searching ignores case for the name. e.g `n/hans` matches `Hans` name
+* Matches only full words e.g. `n/Han` does not match `Hans` name
+
+Examples:
+* `incl n/John` finds `john` and `John Doe`
+
 ### Deleting a person : `delete`
 
 Deletes the specified person from the address book.
