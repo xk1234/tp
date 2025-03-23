@@ -12,6 +12,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -129,16 +130,18 @@ public class AddressBookParserTest {
     }
 
     @Test
-    public void parseCommand_exportEmpty() throws Exception {
-        ExportCommand command = (ExportCommand) parser.parseCommand(ExportCommand.COMMAND_WORD);
-        assertEquals(new ExportCommand(Arrays.asList(Attribute.values())), command);
+    public void parseCommand_exportEmptyList() throws Exception {
+        String fileName = "export.csv";
+        ExportCommand command = (ExportCommand) parser.parseCommand(ExportCommand.COMMAND_WORD + " " + fileName);
+        assertEquals(new ExportCommand(Arrays.asList(Attribute.values()), Path.of(fileName)), command);
     }
 
     @Test
-    public void parseCommand_exportNonEmpty() throws Exception {
-        ExportCommand command = (ExportCommand) parser.parseCommand(ExportCommand.COMMAND_WORD + " "
-                + PREFIX_ATTRIBUTE + Attribute.NAME);
-        assertEquals(new ExportCommand(List.of(Attribute.NAME)), command);
+    public void parseCommand_exportNonEmptyList() throws Exception {
+        String fileName = "export.csv";
+        ExportCommand command = (ExportCommand) parser.parseCommand(ExportCommand.COMMAND_WORD + " " + fileName
+                + " " + PREFIX_ATTRIBUTE + Attribute.NAME);
+        assertEquals(new ExportCommand(List.of(Attribute.NAME), Path.of(fileName)), command);
     }
 
     @Test
