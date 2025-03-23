@@ -19,7 +19,8 @@ public class MailtoCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Format contacts into a link\n"
             + "Example: " + COMMAND_WORD;
 
-    public static final String MESSAGE_MAILTO_SUCCESS_FORMAT = "Success! Copy this link to your browser's address bar: %1$s";
+    public static final String MESSAGE_MAILTO_SUCCESS_FORMAT =
+        "Success! Copy this link to your browser's address bar:\n%1$s";
 
     public static final String MESSAGE_EMPTY_LIST = "List is empty, nothing to do";
 
