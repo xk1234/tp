@@ -465,8 +465,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1.  User <ins>find persons by name and tag (UC5)</ins>.
 2.  User requests to export contacts of all persons currently on the list.
-3.  User selects which fields to export from the contacts.
-4.  AddressBook exports contacts to default file path.
+3.  User provides the file path to export the file to.
+4.  User selects which fields to export from the contacts.
+5.  AddressBook exports contacts to the specified path.
     Use case ends.
 
 **Extensions**
@@ -474,7 +475,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 2a. The list is empty.
     * 2a1. AddressBook shows an error message.
       Use case resumes at step 1.
-* 3a. The user selects invalid fields.
+* 3a. The file path is not valid.
+    * 2a1. AddressBook shows an error message.
+      Use case resumes at step 1.
+* 4a. The user selects invalid fields.
     * 3a1. AddressBook shows an error message.
       Use case resumes at step 1.
 
