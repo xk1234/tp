@@ -3,69 +3,102 @@ layout: page
 title: User Guide
 ---
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
-
 * Table of Contents
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Quick start
+## Introduction
 
-1. Ensure you have Java `17` or above installed in your Computer.<br>
-   **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
+### Who is AscendNetwork for?
 
-1. Download the latest `.jar` file from [here](https://github.com/AY2425S2-CS2103T-T14-4/tp/releases).
+AscendNetwork is built with **network marketeers** in mind—people who often deal with numerous leads, customers, and partners. It is specially designed for those who prefer or are comfortable with typing commands. By centralizing all contact information, you can organise and keep track of important contact details and stats. 
 
-1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+<div markdown="span" class="alert alert-info">
+**:information_source: Note:** We assume you have basic familiarity with your computer, such as downloading files and opening folders. Where advanced technical actions are required, we will guide you step-by-step.
+</div>
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+### What can you expect?
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
-   Some example commands you can try:
+1. A **fast** way to input and manage contacts. If you can type quickly, you’ll love the efficiency.
+1. A **user-friendly interface** that still leverages simple text commands (just like chatting in a messaging app).
 
-   * `list` : Lists all contacts.
+--------------------------------------------------------------------------------------------------------------------
 
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+## Quick Start
 
-   * `delete 3` : Deletes the 3rd contact shown in the current list.
+1. **Open up your “command terminal”**.
+   * A command terminal is a program where you can type text-based commands to your computer.  
+   * On **Windows**, look for “Command Prompt” or “PowerShell” in your Start Menu.  
+   * On **Mac**, open “Terminal” from your Applications > Utilities folder.
+   * On **Linux**, open the terminal you have installed.
 
-   * `clear` : Deletes all contacts.
+1. **Check if Java 17 (or above) is installed**.
+   * Type into the terminal:
+     ```sh
+     java -version
+     ```
+     You should see a string that includes the text 17. For example:
+     ```sh
+     java version "17"
+     Java(TM) SE Runtime Environment (build 17)
+     Java HotSpot(TM) 64-Bit Server VM (build 23.2-b04, mixed mode)
+     ```
+   * If Java is not found, or if the version is not 17, please follow the instruction on Oracle's website for your platform:
+     * [Windows](https://docs.oracle.com/en/java/javase/17/install/installation-jdk-microsoft-windows-platforms.html#GUID-DAF345BA-B3E7-4CF2-B87A-B6662D691840)
+     * [Mac](https://docs.oracle.com/en/java/javase/17/install/installation-jdk-macos.html#GUID-F575EB4A-70D3-4AB4-A20E-DBE95171AB5F)
+     * [Linux](https://docs.oracle.com/en/java/javase/17/install/installation-jdk-linux-platforms.html#GUID-4A6BD592-1840-4BB4-A758-4CD49E9EE88B)
 
-   * `exit` : Exits the app.
+     Afterwards, repeat the step above to verify if it is installed.
 
-1. Refer to the [Features](#features) below for details of each command.
+1. **Download the latest `ascendnetwork.jar` file** from our [GitHub releases page](https://github.com/AY2425S2-CS2103T-T14-4/tp/releases).
+
+   ![Download Jar](images/DownloadJar.png)
+
+1. **Place the `.jar` file** into the folder you want to use as the “home folder” for AscendNetwork, which stores your data.
+   * For example, you could create a folder called `AscendNetworkHome` on your Desktop.
+
+1. **Run AscendNetwork**.
+   * Still in your command terminal, use the `cd` command to move into that folder. For example:
+     ```sh
+     cd Desktop/AscendNetworkHome
+     ```
+   * Then type:
+     ```sh
+     java -jar addressbook.jar
+     ```
+   * After a few seconds, the AscendNetwork interface should appear. You will see some sample contacts included by default.
+
+   ![AscendNetwork User Interface](images/Ui.png)
+
+6. **Try out some commands** in the command box.
+
+   ![Insert screenshot of a user typing commands, if available](images/CommandInput.png)
+
+   * **`help`** : Opens the help window.  
+   * **`list`** : Lists all existing contacts.  
+   * **`add n/John Doe p/98765432 e/johnd@example.com a/John Street, block 123, #01-01`** : Adds a contact named `John Doe`, whos contact number is `98765432`, has an `email of johnd@example.com` and lives at `John Street, block 123, #01-01`.  
+   * **`delete 3`** : Deletes the 3rd contact in the current list.  
+   * **`clear`** : Deletes **all** contacts.  
+   * **`exit`** : Closes the app.
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: AscendNetwork commands follow a straightforward format:**
+
+* **UPPER_CASE** words are placeholders (e.g., `NAME` in `add n/NAME`).  
+* **Square brackets `[ ]`** indicate optional items (e.g., `[t/TAG]`).  
+* **Items with `...`** can appear multiple times or not at all (e.g., `[t/TAG]...`).  
+* **Curly braces `{ }` separated by `|`** mean “choose one” (e.g., `{n/NAME | t/TAG}`).  
+* **Parameters can be in any order.**  
+* **Extraneous parameters** are ignored for commands that do not accept any (e.g., `help 123` is treated as `help`).
+
+_If you are reading this from a PDF, watch out for spacing issues when copying multi-line commands._
+</div>
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Features
-
-<div markdown="block" class="alert alert-info">
-
-**:information_source: Notes about the command format:**<br>
-
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
-
-* Items in square brackets are optional.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
-
-* Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
-
-* Items in curly brackets `{}` separated by `|` are mutually exclusive.<br>
-  e.g. `{n/NAME | t/TAG}` can be used as `n/John Doe` or as `t/customer`
-
-* Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
-
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
-  e.g. if the command specifies `help 123`, it will be interpreted as `help`.
-
-* If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
-</div>
 
 ### Viewing help : `help`
 
@@ -113,26 +146,60 @@ Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
-### Locating your contacts in the network: `find`
+### Locating your contacts: `find`
 
 Finds contacts by matching name and tag keywords you provide.
 
 Format: `find {n/NAME_KEYWORD [NAME_KEYWORD]... [t/TAG_KEYWORD [TAG_KEYWORD]...] | t/TAG_KEYWORD [TAG_KEYWORD]... [n/NAME_KEYWORD [NAME_KEYWORD]...]}`
 
-* `NAME_KEYWORD` is a word without spaces to search only name. e.g. In `n/Hans Bo` both `Hans` and `Bo` are keywords
-* `TAG_KEYWORD` is a word without spaces to search only tags. e.g. In `n/downline customer` both `downline` and `customer` are keywords
-* Supply at least one of `n/NAME_KEYWORD` or `t/TAG_KEYWORD`.
-* Searching ignores case for both names and tags. e.g `n/hans` matches `Hans` name, `t/customer` matches `Customer` tag
+<div markdown="span" class="alert alert-primary">:bulb: **Tip**: Run this command to limit the contacts that commands acting on displayed ones affect</div>
+
+* `NAME_KEYWORD` is a **single word** searching only name. e.g. In `n/Hans Bo` both `Hans` and `Bo` are keywords
+* `TAG_KEYWORD` is a **single word** searching only tags. e.g. In `t/downline customer` both `downline` and `customer` are keywords
+* Supply **at least one** of `n/NAME_KEYWORD` or `t/TAG_KEYWORD`.
+* When providing only `NAME_KEYWORD`, finds persons whose name contain at least one keyword (i.e. `OR` search). e.g. Providing `n/Hans Bo` finds `Hans Gruber`, `Bo Yang`
+* When providing only `TAG_KEYWORD`, finds persons whose tags contain at least one keyword (i.e. `OR` search). e.g. Providing `t/downline customer` finds person with tags `downline` and `family`, as well as person with tags `customer` and `friend`
+* When providing both `NAME_KEYWORD` and `TAG_KEYWORD`, finds persons matching both name and tag search (i.e. `AND` search between name and tags). e.g. Providing `n/Hans Bo t/downline customer` finds `Hans Gruber` and with tags `downline` and `family`, but not `Bo Yang` with tags `family` and `friend`
+* Searching ignores case. e.g `n/hans` matches `Hans` name, `t/customer` matches `Customer` tag
 * The order of the keywords does not matter. e.g. `n/Hans Bo` matches `Bo Hans` name, `t/downline customer` matches `customer` and `downline` tags
-* Matches only full words e.g. `n/Han` does not match `Hans` name, `t/downlines` does not match `downline` tag
-* When providing only `NAME_KEYWORD`, the command finds persons whose name contain at least one keyword (i.e. `OR` search). e.g. Providing `n/Hans Bo` finds `Hans Gruber`, `Bo Yang`
-* When providing only `TAG_KEYWORD`, the command finds persons whose tags contain at least one keyword (i.e. `OR` search). e.g. Providing `t/downline customer` finds person with tags `downline` and `family`, as well as person with tags `customer` and `friend`
-* When providing both `NAME_KEYWORD` and `TAG_KEYWORD`, the command finds persons with name matching at least one name keyword and tags matching at least one tag keyword will be returned (i.e. `AND` search between name and tags). e.g. Providing `n/Hans Bo t/downline customer` finds `Hans Gruber` and with tags `downline` and `family`, but not `Bo Yang` with tags `family` and `friend`
+* Matches only full words. e.g. `n/Han` does not match `Hans` name, `t/downlines` does not match `downline` tag
 
 Examples:
 * `find n/John` finds `john` and `John Doe`
 * `find n/alex david t/downline customer` finds `Alex Yeoh` with tag `downline`, `David Li` with tag `customer`<br>
   ![result for 'find n/alex david t/downline customer'](images/findAlexDavidResult.png)
+
+### Removing tags from multiple contacts: `rmtag`
+
+Removes your specified tag(s) from multiple contacts.
+
+Format: `rmtag TAG [TAG]…`
+
+<div markdown="span" class="alert alert-warning">:exclamation: **Caution:** Ensure you filter to the correct group of contacts before using the command, or it may remove tags from contacts unintentionally.</div>
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:** You can use this command to manage temporary tags that no longer applies to multiple contacts at the same time. e.g. An event that ended.</div>
+
+* Display **at least one contact** before running the command.
+* `TAG` is a word of **digits or letters (both uppercase and lowercase)**. e.g. `customer1`
+* Removes all `Tag` from your currently displayed contacts. e.g. Running `rmtag customer` when only `Hans` and `Bo`, that both have `customer`, are displayed tag removes it only from them.
+* Skips contacts who do not have any `TAG`.
+
+Examples:
+* `rmtag dinner` removes the `dinner` tag from all your contacts in the displayed list.
+* `rmtag customer vip` removes both `customer` and `vip` tags from all your contacts in the displayed list.
+
+### Including your contacts by name to specific group: `incl`
+
+Adding people with matching name from your contacts to the list.
+
+Format: `incl n/NAME_KEYWORD`
+
+* `NAME_KEYWORD` is same as defined above.
+* Searching ignores case for the name. e.g `n/hans` matches `Hans` name
+* Matches only full words e.g. `n/Han` does not match `Hans` name
+
+Examples:
+* `incl n/John` finds `john` and `John Doe`
 
 ### Deleting a person : `delete`
 
@@ -202,5 +269,6 @@ Action | Format, Examples
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find** | `find {n/NAME_KEYWORD [NAME_KEYWORD]... [t/TAG_KEYWORD [TAG_KEYWORD]...] \| t/TAG_KEYWORD [TAG_KEYWORD]... [n/NAME_KEYWORD [NAME_KEYWORD]...]}` <br> e.g., `find n/James Jake t/downline customer`
+**Remove Tag** | `rmtag TAG [TAG]…`<br> e.g. `rmtag customer vip`
 **List** | `list`
 **Help** | `help`
