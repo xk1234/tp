@@ -92,11 +92,11 @@ public class Person {
      */
     public Object getAttribute(Attribute attribute) {
         return switch (attribute) {
-            case NAME -> getName();
-            case PHONE -> getPhone();
-            case EMAIL -> getEmail();
-            case ADDRESS -> getAddress();
-            case COMMISSION -> getCommission();
+        case NAME -> getName();
+        case PHONE -> getPhone();
+        case EMAIL -> getEmail();
+        case ADDRESS -> getAddress();
+        case COMMISSION -> getCommission();
         };
     }
 
