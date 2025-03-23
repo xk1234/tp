@@ -26,8 +26,8 @@ Fix https://github.com/AY2425S2-CS2103T-T14-4/tp/issues/`<insert_issue_id_here>`
 
 ## Testing
 - [ ] Unit
-- [ ] Integration
-- [ ] System
+- [ ] Integration (e.g. `ModelManagerTest`)
+- [ ] System (compile and run the app)
 
 ## Description
 - I did ...
