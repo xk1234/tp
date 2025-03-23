@@ -1,9 +1,9 @@
 # Pull Request Template
 
-## Link issue
+## Issue
 [For multiple issues see [here](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue)]
 
-Fix https://github.com/AY2425S2-CS2103T-T14-4/tp/issues/47
+Fix https://github.com/AY2425S2-CS2103T-T14-4/tp/issues/`<insert_issue_id_here>`
 
 ## Type
 - [ ] Feature
@@ -12,8 +12,27 @@ Fix https://github.com/AY2425S2-CS2103T-T14-4/tp/issues/47
 - [ ] Test update
 - [ ] Refactor
 
+## Checklist
+- [ ] UG is updated
+- [ ] DG is updated
+- [ ] `AddressBookParserTest` is updated
+- [ ] `*CommandTest`is updated
+- [ ] `*CommandParserTest` is updated
+- [ ] I followed Git conventions
+- [ ] I added milestone to issue and PR
+- [ ] There is no `checkstyle` warnings
+- [ ] I tested the patch locally
+- [ ] The spacing for all the messages are OK
+
+## Testing
+- [ ] Unit
+- [ ] Integration
+- [ ] System
+
 ## Description
-[What is done?]
+- I did ...
+- I tested by ...
+- I documented ...
 
 ## Plagiarism
 - [ ] Own work
@@ -28,42 +47,8 @@ Fix https://github.com/AY2425S2-CS2103T-T14-4/tp/issues/47
 - Do not end the subject line with a period.
 - Commit messages for non-trivial commits should have a body giving details of the commit.
 
-- [ ] Check here to confirm
-
-## Process
-- Milestones
-- Releases
-- Tracked issues
-- PRs and reviews
-
-- [ ] Check here to confirm
-
 ## Code quality
 - [ ] Logging
 - [ ] Exceptions
 - [ ] Assertions
-- [ ] Defensive coding
-- [ ] Booleans sound like booleans
-- [ ] SLAP
-- [ ] Code duplications
-- [ ] Checkstyle warnings
-
-## Testing
-- [ ] Unit
-- [ ] System
-- [ ] Acceptance
-
-[What is done?]
-
-## UG quality
-- [ ] Visuals
-- [ ] Examples
-- [ ] Messiness
-
-## DG quality
-- [ ] Description are high-level
-- [ ] UML diagrams correct notation
-- [ ] No large chunk of code
-- [ ] Missing use cases
-
-
+- [ ] Booleans prefixed with `is` or `has`
