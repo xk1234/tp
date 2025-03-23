@@ -6,6 +6,7 @@ import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTRIBUTE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -24,12 +25,14 @@ import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.logic.commands.ExitCommand;
+import seedu.address.logic.commands.ExportCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.RemoveTagCommand;
 import seedu.address.logic.commands.TotalCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.Attribute;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.predicates.NameAndTagPredicate;
 import seedu.address.model.tag.Tag;
@@ -123,6 +126,19 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_total() throws Exception {
         assertTrue(parser.parseCommand(TotalCommand.COMMAND_WORD) instanceof TotalCommand);
+    }
+
+    @Test
+    public void parseCommand_exportEmpty() throws Exception {
+        ExportCommand command = (ExportCommand) parser.parseCommand(ExportCommand.COMMAND_WORD);
+        assertEquals(new ExportCommand(Arrays.asList(Attribute.values())), command);
+    }
+
+    @Test
+    public void parseCommand_exportNonEmpty() throws Exception {
+        ExportCommand command = (ExportCommand) parser.parseCommand(ExportCommand.COMMAND_WORD + " "
+                + PREFIX_ATTRIBUTE + Attribute.NAME);
+        assertEquals(new ExportCommand(List.of(Attribute.NAME)), command);
     }
 
     @Test
