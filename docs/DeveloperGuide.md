@@ -469,7 +469,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 4.  AddressBook exports contacts to default file path.
     Use case ends.
 
-**Extensions**
+**Extensions**   
 
 * 2a. The list is empty.
     * 2a1. AddressBook shows an error message.
@@ -517,6 +517,22 @@ Use case ends.
       Use case resumes at step 1.
 * 1c. The user provides a name keyword that is already in the list.
     * 1c1. AddressBook shows 0 person is added.
+      Use case resumes at step 1.
+
+**Use case: UC13 - Mail to multiple contacts**
+
+**MSS**
+
+1. User <ins>find persons by name and tag (UC5)</ins>.
+2. User requests to generate a `mailto` link for all contacts currently on the list.
+3. AddressBook generates and displays the requested link.
+4. User copies the link to their browser's address bar to open the system mail client.
+   Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+    * 2a1. AddressBook shows an error message.
       Use case resumes at step 1.
 
 ### Non-Functional Requirements
