@@ -37,11 +37,10 @@ public class ExportCommandTest {
     @Test
     public void execute_emptyUnfilteredList_failure() {
         Model model = new ModelManager(new AddressBook(), new UserPrefs());
-        String expectedMessage = MESSAGE_EMPTY_LIST;
         List<Attribute> attributes = List.of(Attribute.NAME);
         Path path = Path.of("export.csv");
         ExportCommand exportCommand = new ExportCommand(attributes, path);
-        assertCommandFailure(exportCommand, model, expectedMessage);
+        assertCommandFailure(exportCommand, model, MESSAGE_EMPTY_LIST);
     }
 
     @Test

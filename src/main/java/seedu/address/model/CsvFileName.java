@@ -56,11 +56,10 @@ public class CsvFileName {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof CsvFileName)) {
+        if (!(other instanceof CsvFileName otherCsvFileName)) {
             return false;
         }
 
-        CsvFileName otherCsvFileName = (CsvFileName) other;
         return csvFileName.equals(otherCsvFileName.csvFileName);
     }
 
