@@ -6,6 +6,7 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -28,7 +29,8 @@ public class ExportCommandTest {
         String expectedMessage = ExportCommand.MESSAGE_EXPORT_SUCCESS;
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         List<Attribute> attributes = List.of(Attribute.NAME);
-        ExportCommand exportCommand = new ExportCommand(attributes);
+        Path path = Path.of("export.csv");
+        ExportCommand exportCommand = new ExportCommand(attributes, path);
         assertCommandSuccess(exportCommand, model, expectedMessage, expectedModel);
     }
 
@@ -37,21 +39,23 @@ public class ExportCommandTest {
         Model model = new ModelManager(new AddressBook(), new UserPrefs());
         String expectedMessage = MESSAGE_EMPTY_LIST;
         List<Attribute> attributes = List.of(Attribute.NAME);
-        ExportCommand exportCommand = new ExportCommand(attributes);
+        Path path = Path.of("export.csv");
+        ExportCommand exportCommand = new ExportCommand(attributes, path);
         assertCommandFailure(exportCommand, model, expectedMessage);
     }
 
     @Test
     public void execute_caughtIoException_failure() {
-        Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
-        String expectedMessage = ExportCommand.MESSAGE_EXPORT_FAILURE;
-        List<Attribute> attributes = List.of(Attribute.NAME);
-        ExportCommand exportCommand = new ExportCommand(attributes) {
+        Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs()) {
             @Override
-            protected void exportAsCsv(Model model, List<Attribute> attributes) throws IOException {
+            public void exportAsCsv(List<Attribute> attributes, Path path) throws IOException {
                 throw new IOException();
             }
         };
+        String expectedMessage = ExportCommand.MESSAGE_EXPORT_FAILURE;
+        List<Attribute> attributes = List.of(Attribute.NAME);
+        Path path = Path.of("export.csv");
+        ExportCommand exportCommand = new ExportCommand(attributes, path);
         assertCommandFailure(exportCommand, model, expectedMessage);
     }
 }

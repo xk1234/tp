@@ -10,7 +10,6 @@ import java.util.List;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.util.ExportDataUtil;
 import seedu.address.model.Model;
 import seedu.address.model.person.Attribute;
 
@@ -32,11 +31,9 @@ public class ExportCommand extends Command {
     public static final String MESSAGE_EXPORT_SUCCESS = "Export success";
     public static final String MESSAGE_EXPORT_FAILURE = "Export failed";
 
-    // Should we change this into a parameter of the export command?
-    public static final Path DEFAULT_PATH = Path.of("export.csv");
-
     // This cannot be Attribute[] due to the given parser
     private final List<Attribute> attributes;
+    private final Path path;
 
     /**
      * Constructs an {@code ExportCommand} to export the specified attributes from
@@ -47,13 +44,13 @@ public class ExportCommand extends Command {
      * @param attributes The list of attributes to export. If null or empty, all
      *                   attributes will be exported.
      */
-    public ExportCommand(List<Attribute> attributes) {
+    public ExportCommand(List<Attribute> attributes, Path path) {
         requireNonNull(attributes);
 
         // The case where the input is empty is handled at parsing
         assert (!attributes.isEmpty());
-
         this.attributes = attributes;
+        this.path = path;
     }
 
     @Override
@@ -63,7 +60,7 @@ public class ExportCommand extends Command {
             throw new CommandException(MESSAGE_EMPTY_LIST);
         }
         try {
-            exportAsCsv(model, attributes);
+            model.exportAsCsv(attributes, path);
         } catch (IOException e) {
             throw new CommandException(MESSAGE_EXPORT_FAILURE, e);
         }
@@ -74,6 +71,7 @@ public class ExportCommand extends Command {
     public String toString() {
         return new ToStringBuilder(this)
                 .add("attributes", attributes)
+                .add("path", path)
                 .toString();
     }
 
@@ -89,9 +87,5 @@ public class ExportCommand extends Command {
         }
 
         return attributes.equals(otherExportCommand.attributes);
-    }
-
-    protected void exportAsCsv(Model model, List<Attribute> attributes) throws IOException {
-        ExportDataUtil.exportAsCsv(model, attributes, DEFAULT_PATH);
     }
 }
