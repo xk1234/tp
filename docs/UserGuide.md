@@ -201,6 +201,19 @@ Format: `incl n/NAME_KEYWORD`
 Examples:
 * `incl n/John` finds `john` and `John Doe`
 
+### Export contacts to a CSV file: `export`
+
+Exports your contacts to a CSV file. This can be edited with e.g. Excel.
+
+Format: `export FILE_PATH [a/ATTRIBUTE]...`
+
+* `FILE_PATH` is a file path with suffix `.csv` and consists of only alphanumeric characters.
+* `ATTRIBUTE` may be `name`, `phone`, `email`, `address`, or `commission`. It is case-insensitive. You should not use the same `ATTRIBUTE` twice.
+* Only the currently displayed list is exported, so that you can select which contacts to export.
+
+Examples:
+* `export file.csv a/NAME a/email` exports the names and email addresses of the currently displayed contacts to a file named `file.csv`.
+
 ### Deleting a person : `delete`
 
 Deletes the specified person from the address book.
