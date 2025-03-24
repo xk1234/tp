@@ -12,7 +12,6 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.TagCommand.MESSAGE_TAG_PERSONS_SUCCESS;
 import static seedu.address.testutil.TypicalPersons.AMY;
 import static seedu.address.testutil.TypicalPersons.BOB;
-import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -35,7 +34,7 @@ import seedu.address.testutil.PersonBuilder;
  */
 public class TagCommandTest {
     private Model model;
-    private Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+    private Model expectedModel;
 
     @BeforeEach
     public void setUp() {
