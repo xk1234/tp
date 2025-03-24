@@ -271,10 +271,7 @@ Action | Format, Examples
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find** | `find {n/NAME_KEYWORD [NAME_KEYWORD]... [t/TAG_KEYWORD [TAG_KEYWORD]...] \| t/TAG_KEYWORD [TAG_KEYWORD]... [n/NAME_KEYWORD [NAME_KEYWORD]...]}` <br> e.g., `find n/James Jake t/downline customer`
-<<<<<<< HEAD
 **Tag** | `tag TAG [TAG]…` e.g. `tag customer vip`
-=======
 **Remove Tag** | `rmtag TAG [TAG]…`<br> e.g. `rmtag customer vip`
->>>>>>> master
 **List** | `list`
 **Help** | `help`
