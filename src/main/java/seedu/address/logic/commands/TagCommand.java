@@ -36,6 +36,7 @@ public class TagCommand extends Command {
      */
     public TagCommand(Set<Tag> tags) {
         requireNonNull(tags);
+        assert !tags.isEmpty() : "TagCommand should not be created with empty tags";
         this.tagsToAdd = tags;
     }
 
