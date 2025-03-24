@@ -169,6 +169,24 @@ Examples:
 * `find n/alex david t/downline customer` finds `Alex Yeoh` with tag `downline`, `David Li` with tag `customer`<br>
   ![result for 'find n/alex david t/downline customer'](images/findAlexDavidResult.png)
 
+### Tagging multiple contacts at once: `tag`
+
+Adds your specified tag(s) to multiple contacts.
+
+Format: `tag TAG [TAG]…`
+
+<div markdown="span" class="alert alert-warning">:exclamation: **Caution:** Ensure you filter to the correct group of contacts before using the command, or it may add tags to contacts unintentionally.</div>
+
+* Display **at least one contact** before running the command.
+* `TAG` is a word of **digits or letters (both uppercase and lowercase)**. e.g. `customer1`
+* Adds all `Tag` to your currently displayed contacts. e.g. Running `tag customer` when only `Hans` and `Bo` are displayed adds `customer` tag only to them.
+* Appends to your contact's existing tags instead of replacing. e.g. Running `tag vip` when a displayed contact with `customer` tag changes their tag to `customer vip`
+* Skips contacts who already have all `TAG`.
+
+Examples:
+* `tag downline` adds the `downline` tag to all your contacts in the current list.
+* `tag customer vip` adds both `customer` and `vip` tags to all your contacts in the current list.
+
 ### Removing tags from multiple contacts: `rmtag`
 
 Removes your specified tag(s) from multiple contacts.
@@ -293,6 +311,7 @@ Action | Format, Examples
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find** | `find {n/NAME_KEYWORD [NAME_KEYWORD]... [t/TAG_KEYWORD [TAG_KEYWORD]...] \| t/TAG_KEYWORD [TAG_KEYWORD]... [n/NAME_KEYWORD [NAME_KEYWORD]...]}` <br> e.g., `find n/James Jake t/downline customer`
+**Tag** | `tag TAG [TAG]…` e.g. `tag customer vip`
 **Remove Tag** | `rmtag TAG [TAG]…`<br> e.g. `rmtag customer vip`
 **List** | `list`
 **Help** | `help`

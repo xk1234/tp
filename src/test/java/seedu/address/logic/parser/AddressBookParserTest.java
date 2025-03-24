@@ -28,6 +28,7 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.RemoveTagCommand;
+import seedu.address.logic.commands.TagCommand;
 import seedu.address.logic.commands.TotalCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Person;
@@ -100,6 +101,24 @@ public class AddressBookParserTest {
     public void parseCommand_list() throws Exception {
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD) instanceof ListCommand);
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3") instanceof ListCommand);
+    }
+
+    @Test
+    public void parseCommand_tag() throws Exception {
+        // Single tag
+        Set<Tag> tagSet = new HashSet<>();
+        tagSet.add(new Tag(VALID_TAG_FRIEND));
+        String tagCommand = TagCommand.COMMAND_WORD + " " + VALID_TAG_FRIEND;
+        TagCommand command = (TagCommand) parser.parseCommand(tagCommand);
+        assertEquals(new TagCommand(tagSet), command);
+
+        // Multiple tags
+        Set<Tag> multipleTagSet = new HashSet<>();
+        multipleTagSet.add(new Tag(VALID_TAG_FRIEND));
+        multipleTagSet.add(new Tag(VALID_TAG_HUSBAND));
+        String multipleTagCommand = TagCommand.COMMAND_WORD + " " + VALID_TAG_FRIEND + " " + VALID_TAG_HUSBAND;
+        TagCommand multipleCommand = (TagCommand) parser.parseCommand(multipleTagCommand);
+        assertEquals(new TagCommand(multipleTagSet), multipleCommand);
     }
 
     @Test
