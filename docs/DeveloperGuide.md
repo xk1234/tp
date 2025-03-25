@@ -303,14 +303,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `AscendNetwork` and the **Actor** is the `user`, unless specified otherwise)
 
 **Use case: UC1 - Show all contacts**
 
 **MSS**
 
 1. User requests to list persons
-2. AddressBook shows the list of all persons.
+2. System shows the list of all persons.
    Use case ends.
 
 **Extensions**
@@ -323,7 +323,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. User requests to add a person
-2. AddressBook adds the person
+2. System adds the person
 
    Use case ends.
 
@@ -331,11 +331,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. The user uses invalid format.
 
-    * 1a1. AddressBook shows an error message.
+    * 1a1. System shows an error message.
 
       Use case resumes at step 1.
 * 1b. The user tries to add a person that is already in the contact.
-    * 1b1. AddressBook shows an error message.
+    * 1b1. System shows an error message.
 
       Use case resumes at step 1.
 
@@ -344,16 +344,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1.  User <ins>shows all contacts (UC1)</ins>.
 2.  User requests to edit a specific person in the list.
 3.  User states which fields to update and provide updated details.
-4.  AddressBook edits the person with updated details.
+4.  System edits the person with updated details.
     Use case ends.
 
 **Extensions**
 
 * 2a. The given index is invalid.
-    * 2a1. AddressBook shows an error message.
+    * 2a1. System shows an error message.
       Use case resumes at step 1.
 * 3a. The details provided are invalid.
-    * 3a1. AddressBook shows an error message.
+    * 3a1. System shows an error message.
       Use case resumes at step 1.
 
 **Use case: UC4 - Delete a person**
@@ -362,13 +362,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1.  User <ins>shows all contacts (UC1)</ins>.
 2.  User requests to delete a specific person in the list
-3.  AddressBook deletes the person
+3.  System deletes the person
     Use case ends.
 
 **Extensions**
 
 * 2a. The given index is invalid.
-    * 2a1. AddressBook shows an error message.
+    * 2a1. System shows an error message.
       Use case resumes at step 1.
 
 **Use case: UC5 - Find persons by name and tag**
@@ -377,16 +377,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1.  User <ins>shows all contacts (UC1)</ins>.
 2.  User requests to find persons with names and tags.
-3.  AddressBook shows all contacts that passes the filter.
+3.  System shows all contacts that passes the filter.
     use case ends.
 
 **Extensions**
 
 * 2a. The user does not provide any filter criteria.
-    * 2a1. AddressBook shows an error message.
+    * 2a1. System shows an error message.
       Use case resumes at step 1.
 * 2b. The user provides filter in incorrect format.
-    * 2b1. AddressBook shows an error message.
+    * 2b1. System shows an error message.
       Use case resumes at step 1.
 * 3a. No contacts passes the filter. No contacts are shown.
   Use case ends.
@@ -397,16 +397,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1.  User <ins>shows all contacts (UC1)</ins>.
 2.  User requests to add commission received from a specific downline in the list and specifies the amount of commission received.
-4.  AddressBook records the commission received from that person.
+4.  System records the commission received from that person.
     Use case ends.
 
 **Extensions**
 
 * 2a. The given index is invalid.
-    * 2a1. AddressBook shows an error message.
+    * 2a1. System shows an error message.
       Use case resumes at step 1.
 * 3a. User provides invalid input for the commission amount (e.g., non-numeric).
-    * 3b1. AddressBook shows an error message indicating invalid commission amount.
+    * 3b1. System shows an error message indicating invalid commission amount.
       Use case resumes at step 3.
 
 **Use case: UC7 - Tag multiple contacts at once**
@@ -415,19 +415,19 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1. User <ins>find persons by name and tag (UC5)</ins>.
 2. User requests to tag all persons currently shown.
-3. AddressBook adds the tags to all persons currently shown.
+3. System adds the tags to all persons currently shown.
    Use case ends.
 
 **Extensions**
 
 * 2a. The users does not provide any tags to add.
-    * 2a1. AddressBook shows an error message.
+    * 2a1. System shows an error message.
       Use case resumes at step 1.
 * 2b. The user provides tags with invalid format.
-    * 2b1. AddressBook shows an error message.
+    * 2b1. System shows an error message.
       Use case resumes at step 1.
 * 2c. No contacts are currently shown.
-    * 2c1. AddressBook shows an error message.
+    * 2c1. System shows an error message.
       Use case resumes at step 1.
 
 **Use case: UC8 - Send Bulk Messages**
@@ -449,17 +449,17 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1.  User <ins>searches for contacts (UC1)</ins>.
 2.  User issues a command to sort the displayed list.
-3.  AddressBook sorts the displayed list based on the specified criteria.
-4.  AddressBook displays the sorted list of contacts.
+3.  System sorts the displayed list based on the specified criteria.
+4.  System displays the sorted list of contacts.
     Use case ends.
 
 **Extensions**
 
 * 2a. User provides an invalid sort command format or missing sort criteria.
-    * 2a1. AddressBook shows an error message indicating the invalid command format or missing criteria.
+    * 2a1. System shows an error message indicating the invalid command format or missing criteria.
       Use case resumes at step 1.
 * 2b. User provides an unsupported sort criteria.
-    * 2b1. AddressBook shows an error message indicating that the specified criteria is not supported for sorting.
+    * 2b1. System shows an error message indicating that the specified criteria is not supported for sorting.
       Use case resumes at step 1.
 
 **Use case: UC10 - Export multiple matching contacts**
@@ -469,16 +469,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1.  User <ins>find persons by name and tag (UC5)</ins>.
 2.  User requests to export contacts of all persons currently on the list.
 3.  User selects which fields to export from the contacts.
-4.  AddressBook exports contacts to default file path.
+4.  System exports contacts to default file path.
     Use case ends.
 
 **Extensions**
 
 * 2a. The list is empty.
-    * 2a1. AddressBook shows an error message.
+    * 2a1. System shows an error message.
       Use case resumes at step 1.
 * 3a. The user selects invalid fields.
-    * 3a1. AddressBook shows an error message.
+    * 3a1. System shows an error message.
       Use case resumes at step 1.
 
 **Use case: UC11 - Remove Tag from multiple contacts at once**
@@ -487,19 +487,19 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1. User <ins>find persons by name and tag (UC5)</ins>.
 2. User requests to remove some tags from all persons shown.
-3. AddressBook removes the tags from all persons shown.
+3. System removes the tags from all persons shown.
    Use case ends.
 
 **Extensions**
 
 * 2a. The users does not provide any tags to remove.
-    * 2a1. AddressBook shows an error message.
+    * 2a1. System shows an error message.
       Use case resumes at step 1.
 * 2b. The user provides tags with invalid format.
-    * 2b1. AddressBook shows an error message.
+    * 2b1. System shows an error message.
       Use case resumes at step 1.
 * 2c. No contacts are currently shown.
-    * 2c1. AddressBook shows an error message.
+    * 2c1. System shows an error message.
       Use case resumes at step 1.
 
 **Use case: UC12 - Add existing contacts to the list**
@@ -513,13 +513,13 @@ Use case ends.
 
 **Extensions**
 * 1a. The user does not provide any name keyword.
-    * 1a1. AddressBook shows an error message.
+    * 1a1. System shows an error message.
       Use case resumes at step 1.
 * 1b. The user provides a name keyword that doesn't exist in address book.
-    * 1b1. AddressBook shows 0 person is added.
+    * 1b1. System shows 0 person is added.
       Use case resumes at step 1.
 * 1c. The user provides a name keyword that is already in the list.
-    * 1c1. AddressBook shows 0 person is added.
+    * 1c1. System shows 0 person is added.
       Use case resumes at step 1.
 
 ### Non-Functional Requirements
@@ -544,7 +544,7 @@ Use case ends.
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
-* **Person/Contact**: An entry in the addresssbook
+* **Person/Contact**: An entry in the System
 * **Downline**: A contact that is lower in the marketing network than the user
 * **Commission**: The amount of money received from the contact through sales
 
