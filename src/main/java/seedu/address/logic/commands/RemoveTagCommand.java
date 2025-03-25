@@ -1,11 +1,12 @@
 package seedu.address.logic.commands;
 
+import static java.util.Collections.disjoint;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_EMPTY_LIST;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -51,7 +52,7 @@ public class RemoveTagCommand extends Command {
         }
 
         List<Person> personsToEdit = lastShownList.stream()
-                .filter(person -> person.getTags().stream().anyMatch(tagsToRemove::contains))
+                .filter(person -> !disjoint(person.getTags(), tagsToRemove))
                 .toList();
 
         personsToEdit.forEach(person -> {
@@ -67,9 +68,8 @@ public class RemoveTagCommand extends Command {
      * filtered out from {@code personToEdit}.
      */
     private static Person createUntaggedPerson(Person personToEdit, Set<Tag> tagsToRemove) {
-        Set<Tag> updatedTags = personToEdit.getTags().stream()
-                .filter(tag -> !tagsToRemove.contains(tag))
-                .collect(Collectors.toSet());
+        Set<Tag> updatedTags = new HashSet<>(personToEdit.getTags());
+        updatedTags.removeAll(tagsToRemove);
 
         return new Person(
                 personToEdit.getName(),
