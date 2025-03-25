@@ -471,7 +471,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User <ins>searches for contacts (UC1)</ins>.
+1.  User <ins>shows all persons (UC1)</ins>.
 2.  User issues a command to sort the displayed list.
 3.  AddressBook sorts the displayed list based on the specified criteria.
 4.  AddressBook displays the sorted list of persons.
