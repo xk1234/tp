@@ -305,8 +305,8 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …                           | I want to …                                         | So that I can…                                                         | 
-|:--------:|----------------------------------|-----------------------------------------------------|------------------------------------------------------------------------| 
+| Priority | As a …                           | I want to …                                         | So that I can…                                                         |
+|:--------:|----------------------------------|-----------------------------------------------------|------------------------------------------------------------------------|
 | `* * *`  | New user                         | See usage instructions                              | Refer to instructions when I forget how to use the App                 |
 | `* * *`  | User                             | Add a new person                                    |                                                                        |
 | `* * *`  | User                             | Edit a person                                       | Change the information reflected when their information changes        |

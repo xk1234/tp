@@ -16,3 +16,4 @@ Predicate <|.. XYZPredicate
 
 note left of XYZPredicate: XYZPredicate = NameContainsKeywordsPredicate,\nTagContainsKeywordsPredicate, etc
 @enduml
+
