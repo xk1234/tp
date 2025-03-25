@@ -161,6 +161,37 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Filtering the contacts list
+
+#### Implementation
+
+The filtering mechanism is facilitated by the `Model` interface with the following operations:
+
+* `Model#updateFilteredPersonList(Predicate<Person>)`— Filters which `Person` are displayed to the user. This method uses Java's `Predicate` interface, for which there are multiple implementing classes.
+* `Model#getFilteredPersonList()`— Returns the current list of filtered `Person`.
+
+<img src="images/FilteringDiagram.png" width="450" />
+
+The filtering mechanism works as follows:
+
+Step 1. When a filtering command is executed, the command's parser creates an appropriate `Predicate` based on the user input and passes it to the command.
+
+Step 2. The command then calls `model.updateFilteredPersonList(predicate)` to apply the filter.
+
+Step 3. The UI automatically updates to display only the filtered persons.
+
+#### Design considerations:
+
+**Aspect: How to implement complex filtering:**
+
+* **Alternative 1 (current choice):** Composite predicates are used that combine simpler predicates.
+    * Pros: More maintainable as there is less repeated code.
+    * Cons: May be more complex to implement initially.
+
+* **Alternative 2:** Independent predicates.
+    * Pros: Easier to implement as filtering the logic can be directly used.
+    * Cons: It is less maintainable as the same logic may be re-implemented multiple times.
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
@@ -241,13 +272,6 @@ The following activity diagram summarizes what happens when a user executes a ne
   itself.
     * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
     * Cons: We must ensure that the implementation of each individual command are correct.
-
-_{more aspects and alternatives to be added}_
-
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
-
 
 --------------------------------------------------------------------------------------------------------------------
 
