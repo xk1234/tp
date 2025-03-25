@@ -65,7 +65,7 @@ AscendNetwork is built with **network marketeers** in mind—people who often de
      ```
    * Then type:
      ```sh
-     java -jar addressbook.jar
+     java -jar ascendnetwork.jar
      ```
    * After a few seconds, the AscendNetwork interface should appear. You will see some sample contacts included by default.
 
@@ -267,10 +267,10 @@ _Details coming soon ..._
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AscendNetwork home folder.
 
 **Q**: How can I back up my data?
-**A**: You can manually back up your `addressbook.json` file by copying it to a safe location.
+**A**: You can manually back up your `ascendnetwork.json` file by copying it to a safe location.
 
 **Q**: Can I import contacts from another system?
 **A**: Currently, AscendNetwork does not support direct imports from CSV or other contact management systems.
@@ -279,7 +279,7 @@ _Details coming soon ..._
 **A**: Yes, you can export selected contacts as CSV with the `export` command. Then you can import contacts from CSV to external systems that support imports, such as Google Contacts.
 
 **Q**: Can multiple users access the same address book?
-**A**: AscendNetwork is designed for single-user use. If multiple users need to access the same contact database, they must manually share the `addressbook.json` file.
+**A**: AscendNetwork is designed for single-user use. If multiple users need to access the same contact database, they must manually share the `ascendnetwork.json` file.
 
 **Q**: Will AscendNetwork work on mobile devices?
 **A**: No, AscendNetwork is designed for desktop operating systems such as Windows, macOS, and Linux.
