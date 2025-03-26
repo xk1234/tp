@@ -40,14 +40,14 @@ public class TotalCommand extends Command {
         requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
 
-        Commission totalCommission;
+        Commission totalCommission = new Commission("0");
         try {
             totalCommission = getTotal(lastShownList);
         } catch (RuntimeException e) {
             if (e.getCause() instanceof IllegalValueException) {
                 throw new CommandException(MESSAGE_TOTAL_OVERFLOW);
             }
-            throw e;
+            System.out.println(MESSAGE_TOTAL_OVERFLOW);
         }
 
         return new CommandResult(String.format(MESSAGE_TOTAL_SUCCESS + totalCommission.toString()));
