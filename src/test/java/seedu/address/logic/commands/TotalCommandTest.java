@@ -40,7 +40,12 @@ public class TotalCommandTest {
                 BENSON
         );
         TotalCommand totalCommand = new TotalCommand();
-        Commission totalCommission = totalCommand.getTotal(lastShownList);
+        Commission totalCommission = new Commission("0");
+        try {
+            totalCommission = totalCommand.getTotal(lastShownList);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
         Integer total = Integer.parseInt(ALICE.getCommission().value) + Integer.parseInt(BENSON.getCommission().value);
         assertEquals(new Commission(total.toString()), totalCommission);
