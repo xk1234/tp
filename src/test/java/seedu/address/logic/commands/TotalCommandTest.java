@@ -57,6 +57,21 @@ public class TotalCommandTest {
     }
 
     @Test
+    void execute_returnsCorrectValue() {
+        AddressBook ab = new AddressBook();
+        ab.addPerson(ALICE);
+        ab.addPerson(BENSON);
+        model = new ModelManager(ab, new UserPrefs());
+        expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+
+        Integer total = Integer.parseInt(ALICE.getCommission().value) + Integer.parseInt(BENSON.getCommission().value);
+        String expectedMessage = String.format(TotalCommand.MESSAGE_TOTAL_SUCCESS + total);
+
+        TotalCommand totalCommand = new TotalCommand();
+        assertCommandSuccess(totalCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
     void getTotal_throwsRuntimeException() {
         List<Person> shownList = List.of(JAMES, KEITH);
         TotalCommand totalCommand = new TotalCommand();
