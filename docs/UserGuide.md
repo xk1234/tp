@@ -152,7 +152,7 @@ Finds contacts by matching name and tag keywords you provide.
 
 Format: `find {n/NAME_KEYWORD [NAME_KEYWORD]... [t/TAG_KEYWORD [TAG_KEYWORD]...] | t/TAG_KEYWORD [TAG_KEYWORD]... [n/NAME_KEYWORD [NAME_KEYWORD]...]}`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip**: Run this command to control the affected contacts for commands that acts on ones the app displays</div>
+<div markdown="span" class="alert alert-primary">:bulb: **Tip**: Run this command to control which contacts are affected by commands that act on ones which the app displays</div>
 
 * `NAME_KEYWORD` is a **single word** searching only name. e.g. In `n/Hans Bo` both `Hans` and `Bo` are keywords
 * `TAG_KEYWORD` is a **single word** searching only tags. e.g. In `t/downline customer` both `downline` and `customer` are keywords
@@ -179,7 +179,7 @@ Format: `tag TAG [TAG]…`
 
 * Display **at least one contact** before running the command.
 * `TAG` is a word of **digits or letters (both uppercase and lowercase)**. e.g. `customer1`
-* Adds all `Tag` to your contacts the app currently displays. e.g. Running `tag customer` when only `Hans` and `Bo` are displayed adds `customer` tag only to them.
+* Adds all `Tag` to your contacts which the app currently displays. e.g. Running `tag customer` when only `Hans` and `Bo` are displayed adds the `customer` tag only to them.
 * Appends to your contact's existing tags instead of replacing. e.g. Running `tag vip` when a displayed contact with `customer` tag changes their tag to `customer vip`
 * Skips contacts who already have all `TAG`.
 
