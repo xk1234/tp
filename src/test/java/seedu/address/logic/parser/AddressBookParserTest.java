@@ -28,8 +28,8 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.RemoveTagCommand;
+import seedu.address.logic.commands.SummaryCommand;
 import seedu.address.logic.commands.TagCommand;
-import seedu.address.logic.commands.TotalCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.predicates.NameAndTagPredicate;
@@ -140,8 +140,8 @@ public class AddressBookParserTest {
     }
 
     @Test
-    public void parseCommand_total() throws Exception {
-        assertTrue(parser.parseCommand(TotalCommand.COMMAND_WORD) instanceof TotalCommand);
+    public void parseCommand_stat() throws Exception {
+        assertTrue(parser.parseCommand(SummaryCommand.COMMAND_WORD) instanceof SummaryCommand);
     }
 
     @Test
