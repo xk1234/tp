@@ -51,7 +51,7 @@ AscendNetwork is built with **network marketeers** in mind—people who often de
 
      Afterwards, repeat the step above to verify if it is installed.
 
-1. **Download the latest `ascendnetwork.jar` file** from our [GitHub releases page](https://github.com/AY2425S2-CS2103T-T14-4/tp/releases).
+1. **Download the latest `AscendNetwork.jar` file** from our [GitHub releases page](https://github.com/AY2425S2-CS2103T-T14-4/tp/releases).
 
    ![Download Jar](images/DownloadJar.png)
 
@@ -65,7 +65,7 @@ AscendNetwork is built with **network marketeers** in mind—people who often de
      ```
    * Then type:
      ```sh
-     java -jar addressbook.jar
+     java -jar AscendNetwork.jar
      ```
    * After a few seconds, the AscendNetwork interface should appear. You will see some sample contacts included by default.
 
@@ -294,7 +294,7 @@ _Details coming soon ..._
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AscendNetwork home folder.
 
 **Q**: How can I back up my data?<br>
 **A**: You can manually back up your `addressbook.json` file by copying it to a safe location.

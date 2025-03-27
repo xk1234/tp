@@ -327,7 +327,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `AscendNetwork` and the **Actor** is the `user`, unless specified otherwise)
 
 **Use case: UC1 - Show all persons**
 
@@ -347,7 +347,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. User requests to add a person
-2. AddressBook adds the person
+2. AscendNetwork adds the person
 
    Use case ends.
 
@@ -355,29 +355,29 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. The user uses invalid format.
 
-    * 1a1. AddressBook shows an error message.
+    * 1a1. AscendNetwork shows an error message.
 
       Use case resumes at step 1.
 * 1b. The user tries to add a person that is already in the contact.
-    * 1b1. AddressBook shows an error message.
+    * 1b1. AscendNetwork shows an error message.
 
       Use case resumes at step 1.
 
 **Use case: UC3 - Edit a person**
 
-1.  User <ins>shows all persons (UC1)</ins>.
+1.  User <ins>shows all contacts (UC1)</ins>.
 2.  User requests to edit a specific person in the list.
 3.  User states which fields to update and provide updated details.
-4.  AddressBook edits the person with updated details.
+4.  AscendNetwork edits the person with updated details.
     Use case ends.
 
 **Extensions**
 
 * 2a. The given index is invalid.
-    * 2a1. AddressBook shows an error message.
+    * 2a1. AscendNetwork shows an error message.
       Use case resumes at step 1.
 * 3a. The details provided are invalid.
-    * 3a1. AddressBook shows an error message.
+    * 3a1. AscendNetwork shows an error message.
       Use case resumes at step 1.
 
 **Use case: UC4 - Delete a person**
@@ -386,13 +386,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1.  User <ins>shows all persons (UC1)</ins>.
 2.  User requests to delete a specific person in the list
-3.  AddressBook deletes the person
+3.  AscendNetwork deletes the person
     Use case ends.
 
 **Extensions**
 
 * 2a. The given index is invalid.
-    * 2a1. AddressBook shows an error message.
+    * 2a1. AscendNetwork shows an error message.
       Use case resumes at step 1.
 
 **Use case: UC5 - Find persons by name and tag**
@@ -401,16 +401,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1.  User <ins>shows all persons (UC1)</ins>.
 2.  User requests to find persons with names and tags.
-3.  AddressBook shows all persons that passes the filter.
+3.  AscendNetwork shows all persons that passes the filter.
     use case ends.
 
 **Extensions**
 
 * 2a. The user does not provide any filter criteria.
-    * 2a1. AddressBook shows an error message.
+    * 2a1. AscendNetwork shows an error message.
       Use case resumes at step 1.
 * 2b. The user provides filter in incorrect format.
-    * 2b1. AddressBook shows an error message.
+    * 2b1. AscendNetwork shows an error message.
       Use case resumes at step 1.
 * 3a. No persons passes the filter. No persons are shown.
   Use case ends.
@@ -421,16 +421,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1.  User <ins>shows all persons (UC1)</ins>.
 2.  User requests to add commission received from a specific downline in the list and specifies the amount of commission received.
-4.  AddressBook records the commission received from that person.
+4.  AscendNetwork records the commission received from that person.
     Use case ends.
 
 **Extensions**
 
 * 2a. The given index is invalid.
-    * 2a1. AddressBook shows an error message.
+    * 2a1. AscendNetwork shows an error message.
       Use case resumes at step 1.
 * 3a. User provides invalid input for the commission amount (e.g., non-numeric).
-    * 3b1. AddressBook shows an error message indicating invalid commission amount.
+    * 3b1. AscendNetwork shows an error message indicating invalid commission amount.
       Use case resumes at step 3.
 
 **Use case: UC7 - Tag multiple persons at once**
@@ -439,19 +439,19 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1. User <ins>finds persons by name and tag (UC5)</ins>.
 2. User requests to tag all persons currently shown.
-3. AddressBook adds the tags to all persons currently shown.
+3. AscendNetwork adds the tags to all persons currently shown.
    Use case ends.
 
 **Extensions**
 
 * 2a. The users does not provide any tags to add.
-    * 2a1. AddressBook shows an error message.
+    * 2a1. AscendNetwork shows an error message.
       Use case resumes at step 1.
 * 2b. The user provides tags with invalid format.
-    * 2b1. AddressBook shows an error message.
+    * 2b1. AscendNetwork shows an error message.
       Use case resumes at step 1.
 * 2c. No persons are currently shown.
-    * 2c1. AddressBook shows an error message.
+    * 2c1. AscendNetwork shows an error message.
       Use case resumes at step 1.
 
 **Use case: UC8 - Send Bulk Messages**
@@ -473,17 +473,17 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1.  User <ins>shows all persons (UC1)</ins>.
 2.  User issues a command to sort the displayed list.
-3.  AddressBook sorts the displayed list based on the specified criteria.
-4.  AddressBook displays the sorted list of persons.
+3.  AscendNetwork sorts the displayed list based on the specified criteria.
+4.  AscendNetwork displays the sorted list of persons.
     Use case ends.
 
 **Extensions**
 
 * 2a. User provides an invalid sort command format or missing sort criteria.
-    * 2a1. AddressBook shows an error message indicating the invalid command format or missing criteria.
+    * 2a1. AscendNetwork shows an error message indicating the invalid command format or missing criteria.
       Use case resumes at step 1.
 * 2b. User provides an unsupported sort criteria.
-    * 2b1. AddressBook shows an error message indicating that the specified criteria is not supported for sorting.
+    * 2b1. AscendNetwork shows an error message indicating that the specified criteria is not supported for sorting.
       Use case resumes at step 1.
 
 **Use case: UC10 - Export multiple matching persons**
@@ -515,19 +515,19 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1. User <ins>finds persons by name and tag (UC5)</ins>.
 2. User requests to remove some tags from all persons shown.
-3. AddressBook removes the tags from all persons shown.
+3. AscendNetwork removes the tags from all persons shown.
    Use case ends.
 
 **Extensions**
 
 * 2a. The users does not provide any tags to remove.
-    * 2a1. AddressBook shows an error message.
+    * 2a1. AscendNetwork shows an error message.
       Use case resumes at step 1.
 * 2b. The user provides tags with invalid format.
-    * 2b1. AddressBook shows an error message.
+    * 2b1. AscendNetwork shows an error message.
       Use case resumes at step 1.
 * 2c. No persons are currently shown.
-    * 2c1. AddressBook shows an error message.
+    * 2c1. AscendNetwork shows an error message.
       Use case resumes at step 1.
 
 **Use case: UC12 - Add existing persons to the list**
@@ -541,13 +541,13 @@ Use case ends.
 
 **Extensions**
 * 1a. The user does not provide any name keyword.
-    * 1a1. AddressBook shows an error message.
+    * 1a1. AscendNetwork shows an error message.
       Use case resumes at step 1.
 * 1b. The user provides a name keyword that doesn't exist in address book.
-    * 1b1. AddressBook shows 0 person is added.
+    * 1b1. AscendNetwork shows 0 person is added.
       Use case resumes at step 1.
 * 1c. The user provides a name keyword that is already in the list.
-    * 1c1. AddressBook shows 0 person is added.
+    * 1c1. AscendNetwork shows 0 person is added.
       Use case resumes at step 1.
 
 ### Non-Functional Requirements
@@ -572,7 +572,7 @@ Use case ends.
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
-* **Person/Contact**: An entry in the addressbook
+* **Person/Contact**: An entry in the AscendNetwork
 * **Downline**: A person that is lower in the marketing network than the user
 * **Commission**: The amount of money received from the person through sales
 
