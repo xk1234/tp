@@ -2,7 +2,7 @@ plugins {
     id 'java'
     id 'checkstyle'
     id 'com.github.johnrengelman.shadow' version '7.1.2'
-    id 'application'
+    id 'application' // Make sure this plugin is applied
     id 'jacoco'
 }
 
@@ -16,6 +16,12 @@ repositories {
     maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
 }
 
+application {
+    mainClass = 'seedu.address.Main'
+    applicationDefaultJvmArgs = ['-ea']
+}
+
+
 checkstyle {
     toolVersion = '10.2'
 }
@@ -23,6 +29,7 @@ checkstyle {
 test {
     useJUnitPlatform()
     finalizedBy jacocoTestReport
+    jvmArgs '-ea'
 }
 
 task coverage(type: JacocoReport) {
@@ -44,6 +51,7 @@ dependencies {
     String jUnitVersion = '5.4.0'
     String javaFxVersion = '17.0.7'
 
+    // Your dependencies remain the same...
     implementation group: 'org.openjfx', name: 'javafx-base', version: javaFxVersion, classifier: 'win'
     implementation group: 'org.openjfx', name: 'javafx-base', version: javaFxVersion, classifier: 'mac'
     implementation group: 'org.openjfx', name: 'javafx-base', version: javaFxVersion, classifier: 'linux'
@@ -66,7 +74,11 @@ dependencies {
 }
 
 shadowJar {
-    archiveFileName = 'ascendnetwork.jar'
+    archiveFileName = 'AscendNetwork.jar'
+    // If you want the MANIFEST.MF inside the shadow JAR to specify the main class:
+    manifest {
+        attributes 'Main-Class': project.mainClassName
+    }
 }
 
 defaultTasks 'clean', 'test'

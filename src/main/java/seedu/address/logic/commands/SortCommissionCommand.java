@@ -70,8 +70,7 @@ public class SortCommissionCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         if (!isSortProvided) {
-            model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-            return new CommandResult(messageSuccess);
+            throw new CommandException("Sort Type Not Provided");
         }
 
         model.setPersons(getSortedList(model.getFilteredPersonList()));
