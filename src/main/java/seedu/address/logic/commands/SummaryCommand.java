@@ -16,7 +16,7 @@ import seedu.address.model.person.Person;
  */
 public class SummaryCommand extends Command {
 
-    public static final String COMMAND_WORD = "stat";
+    public static final String COMMAND_WORD = "summary";
 
     /**
      * Calculates the total commission of the people.

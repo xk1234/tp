@@ -62,7 +62,6 @@ public class SummaryCommandTest {
         List<Person> lastShownList = List.of(ALICE, BENSON);
         SummaryCommand summaryCommand = new SummaryCommand();
         Person highest = summaryCommand.getHighest(lastShownList);
-        assertNotNull(highest);
         assertEquals(BENSON, highest);
     }
 
