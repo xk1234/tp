@@ -292,28 +292,28 @@ _Details coming soon ..._
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
 
-**Q**: How can I back up my data?
+**Q**: How can I back up my data?<br>
 **A**: You can manually back up your `addressbook.json` file by copying it to a safe location.
 
-**Q**: Can I import contacts from another system?
+**Q**: Can I import contacts from another system?<br>
 **A**: Currently, AscendNetwork does not support direct imports from CSV or other contact management systems.
 
-**Q**: Can I export contacts to another system?
+**Q**: Can I export contacts to another system?<br>
 **A**: Yes, you can export selected contacts as CSV with the `export` command. Then you can import contacts from CSV to external systems that support imports, such as Google Contacts.
 
-**Q**: Can multiple users access the same address book?
+**Q**: Can multiple users access the same address book?<br>
 **A**: AscendNetwork is designed for single-user use. If multiple users need to access the same contact database, they must manually share the `addressbook.json` file.
 
-**Q**: Will AscendNetwork work on mobile devices?
+**Q**: Will AscendNetwork work on mobile devices?<br>
 **A**: No, AscendNetwork is designed for desktop operating systems such as Windows, macOS, and Linux.
 
-**Q**: Does AscendNetwork require an internet connection?
+**Q**: Does AscendNetwork require an internet connection?<br>
 **A**: No, all data is stored locally on your device, and the app works entirely offline.
 
-**Q**: How many contacts can AscendNetwork keep?
+**Q**: How many contacts can AscendNetwork keep?<br>
 **A**: While there is no hard limit, we advise not having more than 1000 contacts for performance reasons.
 
-**Q**: How do I update AscendNetwork to a newer version?
+**Q**: How do I update AscendNetwork to a newer version?<br>
 **A**: Download the latest .jar file from [here](https://github.com/AY2425S2-CS2103T-T14-4/tp/releases) and replace your existing .jar file with the new one. Your data will remain intact if it is stored in the same folder.
 
 --------------------------------------------------------------------------------------------------------------------
