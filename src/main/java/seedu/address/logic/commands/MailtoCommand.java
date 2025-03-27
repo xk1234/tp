@@ -16,8 +16,10 @@ public class MailtoCommand extends Command {
 
     public static final String COMMAND_WORD = "mailto";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Format contacts into a link\n"
-            + "Example: " + COMMAND_WORD;
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+        + ": Generates a mailto link using the email addresses of selected contacts in AscendNetwork.\n"
+        + "Copy the link to your browser's address bar to compose an email to all the selected recipients.\n"
+        + "Example: " + COMMAND_WORD;
 
     public static final String MESSAGE_MAILTO_SUCCESS_FORMAT =
         "Success! Copy this link to your browser's address bar:\n%1$s";
