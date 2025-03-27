@@ -14,7 +14,7 @@ AI Usage
 
 - Existing problems, target direction, and name ideas: Used by Xinkang to brainstorm all of these(Google AI studio)
 - User stories: Used by Xinkang to brainstorm target user and come up with user stories. User stories were later edited to fit the required format(Google AI studio)
-- Feature Specifications: Used by Xinkang to write initial feature specifications in the required format. Final product was edited to accomodate changes from other group members(O3 mini)
+- Feature Specifications: Used by Xinkang to write initial feature specifications in the required format. Final product was edited to accommodate changes from other group members(O3 mini)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -161,6 +161,37 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Filtering the persons list
+
+#### Implementation
+
+The filtering mechanism is facilitated by the `Model` interface with the following operations:
+
+* `Model#updateFilteredPersonList(Predicate<Person>)`— Filters which `Person` are displayed to the user. This method uses Java's `Predicate` interface, for which there are multiple implementing classes.
+* `Model#getFilteredPersonList()`— Returns the current list of filtered `Person`.
+
+<img src="images/FilteringDiagram.png" width="450" />
+
+The filtering mechanism works as follows:
+
+Step 1. When a filtering command is executed, the command's parser creates an appropriate `Predicate` based on the user input and passes it to the command.
+
+Step 2. The command then calls `model.updateFilteredPersonList(predicate)` to apply the filter.
+
+Step 3. The UI automatically updates to display only the filtered persons.
+
+#### Design considerations:
+
+**Aspect: How to implement complex filtering:**
+
+* **Alternative 1 (current choice):** Composite predicates are used that combine simpler predicates.
+    * Pros: More maintainable as there is less repeated code.
+    * Cons: May be more complex to implement initially.
+
+* **Alternative 2:** Independent predicates.
+    * Pros: Easier to implement as filtering the logic can be directly used.
+    * Cons: It is less maintainable as the same logic may be re-implemented multiple times.
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
@@ -242,13 +273,6 @@ The following activity diagram summarizes what happens when a user executes a ne
     * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
     * Cons: We must ensure that the implementation of each individual command are correct.
 
-_{more aspects and alternatives to be added}_
-
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
-
-
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
@@ -268,44 +292,44 @@ _{Explain here how the data archiving feature will be implemented}_
 **Target user profile**:
 
 * Network marketeer
-* Has a need to manage a significant number of contacts
-* Each contact has a commission to track
+* Has a need to manage a significant number of persons
+* Each person has a commission to track
 * Prefer desktop apps over other types
 * Can type fast
 * Prefers typing to mouse interactions
 * Is reasonably comfortable using CLI apps
 
-**Value proposition**: Manage contacts faster than a typical mouse/GUI driven app and easily track commission of contacts.
+**Value proposition**: Manage persons faster than a typical mouse/GUI driven app and easily track commission of persons.
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …                           | I want to …                                         | So that I can…                                                         | 
-|:--------:|----------------------------------|-----------------------------------------------------|------------------------------------------------------------------------| 
+| Priority | As a …                           | I want to …                                         | So that I can…                                                         |
+|:--------:|----------------------------------|-----------------------------------------------------|------------------------------------------------------------------------|
 | `* * *`  | New user                         | See usage instructions                              | Refer to instructions when I forget how to use the App                 |
 | `* * *`  | User                             | Add a new person                                    |                                                                        |
 | `* * *`  | User                             | Edit a person                                       | Change the information reflected when their information changes        |
 | `* * *`  | User                             | Delete a person                                     | Remove entries that I no longer need                                   |
 | `* * *`  | User                             | Find a person by name                               | Locate details of persons without having to go through the entire list |
-| `* * *`  | User                             | Show all contacts                                   | Manage them together                                                   |
+| `* * *`  | User                             | Show all persons                                    | Manage them together                                                   |
 | `* * *`  | User                             | Close the app                                       |                                                                        |
-|  `* *`   | User                             | Clear my contacts                                   | Start from a fresh state                                               |
-|  `* *`   | User                             | Add existing people to currently displayed contacts | Quickly create a custom view of contacts                               |
-| `* * *`  | Marketeer with a segmented lists | Find a person by tags                               | Quickly access specific groups of contacts                             |
+|  `* *`   | User                             | Clear my persons                                    | Start from a fresh state                                               |
+|  `* *`   | User                             | Add existing persons to currently displayed persons | Quickly create a custom view of persons                                |
+| `* * *`  | Marketeer with a segmented lists | Find a person by tags                               | Quickly access specific groups of persons                              |
 | `* * *`  | Data enthusiast                  | Export reports                                      | Further analyze with external systems                                  |
 | `* * *`  | Team leader                      | Record the commission earned from team members      | Monitor the financial impact of my team expansion                      |
-|  `* *`   | Time-conscious communicator      | Send bulk messages to specific groups of contacts   | Share updates quickly without crafting individual messages             |
+|  `* *`   | Time-conscious communicator      | Send bulk messages to specific groups of persons    | Share updates quickly without crafting individual messages             |
 |  `* *`   | Well connected person            | Sort persons by attributes                          | Locate a person easily                                                 |
-|  `* *`   | Efficient user                   | Tag multiple contacts at once                       | Quickly organize large groups of contacts                              |
-|  `* *`   | Efficient user                   | Remove tags from multiple contacts at once          | Clear out unused tags from all my contacts                             |
+|  `* *`   | Efficient user                   | Tag multiple persons at once                        | Quickly organize large groups of persons                               |
+|  `* *`   | Efficient user                   | Remove tags from multiple persons  at once          | Clear out unused tags from all my persons                              |
 |   `*`    | Team leader                      | Visualize my network of downlines                   | Monitor the progress of my team expansion                              |
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `AscendNetwork` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: UC1 - Show all contacts**
+**Use case: UC1 - Show all persons**
 
 **MSS**
 
@@ -323,7 +347,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. User requests to add a person
-2. AddressBook adds the person
+2. AscendNetwork adds the person
 
    Use case ends.
 
@@ -331,11 +355,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. The user uses invalid format.
 
-    * 1a1. AddressBook shows an error message.
+    * 1a1. AscendNetwork shows an error message.
 
       Use case resumes at step 1.
 * 1b. The user tries to add a person that is already in the contact.
-    * 1b1. AddressBook shows an error message.
+    * 1b1. AscendNetwork shows an error message.
 
       Use case resumes at step 1.
 
@@ -344,94 +368,97 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1.  User <ins>shows all contacts (UC1)</ins>.
 2.  User requests to edit a specific person in the list.
 3.  User states which fields to update and provide updated details.
-4.  AddressBook edits the person with updated details.
+4.  AscendNetwork edits the person with updated details.
     Use case ends.
 
 **Extensions**
 
 * 2a. The given index is invalid.
-    * 2a1. AddressBook shows an error message.
+    * 2a1. AscendNetwork shows an error message.
       Use case resumes at step 1.
 * 3a. The details provided are invalid.
-    * 3a1. AddressBook shows an error message.
+    * 3a1. AscendNetwork shows an error message.
       Use case resumes at step 1.
 
 **Use case: UC4 - Delete a person**
 
 **MSS**
 
-1.  User <ins>shows all contacts (UC1)</ins>.
+1.  User <ins>shows all persons (UC1)</ins>.
 2.  User requests to delete a specific person in the list
-3.  AddressBook deletes the person
+3.  AscendNetwork deletes the person
     Use case ends.
 
 **Extensions**
 
 * 2a. The given index is invalid.
-    * 2a1. AddressBook shows an error message.
+    * 2a1. AscendNetwork shows an error message.
       Use case resumes at step 1.
 
 **Use case: UC5 - Find persons by name and tag**
 
 **MSS**
 
-1.  User <ins>shows all contacts (UC1)</ins>.
+1.  User <ins>shows all persons (UC1)</ins>.
 2.  User requests to find persons with names and tags.
-3.  AddressBook shows all contacts that passes the filter.
+3.  AscendNetwork shows all persons that passes the filter.
     use case ends.
 
 **Extensions**
 
 * 2a. The user does not provide any filter criteria.
-    * 2a1. AddressBook shows an error message.
+    * 2a1. AscendNetwork shows an error message.
       Use case resumes at step 1.
 * 2b. The user provides filter in incorrect format.
-    * 2b1. AddressBook shows an error message.
+    * 2b1. AscendNetwork shows an error message.
       Use case resumes at step 1.
-* 3a. No contacts passes the filter. No contacts are shown.
+* 3a. No persons passes the filter. No persons are shown.
   Use case ends.
 
 **Use case: UC6 - Add commission received from person**
 
 **MSS**
 
-1.  User <ins>shows all contacts (UC1)</ins>.
+1.  User <ins>shows all persons (UC1)</ins>.
 2.  User requests to add commission received from a specific downline in the list and specifies the amount of commission received.
-4.  AddressBook records the commission received from that person.
+4.  AscendNetwork records the commission received from that person.
     Use case ends.
 
 **Extensions**
 
 * 2a. The given index is invalid.
-    * 2a1. AddressBook shows an error message.
+    * 2a1. AscendNetwork shows an error message.
       Use case resumes at step 1.
 * 3a. User provides invalid input for the commission amount (e.g., non-numeric).
-    * 3b1. AddressBook shows an error message indicating invalid commission amount.
+    * 3b1. AscendNetwork shows an error message indicating invalid commission amount.
       Use case resumes at step 3.
 
-**Use case: UC7 - Tag multiple contacts at once**
+**Use case: UC7 - Tag multiple persons at once**
 
 **MSS**
 
-1. User <ins>find persons by name and tag (UC5)</ins>.
-2. User requests to tag all persons currently on the list.
-3. AddressBook adds the tags to all persons currently on the list.
+1. User <ins>finds persons by name and tag (UC5)</ins>.
+2. User requests to tag all persons currently shown.
+3. AscendNetwork adds the tags to all persons currently shown.
    Use case ends.
 
 **Extensions**
 
 * 2a. The users does not provide any tags to add.
-    * 2a1. AddressBook shows an error message.
+    * 2a1. AscendNetwork shows an error message.
       Use case resumes at step 1.
 * 2b. The user provides tags with invalid format.
-    * 2b1. AddressBook shows an error message.
+    * 2b1. AscendNetwork shows an error message.
+      Use case resumes at step 1.
+* 2c. No persons are currently shown.
+    * 2c1. AscendNetwork shows an error message.
       Use case resumes at step 1.
 
 **Use case: UC8 - Send Bulk Messages**
 
 **MSS**
 
-1. User <ins>find persons by name and tag (UC5)</ins>
+1. User <ins>finds persons by name and tag (UC5)</ins>
 2. User sends mails to the persons in the list
 
    Use case ends.
@@ -444,79 +471,83 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User <ins>searches for contacts (UC1)</ins>.
+1.  User <ins>shows all persons (UC1)</ins>.
 2.  User issues a command to sort the displayed list.
-3.  AddressBook sorts the displayed list based on the specified criteria.
-4.  AddressBook displays the sorted list of contacts.
+3.  AscendNetwork sorts the displayed list based on the specified criteria.
+4.  AscendNetwork displays the sorted list of persons.
     Use case ends.
 
 **Extensions**
 
 * 2a. User provides an invalid sort command format or missing sort criteria.
-    * 2a1. AddressBook shows an error message indicating the invalid command format or missing criteria.
+    * 2a1. AscendNetwork shows an error message indicating the invalid command format or missing criteria.
       Use case resumes at step 1.
 * 2b. User provides an unsupported sort criteria.
-    * 2b1. AddressBook shows an error message indicating that the specified criteria is not supported for sorting.
+    * 2b1. AscendNetwork shows an error message indicating that the specified criteria is not supported for sorting.
       Use case resumes at step 1.
 
-**Use case: UC10 - Export multiple matching contacts**
+**Use case: UC10 - Export multiple matching persons**
 
 **MSS**
 
-1.  User <ins>find persons by name and tag (UC5)</ins>.
-2.  User requests to export contacts of all persons currently on the list.
-3.  User selects which fields to export from the contacts.
-4.  AddressBook exports contacts to default file path.
+1.  User <ins>finds persons by name and tag (UC5)</ins>.
+2.  User requests to export the details of the currently displayed persons.
+3.  User provides the file path to export the file to.
+4.  User selects which fields to export from the currently displayed persons.
+5.  AscendNetwork exports persons to the specified file path.
     Use case ends.
 
 **Extensions**   
 
 * 2a. The list is empty.
-    * 2a1. AddressBook shows an error message.
+    * 2a1. AscendNetwork shows an error message.
       Use case resumes at step 1.
-* 3a. The user selects invalid fields.
-    * 3a1. AddressBook shows an error message.
+* 3a. The file path is not valid.
+    * 2a1. AscendNetwork shows an error message.
+      Use case resumes at step 1.
+* 4a. The user selects invalid fields.
+    * 3a1. AscendNetwork shows an error message.
       Use case resumes at step 1.
 
-**Use case: UC11 - Remove Tag from multiple contacts at once**
+**Use case: UC11 - Remove Tag from multiple persons at once**
 
 **MSS**
 
-1. User <ins>find persons by name and tag (UC5)</ins>.
+1. User <ins>finds persons by name and tag (UC5)</ins>.
 2. User requests to remove some tags from all persons shown.
-3. AddressBook removes the tags from all persons shown.
+3. AscendNetwork removes the tags from all persons shown.
    Use case ends.
 
 **Extensions**
 
 * 2a. The users does not provide any tags to remove.
-    * 2a1. AddressBook shows an error message.
+    * 2a1. AscendNetwork shows an error message.
       Use case resumes at step 1.
 * 2b. The user provides tags with invalid format.
-    * 2b1. AddressBook shows an error message.
+    * 2b1. AscendNetwork shows an error message.
       Use case resumes at step 1.
-* 2c. No contacts are currently shown.
-    * 2c1. AddressBook shows an error message.
+* 2c. No persons are currently shown.
+    * 2c1. AscendNetwork shows an error message.
       Use case resumes at step 1.
 
-**Use case: UC12 - Add existing contacts to the list**
+**Use case: UC12 - Add existing persons to the list**
 
 **MSS**
 
-1. User requests to add people by their names to the list.
-2. Address book adds those people to the list.
+1. User requests to add persons by their names to the list.
+2. Address book adds those person to the list.
 
 Use case ends.
 
 **Extensions**
 * 1a. The user does not provide any name keyword.
-    * 1a1. AddressBook shows an error message.
+    * 1a1. AscendNetwork shows an error message.
       Use case resumes at step 1.
 * 1b. The user provides a name keyword that doesn't exist in address book.
-    * 1b1. AddressBook shows 0 person is added.
+    * 1b1. AscendNetwork shows 0 person is added.
       Use case resumes at step 1.
 * 1c. The user provides a name keyword that is already in the list.
-    * 1c1. AddressBook shows 0 person is added.
+    * 1c1. AscendNetwork shows 0 person is added.
       Use case resumes at step 1.
 
 **Use case: UC13 - Mail to multiple contacts**
@@ -557,9 +588,9 @@ Use case ends.
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
-* **Person/Contact**: An entry in the addresssbook
-* **Downline**: A contact that is lower in the marketing network than the user
-* **Commission**: The amount of money received from the contact through sales
+* **Person/Contact**: An entry in the AscendNetwork
+* **Downline**: A person that is lower in the marketing network than the user
+* **Commission**: The amount of money received from the person through sales
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -578,7 +609,7 @@ testers are expected to do more *exploratory* testing.
 
     1. Download the jar file and copy into an empty folder
 
-    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+    1. Double-click the jar file Expected: Shows the GUI with a set of sample persons. The window size may not be optimum.
 
 1. Saving window preferences
 
@@ -587,8 +618,6 @@ testers are expected to do more *exploratory* testing.
     1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
-
 ### Deleting a person
 
 1. Deleting a person while all persons are being shown
@@ -596,15 +625,13 @@ testers are expected to do more *exploratory* testing.
     1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
 
     1. Test case: `delete 1`<br>
-       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+       Expected: First person is deleted from the list. Details of the deleted person shown in the status message. Timestamp in the status bar is updated.
 
     1. Test case: `delete 0`<br>
        Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
 
     1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
        Expected: Similar to previous.
-
-1. _{ more test cases …​ }_
 
 ### Saving data
 

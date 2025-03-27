@@ -12,6 +12,8 @@ UniqueTagList -[hidden]down- UniquePersonList
 UniqueTagList -right-> "*" Tag
 UniquePersonList -right-> Person
 
+enum "<<enumeration>>\nAttribute" as Attribute
+
 Person -up-> "*" Tag
 
 Person *--> Name
@@ -19,4 +21,7 @@ Person *--> Phone
 Person *--> Email
 Person *--> Address
 Person *--> Commission
+
+' Dependency showing that Person uses Attribute enum.
+Person ..> Attribute
 @enduml

@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,6 +24,7 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.person.Attribute;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.PersonBuilder;
 
@@ -161,6 +163,11 @@ public class AddCommandTest {
 
         @Override
         public void setPersons(List<Person> persons) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void exportAsCsv(List<Attribute> attributes, Path path) throws IOException {
             throw new AssertionError("This method should not be called.");
         }
     }
