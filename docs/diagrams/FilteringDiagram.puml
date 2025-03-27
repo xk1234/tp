@@ -1,0 +1,19 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor MODEL_COLOR
+skinparam classBackgroundColor MODEL_COLOR
+
+package "Predicate classes" {
+Class XYZPredicate
+}
+
+Class "<<interface>>\nModel" as Model
+Class "<<interface>>\nPredicate" as Predicate
+
+Model .right.> Predicate : <<use>>
+Predicate <|.. XYZPredicate
+
+note left of XYZPredicate: XYZPredicate = NameContainsKeywordsPredicate,\nTagContainsKeywordsPredicate, etc
+@enduml
+

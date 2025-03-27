@@ -28,8 +28,8 @@ AscendNetwork is built with **network marketeers** in mind—people who often de
 ## Quick Start
 
 1. **Open up your “command terminal”**.
-   * A command terminal is a program where you can type text-based commands to your computer.  
-   * On **Windows**, look for “Command Prompt” or “PowerShell” in your Start Menu.  
+   * A command terminal is a program where you can type text-based commands to your computer.
+   * On **Windows**, look for “Command Prompt” or “PowerShell” in your Start Menu.
    * On **Mac**, open “Terminal” from your Applications > Utilities folder.
    * On **Linux**, open the terminal you have installed.
 
@@ -75,22 +75,22 @@ AscendNetwork is built with **network marketeers** in mind—people who often de
 
    ![Insert screenshot of a user typing commands, if available](images/CommandInput.png)
 
-   * **`help`** : Opens the help window.  
-   * **`list`** : Lists all existing contacts.  
-   * **`add n/John Doe p/98765432 e/johnd@example.com a/John Street, block 123, #01-01`** : Adds a contact named `John Doe`, whos contact number is `98765432`, has an `email of johnd@example.com` and lives at `John Street, block 123, #01-01`.  
-   * **`delete 3`** : Deletes the 3rd contact in the current list.  
-   * **`clear`** : Deletes **all** contacts.  
+   * **`help`** : Opens the help window.
+   * **`list`** : Lists all existing contacts.
+   * **`add n/John Doe p/98765432 e/johnd@example.com a/John Street, block 123, #01-01`** : Adds a contact named `John Doe`, whos contact number is `98765432`, has an `email of johnd@example.com` and lives at `John Street, block 123, #01-01`.
+   * **`delete 3`** : Deletes the 3rd contact in the current list.
+   * **`clear`** : Deletes **all** contacts.
    * **`exit`** : Closes the app.
 
 <div markdown="block" class="alert alert-info">
 
 **:information_source: AscendNetwork commands follow a straightforward format:**
 
-* **UPPER_CASE** words are placeholders (e.g., `NAME` in `add n/NAME`).  
-* **Square brackets `[ ]`** indicate optional items (e.g., `[t/TAG]`).  
-* **Items with `...`** can appear multiple times or not at all (e.g., `[t/TAG]...`).  
-* **Curly braces `{ }` separated by `|`** mean “choose one” (e.g., `{n/NAME | t/TAG}`).  
-* **Parameters can be in any order.**  
+* **UPPER_CASE** words are placeholders (e.g., `NAME` in `add n/NAME`).
+* **Square brackets `[ ]`** indicate optional items (e.g., `[t/TAG]`).
+* **Items with `...`** can appear multiple times or not at all (e.g., `[t/TAG]...`).
+* **Curly braces `{ }` separated by `|`** mean “choose one” (e.g., `{n/NAME | t/TAG}`).
+* **Parameters can be in any order.**
 * **Extraneous parameters** are ignored for commands that do not accept any (e.g., `help 123` is treated as `help`).
 
 _If you are reading this from a PDF, watch out for spacing issues when copying multi-line commands._
