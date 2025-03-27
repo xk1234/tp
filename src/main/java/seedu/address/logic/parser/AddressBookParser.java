@@ -22,8 +22,8 @@ import seedu.address.logic.commands.IncludePersonCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.RemoveTagCommand;
 import seedu.address.logic.commands.SortCommissionCommand;
+import seedu.address.logic.commands.SummaryCommand;
 import seedu.address.logic.commands.TagCommand;
-import seedu.address.logic.commands.TotalCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -97,8 +97,8 @@ public class AddressBookParser {
         case SortCommissionCommand.COMMAND_WORD:
             return new SortCommissionCommandParser().parse(arguments);
 
-        case TotalCommand.COMMAND_WORD:
-            return new TotalCommand();
+        case SummaryCommand.COMMAND_WORD:
+            return new SummaryCommand();
 
         case ExportCommand.COMMAND_WORD:
             return new ExportCommandParser().parse(arguments);
