@@ -10,14 +10,23 @@ import seedu.address.commons.util.ToStringBuilder;
  * Represents the result of a command execution.
  */
 public class CommandResult {
+    /**
+     * Represents the data for a clickable text element that links to a specified URL.
+     * The text is displayed in a separate window with clipboard support.
+     * If the URL is {@code null}, nothing will be displayed.
+     *
+     * @param url  the URL to which the text links; if {@code null}, the link is not displayed
+     * @param text the text to be displayed and copied to the clipboard
+     */
+    public record LinkedText(String url, String text) {}
 
     private final String feedbackToUser;
 
     /**
-     * Displays text in a separate window with clipboard support.
-     * Nothing is displayed if this is null
-     **/
-    private final String linkWindowText;
+     * The text to be displayed in a separate window with clipboard support.
+     * If {@code linkWindowText} is {@code null}, nothing will be displayed.
+     */
+    private final LinkedText linkWindowText;
 
     /** The application should exit. */
     private final boolean exit;
@@ -25,7 +34,7 @@ public class CommandResult {
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
-    public CommandResult(String feedbackToUser, String linkWindowText, boolean exit) {
+    public CommandResult(String feedbackToUser, LinkedText linkWindowText, boolean exit) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.linkWindowText = linkWindowText;
         this.exit = exit;
@@ -43,7 +52,7 @@ public class CommandResult {
         return feedbackToUser;
     }
 
-    public String getLinkWindowText() {
+    public LinkedText getLinkWindowText() {
         return linkWindowText;
     }
 
