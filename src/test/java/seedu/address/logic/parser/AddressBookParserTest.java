@@ -30,6 +30,7 @@ import seedu.address.logic.commands.ExportCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.MailtoCommand;
 import seedu.address.logic.commands.RemoveTagCommand;
 import seedu.address.logic.commands.SummaryCommand;
 import seedu.address.logic.commands.TagCommand;
@@ -161,6 +162,11 @@ public class AddressBookParserTest {
         ExportCommand command = (ExportCommand) parser.parseCommand(ExportCommand.COMMAND_WORD + " " + fileName
                 + " " + PREFIX_ATTRIBUTE + Attribute.NAME);
         assertEquals(new ExportCommand(List.of(Attribute.NAME), Path.of(fileName)), command);
+    }
+
+    @Test
+    public void parseCommand_mailto() throws Exception {
+        assertTrue(parser.parseCommand(MailtoCommand.COMMAND_WORD) instanceof MailtoCommand);
     }
 
     @Test
