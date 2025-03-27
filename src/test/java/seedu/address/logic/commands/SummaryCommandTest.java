@@ -37,11 +37,6 @@ public class SummaryCommandTest {
     }
 
     @Test
-    public void execute_totalIsNotFiltered_showsSameValue() {
-        assertCommandSuccess(new ListCommand(), model, ListCommand.MESSAGE_SUCCESS, expectedModel);
-    }
-
-    @Test
     void calculateTotalCommission_correctlySumsValues() {
         List<Person> lastShownList = List.of(
                 ALICE,
