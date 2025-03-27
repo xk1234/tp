@@ -3,7 +3,7 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import java.math.BigDecimal;
-import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.Comparator;
 import java.util.List;
 
@@ -44,9 +44,12 @@ public class SummaryCommand extends Command {
     }
 
     public double getAverage(List<Person> people) {
+        if (people.isEmpty()) {
+            return 0.00;
+        }
         BigDecimal total = new BigDecimal(getTotal(people).value);
         BigDecimal count = BigDecimal.valueOf(people.size());
-        BigDecimal average = total.divide(count, MathContext.DECIMAL128);
+        BigDecimal average = total.divide(count, 2, RoundingMode.HALF_UP);
         return average.doubleValue();
     }
 
