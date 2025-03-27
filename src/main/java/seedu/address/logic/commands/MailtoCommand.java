@@ -25,7 +25,9 @@ public class MailtoCommand extends Command {
         + "Example: " + COMMAND_WORD;
 
     public static final String MESSAGE_MAILTO_SUCCESS_FORMAT =
-        "Success! Copy this link to your browser's address bar:\n%1$s";
+        "Open this in a browser's address bar: %1$s";
+
+    public static final String SHOWING_MAILTO_MESSAGE = "Opened mailto link window.";
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
@@ -37,6 +39,8 @@ public class MailtoCommand extends Command {
         String url = filteredPersons.stream()
                 .map(person -> person.getEmail().toString())
                 .collect(Collectors.joining(",", "mailto:", ""));
-        return new CommandResult(String.format(MESSAGE_MAILTO_SUCCESS_FORMAT, url));
+        CommandResult.LinkedText linkedText = new CommandResult.LinkedText(
+                url, String.format(MESSAGE_MAILTO_SUCCESS_FORMAT, url));
+        return new CommandResult(SHOWING_MAILTO_MESSAGE, linkedText, false);
     }
 }
