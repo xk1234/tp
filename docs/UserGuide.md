@@ -227,6 +227,8 @@ Exports your contacts to a CSV file. This can be edited with e.g. Excel.
 
 Format: `export FILE_PATH [a/ATTRIBUTE]...`
 
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:** The command will fail if the file cannot be edited, e.g., if you already have the file opened.</div>
+
 * `FILE_PATH` is a file path with suffix `.csv` and consists of only alphanumeric characters.
 * `ATTRIBUTE` may be **`name`, `phone`, `email`, `address`, or `commission`**. It is case-insensitive. You should not use the same `ATTRIBUTE` twice.
 * Only the currently displayed list is exported, so that you can select which contacts to export.
