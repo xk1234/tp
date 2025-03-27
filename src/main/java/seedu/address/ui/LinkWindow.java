@@ -13,13 +13,13 @@ import seedu.address.commons.core.LogsCenter;
 /**
  * Controller for a help page
  */
-public class HelpWindow extends UiPart<Stage> {
+public class LinkWindow extends UiPart<Stage> {
 
     public static final String USERGUIDE_URL = "https://ay2425s2-cs2103t-t14-4.github.io/tp/UserGuide.html";
     public static final String HELP_MESSAGE = "Refer to the user guide: " + USERGUIDE_URL;
 
-    private static final Logger logger = LogsCenter.getLogger(HelpWindow.class);
-    private static final String FXML = "HelpWindow.fxml";
+    private static final Logger logger = LogsCenter.getLogger(LinkWindow.class);
+    private static final String FXML = "LinkWindow.fxml";
 
     @FXML
     private Button copyButton;
@@ -28,19 +28,19 @@ public class HelpWindow extends UiPart<Stage> {
     private Label helpMessage;
 
     /**
-     * Creates a new HelpWindow.
+     * Creates a new LinkWindow.
      *
-     * @param root Stage to use as the root of the HelpWindow.
+     * @param root Stage to use as the root of the LinkWindow.
      */
-    public HelpWindow(Stage root) {
+    public LinkWindow(Stage root) {
         super(FXML, root);
         helpMessage.setText(HELP_MESSAGE);
     }
 
     /**
-     * Creates a new HelpWindow.
+     * Creates a new LinkWindow.
      */
-    public HelpWindow() {
+    public LinkWindow() {
         this(new Stage());
     }
 

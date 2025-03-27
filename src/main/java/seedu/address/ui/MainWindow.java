@@ -33,7 +33,7 @@ public class MainWindow extends UiPart<Stage> {
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
     private ResultDisplay resultDisplay;
-    private HelpWindow linkWindow;
+    private LinkWindow linkWindow;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -65,7 +65,7 @@ public class MainWindow extends UiPart<Stage> {
 
         setAccelerators();
 
-        linkWindow = new HelpWindow();
+        linkWindow = new LinkWindow();
     }
 
     public Stage getPrimaryStage() {
