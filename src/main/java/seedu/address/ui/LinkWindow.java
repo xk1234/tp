@@ -9,23 +9,22 @@ import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.logic.commands.CommandResult;
 
 /**
- * Controller for a help page
+ * Controller for a window with link
  */
 public class LinkWindow extends UiPart<Stage> {
-
-    public static final String USERGUIDE_URL = "https://ay2425s2-cs2103t-t14-4.github.io/tp/UserGuide.html";
-    public static final String HELP_MESSAGE = "Refer to the user guide: " + USERGUIDE_URL;
-
     private static final Logger logger = LogsCenter.getLogger(LinkWindow.class);
     private static final String FXML = "LinkWindow.fxml";
+
+    private CommandResult.LinkedText linkedText;
 
     @FXML
     private Button copyButton;
 
     @FXML
-    private Label helpMessage;
+    private Label label;
 
     /**
      * Creates a new LinkWindow.
@@ -34,7 +33,6 @@ public class LinkWindow extends UiPart<Stage> {
      */
     public LinkWindow(Stage root) {
         super(FXML, root);
-        helpMessage.setText(HELP_MESSAGE);
     }
 
     /**
@@ -96,7 +94,17 @@ public class LinkWindow extends UiPart<Stage> {
     private void copyUrl() {
         final Clipboard clipboard = Clipboard.getSystemClipboard();
         final ClipboardContent url = new ClipboardContent();
-        url.putString(USERGUIDE_URL);
+        url.putString(linkedText.url());
         clipboard.setContent(url);
+    }
+
+    /**
+     * Updates the displayed linked text and sets the label accordingly.
+     *
+     * @param linkedText the new linked text to be displayed
+     */
+    public void updateLinkedText(CommandResult.LinkedText linkedText) {
+        this.linkedText = linkedText;
+        label.setText(this.linkedText.text());
     }
 }

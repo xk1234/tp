@@ -139,7 +139,8 @@ public class MainWindow extends UiPart<Stage> {
      * Opens the help window or focuses on it if it's already opened.
      */
     @FXML
-    public void handleLinkWindow() {
+    public void handleLinkWindow(CommandResult.LinkedText linkedText) {
+        linkWindow.updateLinkedText(linkedText);
         if (!linkWindow.isShowing()) {
             linkWindow.show();
         } else {
@@ -178,8 +179,8 @@ public class MainWindow extends UiPart<Stage> {
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
-            if (commandResult.hasWindowText()) {
-                handleLinkWindow();
+            if (commandResult.hasLinkedText()) {
+                handleLinkWindow(commandResult.getLinkedText());
             }
 
             if (commandResult.isExit()) {

@@ -26,7 +26,7 @@ public class CommandResult {
      * The text to be displayed in a separate window with clipboard support.
      * If {@code linkWindowText} is {@code null}, nothing will be displayed.
      */
-    private final LinkedText linkWindowText;
+    private final LinkedText linkedText;
 
     /** The application should exit. */
     private final boolean exit;
@@ -34,9 +34,9 @@ public class CommandResult {
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
-    public CommandResult(String feedbackToUser, LinkedText linkWindowText, boolean exit) {
+    public CommandResult(String feedbackToUser, LinkedText linkedText, boolean exit) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
-        this.linkWindowText = linkWindowText;
+        this.linkedText = linkedText;
         this.exit = exit;
     }
 
@@ -52,12 +52,12 @@ public class CommandResult {
         return feedbackToUser;
     }
 
-    public LinkedText getLinkWindowText() {
-        return linkWindowText;
+    public LinkedText getLinkedText() {
+        return linkedText;
     }
 
-    public boolean hasWindowText() {
-        return linkWindowText != null;
+    public boolean hasLinkedText() {
+        return linkedText != null;
     }
 
     public boolean isExit() {
@@ -77,20 +77,20 @@ public class CommandResult {
 
         CommandResult otherCommandResult = (CommandResult) other;
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
-                && Objects.equals(linkWindowText, otherCommandResult.linkWindowText)
+                && Objects.equals(linkedText, otherCommandResult.linkedText)
                 && exit == otherCommandResult.exit;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(feedbackToUser, linkWindowText, exit);
+        return Objects.hash(feedbackToUser, linkedText, exit);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("feedbackToUser", feedbackToUser)
-                .add("linkWindowText", linkWindowText)
+                .add("linkWindowText", linkedText)
                 .add("exit", exit)
                 .toString();
     }
