@@ -2,6 +2,7 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -43,48 +44,10 @@ public class LinkWindow extends UiPart<Stage> {
     }
 
     /**
-     * Shows the help window.
-     * @throws IllegalStateException
-     *     <ul>
-     *         <li>
-     *             if this method is called on a thread other than the JavaFX Application Thread.
-     *         </li>
-     *         <li>
-     *             if this method is called during animation or layout processing.
-     *         </li>
-     *         <li>
-     *             if this method is called on the primary stage.
-     *         </li>
-     *         <li>
-     *             if {@code dialogStage} is already showing.
-     *         </li>
-     *     </ul>
-     */
-    public void show() {
-        logger.fine("Showing help page about the application.");
-        getRoot().show();
-        getRoot().centerOnScreen();
-    }
-
-    /**
-     * Returns true if the help window is currently being shown.
-     */
-    public boolean isShowing() {
-        return getRoot().isShowing();
-    }
-
-    /**
-     * Hides the help window.
+     * Hides this LinkWindow.
      */
     public void hide() {
         getRoot().hide();
-    }
-
-    /**
-     * Focuses on the help window.
-     */
-    public void focus() {
-        getRoot().requestFocus();
     }
 
     /**
@@ -99,12 +62,36 @@ public class LinkWindow extends UiPart<Stage> {
     }
 
     /**
-     * Updates the displayed linked text and sets the label accordingly.
-     *
-     * @param linkedText the new linked text to be displayed
+     * Sets the linked text to be shown.
      */
-    public void updateLinkedText(CommandResult.LinkedText linkedText) {
+    void setLinkedText(CommandResult.LinkedText linkedText) {
         this.linkedText = linkedText;
-        label.setText(this.linkedText.text());
+    }
+
+    /**
+     * Shows or focuses on the link window.
+     * @throws IllegalStateException
+     *     <ul>
+     *         <li>
+     *             if this method is called on a thread other than the JavaFX Application Thread.
+     *         </li>
+     *         <li>
+     *             if this method is called during animation or layout processing.
+     *         </li>
+     *         <li>
+     *             if this method is called on the primary stage.
+     *         </li>
+     *     </ul>
+     */
+    public void display() {
+        Stage root = getRoot();
+        if (!root.isShowing()) {
+            logger.fine("LinkWindow shows " + linkedText);
+            label.setText(linkedText.text());
+            root.show();
+            root.centerOnScreen();
+        } else {
+            root.requestFocus();
+        }
     }
 }

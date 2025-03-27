@@ -14,6 +14,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -139,13 +140,9 @@ public class MainWindow extends UiPart<Stage> {
      * Opens the help window or focuses on it if it's already opened.
      */
     @FXML
-    public void handleLinkWindow(CommandResult.LinkedText linkedText) {
-        linkWindow.updateLinkedText(linkedText);
-        if (!linkWindow.isShowing()) {
-            linkWindow.show();
-        } else {
-            linkWindow.focus();
-        }
+    public void handleHelp() {
+        linkWindow.setLinkedText(HelpCommand.HELP_TEXT);
+        linkWindow.display();
     }
 
     void show() {
@@ -180,7 +177,8 @@ public class MainWindow extends UiPart<Stage> {
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
             if (commandResult.hasLinkedText()) {
-                handleLinkWindow(commandResult.getLinkedText());
+                linkWindow.setLinkedText(commandResult.getLinkedText());
+                linkWindow.display();
             }
 
             if (commandResult.isExit()) {
