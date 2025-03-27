@@ -51,7 +51,7 @@ AscendNetwork is built with **network marketeers** in mind—people who often de
 
      Afterwards, repeat the step above to verify if it is installed.
 
-1. **Download the latest `ascendnetwork.jar` file** from our [GitHub releases page](https://github.com/AY2425S2-CS2103T-T14-4/tp/releases).
+1. **Download the latest `AscendNetwork.jar` file** from our [GitHub releases page](https://github.com/AY2425S2-CS2103T-T14-4/tp/releases).
 
    ![Download Jar](images/DownloadJar.png)
 
@@ -65,7 +65,7 @@ AscendNetwork is built with **network marketeers** in mind—people who often de
      ```
    * Then type:
      ```sh
-     java -jar ascendnetwork.jar
+     java -jar AscendNetwork.jar
      ```
    * After a few seconds, the AscendNetwork interface should appear. You will see some sample contacts included by default.
 
@@ -221,6 +221,23 @@ Format: `incl n/NAME_KEYWORD`
 Examples:
 * `incl n/John` finds `john` and `John Doe`
 
+### Export contacts to a CSV file: `export`
+
+Exports your contacts to a CSV file. This can be edited with e.g. Excel.
+
+Format: `export FILE_PATH [a/ATTRIBUTE]...`
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:** The command will fail if the file cannot be edited, e.g., if you already have the file opened.</div>
+
+* `FILE_PATH` is a file path with suffix `.csv` and consists of only alphanumeric characters.
+* `ATTRIBUTE` may be **`name`, `phone`, `email`, `address`, or `commission`**. It is case-insensitive. You should not use the same `ATTRIBUTE` twice.
+* Only the currently displayed list is exported, so that you can select which contacts to export.
+
+Examples:
+* `export data.csv a/NAME a/email` exports only the names and email addresses of the currently displayed contacts to a file named `data.csv`.
+* `export data.csv` exports all details of the currently displayed contacts to a file named `data.csv`.
+![result for 'export'](images/exportResult.png)
+
 ### Deleting a contact : `delete`
 
 Deletes contact you specify from the application.
@@ -279,28 +296,28 @@ _Details coming soon ..._
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AscendNetwork home folder.
 
-**Q**: How can I back up my data?
-**A**: You can manually back up your `ascendnetwork.json` file by copying it to a safe location.
+**Q**: How can I back up my data?<br>
+**A**: You can manually back up your `addressbook.json` file by copying it to a safe location.
 
-**Q**: Can I import contacts from another system?
+**Q**: Can I import contacts from another system?<br>
 **A**: Currently, AscendNetwork does not support direct imports from CSV or other contact management systems.
 
-**Q**: Can I export contacts to another system?
+**Q**: Can I export contacts to another system?<br>
 **A**: Yes, you can export selected contacts as CSV with the `export` command. Then you can import contacts from CSV to external systems that support imports, such as Google Contacts.
 
-**Q**: Can multiple users access the same address book?
-**A**: AscendNetwork is designed for single-user use. If multiple users need to access the same contact database, they must manually share the `ascendnetwork.json` file.
+**Q**: Can multiple users access the same address book?<br>
+**A**: AscendNetwork is designed for single-user use. If multiple users need to access the same contact database, they must manually share the `addressbook.json` file.
 
-**Q**: Will AscendNetwork work on mobile devices?
+**Q**: Will AscendNetwork work on mobile devices?<br>
 **A**: No, AscendNetwork is designed for desktop operating systems such as Windows, macOS, and Linux.
 
-**Q**: Does AscendNetwork require an internet connection?
+**Q**: Does AscendNetwork require an internet connection?<br>
 **A**: No, all data is stored locally on your device, and the app works entirely offline.
 
-**Q**: How many contacts can AscendNetwork keep?
+**Q**: How many contacts can AscendNetwork keep?<br>
 **A**: While there is no hard limit, we advise not having more than 1000 contacts for performance reasons.
 
-**Q**: How do I update AscendNetwork to a newer version?
+**Q**: How do I update AscendNetwork to a newer version?<br>
 **A**: Download the latest .jar file from [here](https://github.com/AY2425S2-CS2103T-T14-4/tp/releases) and replace your existing .jar file with the new one. Your data will remain intact if it is stored in the same folder.
 
 --------------------------------------------------------------------------------------------------------------------

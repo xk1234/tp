@@ -3,15 +3,19 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
+import java.util.stream.Stream;
 
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.util.CsvUtil;
+import seedu.address.model.person.Attribute;
 import seedu.address.model.person.Person;
 
 /**
@@ -133,6 +137,19 @@ public class ModelManager implements Model {
     public void setPersons(List<Person> persons) {
         requireNonNull(persons);
         addressBook.setPersons(persons);
+    }
+
+    //=========== Export =====================================================================================
+    @Override
+    public void exportAsCsv(List<Attribute> attributes, Path path) throws IOException {
+        Stream<Stream<?>> tokensStream = Stream.concat(
+            // Header
+            Stream.of(attributes.stream().map(Enum::toString)),
+            // Body
+            this.getFilteredPersonList().stream()
+                    .map(person -> attributes.stream().map(person::getAttribute))
+        );
+        CsvUtil.writeToCsv(tokensStream, path);
     }
 
     @Override

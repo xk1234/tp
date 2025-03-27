@@ -11,6 +11,8 @@ public enum Attribute {
     ADDRESS,
     COMMISSION;
 
-    public static final String MESSAGE_CONSTRAINTS = "ATTRIBUTE may be: "
-        + "name, phone, email, address, or commission, without duplicates";
+    public static final String MESSAGE_CONSTRAINTS_VALID_ATTRIBUTES =
+            "ATTRIBUTE may be: name, phone, email, address, or commission.";
+    public static final String MESSAGE_CONSTRAINTS_NO_DUPLICATES =
+            "There are duplicates in the provided attributes.";
 }

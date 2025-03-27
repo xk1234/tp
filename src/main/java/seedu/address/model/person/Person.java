@@ -88,6 +88,19 @@ public class Person {
     }
 
     /**
+     * Returns the person's attribute given its type.
+     */
+    public Object getAttribute(Attribute attribute) {
+        return switch (attribute) {
+        case NAME -> getName();
+        case PHONE -> getPhone();
+        case EMAIL -> getEmail();
+        case ADDRESS -> getAddress();
+        case COMMISSION -> getCommission();
+        };
+    }
+
+    /**
      * Returns true if both persons have the same identity and data fields.
      * This defines a stronger notion of equality between two persons.
      */
