@@ -18,7 +18,6 @@ repositories {
 
 application {
     mainClass = 'seedu.address.Main'
-
     applicationDefaultJvmArgs = ['-ea']
 }
 
@@ -30,7 +29,6 @@ checkstyle {
 test {
     useJUnitPlatform()
     finalizedBy jacocoTestReport
-
     jvmArgs '-ea'
 }
 
@@ -82,5 +80,4 @@ shadowJar {
         attributes 'Main-Class': project.mainClassName
     }
 }
-
 defaultTasks 'clean', 'test'
