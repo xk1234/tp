@@ -3,6 +3,8 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import seedu.address.commons.exceptions.IllegalValueException;
+
 /**
  * Represents a Person's commission in the address book.
  */
@@ -52,10 +54,14 @@ public class Commission {
      * Adds commission to the current one.
      * @return the added commission.
      */
-    public Commission addValue(Commission commission) {
+    public Commission addValue(Commission commission) throws IllegalValueException {
         int value = this.getIntegerValue() + commission.getIntegerValue();
         String commissionValue = getStringValue(value);
-        return new Commission(commissionValue);
+        try {
+            return new Commission(commissionValue);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalValueException(e.getMessage());
+        }
     }
 
     @Override

@@ -12,7 +12,7 @@ title: User Guide
 
 ### Who is AscendNetwork for?
 
-AscendNetwork is built with **network marketeers** in mind—people who often deal with numerous leads, customers, and partners. It is specially designed for those who prefer or are comfortable with typing commands. By centralizing all contact information, you can organise and keep track of important contact details and stats. 
+AscendNetwork is built with **network marketeers** in mind—people who often deal with numerous customers, and subordinates. It is specially designed for those who prefer or are comfortable with typing commands. By centralizing all contact information, you can organise and keep track of important contact details and stats.
 
 <div markdown="span" class="alert alert-info">
 **:information_source: Note:** We assume you have basic familiarity with your computer, such as downloading files and opening folders. Where advanced technical actions are required, we will guide you step-by-step.
@@ -28,8 +28,8 @@ AscendNetwork is built with **network marketeers** in mind—people who often de
 ## Quick Start
 
 1. **Open up your “command terminal”**.
-   * A command terminal is a program where you can type text-based commands to your computer.  
-   * On **Windows**, look for “Command Prompt” or “PowerShell” in your Start Menu.  
+   * A command terminal is a program where you can type text-based commands to your computer.
+   * On **Windows**, look for “Command Prompt” or “PowerShell” in your Start Menu.
    * On **Mac**, open “Terminal” from your Applications > Utilities folder.
    * On **Linux**, open the terminal you have installed.
 
@@ -75,22 +75,22 @@ AscendNetwork is built with **network marketeers** in mind—people who often de
 
    ![Insert screenshot of a user typing commands, if available](images/CommandInput.png)
 
-   * **`help`** : Opens the help window.  
-   * **`list`** : Lists all existing contacts.  
-   * **`add n/John Doe p/98765432 e/johnd@example.com a/John Street, block 123, #01-01`** : Adds a contact named `John Doe`, whos contact number is `98765432`, has an `email of johnd@example.com` and lives at `John Street, block 123, #01-01`.  
-   * **`delete 3`** : Deletes the 3rd contact in the current list.  
-   * **`clear`** : Deletes **all** contacts.  
+   * **`help`** : Opens the help window.
+   * **`list`** : Lists all existing contacts.
+   * **`add n/John Doe p/98765432 e/johnd@example.com a/John Street, block 123, #01-01`** : Adds a contact named `John Doe`, whos contact number is `98765432`, has an `email of johnd@example.com` and lives at `John Street, block 123, #01-01`.
+   * **`delete 3`** : Deletes the 3rd contact in the current list.
+   * **`clear`** : Deletes **all** contacts.
    * **`exit`** : Closes the app.
 
 <div markdown="block" class="alert alert-info">
 
 **:information_source: AscendNetwork commands follow a straightforward format:**
 
-* **UPPER_CASE** words are placeholders (e.g., `NAME` in `add n/NAME`).  
-* **Square brackets `[ ]`** indicate optional items (e.g., `[t/TAG]`).  
-* **Items with `...`** can appear multiple times or not at all (e.g., `[t/TAG]...`).  
-* **Curly braces `{ }` separated by `|`** mean “choose one” (e.g., `{n/NAME | t/TAG}`).  
-* **Parameters can be in any order.**  
+* **UPPER_CASE** words are placeholders (e.g., `NAME` in `add n/NAME`).
+* **Square brackets `[ ]`** indicate optional items (e.g., `[t/TAG]`).
+* **Items with `...`** can appear multiple times or not at all (e.g., `[t/TAG]...`).
+* **Curly braces `{ }` separated by `|`** mean “choose one” (e.g., `{n/NAME | t/TAG}`).
+* **Parameters can be in any order.**
 * **Extraneous parameters** are ignored for commands that do not accept any (e.g., `help 123` is treated as `help`).
 
 _If you are reading this from a PDF, watch out for spacing issues when copying multi-line commands._
@@ -152,14 +152,14 @@ Finds contacts by matching name and tag keywords you provide.
 
 Format: `find {n/NAME_KEYWORD [NAME_KEYWORD]... [t/TAG_KEYWORD [TAG_KEYWORD]...] | t/TAG_KEYWORD [TAG_KEYWORD]... [n/NAME_KEYWORD [NAME_KEYWORD]...]}`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip**: Run this command to limit the contacts that commands acting on displayed ones affect</div>
+<div markdown="span" class="alert alert-primary">:bulb: **Tip**: Run this command to control which contacts are affected by commands that act on ones which the app displays</div>
 
 * `NAME_KEYWORD` is a **single word** searching only name. e.g. In `n/Hans Bo` both `Hans` and `Bo` are keywords
 * `TAG_KEYWORD` is a **single word** searching only tags. e.g. In `t/downline customer` both `downline` and `customer` are keywords
 * Supply **at least one** of `n/NAME_KEYWORD` or `t/TAG_KEYWORD`.
-* When providing only `NAME_KEYWORD`, finds persons whose name contain at least one keyword (i.e. `OR` search). e.g. Providing `n/Hans Bo` finds `Hans Gruber`, `Bo Yang`
-* When providing only `TAG_KEYWORD`, finds persons whose tags contain at least one keyword (i.e. `OR` search). e.g. Providing `t/downline customer` finds person with tags `downline` and `family`, as well as person with tags `customer` and `friend`
-* When providing both `NAME_KEYWORD` and `TAG_KEYWORD`, finds persons matching both name and tag search (i.e. `AND` search between name and tags). e.g. Providing `n/Hans Bo t/downline customer` finds `Hans Gruber` and with tags `downline` and `family`, but not `Bo Yang` with tags `family` and `friend`
+* When providing only `NAME_KEYWORD`, finds contacts whose name contain at least one keyword (i.e. `OR` search). e.g. Providing `n/Hans Bo` finds `Hans Gruber`, `Bo Yang`
+* When providing only `TAG_KEYWORD`, finds contacts whose tags contain at least one keyword (i.e. `OR` search). e.g. Providing `t/downline customer` finds contacts with tags `downline` and `family`, as well as contacts with tags `customer` and `friend`
+* When providing both `NAME_KEYWORD` and `TAG_KEYWORD`, finds contacts matching both name and tag search (i.e. `AND` search between name and tags). e.g. Providing `n/Hans Bo t/downline customer` finds `Hans Gruber` and with tags `downline` and `family`, but not `Bo Yang` with tags `family` and `friend`
 * Searching ignores case. e.g `n/hans` matches `Hans` name, `t/customer` matches `Customer` tag
 * The order of the keywords does not matter. e.g. `n/Hans Bo` matches `Bo Hans` name, `t/downline customer` matches `customer` and `downline` tags
 * Matches only full words. e.g. `n/Han` does not match `Hans` name, `t/downlines` does not match `downline` tag
@@ -169,9 +169,28 @@ Examples:
 * `find n/alex david t/downline customer` finds `Alex Yeoh` with tag `downline`, `David Li` with tag `customer`<br>
   ![result for 'find n/alex david t/downline customer'](images/findAlexDavidResult.png)
 
+### Tagging multiple contacts at once: `tag`
+
+Adds tag(s) you specify to multiple contacts.
+
+Format: `tag TAG [TAG]…`
+
+<div markdown="span" class="alert alert-warning">:exclamation: **Caution:** Ensure you filter to the correct group of contacts before using the command, or it may add tags to contacts unintentionally.</div>
+
+* Display **at least one contact** before running the command.
+* `TAG` is a word of **digits or letters (both uppercase and lowercase)**. e.g. `customer1`
+* Adds all `Tag` to your contacts which the app currently displays. e.g. Running `tag customer` when only `Hans` and `Bo` are displayed adds the `customer` tag only to them.
+* Appends to your contact's existing tags instead of replacing. e.g. Running `tag vip` when a displayed contact with `customer` tag changes their tag to `customer vip`
+* Skips contacts who already have all `TAG`.
+
+Examples:
+* `tag downline` adds the `downline` tag to all your contacts in the current list.
+* `find n/david irfan` followed by `tag customer vip` adds both `customer` and `vip` tags to contacts in the result of `find` command.
+  ![result for 'find n/david irfan' then 'tag customer vip'](images/findTagResult.png)
+
 ### Removing tags from multiple contacts: `rmtag`
 
-Removes your specified tag(s) from multiple contacts.
+Removes tag(s) you specify from multiple contacts.
 
 Format: `rmtag TAG [TAG]…`
 
@@ -181,12 +200,13 @@ Format: `rmtag TAG [TAG]…`
 
 * Display **at least one contact** before running the command.
 * `TAG` is a word of **digits or letters (both uppercase and lowercase)**. e.g. `customer1`
-* Removes all `Tag` from your currently displayed contacts. e.g. Running `rmtag customer` when only `Hans` and `Bo`, that both have `customer`, are displayed tag removes it only from them.
+* Removes all `Tag` from your contacts the app currently displays. e.g. Running `rmtag customer` when only `Hans` and `Bo`, that both have `customer`, are displayed tag removes it only from them.
 * Skips contacts who do not have any `TAG`.
 
 Examples:
-* `rmtag dinner` removes the `dinner` tag from all your contacts in the displayed list.
-* `rmtag customer vip` removes both `customer` and `vip` tags from all your contacts in the displayed list.
+* `rmtag meeting` removes the `meeting` tag from all your contacts in the displayed list.
+* `find n/david irfan` followed by `rmtag customer vip` removes both `customer` and `vip` tags from contacts in the result of `find` command.
+  ![result for 'find n/david irfan' then 'rmtag customer vip'](images/findRmtagResult.png)
 
 ### Including your contacts by name to specific group: `incl`
 
@@ -208,31 +228,39 @@ Exports your contacts to a CSV file. This can be edited with e.g. Excel.
 Format: `export FILE_PATH [a/ATTRIBUTE]...`
 
 * `FILE_PATH` is a file path with suffix `.csv` and consists of only alphanumeric characters.
-* `ATTRIBUTE` may be `name`, `phone`, `email`, `address`, or `commission`. It is case-insensitive. You should not use the same `ATTRIBUTE` twice.
+* `ATTRIBUTE` may be **`name`, `phone`, `email`, `address`, or `commission`**. It is case-insensitive. You should not use the same `ATTRIBUTE` twice.
 * Only the currently displayed list is exported, so that you can select which contacts to export.
 
 Examples:
 * `export file.csv a/NAME a/email` exports the names and email addresses of the currently displayed contacts to a file named `file.csv`.
 
-### Deleting a person : `delete`
+### Deleting a contact : `delete`
 
-Deletes the specified person from the address book.
+Deletes contact you specify from the application.
 
 Format: `delete INDEX`
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* `INDEX` is a **positive integer** that matches **a contact's position** that the app currently displays. e.g. 1, 2, 3, ...
+* Deletes the contacts the app currently displays at position `INDEX`.
 
 Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+* `list` followed by `delete 2` deletes the 2nd contact in the address book.
+* `find n/Alex` followed by `delete 1` deletes the 1st contact in the results of the `find` command.
+  ![result for 'find n/Alex' then 'delete 1'](images/findDeleteResult.png)
 
-### Clearing all entries : `clear`
+### Clearing all contacts : `clear`
 
-Clears all entries from the address book.
+Clears all contacts from the application.
 
 Format: `clear`
+
+<div markdown="span" class="alert alert-warning">:exclamation: **Caution:** This will delete **ALL** contacts, regardless if they are displayed or not.</div>
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:** You can use this command to start a fresh list of contacts.</div>
+
+Examples:
+* `clear` clears all contacts
+  ![result for 'clear'](images/clearResult.png)
 
 ### Exiting the program : `exit`
 
@@ -246,7 +274,7 @@ AddressBook data are saved in the hard disk automatically after any command that
 
 ### Editing the data file
 
-AddressBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
+AddressBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. JSON (short for JavaScript Object Notation) is a text-based data format that is human-readable. Advanced users are welcome to update data directly by editing that data file.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
 If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
@@ -263,6 +291,30 @@ _Details coming soon ..._
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+
+**Q**: How can I back up my data?
+**A**: You can manually back up your `addressbook.json` file by copying it to a safe location.
+
+**Q**: Can I import contacts from another system?
+**A**: Currently, AscendNetwork does not support direct imports from CSV or other contact management systems.
+
+**Q**: Can I export contacts to another system?
+**A**: Yes, you can export selected contacts as CSV with the `export` command. Then you can import contacts from CSV to external systems that support imports, such as Google Contacts.
+
+**Q**: Can multiple users access the same address book?
+**A**: AscendNetwork is designed for single-user use. If multiple users need to access the same contact database, they must manually share the `addressbook.json` file.
+
+**Q**: Will AscendNetwork work on mobile devices?
+**A**: No, AscendNetwork is designed for desktop operating systems such as Windows, macOS, and Linux.
+
+**Q**: Does AscendNetwork require an internet connection?
+**A**: No, all data is stored locally on your device, and the app works entirely offline.
+
+**Q**: How many contacts can AscendNetwork keep?
+**A**: While there is no hard limit, we advise not having more than 1000 contacts for performance reasons.
+
+**Q**: How do I update AscendNetwork to a newer version?
+**A**: Download the latest .jar file from [here](https://github.com/AY2425S2-CS2103T-T14-4/tp/releases) and replace your existing .jar file with the new one. Your data will remain intact if it is stored in the same folder.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -282,6 +334,7 @@ Action | Format, Examples
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find** | `find {n/NAME_KEYWORD [NAME_KEYWORD]... [t/TAG_KEYWORD [TAG_KEYWORD]...] \| t/TAG_KEYWORD [TAG_KEYWORD]... [n/NAME_KEYWORD [NAME_KEYWORD]...]}` <br> e.g., `find n/James Jake t/downline customer`
+**Tag** | `tag TAG [TAG]…` e.g. `tag customer vip`
 **Remove Tag** | `rmtag TAG [TAG]…`<br> e.g. `rmtag customer vip`
 **List** | `list`
 **Help** | `help`

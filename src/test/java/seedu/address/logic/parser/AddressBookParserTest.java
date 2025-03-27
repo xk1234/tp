@@ -31,7 +31,8 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.RemoveTagCommand;
-import seedu.address.logic.commands.TotalCommand;
+import seedu.address.logic.commands.SummaryCommand;
+import seedu.address.logic.commands.TagCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Attribute;
 import seedu.address.model.person.Person;
@@ -107,6 +108,24 @@ public class AddressBookParserTest {
     }
 
     @Test
+    public void parseCommand_tag() throws Exception {
+        // Single tag
+        Set<Tag> tagSet = new HashSet<>();
+        tagSet.add(new Tag(VALID_TAG_FRIEND));
+        String tagCommand = TagCommand.COMMAND_WORD + " " + VALID_TAG_FRIEND;
+        TagCommand command = (TagCommand) parser.parseCommand(tagCommand);
+        assertEquals(new TagCommand(tagSet), command);
+
+        // Multiple tags
+        Set<Tag> multipleTagSet = new HashSet<>();
+        multipleTagSet.add(new Tag(VALID_TAG_FRIEND));
+        multipleTagSet.add(new Tag(VALID_TAG_HUSBAND));
+        String multipleTagCommand = TagCommand.COMMAND_WORD + " " + VALID_TAG_FRIEND + " " + VALID_TAG_HUSBAND;
+        TagCommand multipleCommand = (TagCommand) parser.parseCommand(multipleTagCommand);
+        assertEquals(new TagCommand(multipleTagSet), multipleCommand);
+    }
+
+    @Test
     public void parseCommand_removeTag() throws Exception {
         // Single tag
         Set<Tag> singleTagSet = new HashSet<>();
@@ -125,8 +144,8 @@ public class AddressBookParserTest {
     }
 
     @Test
-    public void parseCommand_total() throws Exception {
-        assertTrue(parser.parseCommand(TotalCommand.COMMAND_WORD) instanceof TotalCommand);
+    public void parseCommand_stat() throws Exception {
+        assertTrue(parser.parseCommand(SummaryCommand.COMMAND_WORD) instanceof SummaryCommand);
     }
 
     @Test
