@@ -80,4 +80,5 @@ shadowJar {
         attributes 'Main-Class': project.mainClassName
     }
 }
+
 defaultTasks 'clean', 'test'
