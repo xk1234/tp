@@ -3,7 +3,9 @@ package seedu.address.logic.parser;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Predicate;
 
 import seedu.address.logic.commands.IncludePersonCommand;
@@ -22,24 +24,32 @@ public class IncludePersonCommandParser implements Parser<IncludePersonCommand> 
      * @throws ParseException if the user input does not conform the expected format
      */
     public IncludePersonCommand parse(String args) throws ParseException {
-        ArgumentMultimap argumentMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME);
-        argumentMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME);
 
         ParseException pe = new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                 IncludePersonCommand.MESSAGE_USAGE));
-        if (argumentMultimap.getValue(PREFIX_NAME).isEmpty()) {
+        if (argMultimap.getValue(PREFIX_NAME).isEmpty()) {
             throw pe;
         }
 
-        String nameKeyword = argumentMultimap.getValue(PREFIX_NAME).get();
-        nameKeyword = nameKeyword.trim();
-        if (nameKeyword.isEmpty()) {
+        List<String> keywords = processKeywords(argMultimap.getValue(PREFIX_NAME));
+
+        if (keywords.isEmpty()) {
             throw pe;
         }
-        List<String> keyword = List.of(nameKeyword);
-        Predicate<Person> namePredicate = new NameContainsKeywordsPredicate(keyword);
+        Predicate<Person> namePredicate = new NameContainsKeywordsPredicate(keywords);
 
         return new IncludePersonCommand(namePredicate);
     }
 
+    /**
+     * Processes keywords from the ArgumentMultimap. Each keyword value is split by
+     * whitespace.
+     *
+     * @param value List of keyword values
+     */
+    private List<String> processKeywords(Optional<String> value) {
+        return Arrays.asList(value.get().split("\\s+"));
+    }
 }

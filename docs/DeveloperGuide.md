@@ -507,7 +507,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. User requests to add people by their names to the list.
-2. Address book adds those people to the list.
+2. Address book adds those contacts that passes the filter to the list.
 
 Use case ends.
 
@@ -515,11 +515,8 @@ Use case ends.
 * 1a. The user does not provide any name keyword.
     * 1a1. AddressBook shows an error message.
       Use case resumes at step 1.
-* 1b. The user provides a name keyword that doesn't exist in address book.
+* 1b. The user provides keywords that doesn't exist in address book.
     * 1b1. AddressBook shows 0 person is added.
-      Use case resumes at step 1.
-* 1c. The user provides a name keyword that is already in the list.
-    * 1c1. AddressBook shows 0 person is added.
       Use case resumes at step 1.
 
 ### Non-Functional Requirements
