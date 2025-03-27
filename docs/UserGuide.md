@@ -232,7 +232,9 @@ Format: `export FILE_PATH [a/ATTRIBUTE]...`
 * Only the currently displayed list is exported, so that you can select which contacts to export.
 
 Examples:
-* `export file.csv a/NAME a/email` exports the names and email addresses of the currently displayed contacts to a file named `file.csv`.
+* `export data.csv a/NAME a/email` exports only the names and email addresses of the currently displayed contacts to a file named `data.csv`.
+* `export data.csv` exports all details of the currently displayed contacts to a file named `data.csv`.
+![result for 'export'](images/exportResult.png)
 
 ### Deleting a contact : `delete`
 
