@@ -13,8 +13,11 @@ public class CommandResult {
 
     private final String feedbackToUser;
 
-    /** Help information should be shown to the user. */
-    private final boolean showHelp;
+    /**
+     * Displays text in a separate window with clipboard support.
+     * Nothing is displayed if this is null
+     **/
+    private final String linkWindowText;
 
     /** The application should exit. */
     private final boolean exit;
@@ -22,9 +25,9 @@ public class CommandResult {
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
-    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit) {
+    public CommandResult(String feedbackToUser, String linkWindowText, boolean exit) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
-        this.showHelp = showHelp;
+        this.linkWindowText = linkWindowText;
         this.exit = exit;
     }
 
@@ -33,15 +36,19 @@ public class CommandResult {
      * and other fields set to their default value.
      */
     public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, false, false);
+        this(feedbackToUser, null, false);
     }
 
     public String getFeedbackToUser() {
         return feedbackToUser;
     }
 
-    public boolean isShowHelp() {
-        return showHelp;
+    public String getLinkWindowText() {
+        return linkWindowText;
+    }
+
+    public boolean hasWindowText() {
+        return linkWindowText != null;
     }
 
     public boolean isExit() {
@@ -61,20 +68,20 @@ public class CommandResult {
 
         CommandResult otherCommandResult = (CommandResult) other;
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
-                && showHelp == otherCommandResult.showHelp
+                && Objects.equals(linkWindowText, otherCommandResult.linkWindowText)
                 && exit == otherCommandResult.exit;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(feedbackToUser, showHelp, exit);
+        return Objects.hash(feedbackToUser, linkWindowText, exit);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("feedbackToUser", feedbackToUser)
-                .add("showHelp", showHelp)
+                .add("linkWindowText", linkWindowText)
                 .add("exit", exit)
                 .toString();
     }

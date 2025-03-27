@@ -33,7 +33,7 @@ public class MainWindow extends UiPart<Stage> {
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
     private ResultDisplay resultDisplay;
-    private HelpWindow helpWindow;
+    private HelpWindow linkWindow;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -65,7 +65,7 @@ public class MainWindow extends UiPart<Stage> {
 
         setAccelerators();
 
-        helpWindow = new HelpWindow();
+        linkWindow = new HelpWindow();
     }
 
     public Stage getPrimaryStage() {
@@ -139,11 +139,11 @@ public class MainWindow extends UiPart<Stage> {
      * Opens the help window or focuses on it if it's already opened.
      */
     @FXML
-    public void handleHelp() {
-        if (!helpWindow.isShowing()) {
-            helpWindow.show();
+    public void handleLinkWindow() {
+        if (!linkWindow.isShowing()) {
+            linkWindow.show();
         } else {
-            helpWindow.focus();
+            linkWindow.focus();
         }
     }
 
@@ -159,7 +159,7 @@ public class MainWindow extends UiPart<Stage> {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
                 (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
-        helpWindow.hide();
+        linkWindow.hide();
         primaryStage.hide();
     }
 
@@ -178,8 +178,8 @@ public class MainWindow extends UiPart<Stage> {
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
-            if (commandResult.isShowHelp()) {
-                handleHelp();
+            if (commandResult.hasWindowText()) {
+                handleLinkWindow();
             }
 
             if (commandResult.isExit()) {
