@@ -48,8 +48,8 @@ public class TotalCommandTest {
         Commission totalCommission = new Commission("0");
         try {
             totalCommission = totalCommand.getTotal(lastShownList);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        } catch (CommandException e) {
+            e.printStackTrace();
         }
 
         Integer total = Integer.parseInt(ALICE.getCommission().value) + Integer.parseInt(BENSON.getCommission().value);
@@ -72,10 +72,10 @@ public class TotalCommandTest {
     }
 
     @Test
-    void getTotal_throwsRuntimeException() {
+    void getTotal_throwsOverflowException() {
         List<Person> shownList = List.of(JAMES, KEITH);
         TotalCommand totalCommand = new TotalCommand();
-        assertThrows(RuntimeException.class, () -> totalCommand.getTotal(shownList));
+        assertThrows(CommandException.class, () -> totalCommand.getTotal(shownList));
     }
 
     @Test
