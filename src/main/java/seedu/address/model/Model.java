@@ -1,11 +1,13 @@
 package seedu.address.model;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.person.Attribute;
 import seedu.address.model.person.Person;
 
 /**
@@ -91,4 +93,9 @@ public interface Model {
      * The provided list must not contain duplicates.
      */
     void setPersons(List<Person> persons);
+
+    /**
+     * Exports selected attributes of the current filtered person list as csv.
+     */
+    void exportAsCsv(List<Attribute> attributes, Path path) throws IOException;
 }

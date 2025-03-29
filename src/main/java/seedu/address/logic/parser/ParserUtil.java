@@ -12,6 +12,7 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.CsvFileName;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Attribute;
 import seedu.address.model.person.Commission;
@@ -145,11 +146,11 @@ public class ParserUtil {
             // copyOf could throw if we don't make sure attributes is non-empty
             EnumSet<Attribute> uniqueValues = EnumSet.copyOf(result);
             if (uniqueValues.size() != result.size()) {
-                throw new ParseException(Attribute.MESSAGE_CONSTRAINTS);
+                throw new ParseException(Attribute.MESSAGE_CONSTRAINTS_NO_DUPLICATES);
             }
             return result;
         } catch (IllegalArgumentException e) {
-            throw new ParseException(Attribute.MESSAGE_CONSTRAINTS);
+            throw new ParseException(Attribute.MESSAGE_CONSTRAINTS_VALID_ATTRIBUTES);
         }
     }
 
@@ -166,5 +167,20 @@ public class ParserUtil {
             throw new ParseException(Commission.MESSAGE_CONSTRAINTS);
         }
         return new Commission(trimmedCommission);
+    }
+
+    /**
+     * Parses a {@code String fileName} into a {@code Path}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code String fileName} is invalid.
+     */
+    public static CsvFileName parseCsvFileName(String csvFileName) throws ParseException {
+        requireNonNull(csvFileName);
+        String trimmedCsvFileName = csvFileName.trim();
+        if (!CsvFileName.isValidCsvFileName(trimmedCsvFileName)) {
+            throw new ParseException(CsvFileName.MESSAGE_CONSTRAINTS);
+        }
+        return new CsvFileName(trimmedCsvFileName);
     }
 }

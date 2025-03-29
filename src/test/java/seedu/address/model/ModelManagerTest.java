@@ -1,5 +1,6 @@
 package seedu.address.model;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -7,18 +8,30 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BENSON;
+import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalPersons.getTypicalPersons;
 
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.person.Attribute;
 import seedu.address.model.person.predicates.NameContainsKeywordsPredicate;
 import seedu.address.testutil.AddressBookBuilder;
 
 public class ModelManagerTest {
+
+    @TempDir
+    public Path testFolder;
 
     private ModelManager modelManager = new ModelManager();
 
@@ -91,6 +104,25 @@ public class ModelManagerTest {
     @Test
     public void getFilteredPersonList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredPersonList().remove(0));
+    }
+
+    @Test
+    public void exportAsCsv_multipleAttributes_success() {
+        Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        List<Attribute> attributes = List.of(Attribute.NAME, Attribute.EMAIL);
+        Path path = testFolder.resolve("export.csv");
+        AtomicReference<String> actualCsv = new AtomicReference<>();
+        assertDoesNotThrow(() -> {
+            model.exportAsCsv(attributes, path);
+            actualCsv.set(Files.readString(path));
+        });
+        String expectedCsv = Stream.concat(
+                Stream.of("\"NAME\",\"EMAIL\""),
+                getTypicalPersons().stream()
+                        .map(person -> String.format("\"%s\",\"%s\"", person.getName(), person.getEmail()))
+        ).collect(Collectors.joining(System.lineSeparator()))
+                + System.lineSeparator();
+        assertEquals(expectedCsv, actualCsv.get());
     }
 
     @Test

@@ -3,12 +3,12 @@ package seedu.address.logic.parser;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTRIBUTE;
-import static seedu.address.logic.parser.ParserUtil.parseAttributes;
 
 import java.util.List;
 
 import seedu.address.logic.commands.ExportCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.CsvFileName;
 import seedu.address.model.person.Attribute;
 
 /**
@@ -24,13 +24,12 @@ public class ExportCommandParser implements Parser<ExportCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_ATTRIBUTE);
-        // Since `export` is a valid command without prefixes, we ignore the error message from parseAttributes
-        try {
-            List<Attribute> attributes = parseAttributes(argMultimap.getAllValues(PREFIX_ATTRIBUTE));
-            return new ExportCommand(attributes);
-        } catch (ParseException e) {
+
+        if (argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ExportCommand.MESSAGE_USAGE));
         }
-
+        List<Attribute> attributes = ParserUtil.parseAttributes(argMultimap.getAllValues(PREFIX_ATTRIBUTE));
+        CsvFileName csvFileName = ParserUtil.parseCsvFileName(argMultimap.getPreamble());
+        return new ExportCommand(attributes, csvFileName.asPath());
     }
 }

@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_COMMISSION;
 import java.util.List;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -27,6 +28,8 @@ public class AddCommissionCommand extends Command {
             + "Example: " + COMMAND_WORD + " 2 "
             + PREFIX_COMMISSION + "12";
     public static final String MESSAGE_ADD_COMMISSION_SUCCESS = "New commission added";
+
+    public static final String MESSAGE_ADD_COMMAND_OVERFLOW = "Commission overflows the limit: 1'000'000'000!";
 
     private final Index index;
     private final Commission commission;
@@ -54,7 +57,12 @@ public class AddCommissionCommand extends Command {
 
         Person personToAddCommission = lastShownList.get(index.getZeroBased());
         Commission commissionToBeAdded = personToAddCommission.getCommission();
-        Commission addedCommission = commissionToBeAdded.addValue(commission);
+        Commission addedCommission;
+        try {
+            addedCommission = commissionToBeAdded.addValue(commission);
+        } catch (IllegalValueException e) {
+            throw new CommandException(MESSAGE_ADD_COMMAND_OVERFLOW);
+        }
         Person commissionedPerson = personToAddCommission.setCommission(addedCommission);
         model.setPerson(personToAddCommission, commissionedPerson);
 

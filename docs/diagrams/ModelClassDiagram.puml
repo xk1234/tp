@@ -21,6 +21,9 @@ Class Phone
 Class Tag
 Class Commission
 
+' Added Enumeration for attributes.
+Enum "<<enumeration>>\nAttribute" as Attribute
+
 Class I #FFFFFF
 }
 
@@ -44,6 +47,9 @@ Person *--> Email
 Person *--> Address
 Person *--> Commission
 Person *--> "*" Tag
+
+' Dependency showing that Person uses Attribute enum.
+Person ..> Attribute
 
 Person -[hidden]up--> I
 UniquePersonList -[hidden]right-> I
