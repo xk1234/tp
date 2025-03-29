@@ -216,7 +216,7 @@ Format: `incl n/NAME_KEYWORD [NAME_KEYWORD]...`
 
 * `NAME_KEYWORD` is same as defined above.
 * Supply at least one of `n/NAME_KEYWORD`
-* It includes persons whose name contain at least one keyword. e.g. Providing `n/Hans Bo` includes `Hans Gruber`, `Bo Yang`
+* It includes contacts whose name contain at least one keyword. e.g. Providing `n/Hans Bo` includes `Hans Gruber`, `Bo Yang`
 * The order of the keywords does not matter. e.g. `n/Hans Bo` matches `Bo Hans` name
 * Searching ignores case for the name. e.g `n/hans` matches `Hans` name
 * Matches only full words e.g. `n/Han` does not match `Hans` name
