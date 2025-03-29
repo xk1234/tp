@@ -1,11 +1,10 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.commons.util.StringUtil.processKeywords;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Predicate;
 
 import seedu.address.logic.commands.IncludePersonCommand;
@@ -41,15 +40,5 @@ public class IncludePersonCommandParser implements Parser<IncludePersonCommand> 
         Predicate<Person> namePredicate = new NameContainsKeywordsPredicate(keywords);
 
         return new IncludePersonCommand(namePredicate);
-    }
-
-    /**
-     * Processes keywords from the ArgumentMultimap. Each keyword value is split by
-     * whitespace.
-     *
-     * @param value List of keyword values
-     */
-    private List<String> processKeywords(Optional<String> value) {
-        return Arrays.asList(value.get().split("\\s+"));
     }
 }

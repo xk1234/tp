@@ -210,7 +210,7 @@ Examples:
 
 Adding contacts with matching name from your contacts to the list.
 
-Format: `incl {n/NAME_KEYWORD [NAME_KEYWORD]...}`
+Format: `incl n/NAME_KEYWORD [NAME_KEYWORD]...`
 
 * `NAME_KEYWORD` is same as defined above.
 * Supply at least one of `n/NAME_KEYWORD`
