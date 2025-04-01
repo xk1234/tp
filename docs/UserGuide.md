@@ -227,19 +227,21 @@ Examples:
 
 ### Export contacts to a CSV file: `export`
 
-Exports your contacts to a CSV file. This can be edited with e.g. Excel.
+Effortlessly export your contacts to a CSV file that can be edited in software like Excel or Google Sheets.
 
 Format: `export FILE_PATH [a/ATTRIBUTE]...`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:** The command will fail if the file cannot be edited, e.g., if you already have the file opened.</div>
 
-* `FILE_PATH` is a file path with suffix `.csv` and prefix of only alphanumeric characters.
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:** Use filters before exporting to segment your contacts, e.g., exporting only high-commission leads.</div>
+
+* `FILE_PATH` is a file path that starts with only alphanumeric characters and ends with a suffix `.csv`. We recommend that you keep its length under 256 characters.
 * `ATTRIBUTE` may be **`name`, `phone`, `email`, `address`, or `commission`**. It is case-insensitive. You should not use the same `ATTRIBUTE` twice.
 * Only the currently displayed list is exported, so that you can select which contacts to export.
 
 Examples:
-* `export data.csv a/NAME a/email` exports only the names and email addresses of the currently displayed contacts to a file named `data.csv`.
-* `export data.csv` exports all details of the currently displayed contacts to a file named `data.csv`.
+* `export data.csv a/NAME a/email`: Exports only names and emails—perfect for email campaigns!
+* `export data.csv`: Exports all details of the currently displayed contacts to `data.csv`.
 ![result for 'export'](images/exportResult.png)
 
 ### Deleting a contact : `delete`
@@ -354,6 +356,12 @@ _Details coming soon ..._
 
 **Q**: Will AscendNetwork work on mobile devices?<br>
 **A**: No, AscendNetwork is designed for desktop operating systems such as Windows, macOS, and Linux.
+
+**Q**: Will AscendNetwork work on older operating systems?<br>
+**A**: No, AscendNetwork is designed for modern desktop operating systems such as Windows 10 or later, macOS 10.15 or later, and Ubuntu 18.04 or later. AscendNetwork might not work on other Linux distros or custom setups.
+
+**Q**: Will AscendNetwork data be saved properly on older storage media, such as floppy disks or DVDs?<br>
+**A**: No, AscendNetwork is designed for modern storage media like USB, and file systems like NTFS.
 
 **Q**: Does AscendNetwork require an internet connection?<br>
 **A**: No, all data is stored locally on your device, and the app works entirely offline.
