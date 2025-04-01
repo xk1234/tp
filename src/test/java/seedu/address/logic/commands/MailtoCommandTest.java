@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.MailtoCommand.MESSAGE_MAILTO_SUCCESS_FORMAT;
+import static seedu.address.logic.commands.MailtoCommand.SHOWING_MAILTO_MESSAGE;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.util.stream.Collectors;
@@ -28,7 +29,9 @@ public class MailtoCommandTest {
         String url = model.getFilteredPersonList().stream()
                 .map(person -> person.getEmail().toString())
                 .collect(Collectors.joining(",", "mailto:", ""));
-        CommandResult expectedCommandResult = new CommandResult(String.format(MESSAGE_MAILTO_SUCCESS_FORMAT, url));
+        String text = String.format(MESSAGE_MAILTO_SUCCESS_FORMAT, url);
+        CommandResult.LinkedText linkedText = new CommandResult.LinkedText(url, text);
+        CommandResult expectedCommandResult = new CommandResult(SHOWING_MAILTO_MESSAGE, linkedText, false);
         assertCommandSuccess(new MailtoCommand(), model, expectedCommandResult, expectedModel);
     }
 }

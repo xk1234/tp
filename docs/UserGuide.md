@@ -287,13 +287,17 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 
 ### Mail to multiple contacts: `mailto`
 
-Generates a mailto link to mail to multiple contacts.
+Generates a mailto link to mail to multiple contacts. You can copy the URL using the popup window's button and mail using your favourite mail client by opening the link in an address bar.
 
 Format: `mailto`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:** You should first filter to the correct group of contacts</div>
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:** You will need to copy the link and paste it on your browser's address bar to send mail through the system's mail client.</div>
+
+Examples:
+* `mailto` generates a link that can send email to multiple contacts
+  ![result for 'clear'](images/mailtoResult.png)
 
 ### Archiving data files `[coming in v2.0]`
 
