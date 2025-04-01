@@ -1,13 +1,11 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.commons.util.StringUtil.processKeywords;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -34,19 +32,5 @@ public class FindCommandParser implements Parser<FindCommand> {
         }
 
         return new FindCommand(new NameAndTagPredicate(nameKeywords, tagKeywords));
-    }
-
-    /**
-     * Processes keywords from the ArgumentMultimap. Each keyword value is split by
-     * whitespace.
-     *
-     * @param values List of keyword values
-     */
-    private List<String> processKeywords(Optional<String> value) {
-        if (!value.isPresent() || value.get().isBlank()) {
-            return Collections.emptyList();
-        }
-
-        return Arrays.asList(value.get().split("\\s+"));
     }
 }

@@ -6,6 +6,9 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * Helper functions for handling strings.
@@ -64,5 +67,19 @@ public class StringUtil {
         } catch (NumberFormatException nfe) {
             return false;
         }
+    }
+
+    /**
+     * Processes keywords from the ArgumentMultimap. Each keyword value is split by
+     * whitespace.
+     *
+     * @param value List of keyword values
+     */
+    public static List<String> processKeywords(Optional<String> value) {
+        if (!value.isPresent() || value.get().isBlank()) {
+            return Collections.emptyList();
+        }
+
+        return Arrays.asList(value.get().split("\\s+"));
     }
 }
