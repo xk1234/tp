@@ -302,6 +302,32 @@ Examples:
 * `mailto` generates a link that can send email to multiple contacts
   ![result for 'clear'](images/mailtoResult.png)
 
+### Sorting commissions by amount : `comm`
+
+Sorts the currently displayed list of commissions by their amount in ascending or descending order.
+
+Format: `comm s/DIR`
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:** Use this command to easily view commissions starting from the lowest amount.</div>
+
+* `DIR` is `asc` for ascending and `desc` for descending
+
+Examples:
+* `comm s/asc` sorts the displayed commissions from the smallest amount to the largest amount.
+  ![result for 'comm s/asc'](images/commSortAscResult.png)
+
+### Displaying summary statistics : `summary`
+
+Displays a summary of key statistics: total number of contacts, total commission, highest commission, lowest commission, and average commission across all stored contacts in easy to read format.
+
+Format: `summary`
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:** Use this command for a quick statistical overview of your stored data without needing to list all entries.</div>
+
+Examples:
+* `summary` displays the general statistics for all contacts.
+  ![result for 'summary'](images/summaryResult.png)
+
 ### Archiving data files `[coming in v2.0]`
 
 _Details coming soon ..._
