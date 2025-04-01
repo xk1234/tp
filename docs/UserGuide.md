@@ -299,11 +299,13 @@ Format: `mailto`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:** You should first filter to the correct group of contacts</div>
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:** You will need to copy the link and paste it on your browser's address bar to send mail through the system's mail client.</div>
+* You will need to copy the link and paste it on your browser's address bar to send emails.
+* The default email client set on your system will be used to send the email.
+* Only the currently displayed contacts will be included in the `mailto://` link. Use `find` and/or other commands to refine your selection before running this command.
 
 Examples:
-* `mailto` generates a link that can send email to multiple contacts
-  ![result for 'clear'](images/mailtoResult.png)
+* `mailto`: Generates a link that opens your email client with recipients pre-filled.
+  ![result for 'mailto'](images/mailtoResult.png)
 
 ### Sorting commissions by amount : `comm`
 
