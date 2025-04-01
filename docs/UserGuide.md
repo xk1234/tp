@@ -355,3 +355,4 @@ Action | Format, Examples
 **Remove Tag** | `rmtag TAG [TAG]…`<br> e.g. `rmtag customer vip`
 **List** | `list`
 **Help** | `help`
+**Incl** | `incl n/NAME_KEYWORD [NAME_KEYWORD]...` <br> e.g. `incl n/James joe`
