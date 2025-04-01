@@ -92,6 +92,7 @@ AscendNetwork is built with **network marketeers** in mind—people who often de
 * **Curly braces `{ }` separated by `|`** mean “choose one” (e.g., `{n/NAME | t/TAG}`).
 * **Parameters can be in any order.**
 * **Extraneous parameters** are ignored for commands that do not accept any (e.g., `help 123` is treated as `help`).
+* **Whenever alphanumeric
 
 _If you are reading this from a PDF, watch out for spacing issues when copying multi-line commands._
 </div>
@@ -232,7 +233,7 @@ Format: `export FILE_PATH [a/ATTRIBUTE]...`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:** The command will fail if the file cannot be edited, e.g., if you already have the file opened.</div>
 
-* `FILE_PATH` is a file path with suffix `.csv` and consists of only alphanumeric characters.
+* `FILE_PATH` is a file path with suffix `.csv` and prefix of only alphanumeric characters.
 * `ATTRIBUTE` may be **`name`, `phone`, `email`, `address`, or `commission`**. It is case-insensitive. You should not use the same `ATTRIBUTE` twice.
 * Only the currently displayed list is exported, so that you can select which contacts to export.
 
