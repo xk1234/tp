@@ -237,7 +237,7 @@ Format: `export FILE_PATH [a/ATTRIBUTE]...`
 
 * `FILE_PATH` is a file path that starts with only alphanumeric characters and ends with a suffix `.csv`. We recommend that you keep its length under 256 characters.
 * `ATTRIBUTE` may be **`name`, `phone`, `email`, `address`, or `commission`**. It is case-insensitive. You should not use the same `ATTRIBUTE` twice.
-* Only the currently displayed list is exported, so that you can select which contacts to export.
+* Only the currently displayed contacts will be exported. Use `find` and/or other commands to refine your selection before running this command.
 
 Examples:
 * `export data.csv a/NAME a/email`: Exports only names and emails—perfect for email campaigns!
@@ -280,20 +280,20 @@ Format: `exit`
 
 ### Saving the data
 
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+AscendNetwork data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
 ### Editing the data file
 
-AddressBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. JSON (short for JavaScript Object Notation) is a text-based data format that is human-readable. Advanced users are welcome to update data directly by editing that data file.
+AscendNetwork data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. JSON (short for JavaScript Object Notation) is a text-based data format that is human-readable. Advanced users are welcome to update data directly by editing that data file.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+If your changes to the data file makes its format invalid, AscendNetwork will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
+Furthermore, certain edits can cause the AscendNetwork to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </div>
 
 ### Mail to multiple contacts: `mailto`
 
-Generates a mailto link to mail to multiple contacts. You can copy the URL using the popup window's button and mail using your favourite mail client by opening the link in an address bar.
+Quickly create an email link to send messages to multiple contacts using your preferred email client.
 
 Format: `mailto`
 
