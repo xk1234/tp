@@ -23,7 +23,7 @@ public class ExportCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Export selected attributes "
             + "from the displayed person list.\n"
-            + "Parameters: FILE_PATH (Alphanumeric, ending with \".csv\") "
+            + "Parameters: FILE_NAME (Alphanumeric, ending with \".csv\") "
             + "[" + PREFIX_ATTRIBUTE + "ATTRIBUTE]...\n"
             + "ATTRIBUTE may be any of: name, phone, email, address, commission and should not have duplicates\n"
             + "Example: " + COMMAND_WORD + " "
