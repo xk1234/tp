@@ -1,9 +1,12 @@
 package seedu.address.commons.util;
 
+import static java.nio.file.StandardOpenOption.CREATE_NEW;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -21,7 +24,7 @@ public class CsvUtil {
      * @throws IOException If an I/O error occurs while writing to the file.
      */
     public static void writeToCsv(Stream<Stream<?>> tokensStream, Path path) throws IOException {
-        try (BufferedWriter writer = Files.newBufferedWriter(path)) {
+        try (BufferedWriter writer = Files.newBufferedWriter(path, CREATE_NEW)) {
             // Write CSV body
             for (Stream<?> tokens : (Iterable<Stream<?>>) tokensStream::iterator) {
                 writer.write(tokens.map(token -> String.format("\"%s\"", token)).collect(Collectors.joining(",")));
