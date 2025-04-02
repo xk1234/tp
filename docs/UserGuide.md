@@ -231,7 +231,7 @@ Effortlessly export your contacts to a CSV file that can be edited in software l
 
 Format: `export FILE_NAME [a/ATTRIBUTE]...`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:** The command will fail if the file cannot be edited, e.g., if you already have the file opened.</div>
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:** The command will fail if the file already exists, so that your data won't be lost unintentionally.</div>
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:** Use filters before exporting to segment your contacts, e.g., exporting only high-commission leads.</div>
 
@@ -394,7 +394,7 @@ Action | Format, Examples
 **Find** | `find {n/NAME_KEYWORD [NAME_KEYWORD]... [t/TAG_KEYWORD [TAG_KEYWORD]...] \| t/TAG_KEYWORD [TAG_KEYWORD]... [n/NAME_KEYWORD [NAME_KEYWORD]...]}` <br> e.g., `find n/James Jake t/downline customer`
 **Tag** | `tag TAG [TAG]…` e.g. `tag customer vip`
 **Remove Tag** | `rmtag TAG [TAG]…`<br> e.g. `rmtag customer vip`
-**Export** | `export FILE_PATH [a/ATTRIBUTE]...`
+**Export** | `export FILE_NAME [a/ATTRIBUTE]...`
 **Mailto** | `mailto`
 **List** | `list`
 **Help** | `help`
