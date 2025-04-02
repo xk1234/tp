@@ -5,6 +5,7 @@ import static seedu.address.logic.Messages.MESSAGE_EMPTY_LIST;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTRIBUTE;
 
 import java.io.IOException;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Path;
 import java.util.List;
 
@@ -29,8 +30,9 @@ public class ExportCommand extends Command {
             + "data.csv "
             + PREFIX_ATTRIBUTE + "phone";
 
-    public static final String MESSAGE_EXPORT_SUCCESS = "Export success";
-    public static final String MESSAGE_EXPORT_FAILURE = "Export failed";
+    public static final String MESSAGE_EXPORT_SUCCESS_FORMAT = "Data is exported successfully to: %1$s.";
+    public static final String MESSAGE_EXPORT_FAILURE_FILE_EXISTS_FORMAT = "Export failed: %1$s already exists!";
+    public static final String MESSAGE_EXPORT_FAILURE_FORMAT = "Export to %1$s has failed.";
 
     // This cannot be Attribute[] due to the given parser
     private final List<Attribute> attributes;
@@ -62,10 +64,12 @@ public class ExportCommand extends Command {
         }
         try {
             model.exportAsCsv(attributes, path);
+        } catch (FileAlreadyExistsException e) {
+            throw new CommandException(String.format(MESSAGE_EXPORT_FAILURE_FILE_EXISTS_FORMAT, path.getFileName()));
         } catch (IOException e) {
-            throw new CommandException(MESSAGE_EXPORT_FAILURE, e);
+            throw new CommandException(String.format(MESSAGE_EXPORT_FAILURE_FORMAT, path.getFileName()));
         }
-        return new CommandResult(MESSAGE_EXPORT_SUCCESS);
+        return new CommandResult(String.format(MESSAGE_EXPORT_SUCCESS_FORMAT, path.getFileName()));
     }
 
     @Override

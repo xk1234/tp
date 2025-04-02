@@ -6,7 +6,6 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -21,6 +20,7 @@ public class CsvUtil {
      *
      * @param tokensStream A stream of streams where each inner stream represents a row in the CSV file.
      * @param path The file path where the CSV should be written.
+     * @throws java.nio.file.FileAlreadyExistsException if it already exists.
      * @throws IOException If an I/O error occurs while writing to the file.
      */
     public static void writeToCsv(Stream<Stream<?>> tokensStream, Path path) throws IOException {
