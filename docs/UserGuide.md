@@ -229,15 +229,15 @@ Examples:
 
 Effortlessly export your contacts to a CSV file that can be edited in software like Excel or Google Sheets.
 
-Format: `export FILE_PATH [a/ATTRIBUTE]...`
+Format: `export FILE_NAME [a/ATTRIBUTE]...`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:** The command will fail if the file cannot be edited, e.g., if you already have the file opened.</div>
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:** Use filters before exporting to segment your contacts, e.g., exporting only high-commission leads.</div>
 
-* `FILE_PATH` is a file path that starts with only alphanumeric characters and ends with a suffix `.csv`. We recommend that you keep its length under 256 characters.
+* `FILE_NAME` is a file name that **starts with only alphanumeric characters** and **ends with the suffix `.csv`**. We recommend that you keep its length **under 256 characters**.
 * `ATTRIBUTE` may be **`name`, `phone`, `email`, `address`, or `commission`**. It is case-insensitive. You should not use the same `ATTRIBUTE` twice.
-* Only the currently displayed contacts will be exported. Use `find` and/or other commands to refine your selection before running this command.
+* Exports the currently displayed contacts only. Use `find` and/or other commands to refine your selection before running this command.
 
 Examples:
 * `export data.csv a/NAME a/email`: Exports only names and emails—perfect for email campaigns!
