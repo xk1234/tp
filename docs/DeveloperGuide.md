@@ -492,9 +492,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1.  User <ins>finds persons by name and tag (UC5)</ins>.
 2.  User requests to export the details of the currently displayed persons.
-3.  User provides the file path to export the file to.
+3.  User provides the file name to export the file to.
 4.  User selects which fields to export from the currently displayed persons.
-5.  AscendNetwork exports persons to the specified file path.
+5.  AscendNetwork exports persons to the specified file name.
     Use case ends.
 
 **Extensions**   
@@ -502,7 +502,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 2a. The list is empty.
     * 2a1. AscendNetwork shows an error message.
       Use case resumes at step 1.
-* 3a. The file path is not valid.
+* 3a. The file name is not valid.
     * 2a1. AscendNetwork shows an error message.
       Use case resumes at step 1.
 * 4a. The user selects invalid fields.

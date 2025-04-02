@@ -6,10 +6,12 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.io.IOException;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Path;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
@@ -23,14 +25,17 @@ import seedu.address.model.person.Attribute;
  */
 public class ExportCommandTest {
 
+    @TempDir
+    Path tempDir;
+
     @Test
     public void execute_nonEmptyUnfilteredList_success() {
         Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
-        String expectedMessage = ExportCommand.MESSAGE_EXPORT_SUCCESS;
+        String expectedMessage = String.format(ExportCommand.MESSAGE_EXPORT_SUCCESS_FORMAT, "test.csv");
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         List<Attribute> attributes = List.of(Attribute.NAME);
-        Path path = Path.of("export.csv");
-        ExportCommand exportCommand = new ExportCommand(attributes, path);
+        Path tempFile = tempDir.resolve("test.csv");
+        ExportCommand exportCommand = new ExportCommand(attributes, tempFile);
         assertCommandSuccess(exportCommand, model, expectedMessage, expectedModel);
     }
 
@@ -38,9 +43,24 @@ public class ExportCommandTest {
     public void execute_emptyUnfilteredList_failure() {
         Model model = new ModelManager(new AddressBook(), new UserPrefs());
         List<Attribute> attributes = List.of(Attribute.NAME);
-        Path path = Path.of("export.csv");
-        ExportCommand exportCommand = new ExportCommand(attributes, path);
+        Path tempFile = tempDir.resolve("test.csv");
+        ExportCommand exportCommand = new ExportCommand(attributes, tempFile);
         assertCommandFailure(exportCommand, model, MESSAGE_EMPTY_LIST);
+    }
+
+    @Test
+    public void execute_caughtFileAlreadyExistsException_failure() {
+        Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs()) {
+            @Override
+            public void exportAsCsv(List<Attribute> attributes, Path path) throws IOException {
+                throw new FileAlreadyExistsException("test.csv");
+            }
+        };
+        String expectedMessage = String.format(ExportCommand.MESSAGE_EXPORT_FAILURE_FILE_EXISTS_FORMAT, "test.csv");
+        List<Attribute> attributes = List.of(Attribute.NAME);
+        Path tempFile = tempDir.resolve("test.csv");
+        ExportCommand exportCommand = new ExportCommand(attributes, tempFile);
+        assertCommandFailure(exportCommand, model, expectedMessage);
     }
 
     @Test
@@ -51,10 +71,10 @@ public class ExportCommandTest {
                 throw new IOException();
             }
         };
-        String expectedMessage = ExportCommand.MESSAGE_EXPORT_FAILURE;
+        String expectedMessage = String.format(ExportCommand.MESSAGE_EXPORT_FAILURE_FORMAT, "test.csv");
         List<Attribute> attributes = List.of(Attribute.NAME);
-        Path path = Path.of("export.csv");
-        ExportCommand exportCommand = new ExportCommand(attributes, path);
+        Path tempFile = tempDir.resolve("test.csv");
+        ExportCommand exportCommand = new ExportCommand(attributes, tempFile);
         assertCommandFailure(exportCommand, model, expectedMessage);
     }
 }
