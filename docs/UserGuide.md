@@ -288,7 +288,7 @@ Format: `mailto`
 
 * You will need to copy the link and paste it on your browser's address bar to send emails.
 * The default email client set on your system will be used to send the email.
-* Only the currently displayed contacts will be included in the `mailto://` link. Use `find` and/or other commands to refine your selection before running this command.
+* Includes the currently displayed contacts only. (in the `mailto://` link) Use `find` and/or other commands to refine your selection before running this command.
 
 Examples:
 * `mailto`: Generates a link that opens your email client with recipients pre-filled.
@@ -326,11 +326,11 @@ Examples:
 
 ### Saving the data
 
-AscendNetwork data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+AscendNetwork saves its data in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
 ### Editing the data file
 
-AscendNetwork data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. JSON (short for JavaScript Object Notation) is a text-based data format that is human-readable. Advanced users are welcome to update data directly by editing that data file.
+AscendNetwork saves its data automatically as a JSON file `[JAR file location]/data/addressbook.json`. JSON (short for JavaScript Object Notation) is a text-based data format that is human-readable. Advanced users are welcome to update data directly by editing that data file.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
 If your changes to the data file makes its format invalid, AscendNetwork will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
