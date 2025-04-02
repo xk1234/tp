@@ -92,6 +92,7 @@ AscendNetwork is built with **network marketeers** in mind—people who often de
 * **Curly braces `{ }` separated by `|`** mean “choose one” (e.g., `{n/NAME | t/TAG}`).
 * **Parameters can be in any order.**
 * **Extraneous parameters** are ignored for commands that do not accept any (e.g., `help 123` is treated as `help`).
+* **Whenever alphanumeric
 
 _If you are reading this from a PDF, watch out for spacing issues when copying multi-line commands._
 </div>
@@ -226,19 +227,21 @@ Examples:
 
 ### Export contacts to a CSV file: `export`
 
-Exports your contacts to a CSV file. This can be edited with e.g. Excel.
+Effortlessly export your contacts to a CSV file that can be edited in software like Excel or Google Sheets.
 
 Format: `export FILE_NAME [a/ATTRIBUTE]...`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:** The command will fail if the file already exists, so that your data won't be lost unintentionally.</div>
 
-* `FILE_NAME` is a file name with suffix `.csv` and consists of only alphanumeric characters.
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:** Use filters before exporting to segment your contacts, e.g., exporting only high-commission leads.</div>
+
+* `FILE_NAME` is a file name that **starts with only alphanumeric characters** and **ends with the suffix `.csv`**. We recommend that you keep its length **under 256 characters**.
 * `ATTRIBUTE` may be **`name`, `phone`, `email`, `address`, or `commission`**. It is case-insensitive. You should not use the same `ATTRIBUTE` twice.
-* Only the currently displayed list is exported, so that you can select which contacts to export.
+* Exports the currently displayed contacts only. Use `find` and/or other commands to refine your selection before running this command.
 
 Examples:
-* `export data.csv a/NAME a/email` exports only the names and email addresses of the currently displayed contacts to a file named `data.csv`.
-* `export data.csv` exports all details of the currently displayed contacts to a file named `data.csv`.
+* `export data.csv a/NAME a/email`: Exports only names and emails—perfect for email campaigns!
+* `export data.csv`: Exports all details of the currently displayed contacts to `data.csv`.
 ![result for 'export'](images/exportResult.png)
 
 ### Deleting a contact : `delete`
@@ -275,32 +278,21 @@ Exits the program.
 
 Format: `exit`
 
-### Saving the data
-
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
-
-### Editing the data file
-
-AddressBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. JSON (short for JavaScript Object Notation) is a text-based data format that is human-readable. Advanced users are welcome to update data directly by editing that data file.
-
-<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
-</div>
-
 ### Mail to multiple contacts: `mailto`
 
-Generates a mailto link to mail to multiple contacts. You can copy the URL using the popup window's button and mail using your favourite mail client by opening the link in an address bar.
+Quickly create an email link to send messages to multiple contacts using your preferred email client.
 
 Format: `mailto`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:** You should first filter to the correct group of contacts</div>
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:** You will need to copy the link and paste it on your browser's address bar to send mail through the system's mail client.</div>
+* You will need to copy the link and paste it on your browser's address bar to send emails.
+* The default email client set on your system will be used to send the email.
+* Includes the currently displayed contacts only. (in the `mailto://` link) Use `find` and/or other commands to refine your selection before running this command.
 
 Examples:
-* `mailto` generates a link that can send email to multiple contacts
-  ![result for 'clear'](images/mailtoResult.png)
+* `mailto`: Generates a link that opens your email client with recipients pre-filled.
+  ![result for 'mailto'](images/mailtoResult.png)
 
 ### Sorting commissions by amount : `comm`
 
@@ -328,9 +320,22 @@ Examples:
 * `summary` displays the general statistics for all contacts.
   ![result for 'summary'](images/summaryResult.png)
 
-### Archiving data files `[coming in v2.0]`
+--------------------------------------------------------------------------------------------------------------------
 
-_Details coming soon ..._
+## Managing your data
+
+### Saving the data
+
+AscendNetwork saves its data in the hard disk automatically after any command that changes the data. There is no need to save manually.
+
+### Editing the data file
+
+AscendNetwork saves its data automatically as a JSON file `[JAR file location]/data/addressbook.json`. JSON (short for JavaScript Object Notation) is a text-based data format that is human-readable. Advanced users are welcome to update data directly by editing that data file.
+
+<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
+If your changes to the data file makes its format invalid, AscendNetwork will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
+Furthermore, certain edits can cause the AscendNetwork to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+</div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -353,6 +358,12 @@ _Details coming soon ..._
 
 **Q**: Will AscendNetwork work on mobile devices?<br>
 **A**: No, AscendNetwork is designed for desktop operating systems such as Windows, macOS, and Linux.
+
+**Q**: Will AscendNetwork work on older operating systems?<br>
+**A**: No, AscendNetwork is designed for modern desktop operating systems such as Windows 10 or later, macOS 10.15 or later, and Ubuntu 18.04 or later. AscendNetwork might not work on other Linux distros or custom setups.
+
+**Q**: Will AscendNetwork data be saved properly on older storage media, such as floppy disks or DVDs?<br>
+**A**: No, AscendNetwork is designed for modern storage media like USB, and file systems like NTFS.
 
 **Q**: Does AscendNetwork require an internet connection?<br>
 **A**: No, all data is stored locally on your device, and the app works entirely offline.
