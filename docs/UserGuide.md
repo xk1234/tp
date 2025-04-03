@@ -125,8 +125,8 @@ A contact can have any number of tags (including 0)
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 c/0`
-* `add n/Betsy Crowe t/friend c/10000 e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
-  ![result for 'add n/Betsy Crowe t/friend c/10000 e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal'](images/addBetsyCroweResult.png)
+* `add n/Betsy Crowe c/10000 e/betsycrowe@example.com a/Chicago ave p/1234567 t/customer`
+  ![result for 'add n/Betsy Crowe c/10000 e/betsycrowe@example.com a/Chicago ave p/1234567 t/customer'](images/addBetsyCroweResult.png)
 
 ### Listing all persons : `list`
 
