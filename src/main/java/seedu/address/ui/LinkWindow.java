@@ -83,10 +83,11 @@ public class LinkWindow extends UiPart<Stage> {
      *     </ul>
      */
     public void display() {
+        logger.fine("LinkWindow to display: " + linkedText);
+        label.setText(linkedText.text());
+
         Stage root = getRoot();
         if (!root.isShowing()) {
-            logger.fine("LinkWindow shows " + linkedText);
-            label.setText(linkedText.text());
             root.show();
             root.centerOnScreen();
         } else {

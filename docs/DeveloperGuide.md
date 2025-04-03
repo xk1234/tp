@@ -454,18 +454,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 2c1. AscendNetwork shows an error message.
       Use case resumes at step 1.
 
-**Use case: UC8 - Send Bulk Messages**
+**Use case: UC8 - Mail to multiple persons**
 
 **MSS**
 
-1. User <ins>finds persons by name and tag (UC5)</ins>
-2. User sends mails to the persons in the list
-
+1. User <ins>find persons by name and tag (UC5)</ins>.
+2. User requests to generate a `mailto` link for all persons currently on the list.
+3. AscendNetwork generates and displays the requested link.
+4. User copies the link to their browser's address bar to open the system mail client.
    Use case ends.
 
 **Extensions**
 
 * 2a. The list is empty.
+    * 2a1. AscendNetwork shows an error message.
+      Use case resumes at step 1.
 
 **Use case: UC9 - Sorting displayed List**
 
@@ -492,9 +495,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1.  User <ins>finds persons by name and tag (UC5)</ins>.
 2.  User requests to export the details of the currently displayed persons.
-3.  User provides the file path to export the file to.
+3.  User provides the file name to export the file to.
 4.  User selects which fields to export from the currently displayed persons.
-5.  AscendNetwork exports persons to the specified file path.
+5.  AscendNetwork exports persons to the specified file name.
     Use case ends.
 
 **Extensions**   
@@ -502,7 +505,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 2a. The list is empty.
     * 2a1. AscendNetwork shows an error message.
       Use case resumes at step 1.
-* 3a. The file path is not valid.
+* 3a. The file name is not valid.
     * 2a1. AscendNetwork shows an error message.
       Use case resumes at step 1.
 * 4a. The user selects invalid fields.
@@ -545,22 +548,6 @@ Use case ends.
       Use case resumes at step 1.
 * 1b. The user provides keywords that doesn't exist in address book.
     * 1b1. AscendNetwork shows 0 person is added.
-      Use case resumes at step 1.
-
-**Use case: UC13 - Mail to multiple persons**
-
-**MSS**
-
-1. User <ins>find persons by name and tag (UC5)</ins>.
-2. User requests to generate a `mailto` link for all persons currently on the list.
-3. AscendNetwork generates and displays the requested link.
-4. User copies the link to their browser's address bar to open the system mail client.
-   Use case ends.
-
-**Extensions**
-
-* 2a. The list is empty.
-    * 2a1. AscendNetwork shows an error message.
       Use case resumes at step 1.
 
 ### Non-Functional Requirements
@@ -629,11 +616,3 @@ testers are expected to do more *exploratory* testing.
 
     1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
        Expected: Similar to previous.
-
-### Saving data
-
-1. Dealing with missing/corrupted data files
-
-    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-
-1. _{ more test cases …​ }_

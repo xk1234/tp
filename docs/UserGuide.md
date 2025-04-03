@@ -92,6 +92,7 @@ AscendNetwork is built with **network marketeers** in mind—people who often de
 * **Curly braces `{ }` separated by `|`** mean “choose one” (e.g., `{n/NAME | t/TAG}`).
 * **Parameters can be in any order.**
 * **Extraneous parameters** are ignored for commands that do not accept any (e.g., `help 123` is treated as `help`).
+* **Whenever alphanumeric
 
 _If you are reading this from a PDF, watch out for spacing issues when copying multi-line commands._
 </div>
@@ -113,7 +114,7 @@ Format: `help`
 
 Adds a person to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A person can have any number of tags (including 0)
@@ -133,9 +134,9 @@ Format: `list`
 
 Edits an existing person in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...​`
 
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, ...​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
@@ -150,7 +151,7 @@ Examples:
 
 Finds contacts by matching name and tag keywords you provide.
 
-Format: `find {n/NAME_KEYWORD [NAME_KEYWORD]... [t/TAG_KEYWORD [TAG_KEYWORD]...] | t/TAG_KEYWORD [TAG_KEYWORD]... [n/NAME_KEYWORD [NAME_KEYWORD]...]}`
+Format: `find {n/NAME_KEYWORD [NAME_KEYWORD]... [t/TAG_KEYWORD...] | t/TAG_KEYWORD [TAG_KEYWORD]... [n/NAME_KEYWORD...]}`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip**: Run this command to control which contacts are affected by commands that act on ones which the app displays</div>
 
@@ -173,7 +174,7 @@ Examples:
 
 Adds tag(s) you specify to multiple contacts.
 
-Format: `tag TAG [TAG]…`
+Format: `tag TAG [TAG]...`
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:** Ensure you filter to the correct group of contacts before using the command, or it may add tags to contacts unintentionally.</div>
 
@@ -192,7 +193,7 @@ Examples:
 
 Removes tag(s) you specify from multiple contacts.
 
-Format: `rmtag TAG [TAG]…`
+Format: `rmtag TAG [TAG]...`
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:** Ensure you filter to the correct group of contacts before using the command, or it may remove tags from contacts unintentionally.</div>
 
@@ -226,19 +227,21 @@ Examples:
 
 ### Export contacts to a CSV file: `export`
 
-Exports your contacts to a CSV file. This can be edited with e.g. Excel.
+Effortlessly export your contacts to a CSV file that can be edited in software like Excel or Google Sheets.
 
-Format: `export FILE_PATH [a/ATTRIBUTE]...`
+Format: `export FILE_NAME [a/ATTRIBUTE]...`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:** The command will fail if the file cannot be edited, e.g., if you already have the file opened.</div>
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:** The command will fail if the file already exists, so that your data won't be lost unintentionally.</div>
 
-* `FILE_PATH` is a file path with suffix `.csv` and consists of only alphanumeric characters.
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:** Use filters before exporting to segment your contacts, e.g., exporting only high-commission leads.</div>
+
+* `FILE_NAME` is a file name that **starts with only alphanumeric characters** and **ends with the suffix `.csv`**. We recommend that you keep its length **under 256 characters**.
 * `ATTRIBUTE` may be **`name`, `phone`, `email`, `address`, or `commission`**. It is case-insensitive. You should not use the same `ATTRIBUTE` twice.
-* Only the currently displayed list is exported, so that you can select which contacts to export.
+* Exports the currently displayed contacts only. Use `find` and/or other commands to refine your selection before running this command.
 
 Examples:
-* `export data.csv a/NAME a/email` exports only the names and email addresses of the currently displayed contacts to a file named `data.csv`.
-* `export data.csv` exports all details of the currently displayed contacts to a file named `data.csv`.
+* `export data.csv a/NAME a/email`: Exports only names and emails—perfect for email campaigns!
+* `export data.csv`: Exports all details of the currently displayed contacts to `data.csv`.
 ![result for 'export'](images/exportResult.png)
 
 ### Deleting a contact : `delete`
@@ -275,36 +278,64 @@ Exits the program.
 
 Format: `exit`
 
-### Saving the data
-
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
-
-### Editing the data file
-
-AddressBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. JSON (short for JavaScript Object Notation) is a text-based data format that is human-readable. Advanced users are welcome to update data directly by editing that data file.
-
-<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
-</div>
-
 ### Mail to multiple contacts: `mailto`
 
-Generates a mailto link to mail to multiple contacts. You can copy the URL using the popup window's button and mail using your favourite mail client by opening the link in an address bar.
+Quickly create an email link to send messages to multiple contacts using your preferred email client.
 
 Format: `mailto`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:** You should first filter to the correct group of contacts</div>
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:** You will need to copy the link and paste it on your browser's address bar to send mail through the system's mail client.</div>
+* You will need to copy the link and paste it on your browser's address bar to send emails.
+* The default email client set on your system will be used to send the email.
+* Includes the currently displayed contacts only. (in the `mailto://` link) Use `find` and/or other commands to refine your selection before running this command.
 
 Examples:
-* `mailto` generates a link that can send email to multiple contacts
-  ![result for 'clear'](images/mailtoResult.png)
+* `mailto`: Generates a link that opens your email client with recipients pre-filled.
+  ![result for 'mailto'](images/mailtoResult.png)
 
-### Archiving data files `[coming in v2.0]`
+### Sorting commissions by amount : `comm`
 
-_Details coming soon ..._
+Sorts the currently displayed list of commissions by their amount in ascending or descending order.
+
+Format: `comm s/DIR`
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:** Use this command to easily view commissions starting from the lowest amount.</div>
+
+* `DIR` is `asc` for ascending and `desc` for descending
+
+Examples:
+* `comm s/asc` sorts the displayed commissions from the smallest amount to the largest amount.
+  ![result for 'comm s/asc'](images/commSortAscResult.png)
+
+### Displaying summary statistics : `summary`
+
+Displays a summary of key statistics: total number of contacts, total commission, highest commission, lowest commission, and average commission across all stored contacts in easy to read format.
+
+Format: `summary`
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:** Use this command for a quick statistical overview of your stored data without needing to list all entries.</div>
+
+Examples:
+* `summary` displays the general statistics for all contacts.
+  ![result for 'summary'](images/summaryResult.png)
+
+--------------------------------------------------------------------------------------------------------------------
+
+## Managing your data
+
+### Saving the data
+
+AscendNetwork saves its data in the hard disk automatically after any command that changes the data. There is no need to save manually.
+
+### Editing the data file
+
+AscendNetwork saves its data automatically as a JSON file `[JAR file location]/data/addressbook.json`. JSON (short for JavaScript Object Notation) is a text-based data format that is human-readable. Advanced users are welcome to update data directly by editing that data file.
+
+<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
+If your changes to the data file makes its format invalid, AscendNetwork will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
+Furthermore, certain edits can cause the AscendNetwork to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+</div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -328,6 +359,12 @@ _Details coming soon ..._
 **Q**: Will AscendNetwork work on mobile devices?<br>
 **A**: No, AscendNetwork is designed for desktop operating systems such as Windows, macOS, and Linux.
 
+**Q**: Will AscendNetwork work on older operating systems?<br>
+**A**: No, AscendNetwork is designed for modern desktop operating systems such as Windows 10 or later, macOS 10.15 or later, and Ubuntu 18.04 or later. AscendNetwork might not work on other Linux distros or custom setups.
+
+**Q**: Will AscendNetwork data be saved properly on older storage media, such as floppy disks or DVDs?<br>
+**A**: No, AscendNetwork is designed for modern storage media like USB, and file systems like NTFS.
+
 **Q**: Does AscendNetwork require an internet connection?<br>
 **A**: No, all data is stored locally on your device, and the app works entirely offline.
 
@@ -350,15 +387,15 @@ _Details coming soon ..._
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find** | `find {n/NAME_KEYWORD [NAME_KEYWORD]... [t/TAG_KEYWORD [TAG_KEYWORD]...] \| t/TAG_KEYWORD [TAG_KEYWORD]... [n/NAME_KEYWORD [NAME_KEYWORD]...]}` <br> e.g., `find n/James Jake t/downline customer`
+**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]...​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Find** | `find {n/NAME_KEYWORD [NAME_KEYWORD]... [t/TAG_KEYWORD...] \| t/TAG_KEYWORD [TAG_KEYWORD]... [n/NAME_KEYWORD...]}` <br> e.g., `find n/James Jake t/downline customer`
 **Addc** | `addc INDEX c/COMMISSION` <br> e.g. `addc 4 c/1500`
-**Tag** | `tag TAG [TAG]…` e.g. `tag customer vip`
-**Remove Tag** | `rmtag TAG [TAG]…`<br> e.g. `rmtag customer vip`
-**Export** | `export FILE_PATH [a/ATTRIBUTE]...`
+**Tag** | `tag TAG [TAG]...` e.g. `tag customer vip`
+**Remove Tag** | `rmtag TAG [TAG]...`<br> e.g. `rmtag customer vip`
+**Export** | `export FILE_NAME [a/ATTRIBUTE]...`
 **Mailto** | `mailto`
 **List** | `list`
 **Help** | `help`

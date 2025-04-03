@@ -24,8 +24,9 @@ public class MailtoCommand extends Command {
         + "Copy the link to your browser's address bar to compose an email to all the selected recipients.\n"
         + "Example: " + COMMAND_WORD;
 
-    public static final String MESSAGE_MAILTO_SUCCESS_FORMAT =
-        "Open this in a browser's address bar: %1$s";
+    // If we display the link in full here, PE testers will flag GUI bugs
+    public static final String MESSAGE_MAILTO_HOW_TO =
+        "Copy the mailto link with \"Copy URL\" button and open it in a browser's address bar.";
 
     public static final String SHOWING_MAILTO_MESSAGE = "Opened mailto link window.";
 
@@ -40,7 +41,7 @@ public class MailtoCommand extends Command {
                 .map(person -> person.getEmail().toString())
                 .collect(Collectors.joining(",", "mailto:", ""));
         CommandResult.LinkedText linkedText = new CommandResult.LinkedText(
-                url, String.format(MESSAGE_MAILTO_SUCCESS_FORMAT, url));
+                url, MESSAGE_MAILTO_HOW_TO);
         return new CommandResult(SHOWING_MAILTO_MESSAGE, linkedText, false);
     }
 }

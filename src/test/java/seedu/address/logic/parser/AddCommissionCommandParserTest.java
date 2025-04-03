@@ -15,5 +15,7 @@ public class AddCommissionCommandParserTest {
     public void parse_emptyArg_throwsParseException() {
         assertParseFailure(parser, "", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                 AddCommissionCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, " 0 c/100", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                AddCommissionCommand.MESSAGE_USAGE));
     }
 }
