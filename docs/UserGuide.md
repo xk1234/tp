@@ -110,19 +110,23 @@ Shows a message explaning how to access the help page.
 Format: `help`
 
 
-### Adding a person: `add`
+### Adding a contact: `add`
 
-Adds a person to the address book.
+Adds a contact to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...​`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS c/COMMISSION [t/TAG]...​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-A person can have any number of tags (including 0)
+A contact can have any number of tags (including 0)
 </div>
 
+* Provide **all fields**—tag is optional.
+* Ensure every field meets its constraints. 
+
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 c/0`
+* `add n/Betsy Crowe t/friend c/10000 e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+  ![result for 'add n/Betsy Crowe t/friend c/10000 e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal'](images/addBetsyCroweResult.png)
 
 ### Listing all persons : `list`
 
@@ -130,22 +134,28 @@ Shows a list of all persons in the address book.
 
 Format: `list`
 
-### Editing a person : `edit`
+### Editing a contact : `edit`
 
-Edits an existing person in the address book.
+Edits an existing contact in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...​`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [c/COMMISSION] [t/TAG]...​`
 
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, ...​
-* At least one of the optional fields must be provided.
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+Update your contact details if you make a mistake
+</div>
+
+* Edits the contact at the specified `INDEX`. The index refers to the index number shown in the displayed contact list. The index **must be a positive integer** 1, 2, 3, ...​
+* **At least one of** the optional fields must be provided.
 * Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing `t/` without
+* When editing tags, the existing tags of the contact will be removed i.e adding of tags is not cumulative.
+* You can remove all the contacts’ tags by typing `t/` without
     specifying any tags after it.
 
 Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st contact to be `91234567` and `johndoe@example.com` respectively.
+*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd contact to be `Betsy Crower` and clears all existing tags.
+*  `edit 3 c/120` Edits the commission of the 3rd contact to be `120`.
+   ![result for 'edit 3 c/120'](images/editCommissionResult.png)
 
 ### Locating your contacts: `find`
 
@@ -215,8 +225,12 @@ Adding contacts with matching name from your contacts to the list.
 
 Format: `incl n/NAME_KEYWORD [NAME_KEYWORD]...`
 
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+Use this command to quickly add your favorite contacts to the displayed list.
+</div>
+
 * `NAME_KEYWORD` is same as defined above.
-* Supply at least one of `n/NAME_KEYWORD`
+* Supply **at least one** of `n/NAME_KEYWORD`
 * It includes contacts whose name contain at least one keyword. e.g. Providing `n/Hans Bo` includes `Hans Gruber`, `Bo Yang`
 * The order of the keywords does not matter. e.g. `n/Hans Bo` matches `Bo Hans` name
 * Searching ignores case for the name. e.g `n/hans` matches `Hans` name
@@ -224,7 +238,25 @@ Format: `incl n/NAME_KEYWORD [NAME_KEYWORD]...`
 
 Examples:
 * `incl n/John` finds `john` and `John Doe`
+* `find n/john betsy` follwed by `incl n/Li` adds `David Li` to the list
+  ![result for 'find n/john betsy' then 'incl n/Li'](images/findInclResult.png)
 
+### Add commission to the contact: `addc`
+
+Adds commission to the contact. 
+
+Format: `addc INDEX c/COMMISSION`
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+Quickly add commission to your contact using the addc command.
+</div>
+
+* Adds commission to the contact at the specified `INDEX`. The index refers to the index number shown in the displayed contacts list. The index **must be a positive integer** 1, 2, 3, ...​
+* The commission value **must be a non-negative integer** and can have **up to 9 digits.**
+
+Examples:
+* `addc 1 c/12`: Adds 12 commission to the 1st contact. 
+  ![result for 'addc'](images/addcResult.png)
 ### Export contacts to a CSV file: `export`
 
 Effortlessly export your contacts to a CSV file that can be edited in software like Excel or Google Sheets.
