@@ -121,17 +121,17 @@ A contact can have any number of tags (including 0)
 </div>
 
 * Provide **all fields**—tag is optional.
-* For names, use **only alphanumeric characters and spaces**. It must **not be blank**.
-* For phone numbers, include **only numbers** and ensure there are **at least 3** digits.
-* For addresses, any value is acceptable, but it must **not be blank**.
-* For emails, follow the **local-part@domain** format. Please note:
+* NAME uses **only alphanumeric characters and spaces**. It must **not be blank**.
+* PHONE_NUMBER is a **number** that is **at least 3** digits long.
+* ADDRESS accepts any value, but it must **not be blank**.
+* EMAIL follows the **local-part@domain** format. Please note:
   1. Include **only alphanumeric characters and these special characters, excluding the parentheses: (+_.-)** in the local part. It must **not start or end with a special character**.
   2. After the local part, add an '@' followed by a domain name composed of labels separated by periods.
      - The domain name **must end** with a domain label that is **at least 2** characters long.
      - Each domain label should **start and end** with an alphanumeric character.
      - Each domain label may contain **only alphanumeric** characters, with hyphens allowed in between if necessary.
-* For commission, use **only integer** numbers, **not starting with 0**. It must be **at most 9** digits long, and cannot be blank.
-* For tag names, use **only alphanumeric** characters.
+* COMMISSION is an **integer** number, **not starting with 0**. It must be **at most 9** digits long, and **cannot be blank**.
+* TAG consists of **alphanumeric** characters.
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 c/0`
