@@ -35,7 +35,7 @@ public class AddCommissionCommandParser implements Parser<AddCommissionCommand> 
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT), pe);
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommissionCommand.MESSAGE_USAGE));
         }
 
         commission = ParserUtil.parseCommission(argMultimap.getValue(PREFIX_COMMISSION).get());
