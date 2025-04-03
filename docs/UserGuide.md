@@ -399,3 +399,5 @@ Action | Format, Examples
 **List** | `list`
 **Help** | `help`
 **Incl** | `incl n/NAME_KEYWORD [NAME_KEYWORD]...` <br> e.g. `incl n/James joe`
+**Comm** | `comm s/SORT_DIRECTION` <br> e.g. `comm s/asc`
+**summary** | `summary` <br> e.g. `summary`
