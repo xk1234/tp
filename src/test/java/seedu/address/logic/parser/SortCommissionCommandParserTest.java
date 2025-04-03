@@ -17,17 +17,17 @@ public class SortCommissionCommandParserTest {
 
     @Test
     public void parse_emptyArg_returnsSortCommissionCommandWithoutSort() {
-        assertParseSuccess(parser, "", new SortCommissionCommand(false, true));
+        assertParseFailure(parser, "", MESSAGE_INVALID_SORT_DIRECTION);
     }
 
     @Test
     public void parse_sortAsc_returnsSortCommissionCommandAscending() {
-        assertParseSuccess(parser, " s/asc", new SortCommissionCommand(true, true));
+        assertParseSuccess(parser, " s/asc", new SortCommissionCommand(true));
     }
 
     @Test
     public void parse_sortDesc_returnsSortCommissionCommandDescending() {
-        assertParseSuccess(parser, " s/desc", new SortCommissionCommand(true, false));
+        assertParseSuccess(parser, " s/desc", new SortCommissionCommand(false));
     }
 
     @Test

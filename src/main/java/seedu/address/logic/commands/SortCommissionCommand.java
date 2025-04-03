@@ -2,7 +2,6 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SORT;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -32,28 +31,21 @@ public class SortCommissionCommand extends Command {
 
     public final String messageSuccess;
 
-    private final boolean isSortProvided;
     private final boolean isAscending;
 
     /**
      * Creates a SortCommissionCommand.
      *
-     * @param isSortProvided Whether the user provided a sort flag (s/asc or s/desc).
      * @param isAscending    True if sorting ascending, false if descending. Ignored if isSortProvided is false.
      */
-    public SortCommissionCommand(boolean isSortProvided, boolean isAscending) {
-        this.isSortProvided = isSortProvided;
+    public SortCommissionCommand(boolean isAscending) {
         this.isAscending = isAscending;
         this.messageSuccess = "Listed all persons sorted by commission in "
-                + (isSortProvided ? (isAscending ? "ascending" : "descending") : "default")
-                + " order.";
+                + (isAscending ? "ascending" : "descending") + " order.";
     }
 
 
     public List<Person> getSortedList(List<Person> list) {
-        if (!isSortProvided) {
-            return list;
-        }
         List<Person> sortedList = new ArrayList<>(list);
         Comparator<Person> compareByCommission = Comparator.comparing(p ->
                 Integer.parseInt(p.getCommission().value));
@@ -69,14 +61,17 @@ public class SortCommissionCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        if (!isSortProvided) {
-            throw new CommandException("Sort Type Not Provided");
+
+        List<Person> sortedList = getSortedList(model.getFilteredPersonList());
+        StringBuilder msgBuilder = new StringBuilder(messageSuccess).append("\n");
+        int idx = 1;
+        for (Person person : sortedList) {
+            msgBuilder.append(idx).append(". ").append(person.getName()).append(", ")
+                    .append(person.getCommission()).append("\n");
+            idx++;
         }
-
-        model.setPersons(getSortedList(model.getFilteredPersonList()));
-        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-
-        return new CommandResult(messageSuccess);
+        String msg = msgBuilder.toString();
+        return new CommandResult(msg);
     }
 
     @Override
@@ -90,8 +85,7 @@ public class SortCommissionCommand extends Command {
         }
 
         SortCommissionCommand o = (SortCommissionCommand) other;
-        return isSortProvided == o.isSortProvided
-                && isAscending == o.isAscending;
+        return isAscending == o.isAscending;
     }
 
     @Override

@@ -3,12 +3,13 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BENSON;
 import static seedu.address.testutil.TypicalPersons.CARL;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -31,23 +32,6 @@ public class SortCommissionCommandTest {
         expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
     }
 
-    @Test
-    public void execute_commission_success() {
-        SortCommissionCommand scc = new SortCommissionCommand(false, true);
-        assertCommandFailure(scc, model, "Sort Type Not Provided");
-    }
-
-    @Test
-    void execute_commissionNoSort_success() {
-        List<Person> testList = List.of(
-                ALICE,
-                BENSON,
-                CARL
-        );
-        SortCommissionCommand scc = new SortCommissionCommand(false, true);
-        List<Person> sortedTestList = scc.getSortedList(testList);
-        assertEquals(sortedTestList, testList);
-    }
 
     @Test
     void execute_commissionAscendingSort_success() {
@@ -56,7 +40,7 @@ public class SortCommissionCommandTest {
                 BENSON,
                 CARL
         );
-        SortCommissionCommand scc = new SortCommissionCommand(true, true);
+        SortCommissionCommand scc = new SortCommissionCommand(true);
         List<Person> sortedTestList = scc.getSortedList(testList);
         List<Person> expectedList = List.of(
                 ALICE,
@@ -67,13 +51,38 @@ public class SortCommissionCommandTest {
     }
 
     @Test
+    public void test_sortComm_success() {
+        SortCommissionCommand scc = new SortCommissionCommand(true);
+        StringBuilder expectedMsgBuilder = new StringBuilder(
+                "Listed all persons sorted by commission in ascending order.\n");
+        List<Person> mutableList = new ArrayList<>(model.getFilteredPersonList());
+
+        mutableList.sort((p1, p2) -> {
+            int commission1 = Integer.parseInt(p1.getCommission().value);
+            int commission2 = Integer.parseInt(p2.getCommission().value);
+            return Integer.compare(commission1, commission2);
+        });
+
+        int idx = 1;
+        for (Person person : mutableList) {
+            expectedMsgBuilder.append(idx).append(". ").append(person.getName()).append(", ")
+                    .append(person.getCommission().value)
+                    .append("\n");
+            idx++;
+        }
+
+        String expectedMsg = expectedMsgBuilder.toString();
+        assertCommandSuccess(scc, model, expectedMsg, expectedModel);
+    }
+
+    @Test
     void execute_commissionDescendingSort_success() {
         List<Person> testList = List.of(
                 ALICE,
                 BENSON,
                 CARL
         );
-        SortCommissionCommand scc = new SortCommissionCommand(true, false);
+        SortCommissionCommand scc = new SortCommissionCommand(false);
         List<Person> sortedTestList = scc.getSortedList(testList);
         List<Person> expectedList = new java.util.ArrayList<>(List.of(
                 ALICE,
@@ -84,24 +93,26 @@ public class SortCommissionCommandTest {
         assertEquals(sortedTestList, expectedList);
     }
 
+
+
     @Test
     public void test_equals() {
-        SortCommissionCommand commissionFirstCommand = new SortCommissionCommand(true, true);
-        SortCommissionCommand commissionSecondCommand = new SortCommissionCommand(false, true);
-        SortCommissionCommand commissionThirdCommand = new SortCommissionCommand(true, false);
+        SortCommissionCommand commissionFirstCommand = new SortCommissionCommand(true);
+        SortCommissionCommand commissionSecondCommand = new SortCommissionCommand(false);
 
         assertTrue(commissionFirstCommand.equals(commissionFirstCommand));
         assertTrue(commissionSecondCommand.equals(commissionSecondCommand));
 
         assertFalse(commissionFirstCommand.equals(commissionSecondCommand));
-        assertFalse(commissionFirstCommand.equals(commissionThirdCommand));
 
         assertFalse(commissionFirstCommand.equals(null));
     }
 
+
+
     @Test
     public void test_toString() {
-        SortCommissionCommand scc = new SortCommissionCommand(true, false);
+        SortCommissionCommand scc = new SortCommissionCommand(false);
         String expected = "seedu.address.logic.commands.SortCommissionCommand{isAscending=desc}";
         assertEquals(expected, scc.toString());
     }

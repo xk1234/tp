@@ -305,7 +305,7 @@ Format: `comm s/DIR`
 * `DIR` is `asc` for ascending and `desc` for descending
 
 Examples:
-* `comm s/asc` sorts the displayed commissions from the smallest amount to the largest amount.
+* `comm s/asc` sorts the displayed commissions from the smallest amount to the largest amount and prints it in the program display.
   ![result for 'comm s/asc'](images/commSortAscResult.png)
 
 ### Displaying summary statistics : `summary`
