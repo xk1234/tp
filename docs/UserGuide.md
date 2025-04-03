@@ -130,7 +130,7 @@ A contact can have any number of tags (including 0)
      - The domain name **must end** with a domain label that is **at least 2** characters long.
      - Each domain label should **start and end** with an alphanumeric character.
      - Each domain label may contain **only alphanumeric** characters, with hyphens allowed in between if necessary.
-* COMMISSION is an **integer** number, **not starting with 0**. It must be **at most 9** digits long, and **cannot be blank**.
+* COMMISSION is an **non-negative integer** number, **not starting with 0**. It must be **at most 9** digits long, and **cannot be blank**.
 * TAG consists of **alphanumeric** characters.
 
 Examples:
