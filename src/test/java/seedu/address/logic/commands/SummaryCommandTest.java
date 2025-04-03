@@ -45,9 +45,9 @@ public class SummaryCommandTest {
         SummaryCommand summaryCommand = new SummaryCommand();
         BigInteger totalCommission = summaryCommand.getTotal(lastShownList);
 
-        BigInteger total = BigInteger.valueOf(Integer.parseInt(ALICE.getCommission().value)
+        BigInteger expectedTotalCommissionValue = BigInteger.valueOf(Integer.parseInt(ALICE.getCommission().value)
                 + Integer.parseInt(BENSON.getCommission().value));
-        assertEquals(total, totalCommission);
+        assertEquals(expectedTotalCommissionValue, totalCommission);
     }
 
     @Test

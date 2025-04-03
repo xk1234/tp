@@ -55,8 +55,7 @@ public class SortCommissionCommandTest {
         SortCommissionCommand scc = new SortCommissionCommand(true);
         StringBuilder expectedMsgBuilder = new StringBuilder(
                 "Listed all persons sorted by commission in ascending order.\n");
-        List<Person> personList = model.getFilteredPersonList();
-        List<Person> mutableList = new ArrayList<>(personList);
+        List<Person> mutableList = new ArrayList<>(model.getFilteredPersonList());
 
         mutableList.sort((p1, p2) -> {
             int commission1 = Integer.parseInt(p1.getCommission().value);
