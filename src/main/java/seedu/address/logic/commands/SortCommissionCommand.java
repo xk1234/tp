@@ -2,7 +2,6 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SORT;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -70,13 +69,18 @@ public class SortCommissionCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         if (!isSortProvided) {
-            throw new CommandException("Sort Type Not Provided");
+            throw new CommandException("Invalid command format!\n"
+                    + "comm: description\n"
+                    + "parameters: comm s/<direction> where <direction> is either asc or desc.\n"
+                    + "example: comm s/asc");
         }
 
-        model.setPersons(getSortedList(model.getFilteredPersonList()));
-        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-
-        return new CommandResult(messageSuccess);
+        List<Person> SortedList = getSortedList(model.getFilteredPersonList());
+        String msg = messageSuccess + "\n";
+        for (Person person : SortedList) {
+            msg = msg.concat(person.getName() + ", " + person.getCommission() + "\n");
+        }
+        return new CommandResult(msg);
     }
 
     @Override

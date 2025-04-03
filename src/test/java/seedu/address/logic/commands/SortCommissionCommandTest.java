@@ -34,7 +34,10 @@ public class SortCommissionCommandTest {
     @Test
     public void execute_commission_success() {
         SortCommissionCommand scc = new SortCommissionCommand(false, true);
-        assertCommandFailure(scc, model, "Sort Type Not Provided");
+        assertCommandFailure(scc, model, "Invalid command format!\n"
+                                + "comm: description\n"
+                                + "parameters: comm s/<direction> where <direction> is either asc or desc.\n"
+                                + "example: comm s/asc");
     }
 
     @Test

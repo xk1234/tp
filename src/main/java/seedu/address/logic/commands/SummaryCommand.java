@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.util.Comparator;
 import java.util.List;
@@ -22,15 +23,11 @@ public class SummaryCommand extends Command {
     /**
      * Calculates the total commission of the people.
      */
-    public Commission getTotal(List<Person> people) {
-        Commission total = new Commission("0");
+    public BigInteger getTotal(List<Person> people) {
+        BigInteger total = BigInteger.valueOf(0);
         for (Person person : people) {
             Commission commission = person.getCommission();
-            try {
-                total = total.addValue(commission);
-            } catch (IllegalValueException e) {
-                throw new RuntimeException("Error while adding commission", e);
-            }
+            total = total.add(new BigInteger(String.valueOf(commission.value)));
         }
         return total;
     }
@@ -55,7 +52,7 @@ public class SummaryCommand extends Command {
         if (people.isEmpty()) {
             return 0.00;
         }
-        BigDecimal total = new BigDecimal(getTotal(people).value);
+        BigDecimal total = new BigDecimal(getTotal(people));
         BigDecimal count = BigDecimal.valueOf(people.size());
         BigDecimal average = total.divide(count, 2, RoundingMode.HALF_UP);
         return average.doubleValue();
@@ -66,7 +63,7 @@ public class SummaryCommand extends Command {
         requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
 
-        Commission totalCommission = getTotal(lastShownList);
+        BigInteger totalCommission = getTotal(lastShownList);
         Person highestPerson = getHighest(lastShownList);
         Person lowestPerson = getLowest(lastShownList);
         double averageCommission = getAverage(lastShownList);
