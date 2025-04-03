@@ -23,7 +23,7 @@ public class RemoveTagCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Removes the specified tag(s) from all persons in the current filtered list.\n"
-            + "Parameters: TAG [TAGS]...\n"
+            + "Parameters: TAG [TAG]...\n"
             + "Example: " + COMMAND_WORD + " friend colleague";
 
     public static final String MESSAGE_REMOVE_TAG_SUCCESS = "Removed tag(s) from %1$d person(s)";

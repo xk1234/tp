@@ -21,7 +21,7 @@ public class TagCommand extends Command {
     public static final String COMMAND_WORD = "tag";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds the specified tag(s) to all persons "
-            + "currently in the filtered list. "
+            + "currently in the filtered list.\n"
             + "Parameters: TAG [TAG]...\n"
             + "Example: " + COMMAND_WORD + " downline friends";
 

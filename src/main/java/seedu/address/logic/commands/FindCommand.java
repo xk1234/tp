@@ -21,7 +21,8 @@ public class FindCommand extends Command {
             + "tag keywords (case-insensitive) and displays them as a list with index numbers.\n"
             + "At least one name keyword or tag keyword must be provided.\n"
             + "If both name and tag keywords are provided, contacts must match both criteria.\n"
-            + "Parameters: {n/NAMES | t/TAGS} [n/NAMES]... [t/TAGS]...\n"
+            + "Parameters: {n/NAME_KEYWORD [NAME_KEYWORD]... [t/TAG_KEYWORD...] | "
+            + "t/TAG_KEYWORD [TAG_KEYWORD]... [n/NAME_KEYWORD...]}\n"
             + "Example: " + COMMAND_WORD + " n/alice bob t/downline";
 
     private final NameAndTagPredicate predicate;
