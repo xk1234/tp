@@ -157,7 +157,7 @@ Update your contact details if you make a mistake
 * Edits the contact at the specified `INDEX`. The index refers to the index number shown in the displayed contact list. The index **must be a positive integer** 1, 2, 3, ...​
 * **At least one of** the optional fields must be provided.
 * Existing values will be updated to the input values.
-* When editing tags, the existing tags of the contact will be removed i.e adding of tags is not cumulative.
+* Removes the existing tags of the contact when edits i.e. adding of tags is not cumulative.
 * You can remove all the contacts’ tags by typing `t/` without
     specifying any tags after it.
 
@@ -258,7 +258,7 @@ Adds commission to the contact.
 Format: `addc INDEX c/COMMISSION`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-Quickly add commission to your contact using the addc command.
+Quickly add commission to your contact without manually calculating and editing.
 </div>
 
 * Adds commission to the contact at the specified `INDEX`. The index refers to the index number shown in the displayed contacts list. The index **must be a positive integer** 1, 2, 3, ...​
