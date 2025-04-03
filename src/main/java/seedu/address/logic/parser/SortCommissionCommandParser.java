@@ -22,7 +22,7 @@ public class SortCommissionCommandParser implements Parser<SortCommissionCommand
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_SORT);
 
         if (argMultimap.getValue(PREFIX_SORT).isEmpty()) {
-            return new SortCommissionCommand(false, true);
+            throw new ParseException(MESSAGE_INVALID_SORT_DIRECTION);
         }
 
         // A sort value is present
@@ -34,6 +34,6 @@ public class SortCommissionCommandParser implements Parser<SortCommissionCommand
         default -> throw new ParseException(MESSAGE_INVALID_SORT_DIRECTION);
         };
 
-        return new SortCommissionCommand(true, isAscending);
+        return new SortCommissionCommand(isAscending);
     }
 }

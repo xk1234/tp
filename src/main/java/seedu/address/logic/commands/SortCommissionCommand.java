@@ -31,28 +31,21 @@ public class SortCommissionCommand extends Command {
 
     public final String messageSuccess;
 
-    private final boolean isSortProvided;
     private final boolean isAscending;
 
     /**
      * Creates a SortCommissionCommand.
      *
-     * @param isSortProvided Whether the user provided a sort flag (s/asc or s/desc).
      * @param isAscending    True if sorting ascending, false if descending. Ignored if isSortProvided is false.
      */
-    public SortCommissionCommand(boolean isSortProvided, boolean isAscending) {
-        this.isSortProvided = isSortProvided;
+    public SortCommissionCommand(boolean isAscending) {
         this.isAscending = isAscending;
         this.messageSuccess = "Listed all persons sorted by commission in "
-                + (isSortProvided ? (isAscending ? "ascending" : "descending") : "default")
-                + " order.";
+                + (isAscending ? "ascending" : "descending") + " order.";
     }
 
 
     public List<Person> getSortedList(List<Person> list) {
-        if (!isSortProvided) {
-            return list;
-        }
         List<Person> sortedList = new ArrayList<>(list);
         Comparator<Person> compareByCommission = Comparator.comparing(p ->
                 Integer.parseInt(p.getCommission().value));
@@ -68,18 +61,16 @@ public class SortCommissionCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        if (!isSortProvided) {
-            throw new CommandException("Invalid command format!\n"
-                    + "comm: description\n"
-                    + "parameters: comm s/<direction> where <direction> is either asc or desc.\n"
-                    + "example: comm s/asc");
-        }
 
         List<Person> sortedList = getSortedList(model.getFilteredPersonList());
-        String msg = messageSuccess + "\n";
+        StringBuilder msgBuilder = new StringBuilder(messageSuccess).append("\n");
+        int idx = 1;
         for (Person person : sortedList) {
-            msg = msg.concat(person.getName() + ", " + person.getCommission() + "\n");
+            msgBuilder.append(idx).append(". ").append(person.getName()).append(", ")
+                    .append(person.getCommission()).append("\n");
+            idx++;
         }
+        String msg = msgBuilder.toString();
         return new CommandResult(msg);
     }
 
@@ -94,8 +85,7 @@ public class SortCommissionCommand extends Command {
         }
 
         SortCommissionCommand o = (SortCommissionCommand) other;
-        return isSortProvided == o.isSortProvided
-                && isAscending == o.isAscending;
+        return isAscending == o.isAscending;
     }
 
     @Override
