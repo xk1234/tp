@@ -8,7 +8,6 @@ import java.math.RoundingMode;
 import java.util.Comparator;
 import java.util.List;
 
-import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Commission;
 import seedu.address.model.person.Person;

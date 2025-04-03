@@ -75,9 +75,9 @@ public class SortCommissionCommand extends Command {
                     + "example: comm s/asc");
         }
 
-        List<Person> SortedList = getSortedList(model.getFilteredPersonList());
+        List<Person> sortedList = getSortedList(model.getFilteredPersonList());
         String msg = messageSuccess + "\n";
-        for (Person person : SortedList) {
+        for (Person person : sortedList) {
             msg = msg.concat(person.getName() + ", " + person.getCommission() + "\n");
         }
         return new CommandResult(msg);

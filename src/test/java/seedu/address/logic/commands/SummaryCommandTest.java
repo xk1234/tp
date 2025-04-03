@@ -8,6 +8,7 @@ import static seedu.address.testutil.TypicalPersons.BENSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.util.List;
 
@@ -18,7 +19,6 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.person.Commission;
 import seedu.address.model.person.Person;
 
 public class SummaryCommandTest {
@@ -43,10 +43,11 @@ public class SummaryCommandTest {
                 BENSON
         );
         SummaryCommand summaryCommand = new SummaryCommand();
-        Commission totalCommission = summaryCommand.getTotal(lastShownList);
+        BigInteger totalCommission = summaryCommand.getTotal(lastShownList);
 
-        Integer total = Integer.parseInt(ALICE.getCommission().value) + Integer.parseInt(BENSON.getCommission().value);
-        assertEquals(new Commission(total.toString()), totalCommission);
+        BigInteger total = BigInteger.valueOf(Integer.parseInt(ALICE.getCommission().value)
+                + Integer.parseInt(BENSON.getCommission().value));
+        assertEquals(total, totalCommission);
     }
 
     @Test
