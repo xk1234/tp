@@ -19,7 +19,7 @@
         <URL value="@LinkWindow.css" />
       </stylesheets>
 
-      <HBox alignment="CENTER" fx:id="helpMessageContainer">
+      <HBox alignment="CENTER" fx:id="linkMessageContainer">
         <children>
           <Label fx:id="label" text="Label">
             <HBox.margin>
