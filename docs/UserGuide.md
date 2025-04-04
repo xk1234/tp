@@ -110,19 +110,33 @@ Shows a message explaning how to access the help page.
 Format: `help`
 
 
-### Adding a person: `add`
+### Adding a contact: `add`
 
-Adds a person to the address book.
+Adds a contact to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...​`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS c/COMMISSION [t/TAG]...​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-A person can have any number of tags (including 0)
+A contact can have any number of tags (including 0)
 </div>
 
+* Provide **all fields**—tag is optional.
+* NAME uses **only alphanumeric characters and spaces**. It must **not be blank**.
+* PHONE_NUMBER is a **number** that is **at least 3** digits long.
+* ADDRESS accepts any value, but it must **not be blank**.
+* EMAIL follows the **local-part@domain** format. Please note:
+  1. Include **only alphanumeric characters and these special characters, excluding the parentheses: (+_.-)** in the local part. It must **not start or end with a special character**.
+  2. After the local part, add an '@' followed by a domain name composed of labels separated by periods.
+     - The domain name **must end** with a domain label that is **at least 2** characters long.
+     - Each domain label should **start and end** with an alphanumeric character.
+     - Each domain label may contain **only alphanumeric** characters, with hyphens allowed in between if necessary.
+* COMMISSION is an **non-negative integer** number, **not starting with 0**. It must be **at most 9** digits long, and **cannot be blank**.
+* TAG consists of **alphanumeric** characters.
+
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 c/0`
+* `add n/Betsy Crowe c/10000 e/betsycrowe@example.com a/Chicago ave p/1234567 t/customer`
+  ![result for 'add n/Betsy Crowe c/10000 e/betsycrowe@example.com a/Chicago ave p/1234567 t/customer'](images/addBetsyCroweResult.png)
 
 ### Listing all persons : `list`
 
@@ -130,22 +144,28 @@ Shows a list of all persons in the address book.
 
 Format: `list`
 
-### Editing a person : `edit`
+### Editing a contact : `edit`
 
-Edits an existing person in the address book.
+Edits an existing contact in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...​`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [c/COMMISSION] [t/TAG]...​`
 
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, ...​
-* At least one of the optional fields must be provided.
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+Update your contact details if you make a mistake
+</div>
+
+* Edits the contact at the specified `INDEX`. The index refers to the index number shown in the displayed contact list. The index **must be a positive integer** 1, 2, 3, ...​
+* **At least one of** the optional fields must be provided.
 * Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing `t/` without
+* Removes the existing tags of the contact when edits i.e. adding of tags is not cumulative.
+* You can remove all the contacts’ tags by typing `t/` without
     specifying any tags after it.
 
 Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st contact to be `91234567` and `johndoe@example.com` respectively.
+*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd contact to be `Betsy Crower` and clears all existing tags.
+*  `edit 3 c/120` Edits the commission of the 3rd contact to be `120`.
+   ![result for 'edit 3 c/120'](images/editCommissionResult.png)
 
 ### Locating your contacts: `find`
 
@@ -215,8 +235,12 @@ Adding contacts with matching name from your contacts to the list.
 
 Format: `incl n/NAME_KEYWORD [NAME_KEYWORD]...`
 
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+Use this command to quickly add your favorite contacts to the displayed list.
+</div>
+
 * `NAME_KEYWORD` is same as defined above.
-* Supply at least one of `n/NAME_KEYWORD`
+* Supply **at least one** of `n/NAME_KEYWORD`
 * It includes contacts whose name contain at least one keyword. e.g. Providing `n/Hans Bo` includes `Hans Gruber`, `Bo Yang`
 * The order of the keywords does not matter. e.g. `n/Hans Bo` matches `Bo Hans` name
 * Searching ignores case for the name. e.g `n/hans` matches `Hans` name
@@ -224,7 +248,25 @@ Format: `incl n/NAME_KEYWORD [NAME_KEYWORD]...`
 
 Examples:
 * `incl n/John` finds `john` and `John Doe`
+* `find n/john betsy` follwed by `incl n/Li` adds `David Li` to the list
+  ![result for 'find n/john betsy' then 'incl n/Li'](images/findInclResult.png)
 
+### Add commission to the contact: `addc`
+
+Adds commission to the contact. 
+
+Format: `addc INDEX c/COMMISSION`
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+Quickly add commission to your contact without manually calculating and editing.
+</div>
+
+* Adds commission to the contact at the specified `INDEX`. The index refers to the index number shown in the displayed contacts list. The index **must be a positive integer** 1, 2, 3, ...​
+* The commission value **must be a non-negative integer** and can have **up to 9 digits.**
+
+Examples:
+* `addc 1 c/12`: Adds 12 commission to the 1st contact. 
+  ![result for 'addc'](images/addcResult.png)
 ### Export contacts to a CSV file: `export`
 
 Effortlessly export your contacts to a CSV file that can be edited in software like Excel or Google Sheets.
@@ -392,6 +434,7 @@ Action | Format, Examples
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]...​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find** | `find {n/NAME_KEYWORD [NAME_KEYWORD]... [t/TAG_KEYWORD...] \| t/TAG_KEYWORD [TAG_KEYWORD]... [n/NAME_KEYWORD...]}` <br> e.g., `find n/James Jake t/downline customer`
+**Addc** | `addc INDEX c/COMMISSION` <br> e.g. `addc 4 c/1500`
 **Tag** | `tag TAG [TAG]...` e.g. `tag customer vip`
 **Remove Tag** | `rmtag TAG [TAG]...`<br> e.g. `rmtag customer vip`
 **Export** | `export FILE_NAME [a/ATTRIBUTE]...`
