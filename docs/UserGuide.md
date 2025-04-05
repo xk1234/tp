@@ -328,8 +328,8 @@ Format: `mailto`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:** You should first filter to the correct group of contacts</div>
 
-* You will need to copy the link and paste it on your browser's address bar to send emails.
-* The default email client set on your system will be used to send the email.
+* You will need to copy the link and paste it into your browser's address bar to send emails.
+* After pasting it into the address bar, the default email client set on your system will be opened and filled with email addresses so that you can send the email quickly to the displayed contacts in AscendNetwork.
 * Includes the currently displayed contacts only. (in the `mailto://` link) Use `find` and/or other commands to refine your selection before running this command.
 
 Examples:
