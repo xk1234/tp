@@ -66,13 +66,13 @@ public class SortCommissionCommand extends Command {
         List<Person> sortedList = getSortedList(model.getFilteredPersonList());
 
         if (sortedList.isEmpty()) {
-            return new CommandResult(MESSAGE_EMPTY_LIST);
+            throw new CommandException(MESSAGE_EMPTY_LIST);
         }
 
         StringBuilder msgBuilder = new StringBuilder(messageSuccess).append("\n");
         int idx = 1;
         for (Person person : sortedList) {
-            msgBuilder.append(idx).append(". ").append(person.getName()).append(", ")
+            msgBuilder.append(idx).append(". ").append(person.getName()).append(", $")
                     .append(person.getCommission()).append("\n");
             idx++;
         }
