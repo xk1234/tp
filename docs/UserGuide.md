@@ -273,7 +273,7 @@ Effortlessly export your contacts to a CSV file that can be edited in software l
 
 Format: `export FILE_NAME [a/ATTRIBUTE]...`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:** The command will fail if the file already exists, so that your data won't be lost unintentionally.</div>
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:** The command will fail if the file already exists, so that your data won't be lost unintentionally. On some systems like Windows, file names are case-insensitive. For example, if you already have a `DATA.csv`, then AscendNetwork cannot export your data to `data.csv`.</div>
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:** Use filters before exporting to segment your contacts, e.g., exporting only high-commission leads.</div>
 
