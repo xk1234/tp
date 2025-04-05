@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.Messages.MESSAGE_EMPTY_LIST;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SORT;
 
 import java.util.ArrayList;
@@ -63,10 +64,15 @@ public class SortCommissionCommand extends Command {
         requireNonNull(model);
 
         List<Person> sortedList = getSortedList(model.getFilteredPersonList());
+
+        if (sortedList.isEmpty()) {
+            throw new CommandException(MESSAGE_EMPTY_LIST);
+        }
+
         StringBuilder msgBuilder = new StringBuilder(messageSuccess).append("\n");
         int idx = 1;
         for (Person person : sortedList) {
-            msgBuilder.append(idx).append(". ").append(person.getName()).append(", ")
+            msgBuilder.append(idx).append(". ").append(person.getName()).append(", $")
                     .append(person.getCommission()).append("\n");
             idx++;
         }
