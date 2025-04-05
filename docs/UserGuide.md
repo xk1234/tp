@@ -187,7 +187,7 @@ Format: `find {n/NAME_KEYWORD [NAME_KEYWORD]... [t/TAG_KEYWORD...] | t/TAG_KEYWO
 * When providing both `NAME_KEYWORD` and `TAG_KEYWORD`, finds contacts matching both name and tag search (i.e. `AND` search between name and tags). e.g. Providing `n/Hans Bo t/downline customer` finds `Hans Gruber` and with tags `downline` and `family`, but not `Bo Yang` with tags `family` and `friend`
 * Searching ignores case. e.g `n/hans` matches `Hans` name, `t/customer` matches `Customer` tag
 * The order of the keywords does not matter. e.g. `n/Hans Bo` matches `Bo Hans` name, `t/downline customer` matches `customer` and `downline` tags
-* Matches only full words. e.g. `n/Han` does not match `Hans` name, `t/downlines` does not match `downline` tag
+* Matches only full words so that unintended contacts are not shown in the list. e.g. `n/Han` does not match `Hans` name, `t/downlines` does not match `downline` tag
 
 Examples:
 * `find n/John` finds `john` and `John Doe`
