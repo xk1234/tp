@@ -624,3 +624,33 @@ testers are expected to do more *exploratory* testing.
 
     1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
        Expected: Similar to previous.
+
+### Find multiple person
+
+1. Find multiple persons to only show a subset
+
+    1. Test case: `find n/NAME t/TAG` (where `NAME` and `TAG` matches at least one word in the name and tag respectively of at least one same person)<br>
+       Expected: Only the persons who matches are displayed. The number of matched persons is shown in the status message.
+
+    1. Test case: `find n/ t/`<br>
+       Expected: No filtering is done. Error details shown in the status message.
+
+### Tag multiple person
+
+1. Tagging all listed persons
+
+    1. Test case: `tag customer`<br>
+       Expected: All persons currently listed are tagged with `customer`. The number of people with the tag added is shown in the status message.
+
+    1. Test case: `tag`<br>
+       Expected: No person is tagged. Error details shown in the status message.
+
+### Removing
+
+1. Removing tag from all listed persons
+
+    1. Test case: `rmtag customer`<br>
+       Expected: All persons currently listed have the `customer` tag removed from them. The number of people with the tag removed is shown in the status message.
+
+    1. Test case: `rmtag`<br>
+       Expected: No person have tags removed. Error details shown in the status message.
