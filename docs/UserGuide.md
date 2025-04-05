@@ -119,9 +119,13 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS c/COMMISSION [t/TAG]...​`
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A contact can have any number of tags (including 0)
 </div>
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+If multiple contacts have the same name, different spacing and casing can be used.
+</div>
 
 * Provide **all fields**—tag is optional.
 * NAME uses **only alphanumeric characters and spaces**. It must **not be blank**.
+* The name of contacts cannot be **exactly the same** so that you do not accidentally add the same person twice. Phone number, email and address can be the same for contacts with common information e.g. same workplace
 * PHONE_NUMBER is a **number** that is **at least 3** digits long.
 * ADDRESS accepts any value, but it must **not be blank**.
 * EMAIL follows the **local-part@domain** format. Please note:
