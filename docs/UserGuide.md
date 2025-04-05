@@ -352,9 +352,10 @@ Examples:
 
 ### Displaying summary statistics : `summary`
 
-Displays a summary of key statistics: total number of contacts, total commission, highest commission, lowest commission, and average commission across all stored contacts in easy to read format.
+Displays a summary of key statistics: total number of contacts, total commission, highest commission, lowest commission, and average commission across all contacts displayed on screen in easy to read format.
 
 Format: `summary`
+Any additional parameters added are legal but will not affect behaviour.
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:** Use this command for a quick statistical overview of your stored data without needing to list all entries.</div>
 
