@@ -654,3 +654,13 @@ testers are expected to do more *exploratory* testing.
 
     1. Test case: `rmtag`<br>
        Expected: No person have tags removed. Error details shown in the status message.
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix: Planned enhancements**
+
+Team size: 4
+
+1. **Allow finding by other attributes**: The current find command is able to find persons by both name and tags. We plan to extend its capabilities to cover all attributes of a person in ways that are meaningful for it e.g. the commission attribute can be filterd by a range using an upper and lower limit. This would allow users to better organize their contacts and use commands that operate on the displayed list
+
+1. **Enable copying contact details**: The current UI does not allow text in the person list to be copied onto user's clipboards. We plan to create this capabilitiy so that users can copy over existing contact details into other software, rather than manually typing them out.
