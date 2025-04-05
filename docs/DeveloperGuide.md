@@ -550,6 +550,14 @@ Use case ends.
     * 1b1. AscendNetwork shows 0 person is added.
       Use case resumes at step 1.
 
+**Use case: UC13 - Clear all persons**
+
+**MSS**
+
+1. User requests to clear all perons.
+2. AscendNetwork clearss every persons from its data.
+   Use case ends.
+
 ### Non-Functional Requirements
 
 1. Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
