@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.Messages.MESSAGE_EMPTY_LIST;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BENSON;
@@ -16,6 +17,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -25,11 +27,17 @@ public class SortCommissionCommandTest {
 
     private Model model;
     private Model expectedModel;
+    private Model emptyModel;
+    private Model emptyExpectedModel;
+
 
     @BeforeEach
     public void setUp() {
         model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
         expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        AddressBook emptyBook = new AddressBook();
+        emptyModel = new ModelManager(emptyBook, new UserPrefs());
+        emptyExpectedModel = new ModelManager(emptyModel.getAddressBook(), new UserPrefs());
     }
 
 
@@ -91,6 +99,12 @@ public class SortCommissionCommandTest {
         ));
         Collections.reverse(expectedList);
         assertEquals(sortedTestList, expectedList);
+    }
+
+    @Test
+    void executeEmptyList() {
+        SortCommissionCommand scc = new SortCommissionCommand(true);
+        assertCommandSuccess(scc, emptyModel, MESSAGE_EMPTY_LIST, emptyExpectedModel);
     }
 
 
