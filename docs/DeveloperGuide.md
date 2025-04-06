@@ -635,4 +635,3 @@ testers are expected to do more *exploratory* testing.
        Expected: Persons matched added to the list. The number of persons added to list is shown in the status message.
     2. Test case: `incl 1 n/` <br>
        Expected: No person is added. Error details shown in the status message.
-    
