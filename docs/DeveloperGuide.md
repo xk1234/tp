@@ -587,6 +587,20 @@ Use case ends.
 2. AscendNetwork clears all persons from its data.
    Use case ends.
 
+**Use case: UC15 - Display help window**
+
+**MSS**
+
+1. User requests for help on how to use AscendNetwork.
+2. AscendNetwork displays a window with a link to the user guide.
+
+Use case ends.
+
+**Extensions**
+* 1a. The help window is already open.
+    * 1a1. AscendNetwork refocuses the window.
+      Use case ends.
+
 ### Non-Functional Requirements
 
 1. Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
@@ -709,7 +723,7 @@ testers are expected to do more *exploratory* testing.
     1. Test case: `tag`<br>
        Expected: No person is tagged. Error details shown in the status message.
 
-### Removing
+### Removing tags
 
 1. Removing tag from all listed persons
 
@@ -720,6 +734,64 @@ testers are expected to do more *exploratory* testing.
 
     1. Test case: `rmtag`<br>
        Expected: No person has tags removed. Error details shown in the status message.
+
+### Exporting contacts to CSV
+
+1. Exporting all visible contacts with full details
+
+    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+
+    1. Test case: `export data.csv`<br>
+       Expected: A file named `data.csv` is created in AscendNetwork's current directory. All contact details (name, phone, email, address, commission) from the visible list are exported. A success message is shown in the status message.
+
+    1. Test case: `export data.csv` (when `data.csv` already exists)<br>
+       Expected: Export fails. Error message shown in the status message indicating the file already exists.
+
+    1. Test case: `export DATA.csv` (when `data.csv` already exists in a system that is case-aware but case-insensitive e.g. Windows)<br>
+       Expected: Export fails. Error message shown in the status message indicating the file already exists.
+
+2. Exporting filtered contacts with selected attributes
+
+    1. Prerequisites: Use `find` to filter the contacts, e.g., `find n/Alice`. Ensure at least one contact matches.
+
+    1. Test case: `export filtered.csv a/name a/email`<br>
+       Expected: A file named `filtered.csv` is created, containing only the names and emails of visible contacts. A success message is shown.
+
+    1. Test case: `export data.csv a/phone a/PHONE`<br>
+       Expected: Export fails, since there are duplicate attributes requested (`phone` and `PHONE` are considered the same), with relevant error message.
+
+    1. Test case: `export data.csv a/`<br>
+       Expected: Export fails, since there are invalid attributes requested, with relevant error message.
+
+3. Exporting when there are no visible contacts.
+
+    1. Prerequisites: Use `find` to filter the contacts, e.g., `find n/Alice`. Ensure no contact matches.
+
+    1. Test case: `export data.csv`<br>
+       Expected: Export fails, since there are no visible contacts to export.
+
+### Generating mailto link
+
+1. Generating a mailto link from all visible contacts
+
+    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list. Ensure contacts have valid email addresses.
+
+    1. Test case: `mailto`<br>
+       Expected: A mailto link is generated with emails of all visible contacts. A pop-up window is opened with a 'Copy URL' button. When clicked, the button overwrites the system clipboard with the generated mailto link. AscendNetwork displays success message.
+
+2. Generating a mailto link when no persons are visible
+
+    1. Prerequisites: List all persons using the `list` command. No persons in the list.
+
+    1. Test case: `mailto`<br>
+       Expected: No mailto link is generated. Pop-up window is not opened. AscendNetwork displays error message indicating there are no contacts to include.
+
+3. Generating a mailto link after `help` command has been used
+
+    1. Prerequisites: `help` command is executed and the window is left open.
+
+    1. Test case: `mailto`<br>
+       Expected: Contents of the window is replaced with those related to `mailto`.
 
 --------------------------------------------------------------------------------------------------------------------
 
