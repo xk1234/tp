@@ -641,6 +641,8 @@ testers are expected to do more *exploratory* testing.
 
 1. Tagging all listed persons
 
+    1. Prerequisites: At least one person is displayed on the list.
+
     1. Test case: `tag customer`<br>
        Expected: All persons currently listed are tagged with `customer`. The number of people with the tag added is shown in the status message.
 
@@ -650,6 +652,8 @@ testers are expected to do more *exploratory* testing.
 ### Removing
 
 1. Removing tag from all listed persons
+
+    1. Prerequisites: At least one person is displayed on the list.
 
     1. Test case: `rmtag customer`<br>
        Expected: All persons currently listed have the `customer` tag removed from them. The number of people with the tag removed is shown in the status message.
