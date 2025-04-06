@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.Messages.MESSAGE_EMPTY_LIST;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -8,6 +9,7 @@ import java.math.RoundingMode;
 import java.util.Comparator;
 import java.util.List;
 
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Commission;
 import seedu.address.model.person.Person;
@@ -58,9 +60,13 @@ public class SummaryCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model) {
+    public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
+        if (lastShownList.isEmpty()) {
+            throw new CommandException(MESSAGE_EMPTY_LIST);
+        }
+
 
         BigInteger totalCommission = getTotal(lastShownList);
         Person highestPerson = getHighest(lastShownList);
