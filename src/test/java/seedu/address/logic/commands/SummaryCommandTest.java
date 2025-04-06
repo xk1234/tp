@@ -2,6 +2,8 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static seedu.address.logic.Messages.MESSAGE_EMPTY_LIST;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BENSON;
@@ -26,14 +28,12 @@ public class SummaryCommandTest {
     private Model model;
     private Model expectedModel;
     private Model modelWithNoPersons;
-    private Model expectedModelWithNoPersons;
 
     @BeforeEach
     public void setUp() {
         model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
         expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         modelWithNoPersons = new ModelManager(new AddressBook(), new UserPrefs());
-        expectedModelWithNoPersons = new ModelManager(modelWithNoPersons.getAddressBook(), new UserPrefs());
     }
 
     @Test
@@ -147,22 +147,7 @@ public class SummaryCommandTest {
         // Arrange
         SummaryCommand summaryCommand = new SummaryCommand();
 
-        // Expected values and message for an empty list
-        int expectedNumContacts = 0;
-        BigDecimal expectedTotalCommission = BigDecimal.ZERO;
-        String expectedHighest = "N/A";
-        String expectedLowest = "N/A";
-        String expectedAverage = "0.00";
-
-        String expectedStatsMessage = "==== General Statistics ====\n"
-                + String.format("Number of Contacts : %d\n", expectedNumContacts)
-                + String.format("Total Commission   : %s\n", expectedTotalCommission)
-                + String.format("Highest Commission : %s\n", expectedHighest)
-                + String.format("Lowest Commission  : %s\n", expectedLowest)
-                + String.format("Average Commission : %s\n", expectedAverage)
-                + "============================\n";
-
-        assertCommandSuccess(summaryCommand, modelWithNoPersons, expectedStatsMessage, expectedModelWithNoPersons);
+        assertCommandFailure(summaryCommand, modelWithNoPersons, MESSAGE_EMPTY_LIST);
     }
 
 

@@ -31,7 +31,10 @@ public class ExportCommand extends Command {
             + PREFIX_ATTRIBUTE + "phone";
 
     public static final String MESSAGE_EXPORT_SUCCESS_FORMAT = "Data is exported successfully to: %1$s.";
-    public static final String MESSAGE_EXPORT_FAILURE_FILE_EXISTS_FORMAT = "Export failed: %1$s already exists!";
+    public static final String MESSAGE_EXPORT_FAILURE_FILE_EXISTS_FORMAT = """
+            Export failed: %1$s already exists.
+            (Note: On Windows, file names are case-insensitive. This means 'A.csv' and 'a.csv' refer to the same file.
+            Please rename or remove the existing file before trying again.)""";
     public static final String MESSAGE_EXPORT_FAILURE_FORMAT = "Export to %1$s has failed.";
 
     // This cannot be Attribute[] due to the given parser
