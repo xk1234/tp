@@ -50,6 +50,7 @@ Person *--> "*" Tag
 
 ' Dependency showing that Person uses Attribute enum.
 Person ..> Attribute
+Person -[hidden]right-> Attribute
 
 Person -[hidden]up--> I
 UniquePersonList -[hidden]right-> I
