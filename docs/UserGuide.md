@@ -92,7 +92,7 @@ AscendNetwork is built with **network marketeers** in mind—people who often de
 * **Curly braces `{ }` separated by `|`** mean “choose one” (e.g., `{n/NAME | t/TAG}`).
 * **Parameters can be in any order.**
 * **Extraneous parameters** are ignored for commands that do not accept any (e.g., `help 123` is treated as `help`).
-* **Whenever alphanumeric
+* **Alphanumeric** means only English characters without diacritics (ASCII) and Arabic numerals `0, 1, 2, 3, 4, 5, 6, 7, 8, 9` are allowed. 
 
 _If you are reading this from a PDF, watch out for spacing issues when copying multi-line commands._
 </div>
