@@ -758,7 +758,7 @@ testers are expected to do more *exploratory* testing.
        Expected: A file named `filtered.csv` is created, containing only the names and emails of visible contacts. A success message is shown.
 
     1. Test case: `export data.csv a/phone a/PHONE`<br>
-       Expected: Export fails, since there are duplicate attributes requested, with relevant error message. (up to case-sensitivity)
+       Expected: Export fails, since there are duplicate attributes requested (`phone` and `PHONE` are considered the same), with relevant error message.
 
     1. Test case: `export data.csv a/`<br>
        Expected: Export fails, since there are invalid attributes requested, with relevant error message.
