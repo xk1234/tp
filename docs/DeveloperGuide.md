@@ -618,3 +618,21 @@ testers are expected to do more *exploratory* testing.
 
     1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
        Expected: Similar to previous.
+
+### Adding a commission 
+
+1. Adding commission to the specified indexed person.
+   1. Prerequisites: Multiple persons in the list. 
+   2. Test case: `addc 1 c/12` <br>
+   Expected: 12 commission is added to the first person.
+   3. Test case: `addc 1 c/1000000000` <br>
+   Expected: Invalid commission. Error details shown in the status message.
+
+### Including a persons
+
+1. Including specific persons to the list
+    1. Test case: `incl n/NAME` <br>
+       Expected: Persons matched added to the list. The number of persons added to list is shown in the status message.
+    2. Test case: `incl 1 n/` <br>
+       Expected: No person is added. Error details shown in the status message.
+    

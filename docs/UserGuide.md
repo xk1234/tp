@@ -120,9 +120,14 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS c/COMMISSION [t/TAG]...​`
 A contact can have any number of tags (including 0)
 </div>
 
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+​Keep your character count under 30 to ensure all parameters display properly in the app.
+</div>
+
+
 * Provide **all fields**—tag is optional.
 * NAME uses **only alphanumeric characters and spaces**. It must **not be blank**.
-* PHONE_NUMBER is a **number** that is **at least 3** digits long.
+* PHONE_NUMBER is a **number** that is **at least 3** digits and **at most 20** digits long.
 * ADDRESS accepts any value, but it must **not be blank**.
 * EMAIL follows the **local-part@domain** format. Please note:
   1. Include **only alphanumeric characters and these special characters, excluding the parentheses: (+_.-)** in the local part. It must **not start or end with a special character**.
@@ -236,7 +241,7 @@ Adding contacts with matching name from your contacts to the list.
 Format: `incl n/NAME_KEYWORD [NAME_KEYWORD]...`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-Use this command to quickly add your favorite contacts to the displayed list.
+Add your favorite contacts to your find command's filtered list.
 </div>
 
 * `NAME_KEYWORD` is same as defined above.
@@ -248,7 +253,9 @@ Use this command to quickly add your favorite contacts to the displayed list.
 
 Examples:
 * `incl n/John` finds `john` and `John Doe`
-* `find n/john betsy` follwed by `incl n/Li` adds `David Li` to the list
+* First `find n/alex david`
+  ![result for 'find n/alex david t/downline customer'](images/findAlexDavidResult.png)
+* Then, `incl n/betsy` adds `Betsy Crowe` to the list
   ![result for 'find n/john betsy' then 'incl n/Li'](images/findInclResult.png)
 
 ### Add commission to the contact: `addc`
