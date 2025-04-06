@@ -678,5 +678,5 @@ testers are expected to do more *exploratory* testing.
        Expected: "Invalid command format! comm s/<direction> where <direction> is either asc or desc. Example: comm s/asc" error message is printed
 
 1. Sorting by commission when list is empty
-   1. Test case: `comm s/asc`<br> 
+   1. Test case: `comm s/asc`<br>
         Expected: "List is empty, nothing to do" error message should be displayed
