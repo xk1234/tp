@@ -77,7 +77,7 @@ AscendNetwork is built with **network marketeers** in mind—people who often de
 
    * **`help`** : Opens the help window.
    * **`list`** : Lists all existing contacts.
-   * **`add n/John Doe p/98765432 e/johnd@example.com a/John Street, block 123, #01-01`** : Adds a contact named `John Doe`, whos contact number is `98765432`, has an `email of johnd@example.com` and lives at `John Street, block 123, #01-01`.
+   * **`add n/John Doe p/98765432 e/johnd@example.com a/John Street, block 123, #01-01`** : Adds a contact named `John Doe`, whose contact number is `98765432`, has an `email of johnd@example.com` and lives at `John Street, block 123, #01-01`.
    * **`delete 3`** : Deletes the 3rd contact in the current list.
    * **`clear`** : Deletes **all** contacts.
    * **`exit`** : Closes the app.
@@ -103,7 +103,7 @@ _If you are reading this from a PDF, watch out for spacing issues when copying m
 
 ### Viewing help : `help`
 
-Shows a message explaning how to access the help page.
+Shows a message explaining how to access the help page.
 
 ![help message](images/helpMessage.png)
 
@@ -119,9 +119,13 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS c/COMMISSION [t/TAG]...​`
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A contact can have any number of tags (including 0)
 </div>
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+If multiple contacts have the same name, different spacing and casing can be used.
+</div>
 
 * Provide **all fields**—tag is optional.
 * NAME uses **only alphanumeric characters and spaces**. It must **not be blank**.
+* The name of contacts cannot be **exactly the same** so that you do not accidentally add the same person twice. Phone number, email and address can be the same for contacts with common information e.g. same workplace
 * PHONE_NUMBER is a **number** that is **at least 3** digits long.
 * ADDRESS accepts any value, but it must **not be blank**.
 * EMAIL follows the **local-part@domain** format. Please note:
@@ -183,7 +187,7 @@ Format: `find {n/NAME_KEYWORD [NAME_KEYWORD]... [t/TAG_KEYWORD...] | t/TAG_KEYWO
 * When providing both `NAME_KEYWORD` and `TAG_KEYWORD`, finds contacts matching both name and tag search (i.e. `AND` search between name and tags). e.g. Providing `n/Hans Bo t/downline customer` finds `Hans Gruber` and with tags `downline` and `family`, but not `Bo Yang` with tags `family` and `friend`
 * Searching ignores case. e.g `n/hans` matches `Hans` name, `t/customer` matches `Customer` tag
 * The order of the keywords does not matter. e.g. `n/Hans Bo` matches `Bo Hans` name, `t/downline customer` matches `customer` and `downline` tags
-* Matches only full words. e.g. `n/Han` does not match `Hans` name, `t/downlines` does not match `downline` tag
+* Matches whole words to only show desired results. e.g. `n/Han` does not match `Hans` name, `t/downlines` does not match `downline` tag
 
 Examples:
 * `find n/John` finds `john` and `John Doe`
@@ -248,7 +252,7 @@ Use this command to quickly add your favorite contacts to the displayed list.
 
 Examples:
 * `incl n/John` finds `john` and `John Doe`
-* `find n/john betsy` follwed by `incl n/Li` adds `David Li` to the list
+* `find n/john betsy` followed by `incl n/Li` adds `David Li` to the list
   ![result for 'find n/john betsy' then 'incl n/Li'](images/findInclResult.png)
 
 ### Add commission to the contact: `addc`
@@ -384,8 +388,8 @@ Furthermore, certain edits can cause the AscendNetwork to behave in unexpected w
 
 ## FAQ
 
-**Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AscendNetwork home folder.
+**Q**: How do I transfer my data to another computer?<br>
+**A**: Install the app on the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AscendNetwork home folder.
 
 **Q**: How can I back up my data?<br>
 **A**: You can manually back up your `addressbook.json` file by copying it to a safe location.
