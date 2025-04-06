@@ -267,6 +267,7 @@ Quickly add commission to your contact without manually calculating and editing.
 Examples:
 * `addc 1 c/12`: Adds 12 commission to the 1st contact. 
   ![result for 'addc'](images/addcResult.png)
+
 ### Export contacts to a CSV file: `export`
 
 Effortlessly export your contacts to a CSV file that can be edited in software like Excel or Google Sheets.
