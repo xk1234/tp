@@ -802,3 +802,32 @@ Team size: 4
 1. **Allow finding by other attributes**: The current find command is able to find persons by both name and tags. We plan to extend its capabilities to cover all attributes of a person in ways that are meaningful for it e.g. the commission attribute can be filtered by a range using an upper and lower limit. This would allow users to better organize their contacts and use commands that operate on the displayed list
 
 1. **Enable copying contact details**: The current UI does not allow text in the person list to be copied onto users' clipboards. We plan to create this capability so that users can copy over existing contact details into other software, rather than manually typing them out.
+
+1. **Support non-alphanumeric inputs in all fields**: AscendNetwork currently doesn't allow certain names (e.g. s/o, d/o in Indian, Ah-Beng in Chinese), emails, and addresses for ease of implementation. We plan to relax our input validation to support more valid legal names, emails and addresses.
+
+1. **Indicate conflicting file name in export**: Currently AscendNetwork will fail to `export` if a similarly-named file is already present. The app does not indicate which is the conflicting file name (e.g. `data.csv` vs `DATA.csv`). We plan to improve this along with other error reporting.
+
+## **Appendix: Effort**
+This project required significant effort and collaboration across the team to achieve the goals we set out. Below, we summarize the key aspects of the project’s difficulty, challenges, time investment, and achievements.
+
+### Difficulty Level and Scope
+Compared to AB3, which manages only a single attribute (e.g. Name), our project introduces and modifies several commands to handle multiple attributes, each with distinct behaviors, like Email and Phone, of multiple Persons. This added significant design and implementation complexity. For instance, commands such as find, tag, comm, and export had to be adapted to operate across different attributes, each with its own filtering and sorting criteria. This means that we have to make careful architectural decisions to avoid code duplication while maintaining command clarity and correctness across all supported attributes. A notable addition is the Commission attribute , which introduced its own set of challenges. We built extensive functionalities around commissions, including:
+- Sorting commissions.
+- Summing total commissions across a filtered list.
+- Implementing overflow-safe arithmetic operations, ensuring financial calculations remain accurate even when dealing with large datasets or values.
+
+Other features include:
+- Expansion of Functionality: We doubled the number of supported commands, which required not only implementing new logic but also ensuring consistency, test coverage, and appropriate error handling.
+- Filtering and Sorting: We introduced an extensive and flexible filtering and sorting feature, enabling users to query and organize data with high specificity. This required designing and implementing a modular filter system that could compose multiple conditions and work across entity types.
+- Export function: There are challenges related to format compatibility, error resilience, and testing.
+- Documentation: We produced extensive documentation, covering user guides, developer guides, and architectural decisions. This required significant effort to ensure clarity, accuracy, and accessibility for both technical and non-technical audiences.
+
+### Effort Required
+The project effort was spread across design (20%), implementation (50%), testing (15%), and documentation (15%). The team also conducted multiple rounds of code reviews, user testing, and bug fixes to ensure quality. We did not rely on external libraries for any part of the project. All functionality, including filtering, summarizing and external system interaction, was developed in-house. This means 100% of the effort represents original work, with no time saved through external reuse.
+
+### Achievements
+- Code coverage improved from 75% to 79%, despite the larger codebase.
+- Number of commands supported was doubled.
+- Filtering and sorting features are now significantly more powerful and flexible.
+- The system can now interact with external systems, broadening its real-world applicability.
+- We delivered extensive documentation, greatly improving the maintainability and usability of the system.
