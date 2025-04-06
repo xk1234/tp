@@ -59,30 +59,23 @@ public class StringUtil {
      * e.g. empty string, "-1", "0", "+1", and " 2 " (untrimmed), "3 0" (contains whitespace), "1 a" (contains letters)
      * @throws NullPointerException if {@code s} is null.
      */
-    public static Optional<BigInteger> getNonZeroUnsignedInteger(String s) {
+    public static Optional<Integer> getNonZeroUnsignedIntegerClipped(String s) {
         requireNonNull(s);
 
         try {
             BigInteger value = new BigInteger(s);
             // "+1" is successfully parsed by Integer#parseInt(String)
             if (value.compareTo(BigInteger.ZERO) > 0 && !s.startsWith("+")) {
-                return Optional.of(value); // value could be > Integer.MAX_VALUE
+                if (value.compareTo(BigInteger.valueOf(Integer.MAX_VALUE)) > 0) {
+                    return Optional.of(Integer.MAX_VALUE);
+                } else {
+                    return Optional.of(value.intValue());
+                }
             };
             return Optional.empty();
         } catch (NumberFormatException nfe) {
             return Optional.empty();
         }
-    }
-
-    /**
-     * Returns true if {@code s} represents a non-zero unsigned integer
-     * e.g. 1, 2, 3, ..., <br>
-     * Will return false for any other non-null string input
-     * e.g. empty string, "-1", "0", "+1", and " 2 " (untrimmed), "3 0" (contains whitespace), "1 a" (contains letters)
-     * @throws NullPointerException if {@code s} is null.
-     */
-    public static boolean isNonZeroUnsignedInteger(String s) {
-        return getNonZeroUnsignedInteger(s).isPresent();
     }
 
     /**

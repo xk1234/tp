@@ -1,10 +1,12 @@
 package seedu.address.commons.util;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.io.FileNotFoundException;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 
@@ -13,36 +15,37 @@ public class StringUtilTest {
     //---------------- Tests for isNonZeroUnsignedInteger --------------------------------------
 
     @Test
-    public void isNonZeroUnsignedInteger() {
+    public void getNonZeroUnsignedIntegerClipped() {
 
         // EP: empty strings
-        assertFalse(StringUtil.isNonZeroUnsignedInteger("")); // Boundary value
-        assertFalse(StringUtil.isNonZeroUnsignedInteger("  "));
+        assertFalse(StringUtil.getNonZeroUnsignedIntegerClipped("").isPresent()); // Boundary value
+        assertFalse(StringUtil.getNonZeroUnsignedIntegerClipped("  ").isPresent());
 
         // EP: not a number
-        assertFalse(StringUtil.isNonZeroUnsignedInteger("a"));
-        assertFalse(StringUtil.isNonZeroUnsignedInteger("aaa"));
+        assertFalse(StringUtil.getNonZeroUnsignedIntegerClipped("a").isPresent());
+        assertFalse(StringUtil.getNonZeroUnsignedIntegerClipped("aaa").isPresent());
 
         // EP: zero
-        assertFalse(StringUtil.isNonZeroUnsignedInteger("0"));
+        assertFalse(StringUtil.getNonZeroUnsignedIntegerClipped("0").isPresent());
 
         // EP: zero as prefix
-        assertTrue(StringUtil.isNonZeroUnsignedInteger("01"));
+        assertTrue(StringUtil.getNonZeroUnsignedIntegerClipped("01").isPresent());
 
         // EP: signed numbers
-        assertFalse(StringUtil.isNonZeroUnsignedInteger("-1"));
-        assertFalse(StringUtil.isNonZeroUnsignedInteger("+1"));
+        assertFalse(StringUtil.getNonZeroUnsignedIntegerClipped("-1").isPresent());
+        assertFalse(StringUtil.getNonZeroUnsignedIntegerClipped("+1").isPresent());
 
         // EP: numbers with white space
-        assertFalse(StringUtil.isNonZeroUnsignedInteger(" 10 ")); // Leading/trailing spaces
-        assertFalse(StringUtil.isNonZeroUnsignedInteger("1 0")); // Spaces in the middle
+        assertFalse(StringUtil.getNonZeroUnsignedIntegerClipped(" 10 ").isPresent()); // Leading/trailing spaces
+        assertFalse(StringUtil.getNonZeroUnsignedIntegerClipped("1 0").isPresent()); // Spaces in the middle
 
         // EP: number larger than Integer.MAX_VALUE
-        assertTrue(StringUtil.isNonZeroUnsignedInteger(Long.toString((long) Integer.MAX_VALUE + 1)));
+        String bigNumber = Long.toString((long) Integer.MAX_VALUE + 1);
+        assertEquals(StringUtil.getNonZeroUnsignedIntegerClipped(bigNumber), Optional.of(Integer.MAX_VALUE));
 
         // EP: valid numbers, should return true
-        assertTrue(StringUtil.isNonZeroUnsignedInteger("1")); // Boundary value
-        assertTrue(StringUtil.isNonZeroUnsignedInteger("10"));
+        assertTrue(StringUtil.getNonZeroUnsignedIntegerClipped("1").isPresent()); // Boundary value
+        assertTrue(StringUtil.getNonZeroUnsignedIntegerClipped("10").isPresent());
     }
 
 
