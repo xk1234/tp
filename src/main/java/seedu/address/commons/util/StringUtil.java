@@ -5,6 +5,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -52,21 +53,36 @@ public class StringUtil {
     }
 
     /**
+     * Returns BigInteger if {@code s} represents a non-zero unsigned integer
+     * e.g. 1, 2, 3, ..., <br>
+     * Will return false for any other non-null string input
+     * e.g. empty string, "-1", "0", "+1", and " 2 " (untrimmed), "3 0" (contains whitespace), "1 a" (contains letters)
+     * @throws NullPointerException if {@code s} is null.
+     */
+    public static Optional<BigInteger> getNonZeroUnsignedInteger(String s) {
+        requireNonNull(s);
+
+        try {
+            BigInteger value = new BigInteger(s);
+            // "+1" is successfully parsed by Integer#parseInt(String)
+            if (value.compareTo(BigInteger.ZERO) > 0 && !s.startsWith("+")) {
+                return Optional.of(value); // value could be > Integer.MAX_VALUE
+            };
+            return Optional.empty();
+        } catch (NumberFormatException nfe) {
+            return Optional.empty();
+        }
+    }
+
+    /**
      * Returns true if {@code s} represents a non-zero unsigned integer
-     * e.g. 1, 2, 3, ..., {@code Integer.MAX_VALUE} <br>
+     * e.g. 1, 2, 3, ..., <br>
      * Will return false for any other non-null string input
      * e.g. empty string, "-1", "0", "+1", and " 2 " (untrimmed), "3 0" (contains whitespace), "1 a" (contains letters)
      * @throws NullPointerException if {@code s} is null.
      */
     public static boolean isNonZeroUnsignedInteger(String s) {
-        requireNonNull(s);
-
-        try {
-            int value = Integer.parseInt(s);
-            return value > 0 && !s.startsWith("+"); // "+1" is successfully parsed by Integer#parseInt(String)
-        } catch (NumberFormatException nfe) {
-            return false;
-        }
+        return getNonZeroUnsignedInteger(s).isPresent();
     }
 
     /**

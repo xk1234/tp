@@ -2,11 +2,13 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
@@ -35,10 +37,16 @@ public class ParserUtil {
      */
     public static Index parseIndex(String oneBasedIndex) throws ParseException {
         String trimmedIndex = oneBasedIndex.trim();
-        if (!StringUtil.isNonZeroUnsignedInteger(trimmedIndex)) {
+        Optional<BigInteger> valueOptional = StringUtil.getNonZeroUnsignedInteger(trimmedIndex);
+        if (valueOptional.isEmpty()) {
             throw new ParseException(MESSAGE_INVALID_INDEX);
         }
-        return Index.fromOneBased(Integer.parseInt(trimmedIndex));
+        BigInteger value = valueOptional.get();
+        if (value.compareTo(BigInteger.valueOf(Integer.MAX_VALUE)) > 0) {
+            return Index.fromOneBased(Integer.MAX_VALUE);
+        } else {
+            return Index.fromOneBased(value.intValue());
+        }
     }
 
     /**
