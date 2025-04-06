@@ -37,13 +37,13 @@ public class SummaryCommand extends Command {
 
     public Person getHighest(List<Person> people) {
         return people.stream()
-                .max(Comparator.comparing(person -> person.getCommission().value))
+                .max(Comparator.comparing(person -> Integer.parseInt(person.getCommission().value)))
                 .orElse(null);
     }
 
     public Person getLowest(List<Person> people) {
         return people.stream()
-                .min(Comparator.comparing(person -> person.getCommission().value))
+                .min(Comparator.comparing(person -> Integer.parseInt(person.getCommission().value)))
                 .orElse(null);
     }
 

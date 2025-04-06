@@ -277,7 +277,7 @@ Effortlessly export your contacts to a CSV file that can be edited in software l
 
 Format: `export FILE_NAME [a/ATTRIBUTE]...`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:** The command will fail if the file already exists, so that your data won't be lost unintentionally.</div>
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:** The command will fail if the file already exists, so that your data won't be lost unintentionally. On some systems like Windows, file names are case-insensitive. For example, if you already have a `DATA.csv`, then AscendNetwork cannot export your data to `data.csv`.</div>
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:** Use filters before exporting to segment your contacts, e.g., exporting only high-commission leads.</div>
 
@@ -332,8 +332,8 @@ Format: `mailto`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:** You should first filter to the correct group of contacts</div>
 
-* You will need to copy the link and paste it on your browser's address bar to send emails.
-* The default email client set on your system will be used to send the email.
+* You will need to copy the link and paste it into your browser's address bar to send emails.
+* After pasting it into the address bar, the default email client set on your system will be opened and filled with email addresses so that you can send the email quickly to the displayed contacts in AscendNetwork.
 * Includes the currently displayed contacts only. (in the `mailto://` link) Use `find` and/or other commands to refine your selection before running this command.
 
 Examples:
@@ -356,9 +356,10 @@ Examples:
 
 ### Displaying summary statistics : `summary`
 
-Displays a summary of key statistics: total number of contacts, total commission, highest commission, lowest commission, and average commission across all stored contacts in easy to read format.
+Displays a summary of key statistics: total number of contacts, total commission, highest commission, lowest commission, and average commission across all contacts displayed on screen in easy to read format.
 
 Format: `summary`
+Any additional parameters added are legal but will not affect behaviour.
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:** Use this command for a quick statistical overview of your stored data without needing to list all entries.</div>
 
