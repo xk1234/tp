@@ -77,7 +77,7 @@ AscendNetwork is built with **network marketeers** in mind—people who often de
 
    * **`help`** : Opens the help window.
    * **`list`** : Lists all existing contacts.
-   * **`add n/John Doe p/98765432 e/johnd@example.com a/John Street, block 123, #01-01`** : Adds a contact named `John Doe`, whos contact number is `98765432`, has an `email of johnd@example.com` and lives at `John Street, block 123, #01-01`.
+   * **`add n/John Doe p/98765432 e/johnd@example.com a/John Street, block 123, #01-01`** : Adds a contact named `John Doe`, whose contact number is `98765432`, has an `email of johnd@example.com` and lives at `John Street, block 123, #01-01`.
    * **`delete 3`** : Deletes the 3rd contact in the current list.
    * **`clear`** : Deletes **all** contacts.
    * **`exit`** : Closes the app.
@@ -103,7 +103,7 @@ _If you are reading this from a PDF, watch out for spacing issues when copying m
 
 ### Viewing help : `help`
 
-Shows a message explaning how to access the help page.
+Shows a message explaining how to access the help page.
 
 ![help message](images/helpMessage.png)
 
@@ -252,7 +252,7 @@ Use this command to quickly add your favorite contacts to the displayed list.
 
 Examples:
 * `incl n/John` finds `john` and `John Doe`
-* `find n/john betsy` follwed by `incl n/Li` adds `David Li` to the list
+* `find n/john betsy` followed by `incl n/Li` adds `David Li` to the list
   ![result for 'find n/john betsy' then 'incl n/Li'](images/findInclResult.png)
 
 ### Add commission to the contact: `addc`
@@ -387,8 +387,8 @@ Furthermore, certain edits can cause the AscendNetwork to behave in unexpected w
 
 ## FAQ
 
-**Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AscendNetwork home folder.
+**Q**: How do I transfer my data to another computer?<br>
+**A**: Install the app on the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AscendNetwork home folder.
 
 **Q**: How can I back up my data?<br>
 **A**: You can manually back up your `addressbook.json` file by copying it to a safe location.
