@@ -121,13 +121,13 @@ A contact can have any number of tags (including 0)
 </div>
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-​Keep your character count under 30 to ensure all parameters display properly in the app.
+​Keep your character count under 30 to ensure all parameters display properly in the app. However, character count is not limited in case your information needs it.
 </div>
 
 
 * Provide **all fields**—tag is optional.
 * NAME uses **only alphanumeric characters and spaces**. It must **not be blank**.
-* PHONE_NUMBER is a **number** that is **at least 3** digits and **at most 20** digits long.
+* PHONE_NUMBER is a **number** that is **at least 3** digits and **at most 20** digits long to allow numbers from many countries.
 * ADDRESS accepts any value, but it must **not be blank**.
 * EMAIL follows the **local-part@domain** format. Please note:
   1. Include **only alphanumeric characters and these special characters, excluding the parentheses: (+_.-)** in the local part. It must **not start or end with a special character**.
@@ -135,7 +135,7 @@ A contact can have any number of tags (including 0)
      - The domain name **must end** with a domain label that is **at least 2** characters long.
      - Each domain label should **start and end** with an alphanumeric character.
      - Each domain label may contain **only alphanumeric** characters, with hyphens allowed in between if necessary.
-* COMMISSION is an **non-negative integer** number, **not starting with 0**. It must be **at most 9** digits long, and **cannot be blank**.
+* COMMISSION is a **non-negative integer** number, **not starting with 0**. It must be **at most 9** digits long, and **cannot be blank**.
 * TAG consists of **alphanumeric** characters.
 
 Examples:
@@ -241,7 +241,7 @@ Adding contacts with matching name from your contacts to the list.
 Format: `incl n/NAME_KEYWORD [NAME_KEYWORD]...`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-Add your favorite contacts to your find command's filtered list.
+You can back add contact filtered out by the find command
 </div>
 
 * `NAME_KEYWORD` is same as defined above.
