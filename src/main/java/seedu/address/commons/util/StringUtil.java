@@ -53,9 +53,10 @@ public class StringUtil {
     }
 
     /**
-     * Returns Integer if {@code s} represents a non-zero unsigned integer
+     * Returns Integer (inside Optional) if {@code s} represents a non-zero unsigned integer
      * e.g. 1, 2, 3, ..., <br>
-     * Will return false for any other non-null string input
+     * Will clip the returned Integer to Integer.MAX_VALUE if {@code s} represents anything larger
+     * Will return an empty Optional for any other non-null string input
      * e.g. empty string, "-1", "0", "+1", and " 2 " (untrimmed), "3 0" (contains whitespace), "1 a" (contains letters)
      * @throws NullPointerException if {@code s} is null.
      */
@@ -71,7 +72,7 @@ public class StringUtil {
                 } else {
                     return Optional.of(value.intValue());
                 }
-            };
+            }
             return Optional.empty();
         } catch (NumberFormatException nfe) {
             return Optional.empty();
