@@ -793,6 +793,23 @@ testers are expected to do more *exploratory* testing.
     1. Test case: `mailto`<br>
        Expected: Contents of the window is replaced with those related to `mailto`.
 
+### Adding a commission
+
+1. Adding commission to the specified indexed person.
+    1. Prerequisites: Multiple persons in the list.
+    2. Test case: `addc 1 c/12` <br>
+       Expected: 12 commission is added to the first person.
+    3. Test case: `addc 1 c/1000000000` <br>
+       Expected: Invalid commission. Error details shown in the status message.
+
+### Including a persons
+
+1. Including specific persons to the list
+    1. Test case: `incl n/NAME` <br>
+       Expected: Persons matched added to the list. The number of persons added to list is shown in the status message.
+    2. Test case: `incl 1 n/` <br>
+       Expected: No person is added. Error details shown in the status message.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Planned enhancements**
@@ -800,6 +817,8 @@ testers are expected to do more *exploratory* testing.
 Team size: 4
 
 1. **Allow finding by other attributes**: The current find command is able to find persons by both name and tags. We plan to extend its capabilities to cover all attributes of a person in ways that are meaningful for it e.g. the commission attribute can be filtered by a range using an upper and lower limit. This would allow users to better organize their contacts and use commands that operate on the displayed list
+
+1. **Allow including by other attributes**: The current incl command only use name to include persons to the currently displayed list. We plan to extend its capabilities to cover all attributes of a person. e.g. the persons can be included by their common addresses. This would allow users to better organize their contacts and use commands that operate on the displayed list
 
 1. **Enable copying contact details**: The current UI does not allow text in the person list to be copied onto users' clipboards. We plan to create this capability so that users can copy over existing contact details into other software, rather than manually typing them out.
 
