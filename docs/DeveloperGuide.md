@@ -848,5 +848,5 @@ The project effort was spread across design (20%), implementation (50%), testing
 - Code coverage improved from 75% to 79%, despite the larger codebase.
 - Number of commands supported was doubled.
 - Filtering and sorting features are now significantly more powerful and flexible.
-- The system can now interact with external systems, broadening its real-world applicability.
+- External systems can now leverage our application data (through csv), broadening its real-world applicability.
 - We delivered extensive documentation, greatly improving the maintainability and usability of the system.
