@@ -5,6 +5,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -52,20 +53,29 @@ public class StringUtil {
     }
 
     /**
-     * Returns true if {@code s} represents a non-zero unsigned integer
-     * e.g. 1, 2, 3, ..., {@code Integer.MAX_VALUE} <br>
-     * Will return false for any other non-null string input
+     * Returns Integer (inside Optional) if {@code s} represents a non-zero unsigned integer
+     * e.g. 1, 2, 3, ..., <br>
+     * Will clip the returned Integer to Integer.MAX_VALUE if {@code s} represents anything larger
+     * Will return an empty Optional for any other non-null string input
      * e.g. empty string, "-1", "0", "+1", and " 2 " (untrimmed), "3 0" (contains whitespace), "1 a" (contains letters)
      * @throws NullPointerException if {@code s} is null.
      */
-    public static boolean isNonZeroUnsignedInteger(String s) {
+    public static Optional<Integer> getNonZeroUnsignedIntegerClipped(String s) {
         requireNonNull(s);
 
         try {
-            int value = Integer.parseInt(s);
-            return value > 0 && !s.startsWith("+"); // "+1" is successfully parsed by Integer#parseInt(String)
+            BigInteger value = new BigInteger(s);
+            // "+1" is successfully parsed by Integer#parseInt(String)
+            if (value.compareTo(BigInteger.ZERO) > 0 && !s.startsWith("+")) {
+                if (value.compareTo(BigInteger.valueOf(Integer.MAX_VALUE)) > 0) {
+                    return Optional.of(Integer.MAX_VALUE);
+                } else {
+                    return Optional.of(value.intValue());
+                }
+            }
+            return Optional.empty();
         } catch (NumberFormatException nfe) {
-            return false;
+            return Optional.empty();
         }
     }
 
