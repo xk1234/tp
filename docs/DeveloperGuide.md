@@ -4,7 +4,7 @@ title: Developer Guide
 ---
 
 * Table of Contents
-  {:toc}
+{:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -587,7 +587,7 @@ Use case ends.
 2. AscendNetwork clears all persons from its data.
    Use case ends.
 
-**Use case: UC15 - Display help window**
+**Use case: UC16 - Display help window**
 
 **MSS**
 
@@ -826,6 +826,8 @@ Team size: 4
 
 1. **Indicate conflicting file name in export**: Currently AscendNetwork will fail to `export` if a similarly-named file is already present. The app does not indicate which is the conflicting file name (e.g. `data.csv` vs `DATA.csv`). We plan to improve this along with other error reporting.
 
+1. **Allow comm command to modify list of persons**: Currently AscendNetwork prints out the list of persons when comm is run, we plan to enable the command to modify the actual list of persons.
+
 ## **Appendix: Effort**
 This project required significant effort and collaboration across the team to achieve the goals we set out. Below, we summarize the key aspects of the project’s difficulty, challenges, time investment, and achievements.
 
@@ -845,7 +847,7 @@ Other features include:
 The project effort was spread across design (20%), implementation (50%), testing (15%), and documentation (15%). The team also conducted multiple rounds of code reviews, user testing, and bug fixes to ensure quality. We did not rely on external libraries for any part of the project. All functionality, including filtering, summarizing and external system interaction, was developed in-house. This means 100% of the effort represents original work, with no time saved through external reuse.
 
 ### Achievements
-- Code coverage improved from 75% to 79%, despite the larger codebase.
+- Code coverage improved from 75% to 80%, despite the larger codebase.
 - Number of commands supported was doubled.
 - Filtering and sorting features are now significantly more powerful and flexible.
 - External systems can now leverage our application data (through csv), broadening its real-world applicability.

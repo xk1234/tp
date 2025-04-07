@@ -77,7 +77,7 @@ AscendNetwork is built with **network marketeers** in mind—people who often de
 
    * **`help`** : Opens the help window.
    * **`list`** : Lists all existing contacts.
-   * **`add n/John Doe p/98765432 e/johnd@example.com a/John Street, block 123, #01-01`** : Adds a contact named `John Doe`, whose contact number is `98765432`, has an `email of johnd@example.com` and lives at `John Street, block 123, #01-01`.
+   * **`add c/10000 n/John Doe p/98765432 e/johnd@example.com a/John Street, block 123, #01-01`** : Adds a contact named `John Doe`, whose contact number is `98765432`, has an `email of johnd@example.com` and lives at `John Street, block 123, #01-01`, and has $10000 in commissions.
    * **`delete 3`** : Deletes the 3rd contact in the current list.
    * **`clear`** : Deletes **all** contacts.
    * **`exit`** : Closes the app.
@@ -125,7 +125,7 @@ If multiple contacts have the same name, different spacing and casing can be use
 </div>
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-​Keep your character count under 30 to ensure all parameters display properly in the app. However, character count is not limited in case your information needs it.
+​ Keep your character count under 30 to ensure all parameters display properly in the app. However, character count is not limited in case your information needs it.
 </div>
 
 
