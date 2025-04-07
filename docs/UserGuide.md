@@ -246,7 +246,7 @@ Adding contacts with matching name from your contacts to the list.
 Format: `incl n/NAME_KEYWORD [NAME_KEYWORD]...`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-You can back add contact filtered out by the find command
+You can add contact filtered out by the find command
 </div>
 
 * `NAME_KEYWORD` is same as defined above.
